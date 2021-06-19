@@ -1,0 +1,606 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="ALL" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="45f87b1a-8403-4c06-b2b2-57ebfe555883" name="Default Changelist" comment="changing the name of a method">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="ExternalProjectsManager">
+    <system id="GRADLE">
+      <state>
+        <task path="$PROJECT_DIR$">
+          <activation />
+        </task>
+        <projects_view />
+      </state>
+    </system>
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Interface" />
+        <option value="JUnit5 Test Class" />
+        <option value="JUnit4 Test Class" />
+        <option value="package-info" />
+        <option value="Enum" />
+        <option value="Class" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="GitSEFilterConfiguration">
+    <file-type-list>
+      <filtered-out-file-type name="LOCAL_BRANCH" />
+      <filtered-out-file-type name="REMOTE_BRANCH" />
+      <filtered-out-file-type name="TAG" />
+      <filtered-out-file-type name="COMMIT_BY_MESSAGE" />
+    </file-type-list>
+  </component>
+  <component name="ProblemsViewState">
+    <option name="proportion" value="0.6115204" />
+    <option name="showPreview" value="true" />
+  </component>
+  <component name="ProjectId" id="1rJuVdeiVFuEczDxOSgLXXwjCQe" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true">
+    <ConfirmationsSetting value="2" id="Add" />
+  </component>
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="ASKED_ADD_EXTERNAL_FILES" value="true" />
+    <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
+    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="aspect.path.notification.shown" value="true" />
+    <property name="com.intellij.openapi.externalSystem.service.settings.ExternalSystemGroupConfigurable" value="ALL" />
+    <property name="com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrary" value="JUnit4" />
+    <property name="com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.JUnit4" value="" />
+    <property name="com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.JUnit5" value="" />
+    <property name="last_directory_selection" value="$PROJECT_DIR$/src/main/java/Viewer" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../chess" />
+    <property name="node.js.detected.package.eslint" value="true" />
+    <property name="node.js.path.for.package.eslint" value="project" />
+    <property name="node.js.path.for.package.tslint" value="project" />
+    <property name="node.js.selected.package.eslint" value="(autodetect)" />
+    <property name="node.js.selected.package.tslint" value="(autodetect)" />
+    <property name="nodejs_package_manager_path" value="npm" />
+    <property name="project.structure.last.edited" value="Modules" />
+    <property name="project.structure.proportion" value="0.15" />
+    <property name="project.structure.side.proportion" value="0.2" />
+    <property name="restartRequiresConfirmation" value="false" />
+    <property name="settings.editor.selected.configurable" value="preferences.pluginManager" />
+  </component>
+  <component name="ReaderModeSettings">
+    <option name="enabled" value="false" />
+  </component>
+  <component name="RecentsManager">
+    <key name="CreateClassDialog.RecentsKey">
+      <recent name="Model" />
+      <recent name="" />
+    </key>
+    <key name="CreateTestDialog.Recents.Supers">
+      <recent name="" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="G:\semister 2\java Yu_gi_oh project\yu-gi-oh-Project - main back up\jsonResources" />
+      <recent name="C:\Users\SooSan\Desktop\project-team-10\jsonResources" />
+      <recent name="G:\semister 2\java Yu_gi_oh project\yu-gi-oh-Project\csvFile" />
+    </key>
+    <key name="MoveClassesOrPackagesDialog.RECENTS_KEY">
+      <recent name="Viewer" />
+    </key>
+    <key name="CreateTestDialog.RecentsKey">
+      <recent name="Viewer" />
+    </key>
+  </component>
+  <component name="RunAnythingCache">
+    <option name="myCommands">
+      <command value="gradle --build-cache" />
+    </option>
+  </component>
+  <component name="RunManager" selected="Application.Main">
+    <configuration name="Main" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="ALTERNATIVE_JRE_PATH" value="11" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="true" />
+      <option name="MAIN_CLASS_NAME" value="Main" />
+      <module name="untitled" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="G:/semister 2/java Yu_gi_oh project/yu-gi-oh-Project" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+      <ExternalSystemSettings>
+        <option name="executionName" />
+        <option name="externalProjectPath" value="$PROJECT_DIR$" />
+        <option name="externalSystemIdString" value="GRADLE" />
+        <option name="scriptParameters" value="--build-cache" />
+        <option name="taskDescriptions">
+          <list />
+        </option>
+        <option name="taskNames">
+          <list />
+        </option>
+        <option name="vmOptions" value="" />
+      </ExternalSystemSettings>
+      <ExternalSystemDebugServerProcess>true</ExternalSystemDebugServerProcess>
+      <ExternalSystemReattachDebugProcess>true</ExternalSystemReattachDebugProcess>
+      <DebugAllEnabled>false</DebugAllEnabled>
+      <method v="2" />
+    </configuration>
+    <list>
+      <item itemvalue="Application.Main" />
+      <item itemvalue="Gradle.G:/semister 2/java Yu_gi_oh project/yu-gi-oh-Project" />
+    </list>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Application.Main" />
+        <item itemvalue="Gradle.G:/semister 2/java Yu_gi_oh project/yu-gi-oh-Project" />
+      </list>
+    </recent_temporary>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="45f87b1a-8403-4c06-b2b2-57ebfe555883" name="Default Changelist" comment="" />
+      <created>1618706541361</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1618706541361</updated>
+      <workItem from="1618706542436" duration="1003000" />
+      <workItem from="1618722106867" duration="2471000" />
+      <workItem from="1618724609991" duration="8072000" />
+      <workItem from="1618762875557" duration="18932000" />
+      <workItem from="1618791692302" duration="18103000" />
+      <workItem from="1618849546067" duration="8175000" />
+      <workItem from="1618867102585" duration="2286000" />
+      <workItem from="1618943314360" duration="749000" />
+      <workItem from="1618947530448" duration="6160000" />
+      <workItem from="1618958340462" duration="2768000" />
+      <workItem from="1619209974843" duration="1247000" />
+      <workItem from="1619215711085" duration="1834000" />
+      <workItem from="1619218328912" duration="172000" />
+      <workItem from="1619218518367" duration="2750000" />
+      <workItem from="1619237459302" duration="7979000" />
+      <workItem from="1619276688699" duration="1353000" />
+      <workItem from="1619303927490" duration="4621000" />
+      <workItem from="1619316111069" duration="112000" />
+      <workItem from="1619326345905" duration="3622000" />
+      <workItem from="1619371072376" duration="4000" />
+      <workItem from="1619386883453" duration="3686000" />
+      <workItem from="1619421313911" duration="1706000" />
+      <workItem from="1619483777349" duration="10693000" />
+      <workItem from="1619551139463" duration="581000" />
+      <workItem from="1619855555842" duration="22516000" />
+      <workItem from="1619892862050" duration="3305000" />
+      <workItem from="1620057352869" duration="27695000" />
+      <workItem from="1620144273542" duration="4503000" />
+      <workItem from="1620151715726" duration="12272000" />
+      <workItem from="1620551235289" duration="10314000" />
+      <workItem from="1620842614576" duration="235000" />
+      <workItem from="1620842867200" duration="14931000" />
+      <workItem from="1620929610484" duration="668000" />
+      <workItem from="1620930929473" duration="901000" />
+      <workItem from="1620947078549" duration="229000" />
+      <workItem from="1620956538345" duration="13214000" />
+      <workItem from="1621006540814" duration="6959000" />
+      <workItem from="1621641524580" duration="619000" />
+      <workItem from="1621825418161" duration="768000" />
+      <workItem from="1621827137891" duration="485000" />
+      <workItem from="1621829395138" duration="8707000" />
+      <workItem from="1621871034917" duration="395000" />
+      <workItem from="1621871459323" duration="6580000" />
+      <workItem from="1621898011982" duration="7357000" />
+      <workItem from="1621906584686" duration="594000" />
+      <workItem from="1621999013412" duration="638000" />
+      <workItem from="1622000400071" duration="4000" />
+      <workItem from="1622182697391" duration="1391000" />
+      <workItem from="1622256365746" duration="597000" />
+      <workItem from="1623552815586" duration="1278000" />
+      <workItem from="1623698045011" duration="11553000" />
+      <workItem from="1623891499215" duration="19374000" />
+      <workItem from="1624037441775" duration="6393000" />
+    </task>
+    <task id="LOCAL-00023" summary="set magic and monsters card and enum">
+      <created>1619304079536</created>
+      <option name="number" value="00023" />
+      <option name="presentableId" value="LOCAL-00023" />
+      <option name="project" value="LOCAL" />
+      <updated>1619304079536</updated>
+    </task>
+    <task id="LOCAL-00024" summary="fix some of warnings">
+      <created>1619308771651</created>
+      <option name="number" value="00024" />
+      <option name="presentableId" value="LOCAL-00024" />
+      <option name="project" value="LOCAL" />
+      <updated>1619308771651</updated>
+    </task>
+    <task id="LOCAL-00025" summary="fix some bugs in main menu and change accessibleness of some contents">
+      <created>1619312049679</created>
+      <option name="number" value="00025" />
+      <option name="presentableId" value="LOCAL-00025" />
+      <option name="project" value="LOCAL" />
+      <updated>1619312049679</updated>
+    </task>
+    <task id="LOCAL-00026" summary="clean">
+      <created>1619327375448</created>
+      <option name="number" value="00026" />
+      <option name="presentableId" value="LOCAL-00026" />
+      <option name="project" value="LOCAL" />
+      <updated>1619327375448</updated>
+    </task>
+    <task id="LOCAL-00027" summary="clean">
+      <created>1619328708612</created>
+      <option name="number" value="00027" />
+      <option name="presentableId" value="LOCAL-00027" />
+      <option name="project" value="LOCAL" />
+      <updated>1619328708612</updated>
+    </task>
+    <task id="LOCAL-00028" summary="game models and general structure">
+      <created>1619500368832</created>
+      <option name="number" value="00028" />
+      <option name="presentableId" value="LOCAL-00028" />
+      <option name="project" value="LOCAL" />
+      <updated>1619500368832</updated>
+    </task>
+    <task id="LOCAL-00029" summary="game models and general structure">
+      <created>1619500541760</created>
+      <option name="number" value="00029" />
+      <option name="presentableId" value="LOCAL-00029" />
+      <option name="project" value="LOCAL" />
+      <updated>1619500541760</updated>
+    </task>
+    <task id="LOCAL-00030" summary="game models and general structure">
+      <created>1619551361013</created>
+      <option name="number" value="00030" />
+      <option name="presentableId" value="LOCAL-00030" />
+      <option name="project" value="LOCAL" />
+      <updated>1619551361013</updated>
+    </task>
+    <task id="LOCAL-00031" summary="-add abstract method &quot;getCopy&quot; to &quot;Card&quot;&#10;-override &quot;getCopy&quot; by &quot;Monster&quot; &amp; &quot;Magic&quot; classes.&#10;-add &quot;getCopy&quot; to &quot;Deck&quot; class">
+      <created>1619513873569</created>
+      <option name="number" value="00031" />
+      <option name="presentableId" value="LOCAL-00031" />
+      <option name="project" value="LOCAL" />
+      <updated>1619513873569</updated>
+    </task>
+    <task id="LOCAL-00032" summary="-add abstract method &quot;getCopy&quot; to &quot;Card&quot;&#10;-override &quot;getCopy&quot; by &quot;Monster&quot; &amp; &quot;Magic&quot; classes.&#10;-add &quot;getCopy&quot; to &quot;Deck&quot; class&#10;-finish &quot;Deck&quot; model class&#10;-add empty classes; DeckController, DeckMenu, DeckMenuDisplay&#10;-fix fields in &quot;Card&quot; branch&#10;-relate &quot;User&quot; &amp; &quot;Deck&quot; classes">
+      <created>1619544790577</created>
+      <option name="number" value="00032" />
+      <option name="presentableId" value="LOCAL-00032" />
+      <option name="project" value="LOCAL" />
+      <updated>1619544790577</updated>
+    </task>
+    <task id="LOCAL-00033" summary="-add abstract method &quot;getCopy&quot; to &quot;Card&quot;&#10;-override &quot;getCopy&quot; by &quot;Monster&quot; &amp; &quot;Magic&quot; classes.&#10;-add &quot;getCopy&quot; to &quot;Deck&quot; class&#10;-finish &quot;Deck&quot; model class&#10;-add empty classes; DeckController, DeckMenu, DeckMenuDisplay&#10;-fix fields in &quot;Card&quot; branch&#10;-relate &quot;User&quot; &amp; &quot;Deck&quot; classes&#10;-add &quot;DeckMenu&quot; errors to &quot;Error&quot; ENUM">
+      <created>1619545766295</created>
+      <option name="number" value="00033" />
+      <option name="presentableId" value="LOCAL-00033" />
+      <option name="project" value="LOCAL" />
+      <updated>1619545766295</updated>
+    </task>
+    <task id="LOCAL-00034" summary="deck">
+      <created>1619938237542</created>
+      <option name="number" value="00034" />
+      <option name="presentableId" value="LOCAL-00034" />
+      <option name="project" value="LOCAL" />
+      <updated>1619938237542</updated>
+    </task>
+    <task id="LOCAL‎۰۰۰۳۵" summary="DuelMenu added">
+      <created>1619951179505</created>
+      <option name="number" value="LOCAL‎۰۰۰۳۵" />
+      <option name="presentableId" value="LOCAL‎۰۰۰۳۵" />
+      <updated>1619951179505</updated>
+    </task>
+    <task id="LOCAL‎۰۰۰۳۶" summary="DuelMenu added">
+      <created>1619951562582</created>
+      <option name="number" value="LOCAL‎۰۰۰۳۶" />
+      <option name="presentableId" value="LOCAL‎۰۰۰۳۶" />
+      <updated>1619951562583</updated>
+    </task>
+    <task id="LOCAL‎۰۰۰۳۷" summary="DuelMenu adding final error">
+      <created>1619958835634</created>
+      <option name="number" value="LOCAL‎۰۰۰۳۷" />
+      <option name="presentableId" value="LOCAL‎۰۰۰۳۷" />
+      <updated>1619958835634</updated>
+    </task>
+    <task id="LOCAL-00038" summary="clean code and package classes">
+      <created>1620057160988</created>
+      <option name="number" value="00038" />
+      <option name="presentableId" value="LOCAL-00038" />
+      <option name="project" value="LOCAL" />
+      <updated>1620057160989</updated>
+    </task>
+    <task id="LOCAL-00039" summary="show card added and some clean code changes">
+      <created>1620083480491</created>
+      <option name="number" value="00039" />
+      <option name="presentableId" value="LOCAL-00039" />
+      <option name="project" value="LOCAL" />
+      <updated>1620083480491</updated>
+    </task>
+    <task id="LOCAL-00040" summary="show card added and some clean code changes">
+      <created>1620086343723</created>
+      <option name="number" value="00040" />
+      <option name="presentableId" value="LOCAL-00040" />
+      <option name="project" value="LOCAL" />
+      <updated>1620086343723</updated>
+    </task>
+    <task id="LOCAL-00041" summary="show card added and some clean code changes">
+      <created>1620095127420</created>
+      <option name="number" value="00041" />
+      <option name="presentableId" value="LOCAL-00041" />
+      <option name="project" value="LOCAL" />
+      <updated>1620095127420</updated>
+    </task>
+    <task id="LOCAL-00042" summary="entery of the game">
+      <created>1620095240397</created>
+      <option name="number" value="00042" />
+      <option name="presentableId" value="LOCAL-00042" />
+      <option name="project" value="LOCAL" />
+      <updated>1620095240397</updated>
+    </task>
+    <task id="LOCAL-00043" summary="edit register menu login messages">
+      <created>1620095998860</created>
+      <option name="number" value="00043" />
+      <option name="presentableId" value="LOCAL-00043" />
+      <option name="project" value="LOCAL" />
+      <updated>1620095998860</updated>
+    </task>
+    <task id="LOCAL-00044" summary="edit game models and enums">
+      <created>1620117998675</created>
+      <option name="number" value="00044" />
+      <option name="presentableId" value="LOCAL-00044" />
+      <option name="project" value="LOCAL" />
+      <updated>1620117998675</updated>
+    </task>
+    <task id="LOCAL-00045" summary="working on GeneralCommands">
+      <created>1620146297268</created>
+      <option name="number" value="00045" />
+      <option name="presentableId" value="LOCAL-00045" />
+      <option name="project" value="LOCAL" />
+      <updated>1620146297269</updated>
+    </task>
+    <task id="LOCAL-00046" summary="polymorphism in enums">
+      <created>1620148959762</created>
+      <option name="number" value="00046" />
+      <option name="presentableId" value="LOCAL-00046" />
+      <option name="project" value="LOCAL" />
+      <updated>1620148959762</updated>
+    </task>
+    <task id="LOCAL-00047" summary="polymorphism in enums and Fix raw use of enums">
+      <created>1620149759312</created>
+      <option name="number" value="00047" />
+      <option name="presentableId" value="LOCAL-00047" />
+      <option name="project" value="LOCAL" />
+      <updated>1620149759312</updated>
+    </task>
+    <task id="LOCAL-00048" summary="completing general command">
+      <created>1620191207803</created>
+      <option name="number" value="00048" />
+      <option name="presentableId" value="LOCAL-00048" />
+      <option name="project" value="LOCAL" />
+      <updated>1620191207803</updated>
+    </task>
+    <task id="LOCAL-00049" summary="completing general command">
+      <created>1620193896911</created>
+      <option name="number" value="00049" />
+      <option name="presentableId" value="LOCAL-00049" />
+      <option name="project" value="LOCAL" />
+      <updated>1620193896911</updated>
+    </task>
+    <task id="LOCAL-00050" summary="completing general command">
+      <created>1620194709532</created>
+      <option name="number" value="00050" />
+      <option name="presentableId" value="LOCAL-00050" />
+      <option name="project" value="LOCAL" />
+      <updated>1620194709532</updated>
+    </task>
+    <task id="LOCAL‎۰۰۰۵۱" summary="add first event and effect">
+      <created>1620216989418</created>
+      <option name="number" value="LOCAL‎۰۰۰۵۱" />
+      <option name="presentableId" value="LOCAL‎۰۰۰۵۱" />
+      <updated>1620216989419</updated>
+    </task>
+    <task id="LOCAL‎۰۰۰۵۲" summary="better naming">
+      <created>1620217338661</created>
+      <option name="number" value="LOCAL‎۰۰۰۵۲" />
+      <option name="presentableId" value="LOCAL‎۰۰۰۵۲" />
+      <updated>1620217338661</updated>
+    </task>
+    <task id="LOCAL‎۰۰۰۵۳" summary="correction of effect and event to new structure">
+      <created>1620228555476</created>
+      <option name="number" value="LOCAL‎۰۰۰۵۳" />
+      <option name="presentableId" value="LOCAL‎۰۰۰۵۳" />
+      <updated>1620228555477</updated>
+    </task>
+    <task id="LOCAL‎۰۰۰۵۴" summary="MindCrushEffect and some details">
+      <created>1620295193600</created>
+      <option name="number" value="LOCAL‎۰۰۰۵۴" />
+      <option name="presentableId" value="LOCAL‎۰۰۰۵۴" />
+      <updated>1620295193600</updated>
+    </task>
+    <task id="LOCAL‎۰۰۰۵۵" summary="ManuallyActivation added">
+      <created>1620315607686</created>
+      <option name="number" value="LOCAL‎۰۰۰۵۵" />
+      <option name="presentableId" value="LOCAL‎۰۰۰۵۵" />
+      <updated>1620315607686</updated>
+    </task>
+    <task id="LOCAL‎۰۰۰۵۶" summary="ManuallyActivation added">
+      <created>1620318279173</created>
+      <option name="number" value="LOCAL‎۰۰۰۵۶" />
+      <option name="presentableId" value="LOCAL‎۰۰۰۵۶" />
+      <updated>1620318279173</updated>
+    </task>
+    <task id="LOCAL‎۰۰۰۵۷" summary="new structure for actions">
+      <created>1620390954617</created>
+      <option name="number" value="LOCAL‎۰۰۰۵۷" />
+      <option name="presentableId" value="LOCAL‎۰۰۰۵۷" />
+      <updated>1620390954618</updated>
+    </task>
+    <task id="LOCAL‎۰۰۰۵۸" summary="json">
+      <created>1620411136104</created>
+      <option name="number" value="LOCAL‎۰۰۰۵۸" />
+      <option name="presentableId" value="LOCAL‎۰۰۰۵۸" />
+      <updated>1620411136104</updated>
+    </task>
+    <task id="LOCAL‎۰۰۰۵۹" summary="json">
+      <created>1620413922144</created>
+      <option name="number" value="LOCAL‎۰۰۰۵۹" />
+      <option name="presentableId" value="LOCAL‎۰۰۰۵۹" />
+      <updated>1620413922144</updated>
+    </task>
+    <task id="LOCAL‎۰۰۰۶۰" summary="adding magic actions to json">
+      <created>1620573345261</created>
+      <option name="number" value="LOCAL‎۰۰۰۶۰" />
+      <option name="presentableId" value="LOCAL‎۰۰۰۶۰" />
+      <updated>1620573345262</updated>
+    </task>
+    <task id="LOCAL‎۰۰۰۶۱" summary="add some actions">
+      <created>1620995913257</created>
+      <option name="number" value="LOCAL‎۰۰۰۶۱" />
+      <option name="presentableId" value="LOCAL‎۰۰۰۶۱" />
+      <updated>1620995913259</updated>
+    </task>
+    <task id="LOCAL‎۰۰۰۶۲" summary="actions almost completed">
+      <created>1621088675898</created>
+      <option name="number" value="LOCAL‎۰۰۰۶۲" />
+      <option name="presentableId" value="LOCAL‎۰۰۰۶۲" />
+      <updated>1621088675898</updated>
+    </task>
+    <task id="LOCAL‎۰۰۰۶۳" summary="add actions to cards">
+      <created>1621096563198</created>
+      <option name="number" value="LOCAL‎۰۰۰۶۳" />
+      <option name="presentableId" value="LOCAL‎۰۰۰۶۳" />
+      <updated>1621096563198</updated>
+    </task>
+    <task id="LOCAL‎۰۰۰۶۴" summary="restore data again">
+      <created>1621101451197</created>
+      <option name="number" value="LOCAL‎۰۰۰۶۴" />
+      <option name="presentableId" value="LOCAL‎۰۰۰۶۴" />
+      <updated>1621101451213</updated>
+    </task>
+    <task id="LOCAL‎۰۰۰۶۵" summary="restore data again">
+      <created>1621101745423</created>
+      <option name="number" value="LOCAL‎۰۰۰۶۵" />
+      <option name="presentableId" value="LOCAL‎۰۰۰۶۵" />
+      <updated>1621101745423</updated>
+    </task>
+    <task id="LOCAL‎۰۰۰۶۶" summary="restore data:(">
+      <created>1621105148067</created>
+      <option name="number" value="LOCAL‎۰۰۰۶۶" />
+      <option name="presentableId" value="LOCAL‎۰۰۰۶۶" />
+      <updated>1621105148067</updated>
+    </task>
+    <task id="LOCAL‎۰۰۰۶۷" summary="add actions completely">
+      <created>1621174939152</created>
+      <option name="number" value="LOCAL‎۰۰۰۶۷" />
+      <option name="presentableId" value="LOCAL‎۰۰۰۶۷" />
+      <updated>1621174939152</updated>
+    </task>
+    <task id="LOCAL-00068" summary="user Gson">
+      <created>1621880644477</created>
+      <option name="number" value="00068" />
+      <option name="presentableId" value="LOCAL-00068" />
+      <option name="project" value="LOCAL" />
+      <updated>1621880644478</updated>
+    </task>
+    <task id="LOCAL-00069" summary="Gson deck and users">
+      <created>1621882927205</created>
+      <option name="number" value="00069" />
+      <option name="presentableId" value="LOCAL-00069" />
+      <option name="project" value="LOCAL" />
+      <updated>1621882927205</updated>
+    </task>
+    <task id="LOCAL-00070" summary="add java fx">
+      <created>1623711157413</created>
+      <option name="number" value="00070" />
+      <option name="presentableId" value="LOCAL-00070" />
+      <option name="project" value="LOCAL" />
+      <updated>1623711157413</updated>
+    </task>
+    <task id="LOCAL-00071" summary="fix turn changing bug">
+      <created>1623720620942</created>
+      <option name="number" value="00071" />
+      <option name="presentableId" value="LOCAL-00071" />
+      <option name="project" value="LOCAL" />
+      <updated>1623720620942</updated>
+    </task>
+    <option name="localTasksCounter" value="72" />
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+    <option name="oldMeFiltersMigrated" value="true" />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
+    <MESSAGE value="edit register menu login messages" />
+    <MESSAGE value="edit game models and enums" />
+    <MESSAGE value="working on GeneralCommands" />
+    <MESSAGE value="polymorphism in enums" />
+    <MESSAGE value="polymorphism in enums and Fix raw use of enums" />
+    <MESSAGE value="completing general command" />
+    <MESSAGE value="add first event and effect" />
+    <MESSAGE value="better naming" />
+    <MESSAGE value="correction of effect and event to new structure" />
+    <MESSAGE value="MindCrushEffect and some details" />
+    <MESSAGE value="ManuallyActivation added" />
+    <MESSAGE value="new structure for actions" />
+    <MESSAGE value="json" />
+    <MESSAGE value="adding magic actions to json" />
+    <MESSAGE value="add some actions" />
+    <MESSAGE value="actions almost completed" />
+    <MESSAGE value="add actions to cards" />
+    <MESSAGE value="restore data again" />
+    <MESSAGE value="restore data:(" />
+    <MESSAGE value="add actions completely" />
+    <MESSAGE value="game added as an argument to actions" />
+    <MESSAGE value="user Gson" />
+    <MESSAGE value="Gson deck and users" />
+    <MESSAGE value="add java fx" />
+    <MESSAGE value="fix turn changing bug" />
+    <option name="LAST_COMMIT_MESSAGE" value="fix turn changing bug" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="java-method">
+          <url>file://$PROJECT_DIR$/src/main/java/controller/gamecontrollers/gamestagecontroller/handlers/changeposition/processors/SelectedCardProcessor.java</url>
+          <line>15</line>
+          <properties class="controller.gamecontrollers.gamestagecontroller.handlers.changeposition.processors.SelectedCardProcessor">
+            <option name="EMULATED" value="true" />
+          </properties>
+          <option name="timeStamp" value="3" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
+  </component>
+  <component name="XSLT-Support.FileAssociations.UIState">
+    <expand />
+    <select />
+  </component>
+  <component name="com.intellij.coverage.CoverageDataManagerImpl">
+    <SUITE FILE_PATH="coverage/Main_java$Main.ic" NAME="Main Coverage Results" MODIFIED="1620630295245" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
+  </component>
+</project>
