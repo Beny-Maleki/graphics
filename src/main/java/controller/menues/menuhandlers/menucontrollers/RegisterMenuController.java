@@ -11,7 +11,9 @@ import model.userProp.Deck;
 import model.userProp.LoginUser;
 import model.userProp.User;
 import model.userProp.UserInfoType;
+import viewer.URLenums.AddressFXML;
 
+import java.io.FileNotFoundException;
 import java.io.FileWriter;
 import java.io.IOException;
 
@@ -51,10 +53,10 @@ public class RegisterMenuController {
                 return Error.INVALID_ENTER_MENU.toString();
             } else {
                 try {
-                    MenuHandler.changeMenu(Menu.MAIN_MENU);
+                    MenuHandler.changeMenu(AddressFXML.MAIN_MENU);
                     return "enter Main menu successfully";
-                } catch (CmdLineParser.OptionException | IOException e) {
-                    e.printStackTrace();
+                } catch (FileNotFoundException e) {
+                    System.out.println(e.getMessage());
                 }
             }
         }
