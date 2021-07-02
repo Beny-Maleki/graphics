@@ -15,6 +15,16 @@ import java.util.Comparator;
 import java.util.List;
 
 public class ShopMenuController extends MenuHandler {
+    private static ShopMenuController instance;
+
+    private ShopMenuController() {
+    }
+
+    public static ShopMenuController getInstance() {
+        if (instance == null) instance = new ShopMenuController();
+        return instance;
+    }
+
     public static void showCurrent() {
         DeckMenuDisplay.display(DeckMessages.CURRENT_MENU);
     }

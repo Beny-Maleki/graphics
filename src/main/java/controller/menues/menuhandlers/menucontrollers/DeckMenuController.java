@@ -14,6 +14,16 @@ import java.util.Arrays;
 import java.util.Comparator;
 
 public class DeckMenuController extends MenuHandler {
+    private static DeckMenuController instance;
+
+    private DeckMenuController() {
+    }
+
+    public static DeckMenuController getInstance() {
+        if (instance == null) instance = new DeckMenuController();
+        return instance;
+    }
+
     public static void showCurrent() {
         DeckMenuDisplay.display(DeckMessages.CURRENT_MENU);
     }

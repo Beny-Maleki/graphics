@@ -23,7 +23,7 @@ public class RegisterView {
         if (event.getSource() == Exit) {
             controller.exit();
         } else if (event.getSource() == Login) {
-            controller.moveToPage(Login, Menu.MAIN_MENU);
+            controller.moveToPage(Login, Menu.SHOP_MENU);
         }
     }
 }

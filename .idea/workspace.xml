@@ -4,75 +4,96 @@
     <option name="autoReloadType" value="ALL" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="45f87b1a-8403-4c06-b2b2-57ebfe555883" name="Default Changelist" comment="update graphic basic">
-      <change afterPath="$PROJECT_DIR$/.idea/csvFile/Monster.csv" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/csvFile/SpellTrap.csv" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/animateFX_1_2_2.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/graphicprop/fxml/MainMenu.fxml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/graphicprop/fxml/RegisterMenu.fxml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/graphicprop/images/EWITy1SWAAAJCKF.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/graphicprop/images/YuGiOhLogo.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/graphicprop/images/mainPagePic.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/graphicprop/images/registerbackground.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/graphicprop/stylesheets/RegisterPage.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/lib.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/lib.xml" afterDir="false" />
+    <list default="true" id="45f87b1a-8403-4c06-b2b2-57ebfe555883" name="Default Changelist" comment="add and improve ShopView and DeckView">
+      <change afterPath="$PROJECT_DIR$/src/main/java/view/controller/DeckView.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/view/controller/ShopView.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/graphicprop/fxml/DeckMenu.fxml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/graphicprop/fxml/ShopMenu.fxml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/graphicprop/images/Cards/Monsters/AlexandriteDragon.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/graphicprop/images/Cards/Monsters/AxeRaider.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/graphicprop/images/Cards/Monsters/BabyDragon.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/graphicprop/images/Cards/Monsters/BattleOx.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/graphicprop/images/Cards/Monsters/BattleWarrior.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/graphicprop/images/Cards/Monsters/BeastKingBarbaros.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/graphicprop/images/Cards/Monsters/Bitron.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/graphicprop/images/Cards/Monsters/BlueEyesWhiteDragon.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/graphicprop/images/Cards/Monsters/CommandKnight.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/graphicprop/images/Cards/Monsters/CrabTurtle.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/graphicprop/images/Cards/Monsters/CrawlingDragon.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/graphicprop/images/Cards/Monsters/CurtainOfTheDarkOnes.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/graphicprop/images/Cards/Monsters/DarkBlade.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/graphicprop/images/Cards/Monsters/DarkMagician.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/graphicprop/images/Cards/Monsters/ExploderDragon.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/graphicprop/images/Cards/Monsters/FeralImp.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/graphicprop/images/Cards/Monsters/Fireyarou.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/graphicprop/images/Cards/Monsters/FlameManipulator.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/graphicprop/images/Cards/Monsters/GateGuardian.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/graphicprop/images/Cards/Monsters/Haniwa.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/graphicprop/images/Cards/Monsters/HeraldOfCreation.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/graphicprop/images/Cards/Monsters/HeroOfTheEast.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/graphicprop/images/Cards/Monsters/HornImp.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/graphicprop/images/Cards/Monsters/Leotron.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/graphicprop/images/Cards/Monsters/ManEaterBug.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/graphicprop/images/Cards/Monsters/Marshmallon.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/graphicprop/images/Cards/Monsters/MirageDragon.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/graphicprop/images/Cards/Monsters/Scanner.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/graphicprop/images/Cards/Monsters/SilverFang.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/graphicprop/images/Cards/Monsters/SkullGuardian.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/graphicprop/images/Cards/Monsters/SlotMachine.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/graphicprop/images/Cards/Monsters/SpiralSerpent.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/graphicprop/images/Cards/Monsters/Suijin.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/graphicprop/images/Cards/Monsters/Terratiger.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/graphicprop/images/Cards/Monsters/Texchanger.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/graphicprop/images/Cards/Monsters/TheCalculator.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/graphicprop/images/Cards/Monsters/TheTricky.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/graphicprop/images/Cards/Monsters/Unknown.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/graphicprop/images/Cards/Monsters/WarriorDaiGrepher.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/graphicprop/images/Cards/Monsters/Wattaildragon.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/graphicprop/images/Cards/Monsters/Wattkid.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/graphicprop/images/Cards/Monsters/YomiShip.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/graphicprop/images/Cards/SpellTrap/AdvancedRitualArt.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/graphicprop/images/Cards/SpellTrap/BlackPendant.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/graphicprop/images/Cards/SpellTrap/CalloftheHunted.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/graphicprop/images/Cards/SpellTrap/ChangeofHeart.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/graphicprop/images/Cards/SpellTrap/ClosedForest.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/graphicprop/images/Cards/SpellTrap/DarkHole.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/graphicprop/images/Cards/SpellTrap/Forest.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/graphicprop/images/Cards/SpellTrap/HarpiesFeatherDuster.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/graphicprop/images/Cards/SpellTrap/MagicCylinder.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/graphicprop/images/Cards/SpellTrap/MagicJammer.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/graphicprop/images/Cards/SpellTrap/MagnumShield.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/graphicprop/images/Cards/SpellTrap/MessengerofPeace.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/graphicprop/images/Cards/SpellTrap/MindCrush.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/graphicprop/images/Cards/SpellTrap/MirrorForce.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/graphicprop/images/Cards/SpellTrap/MonsterReborn.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/graphicprop/images/Cards/SpellTrap/MysticalSpaceTyphoon.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/graphicprop/images/Cards/SpellTrap/NegateAttack.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/graphicprop/images/Cards/SpellTrap/PotofGreed.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/graphicprop/images/Cards/SpellTrap/Raigeki.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/graphicprop/images/Cards/SpellTrap/RingofDefense.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/graphicprop/images/Cards/SpellTrap/SolemnWarning.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/graphicprop/images/Cards/SpellTrap/SpellAbsorption.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/graphicprop/images/Cards/SpellTrap/SupplySquad.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/graphicprop/images/Cards/SpellTrap/SwordofDarkDestruction.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/graphicprop/images/Cards/SpellTrap/SwordofRevealingLight.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/graphicprop/images/Cards/SpellTrap/Terraforming.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/graphicprop/images/Cards/SpellTrap/TimeSeal.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/graphicprop/images/Cards/SpellTrap/TorrentialTribute.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/graphicprop/images/Cards/SpellTrap/TrapHole.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/graphicprop/images/Cards/SpellTrap/TwinTwisters.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/graphicprop/images/Cards/SpellTrap/Umiiruka.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/graphicprop/images/Cards/SpellTrap/UnitedWeStand.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/graphicprop/images/Cards/SpellTrap/VanitysEmptiness.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/graphicprop/images/Cards/SpellTrap/WallOfRevealingLight.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/graphicprop/images/Cards/SpellTrap/Yami.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/graphicprop/images/Pegasus.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/graphicprop/stylesheets/DeckMenu.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/graphicprop/stylesheets/ShopMenu.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/jsonResources/Decks.Json" beforeDir="false" afterPath="$PROJECT_DIR$/jsonResources/Decks.Json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/jsonResources/Users.Json" beforeDir="false" afterPath="$PROJECT_DIR$/jsonResources/Users.Json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/manualTestCase/MainMenuProfileAndScoreBoard.txt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/manualTestCase/MainMenuProfileAndScoreBoard.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/manualTestCase/RegisterMenuTestCase.txt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/manualTestCase/RegisterMenuTestCase.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/manualTestCase/ShopAndBuyingCard.txt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/manualTestCase/ShopAndBuyingCard.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/manualTestCase/gameTest.txt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/manualTestCase/gameTest.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Main.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/controller/MenuHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controller/MenuHandler.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/controller/gamecontrollers/GeneralController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controller/gamecontrollers/GeneralController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/controller/gamecontrollers/GetStringInputFromView.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controller/gamecontrollers/GetStringInputFromView.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/controller/gamecontrollers/gamestagecontroller/HeadController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controller/gamecontrollers/gamestagecontroller/HeadController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/controller/gamecontrollers/gamestagecontroller/SideStageController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controller/gamecontrollers/gamestagecontroller/SideStageController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/controller/menues/menuhandlers/menucontrollers/DeckMenuController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controller/menues/menuhandlers/menucontrollers/DeckMenuController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/controller/menues/menuhandlers/menucontrollers/DuelMenuController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controller/menues/menuhandlers/menucontrollers/DuelMenuController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/controller/menues/menuhandlers/menucontrollers/MainMenuController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controller/menues/menuhandlers/menucontrollers/MainMenuController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/controller/menues/menuhandlers/menucontrollers/ProfileMenuController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controller/menues/menuhandlers/menucontrollers/ProfileMenuController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/controller/menues/menuhandlers/menucontrollers/RegisterMenuController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controller/menues/menuhandlers/menucontrollers/RegisterMenuController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/controller/menues/menuhandlers/menucontrollers/ScoreboardMenuController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controller/menues/menuhandlers/menucontrollers/ScoreboardMenuController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/controller/menues/menuhandlers/menucontrollers/ShopMenuController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controller/menues/menuhandlers/menucontrollers/ShopMenuController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/model/cards/cardsActions/magicActionChildren/ChangeTeamOfMonsterCard.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/model/cards/cardsActions/magicActionChildren/ChangeTeamOfMonsterCard.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/model/cards/cardsActions/magicActionChildren/DrawCardFromTopOfDeck.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/model/cards/cardsActions/magicActionChildren/DrawCardFromTopOfDeck.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/model/cards/cardsActions/magicActionChildren/TerraformingAction.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/model/cards/cardsActions/magicActionChildren/TerraformingAction.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/model/enums/Error.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/model/enums/Error.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/model/enums/GameEnums/GameError.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/model/enums/GameEnums/GameError.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/model/enums/Menu.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/model/enums/Menu.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/model/enums/MenusMassages/DeckMessages.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/model/enums/MenusMassages/DeckMessages.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/model/enums/MenusMassages/Duel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/model/enums/MenusMassages/Duel.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/model/enums/MenusMassages/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/model/enums/MenusMassages/Main.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/model/enums/MenusMassages/Profile.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/model/enums/MenusMassages/Profile.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/model/enums/MenusMassages/Register.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/model/enums/MenusMassages/Register.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/model/enums/MenusMassages/Scoreboard.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/model/enums/MenusMassages/Scoreboard.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/model/enums/MenusMassages/ShopMessages.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/model/enums/MenusMassages/ShopMessages.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/viewer/Regex.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/view/Regex.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/viewer/RockPaperScissorGame.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/view/RockPaperScissorGame.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/viewer/SceneCreator.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/view/SceneCreator.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/viewer/StageController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/view/StageController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/viewer/URLenums/AddressFXML.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/view/URLenums/AddressFXML.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/viewer/game/GameViewer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/view/game/GameViewer.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/viewer/game/GetStringInput.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/view/game/GetStringInput.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/viewer/game/UserInterface.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/view/game/UserInterface.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/viewer/menu/DeckMenu.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/view/controller/DeckMenu.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/viewer/menu/DuelMenu.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/view/controller/DuelMenu.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/viewer/menu/MainMenu.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/view/controller/MainMenu.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/viewer/menu/ProfileMenu.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/view/controller/ProfileMenu.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/viewer/menu/RegisterMenu.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/view/controller/RegisterView.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/viewer/menu/ScoreboardMenu.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/view/controller/ScoreboardMenu.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/viewer/menu/ShopMenu.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/view/controller/ShopMenu.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/viewer/menudisplay/DeckMenuDisplay.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/view/menudisplay/DeckMenuDisplay.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/viewer/menudisplay/MainMenuDisplay.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/view/menudisplay/MainMenuDisplay.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/viewer/menudisplay/ProfileMenuDisplay.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/view/menudisplay/ProfileMenuDisplay.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/viewer/menudisplay/RockPaperScissorDisplay.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/view/menudisplay/RockPaperScissorDisplay.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/viewer/menudisplay/ScoreboardMenuDisplay.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/view/menudisplay/ScoreboardMenuDisplay.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/viewer/menudisplay/ShopMenuDisplay.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/view/menudisplay/ShopMenuDisplay.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/fxml/mainMenu.fxml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/fxml/registerMenu.fxml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/images/GUI_T_TowerBg2.dds.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/view/controller/RegisterView.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/view/controller/RegisterView.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -102,10 +123,10 @@
         <option value="JUnit5 Test Class" />
         <option value="JUnit4 Test Class" />
         <option value="package-info" />
-        <option value="Class" />
         <option value="Enum" />
-        <option value="CSS File" />
+        <option value="Class" />
         <option value="FxmlFile" />
+        <option value="CSS File" />
       </list>
     </option>
   </component>
@@ -121,15 +142,15 @@
     </file-type-list>
   </component>
   <component name="HighlightingSettingsPerFile">
-    <setting file="file://$PROJECT_DIR$/src/main/java/view/controller/RegisterView.java" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/src/main/java/view/URLenums/AddressFXML.java" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/src/main/java/view/StageController.java" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/src/main/java/view/controller/ProfileMenu.java" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/src/main/resources/graphicprop/fxml/MainMenu.fxml" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/src/main/java/controller/menues/menuhandlers/menucontrollers/RegisterMenuController.java" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/src/main/java/Main.java" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/src/main/resources/graphicprop/fxml/RegisterMenu.fxml" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/src/main/resources/graphicprop/fxml/MainMenu.fxml" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/src/main/java/view/controller/MainMenu.java" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/src/main/java/view/controller/RegisterView.java" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/src/main/java/Main.java" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/src/main/java/view/StageController.java" root0="FORCE_HIGHLIGHTING" />
   </component>
   <component name="ProblemsViewState">
     <option name="proportion" value="0.6115204" />
@@ -155,7 +176,7 @@
     <property name="com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.JUnit4" value="" />
     <property name="com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.JUnit5" value="" />
     <property name="last_directory_selection" value="$PROJECT_DIR$/src/main/java/Viewer" />
-    <property name="last_opened_file_path" value="$USER_HOME$/Desktop/animateFX-1.2.2.jar" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../animateFX-1.2.2.jar" />
     <property name="list.type.of.created.stylesheet" value="CSS" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.path.for.package.eslint" value="project" />
@@ -167,7 +188,7 @@
     <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.2" />
     <property name="restartRequiresConfirmation" value="false" />
-    <property name="settings.editor.selected.configurable" value="preferences.pluginManager" />
+    <property name="settings.editor.selected.configurable" value="reference.settings.project.maven.repository.indices" />
   </component>
   <component name="ReaderModeSettings">
     <option name="enabled" value="false" />
@@ -204,8 +225,19 @@
       <option name="ALTERNATIVE_JRE_PATH" value="11" />
       <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="true" />
       <option name="MAIN_CLASS_NAME" value="Main" />
-      <module name="YuGiOh" />
-      <option name="VM_PARAMETERS" value="--module-path C:\Users\Lenovo\Desktop\javaFx\lib --add-modules javafx.controls,javafx.fxml" />
+      <module name="graphics" />
+      <option name="VM_PARAMETERS" value="--module-path F:\javaFx\lib --add-modules javafx.controls,javafx.fxml" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration default="true" type="ArquillianJUnit" factoryName="" nameIsGenerated="true">
+      <option name="arquillianRunConfiguration">
+        <value>
+          <option name="containerStateName" value="" />
+        </value>
+      </option>
+      <option name="TEST_OBJECT" value="class" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -309,13 +341,6 @@
       <workItem from="1625238823311" duration="623000" />
       <workItem from="1625239812144" duration="6392000" />
       <workItem from="1625249746493" duration="1949000" />
-    </task>
-    <task id="LOCAL-00024" summary="fix some of warnings">
-      <created>1619308771651</created>
-      <option name="number" value="00024" />
-      <option name="presentableId" value="LOCAL-00024" />
-      <option name="project" value="LOCAL" />
-      <updated>1619308771651</updated>
     </task>
     <task id="LOCAL-00025" summary="fix some bugs in main menu and change accessibleness of some contents">
       <created>1619312049679</created>
@@ -633,7 +658,14 @@
       <option name="project" value="LOCAL" />
       <updated>1625189379269</updated>
     </task>
-    <option name="localTasksCounter" value="73" />
+    <task id="LOCAL-00073" summary="add AnimateFX to pom">
+      <created>1625215771768</created>
+      <option name="number" value="00073" />
+      <option name="presentableId" value="LOCAL-00073" />
+      <option name="project" value="LOCAL" />
+      <updated>1625215771768</updated>
+    </task>
+    <option name="localTasksCounter" value="74" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -653,8 +685,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="working on GeneralCommands" />
-    <MESSAGE value="polymorphism in enums" />
     <MESSAGE value="polymorphism in enums and Fix raw use of enums" />
     <MESSAGE value="completing general command" />
     <MESSAGE value="add first event and effect" />
@@ -678,7 +708,9 @@
     <MESSAGE value="fix turn changing bug" />
     <MESSAGE value="changing the name of a method" />
     <MESSAGE value="update graphic basic" />
-    <option name="LAST_COMMIT_MESSAGE" value="update graphic basic" />
+    <MESSAGE value="add AnimateFX to pom" />
+    <MESSAGE value="add and improve ShopView and DeckView" />
+    <option name="LAST_COMMIT_MESSAGE" value="add and improve ShopView and DeckView" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -686,7 +718,7 @@
         <line-breakpoint enabled="true" type="java-method">
           <url>file://$PROJECT_DIR$/src/main/java/controller/gamecontrollers/gamestagecontroller/handlers/changeposition/processors/SelectedCardProcessor.java</url>
           <line>15</line>
-          <properties class="controller.gamecontrollers.gamestagecontroller.handlers.changeposition.processors.SelectedCardProcessor">
+          <properties class="controller.gamecontrollers.gamestagecontroller.handlers.changeposition.processors.SelectedCardProcessor" method="process">
             <option name="EMULATED" value="true" />
           </properties>
           <option name="timeStamp" value="3" />
