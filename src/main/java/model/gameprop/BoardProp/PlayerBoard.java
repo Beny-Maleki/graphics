@@ -7,14 +7,13 @@ import model.cards.cardsProp.MonsterCard;
 import model.enums.GameEnums.CardLocation;
 import model.enums.GameEnums.cardvisibility.MagicHouseVisibilityState;
 import model.enums.GameEnums.cardvisibility.MonsterHouseVisibilityState;
-import model.userProp.Deck;
 
 import java.util.ArrayList;
 
 public class PlayerBoard {
     MagicHouse[] magicHouse;
     MonsterHouse[] monsterHouse;
-    MagicHouse field;
+    MagicHouse fieldHouse;
     ArrayList<Card> playerHand;
     GraveYard graveYard;
 
@@ -49,11 +48,11 @@ public class PlayerBoard {
         for (int i = 0; i < magicHouse.length; i++) {
             magicHouse[i] = new MagicHouse();
         }
-        field = new MagicHouse();
+        fieldHouse = new MagicHouse();
     }
 
     public MagicHouse getFieldHouse() {
-        return field;
+        return fieldHouse;
     }
 
     public Card getCard(Integer address, CardLocation location) {
@@ -61,7 +60,7 @@ public class PlayerBoard {
             case PLAYER_HAND:
                 return playerHand.get(address);
             case FIELD_ZONE:
-                return field.getMagicCard();
+                return fieldHouse.getMagicCard();
             case SPELL_ZONE:
                 return magicHouse[address].getMagicCard();
             case MONSTER_ZONE:
@@ -71,14 +70,18 @@ public class PlayerBoard {
         }
     }
 
-    public void moveCardToGraveYard( int address , CardLocation location){
-        if (location.equals(CardLocation.MONSTER_ZONE)){
-            Card card =  monsterHouse[address].getMonsterCard();
+    public void moveCardToGraveYard(int address, CardLocation location) {
+        if (location.equals(CardLocation.MONSTER_ZONE)) {
+            Card card = monsterHouse[address].getMonsterCard();
             monsterHouse[address].setMonsterCard(null);
             graveYard.addCardToGraveYard(card);
         } else if (location.equals(CardLocation.SPELL_ZONE)) {
             Card card = magicHouse[address].getMagicCard();
             magicHouse[address].setMagicCard(null);
+            graveYard.addCardToGraveYard(card);
+        } else {
+            Card card = fieldHouse.getMagicCard();
+            fieldHouse.setMagicCard(null);
             graveYard.addCardToGraveYard(card);
         }
     }
@@ -95,17 +98,17 @@ public class PlayerBoard {
         }
     }
 
-    public int numberOfFullHouse(String typeOfHouse){
+    public int numberOfFullHouse(String typeOfHouse) {
         int counter = 0;
-        if (typeOfHouse.equals("monster")){
+        if (typeOfHouse.equals("monster")) {
             for (MonsterHouse house : monsterHouse) {
-                if (!house.getState().equals(MonsterHouseVisibilityState.E)){
+                if (!house.getState().equals(MonsterHouseVisibilityState.E)) {
                     counter++;
                 }
             }
-        }else{
+        } else {
             for (MagicHouse house : magicHouse) {
-                if (!house.getState().equals(MagicHouseVisibilityState.E)){
+                if (!house.getState().equals(MagicHouseVisibilityState.E)) {
                     counter++;
                 }
             }
@@ -139,5 +142,32 @@ public class PlayerBoard {
             }
         }
         throw new CardNotFoundException("monster card not found!");
+    }
+
+    public boolean doesRitualCardAvailable() {
+        for (Card card : getPlayerHand()) {
+            if (card.getName().equals("Advanced Ritual Art")) {
+                return true;
+            }
+        }
+        for (MagicHouse house : magicHouse) {
+            if (house.getMagicCard().getName().equals("Advanced Ritual Art")) {
+                return true;
+            }
+        }
+        return false;
+    }
+
+    public void removeRitualSummonCard() {
+        for (int i = 0; i < playerHand.size(); i++) {
+            if (playerHand.get(i).getName().equals("Advanced Ritual Art")) {
+                moveCardToGraveYard(i, CardLocation.PLAYER_HAND);
+            }
+        }
+        for (int i = 0; i < magicHouse.length; i++) {
+            if (magicHouse[i].getMagicCard().getName().equals("Advanced Ritual Art")) {
+                moveCardToGraveYard(i, CardLocation.SPELL_ZONE);
+            }
+        }
     }
 }

@@ -1,10 +1,10 @@
 package model.cards.cardsEnum.Magic;
 
-public enum MagicSpeed {
+public enum RestrictionTypeInAdding {
     UNLIMITED,
     LIMITED;
 
-    public static MagicSpeed setSpeed(String speed) {
+    public static RestrictionTypeInAdding setSpeed(String speed) {
         switch (speed) {
             case "Unlimited": {
                 return UNLIMITED;

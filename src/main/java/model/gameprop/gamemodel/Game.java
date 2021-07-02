@@ -20,18 +20,20 @@ import java.util.Collections;
 public class Game {
     private final int numberOfGameRounds;
     private boolean isGameFinished;
-    private boolean isMatchFinished;
+    private boolean isRoundFinish;
     private int roundNumber;
     private Player firstPlayer;
     private Player secondPlayer;
     private Turn turn;
     private GameSideStage gameSideStage;
     private GameMainStage gameMainStage;
+    private ArrayList<Integer> playerOneHealthAtMatchFinishing;
+    private ArrayList<Integer> playerTwoHealthAtMatchFinishing;
 
     {
         roundNumber = 1;
         isGameFinished = false;
-        isMatchFinished = false;
+        isRoundFinish = false;
         gameMainStage = GameMainStage.DRAW_PHASE;
         gameSideStage = GameSideStage.START_STAGE;
     }
@@ -41,10 +43,14 @@ public class Game {
         setSecondPlayer(secondPlayer);
         turn = new Turn(PlayerTurn.PLAYER_ONE, true);
         this.numberOfGameRounds = numberOfRounds;
+        if (numberOfRounds == 3) {
+            playerOneHealthAtMatchFinishing = new ArrayList<>();
+            playerTwoHealthAtMatchFinishing = new ArrayList<>();
+        }
     }
 
-    public boolean isPlayerDrawInThisTurn() {
-        return turn.isCardDraw();
+    public boolean doesPlayerHavePermissionToDraw() {
+        return !turn.isCardDraw();
     }
 
     public void setPlayerDrawInTurn() {
@@ -118,11 +124,11 @@ public class Game {
         return turn.getPlayerWithTurn();
     }
 
-    public boolean isMatchFinished() {
-        return isMatchFinished;
+    public boolean isRoundFinish() {
+        return isRoundFinish;
     }
 
-    public void finishMatch(PlayerTurn looserTurn) {
+    public void finishRound(PlayerTurn looserTurn) {
         switch (looserTurn) {
             case PLAYER_ONE: {
                 secondPlayer.increaseWinningRound();
@@ -135,13 +141,17 @@ public class Game {
                 break;
             }
         }
-        if (roundNumber == numberOfGameRounds) {
+        if (roundNumber == numberOfGameRounds || firstPlayer.getNumberOfWinningRound() == 2 || secondPlayer.getNumberOfWinningRound() == 2) {
             finishGame(looserTurn);
         } else {
+            playerOneHealthAtMatchFinishing.add(firstPlayer.getPlayerLifePoint());
+            playerTwoHealthAtMatchFinishing.add(secondPlayer.getPlayerLifePoint());
+
             firstPlayer = new Player(firstPlayer.getUser(), firstPlayer.getNumberOfWinningRound());
             secondPlayer = new Player(secondPlayer.getUser(), secondPlayer.getNumberOfWinningRound());
-            gameMainStage = GameMainStage.DRAW_PHASE;
+
             gameSideStage = GameSideStage.EX_CHANGE_WITH_SIDE_DECK_FOR_PLAYER_ONE;
+
             TurnObserver.clearTurnObserver();
             ExistenceObserver.clearExistenceObserver();
         }
@@ -168,7 +178,18 @@ public class Game {
         } else {
             looser.getUser().changeBalance(300);
             winner.getUser().increaseScore(3000);
-            winner.getUser().changeBalance(3000 + winner.playerLifePoint);
+            int maxHealthOfWinnerPlayerInGame = 0;
+            int previous = 0;
+            if (winner == firstPlayer) {
+                for (Integer health : playerOneHealthAtMatchFinishing) {
+                    maxHealthOfWinnerPlayerInGame = Math.max(previous, health);
+                }
+            } else {
+                for (Integer health : playerTwoHealthAtMatchFinishing) {
+                    maxHealthOfWinnerPlayerInGame = Math.max(previous, health);
+                }
+            }
+            winner.getUser().changeBalance(3000 + maxHealthOfWinnerPlayerInGame);
         }
         isGameFinished = true;
     }
@@ -207,6 +228,14 @@ public class Game {
         turn.setTributeNumber(numberOfCard);
     }
 
+    public boolean isHiredMonsterRitual() {
+        return turn.isHiredMonsterRitual;
+    }
+
+    public void setHiredMonsterRitual(boolean isMonsterRitual) {
+        turn.setHiredMonsterRitual(isMonsterRitual);
+    }
+
     public TypeOfHire getTypeOfMonsterHire() {
         return turn.getTypeOfHighLevelMonsterHire();
     }
@@ -236,5 +265,14 @@ public class Game {
 
     public int getRoundNumber() {
         return roundNumber;
+    }
+
+    public void checkRoundFinishCondition() {
+        if (firstPlayer.getPlayerLifePoint() == 0 ||
+                secondPlayer.getPlayerLifePoint() == 0 ||
+                firstPlayer.getDeck().getMainDeck().size() == 0 ||
+                secondPlayer.getDeck().getMainDeck().size() == 0) {
+            isRoundFinish = true;
+        }
     }
 }

@@ -29,13 +29,17 @@ public final class Regex {
             "user login --password .+ --username .+"
     };
 
+    // -> main menu commands
+    public static String moneyCheat = "cheat code: increase money -> (?<amount>\\d+)";
+
     // -> fixed commands
     public static String[] otherCommands = new String[]{
             "user logout",
             "menu exit",
             "menu show-current",
             "menu enter.+"
-    };
+};
+
     // -> all commands
     public static String[][] registerCommands = new String[][]{
             userCreateCommand,
@@ -107,7 +111,9 @@ public final class Regex {
 
     //GamePlay -> general commands
     public static String[] generalCommands = new String[]{
-            "cheat code : make me winner",
+            "cheat code: winner",
+            "cheat code: draw",
+            "cheat code: increase LP -> (?<amount>\\d{1,})",
             "surrender",
             "active effect",
             "card show --selected",
@@ -129,6 +135,9 @@ public final class Regex {
     public static String[] sideStageCommand = new String[]{
             "T:\\d$",
             "T1:\\d T2:\\d$",
+            "Finish",
+            "Show Main Deck",
+            "Switch (\\d+) -> (\\d+)"
     };
 
     //GamePlay -> draw phaseCommands -> nothing special

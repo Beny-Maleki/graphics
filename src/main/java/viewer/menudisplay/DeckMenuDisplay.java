@@ -44,7 +44,7 @@ public class DeckMenuDisplay {
 
     public static void printAllCards(Card[] cards) {
         for (Card card : cards) {
-            System.out.println(card.getName() + ": " + card.getDescription());
+            System.out.println(card.getName() + " : " + card.getDescription());
         }
     }
 

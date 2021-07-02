@@ -1,6 +1,7 @@
 package model.enums.GameEnums.GamePhaseEnums;
 
 public enum General {
+    IS_ACTIVATED_BEFORE("magic is already active"),
     SPELL_ACTIVATED_SUCCESSFULLY("spell activated"),
     SPELL_CARD_ZONE_FULL("spell card zone is full"),
     MAGIC_SPELL_SPEED_2("cant active magic card with spell 2 from your hand !!!! set them first"),

@@ -1,6 +1,7 @@
 package model.enums.GameEnums.GamePhaseEnums;
 
 public enum MainPhase {
+    CANT_FIND_ADVANCED_ART_FOR_HIRE_RITUAL_MONSTER("you must have advanced ritual art for hiring ritual monster"),
     SUMMONED_SUCCESSFULLY("summon successfully"),
     CANT_SUMMON_MAGIC("can't summon spell or trap card"),
     CARD_FLIP_SUCCESSFULLY("flip summoned successfully"),

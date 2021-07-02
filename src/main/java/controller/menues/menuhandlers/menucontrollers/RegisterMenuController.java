@@ -11,9 +11,7 @@ import model.userProp.Deck;
 import model.userProp.LoginUser;
 import model.userProp.User;
 import model.userProp.UserInfoType;
-import viewer.URLenums.AddressFXML;
 
-import java.io.FileNotFoundException;
 import java.io.FileWriter;
 import java.io.IOException;
 
@@ -36,7 +34,7 @@ public class RegisterMenuController {
             if (user.isPasswordMatch(password)) {
                 if (LoginUser.getUser() == null) {
                     LoginUser.setUser(user);
-                    return Register.SUCCESSFULLY_LOGIN.toString();
+                    return Register.SUCCESSFULLY_LOGIN.getRegisterMessage();
                 } else {
                     return Error.INVALID_LOGIN.toString();
                 }
@@ -53,10 +51,10 @@ public class RegisterMenuController {
                 return Error.INVALID_ENTER_MENU.toString();
             } else {
                 try {
-                    MenuHandler.changeMenu(AddressFXML.MAIN_MENU);
+                    MenuHandler.changeMenu(Menu.MAIN_MENU);
                     return "enter Main menu successfully";
-                } catch (FileNotFoundException e) {
-                    System.out.println(e.getMessage());
+                } catch (CmdLineParser.OptionException | IOException e) {
+                    e.printStackTrace();
                 }
             }
         }
@@ -68,10 +66,10 @@ public class RegisterMenuController {
             return processOutPut(Error.INVALID_USERNAME.toString(), username);
         }
         if (null != User.getUserByUserInfo(nickname, UserInfoType.NICKNAME)) {
-            return processOutPut(Error.INVALID_USERNAME.toString(), nickname);
+            return processOutPut(Error.INVALID_NICKNAME.toString(), nickname);
         }
         new User(username, nickname, password);
-        return Register.SUCCESSFULLY_USER_CREATE.toString();
+        return Register.SUCCESSFULLY_USER_CREATE.getRegisterMessage();
     }
 
     public String logout() {
@@ -79,7 +77,7 @@ public class RegisterMenuController {
             return Error.INVALID_LOGOUT.toString();
         } else {
             LoginUser.setUser(null);
-            return Register.SUCCESSFULLY_LOGOUT.toString();
+            return Register.SUCCESSFULLY_LOGOUT.getRegisterMessage();
         }
     }
 
@@ -103,7 +101,7 @@ public class RegisterMenuController {
             return login(parser.getOptionValue(password),
                     parser.getOptionValue(username));
         } else if (command.startsWith("menu show")) {
-            return Register.CURRENT_MENU.toString();
+            return Register.CURRENT_MENU.getRegisterMessage();
         } else if (command.startsWith("user logout")) {
             return logout();
         } else if (command.startsWith("menu enter")) {

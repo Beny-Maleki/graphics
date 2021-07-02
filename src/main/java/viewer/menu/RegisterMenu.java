@@ -9,6 +9,17 @@ import viewer.Regex;
 import java.io.IOException;
 
 public class RegisterMenu {
+    private static RegisterMenu registerMenu;
+
+    private RegisterMenu() {
+    }
+
+    public static RegisterMenu getInstance() {
+        if (registerMenu == null)
+            registerMenu = new RegisterMenu();
+
+        return registerMenu;
+    }
 
     public void run() throws CmdLineParser.OptionException, IOException {
         RegisterMenuController controller = RegisterMenuController.getInstance();

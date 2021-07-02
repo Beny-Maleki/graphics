@@ -39,7 +39,7 @@ public class EquipCardObserver extends ExistenceObserver{
 
     @Override
     public void update() {
-        if (exists() || !isMonsterFaceUp()) {
+        if (notExists() || !isMonsterFaceUp()) {
             actionFinalize();
             existenceObservers.remove(this);
         }

@@ -18,7 +18,7 @@ public class DrawCardFromTopOfDeck extends Action {
     @Override
     public void active(Game game) {
         for (int i = 0; i < numOfDraws; i++) {
-            (DrawPhaseController.getInstance()).draw();
+            (DrawPhaseController.getInstance()).draw(false);
         }
     }
 }

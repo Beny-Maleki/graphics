@@ -4,9 +4,9 @@ public enum BattlePhase {
     DEFEAT_ATTACK_OO_TARGET("Your monster card is destroyed and you received OO_DEFEAT battle\n" +
             "damage"),
     CANT_ATTACK_IN_DEFENCE("your card must be in attack position !"),
-    DEFEAT_ATTACK_ON_DEFENCE_UNKNOWN("no card is destroyed and you received D_DEFEAT battle damage"),
-    SUCCESSFUL_ATTACK_DEFENCE_KNOWN_TARGET("the defense position monster is destroyed"),
-    SUCCESSFUL_ATTACK_OFFENSIVE_TARGET("your opponent’s monster is destroyed and your opponent receives\n" +
+    DEFEAT_ATTACK_ON_DEFENCE("no card is destroyed and you received D_DEFEAT battle damage"),
+    SUCCESSFUL_ATTACK_ON_DEFENCE("the defense position monster is destroyed"),
+    SUCCESSFUL_ATTACK_OFFENSIVE("your opponent’s monster is destroyed and your opponent receives\n" +
             "OO_WIN battle damage"),
     NO_CARD_ELIMINATE("no card is destroyed"),
     BOTH_CARD_ELIMINATE("both you and your opponent monster cards are destroyed and no\n" +

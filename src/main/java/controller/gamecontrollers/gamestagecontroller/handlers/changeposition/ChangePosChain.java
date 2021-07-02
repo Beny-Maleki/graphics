@@ -19,7 +19,7 @@ public class ChangePosChain {
         processor = new SelectedCardProcessor(new CardStateProcessor(new ChangeRequestProcessor(null)));
     }
 
-    public MainPhase request(SelectedCardProp cardProp, WantedPos pos, MonsterHouse monsterHouse) {
+    public String request(SelectedCardProp cardProp, WantedPos pos, MonsterHouse monsterHouse) {
         return processor.process(cardProp, pos, monsterHouse);
     }
 }

@@ -13,10 +13,10 @@ public class SelectedCardProcessor extends ChangePosProcessor {
         super(processor);
     }
 
-    public MainPhase process(SelectedCardProp cardProp, WantedPos pos, MonsterHouse monsterHouse) {
-        if (cardProp == null) return MainPhase.NO_CARD_SELECTED_YET;
+    public String process(SelectedCardProp cardProp, WantedPos pos, MonsterHouse monsterHouse) {
+        if (cardProp == null) return MainPhase.NO_CARD_SELECTED_YET.toString();
         if (!cardProp.getLocation().equals(CardLocation.MONSTER_ZONE))
-            return MainPhase.WRONG_LOCATION_FOR_CHANGE;
+            return MainPhase.WRONG_LOCATION_FOR_CHANGE.toString();
 
         return super.process(cardProp, pos, monsterHouse);
     }

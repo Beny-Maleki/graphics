@@ -11,7 +11,8 @@ public abstract class ActiveEffectProcessor {
 
     public String process(Game game) {
         if (processor != null)
-            processor.process(game);
+            return processor.process(game);
+
         return null;
     }
 }

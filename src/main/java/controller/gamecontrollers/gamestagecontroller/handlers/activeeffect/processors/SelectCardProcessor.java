@@ -1,7 +1,7 @@
 package controller.gamecontrollers.gamestagecontroller.handlers.activeeffect.processors;
 
 import controller.gamecontrollers.gamestagecontroller.handlers.activeeffect.ActiveEffectProcessor;
-import model.cards.cardsEnum.Magic.MagicSpeed;
+import model.cards.cardsEnum.Magic.MagicAttribute;
 import model.cards.cardsEnum.Magic.MagicType;
 import model.cards.cardsProp.MagicCard;
 import model.enums.GameEnums.GamePhaseEnums.General;
@@ -29,9 +29,8 @@ public class SelectCardProcessor extends ActiveEffectProcessor {
                 return General.NOT_SPELL_CARD.toString();
         }
         MagicCard card = (MagicCard) cardProp.getCard();
-        if (card.getMagicSpeed().equals(MagicSpeed.LIMITED) &&
-                (!game.getGameMainStage().equals(GameMainStage.FIRST_MAIN_PHASE) &&
-                        !game.getGameMainStage().equals(GameMainStage.SECOND_MAIN_PHASE))) {
+        if ((card.getTypeOfMagic() == MagicType.SPELL && card.getMagicAttribute() != MagicAttribute.QUICK_PLAY) &&
+               !( game.getGameMainStage() == GameMainStage.FIRST_MAIN_PHASE || game.getGameMainStage() == GameMainStage.SECOND_MAIN_PHASE)) {
             return General.SPELL_ACTIVATE_NOT_IN_MAIN_PHASE.toString();
         }
         return super.process(game);

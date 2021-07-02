@@ -33,14 +33,19 @@ public class UserInterface {
 
     public String showSideDeck(Player player) {
         StringBuilder sideDeckDisplay = new StringBuilder();
+        sideDeckDisplay.append("\n<CHANGE YOUR STRATEGY>\n\n");
         sideDeckDisplay.append("Player : ").append(player.getUser().getNickname()).append("\n---------------------------------" +
                 "\nPlayer Side deck\n");
         AtomicInteger counter = new AtomicInteger(1);
-        player.getDeck().getSideDeck().forEach((Card card) -> {
-                    sideDeckDisplay.append(counter.get()).append(" ) ").append(card.getName()).append("\n");
-                    counter.addAndGet(1);
-                }
-        );
+        if (player.getDeck().getSideDeck().size() == 0) {
+            sideDeckDisplay.append("YOUR SIDE DECK IS EMPTY \n");
+        } else {
+            player.getDeck().getSideDeck().forEach((Card card) -> {
+                        sideDeckDisplay.append(counter.get()).append(" ) ").append(card.getName()).append("\n");
+                        counter.addAndGet(1);
+                    }
+            );
+        }
         sideDeckDisplay.append("---------------------------------\n").
                 append("# Show Main Deck\n").
                 append("\t# Switch <SideDeck Card Num> -> <MaiDeck Card Num>\n").

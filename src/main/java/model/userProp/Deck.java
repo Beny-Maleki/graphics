@@ -141,8 +141,15 @@ public class Deck {
                 }
             }
         }
-
         return mainDeckCounter + sideDeckCounter; // in "single deck" situations, one of the counters would automatically be zero.
+    }
+
+    public void switchCardBetweenMainDeckAndSideDeck(int mainDeckCardNum, int sideDeckCardNum) {
+        int mainDeckCardId = mainDeck.get(mainDeckCardNum);
+        int sideDeckCardId = sideDeck.get(sideDeckCardNum);
+
+        mainDeck.set(mainDeckCardNum, sideDeckCardId);
+        sideDeck.set(sideDeckCardNum, mainDeckCardId);
     }
 
     public void setID() {

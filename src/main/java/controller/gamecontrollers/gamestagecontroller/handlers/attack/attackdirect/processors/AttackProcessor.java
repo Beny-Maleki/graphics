@@ -1,20 +1,24 @@
-package controller.gamecontrollers.gamestagecontroller.handlers.attackdirect.processors;
+package controller.gamecontrollers.gamestagecontroller.handlers.attack.attackdirect.processors;
 
-import controller.gamecontrollers.gamestagecontroller.handlers.attackdirect.AttackDirectProcessor;
+import controller.gamecontrollers.gamestagecontroller.handlers.attack.attackdirect.AttackDirectProcessor;
 import model.cards.cardsProp.MonsterCard;
 import model.enums.GameEnums.GamePhaseEnums.BattlePhase;
-import model.enums.GameEnums.gamestage.GameMainStage;
+import model.enums.GameEnums.SideOfFeature;
 import model.gameprop.BoardProp.MonsterHouse;
 import model.gameprop.Player;
 import model.gameprop.SelectedCardProp;
+import model.gameprop.gamemodel.Game;
 
 public class AttackProcessor extends AttackDirectProcessor {
     public AttackProcessor(AttackDirectProcessor processor) {
         super(processor);
     }
 
-    public String process(SelectedCardProp cardProp, Player target, boolean firstTurnOfTheGame, GameMainStage stage) {
-        if (firstTurnOfTheGame) {
+    public String process(Game game) {
+        SelectedCardProp cardProp = game.getCardProp();
+        Player target = game.getPlayer(SideOfFeature.OPPONENT);
+        boolean isFirstTurnOfTheGame = game.isFirstTurnOfTheGame();
+        if (isFirstTurnOfTheGame) {
             return BattlePhase.CANT_ATTACK_ON_FIRST_TURN.toString();
         }
         if (target.getBoard().numberOfFullHouse("monster") != 0) {
@@ -25,6 +29,7 @@ public class AttackProcessor extends AttackDirectProcessor {
         MonsterHouse monsterHouse = (MonsterHouse) cardProp.getCardPlace();
 
         monsterHouse.setMonsterAttacked();
-        return "you opponent receives " + monsterCard.getAttack() + " battle damage";
+        int practicalAttack = ((MonsterHouse) cardProp.getCardPlace()).getAdditionalAttack() + monsterCard.getAttack();
+        return "you opponent receives " + practicalAttack + " battle damage";
     }
 }

@@ -12,7 +12,7 @@ import model.gameprop.GameInProcess;
 import model.gameprop.Player;
 import model.gameprop.gamemodel.Game;
 
-public class FieldCardObserver extends ExistenceObserver{
+public class FieldCardObserver extends ExistenceObserver {
     protected MagicCard observedFieldCard;
     protected Action toRevertAction;
 
@@ -31,7 +31,7 @@ public class FieldCardObserver extends ExistenceObserver{
 
     @Override
     public void update() {
-        if (this.exists()) {
+        if (this.notExists()) {
             revertActionAsFinalize();
             existenceObservers.remove(this);
         } else {
@@ -40,7 +40,7 @@ public class FieldCardObserver extends ExistenceObserver{
     }
 
     @Override
-    public boolean exists() {
+    public boolean notExists() {
         Game game = GameInProcess.getGame();
         Player current = game.getPlayer(SideOfFeature.CURRENT);
         Player opponent = game.getPlayer(SideOfFeature.OPPONENT);
@@ -48,9 +48,19 @@ public class FieldCardObserver extends ExistenceObserver{
         MagicHouse fieldHouseCurr = current.getBoard().getFieldHouse();
         MagicHouse fieldHouseOppo = opponent.getBoard().getFieldHouse();
 
-        boolean isObservedCardInCurrFieldHouse = fieldHouseCurr.getMagicCard().equals(observedCard);
-        boolean isObservedCardInOppoFieldHouse = fieldHouseOppo.getMagicCard().equals(observedCard);
-        return !isObservedCardInCurrFieldHouse && !isObservedCardInOppoFieldHouse;
+        boolean isObservedCardInCurrFieldHouse;
+        boolean isObservedCardInOppoFieldHouse;
+        if (fieldHouseCurr.getMagicCard() == null && fieldHouseOppo.getMagicCard() == null) {
+            return true;
+        } else if (fieldHouseCurr.getMagicCard() == null) {
+            return !fieldHouseOppo.getMagicCard().equals(observedCard);
+        } else if (fieldHouseOppo.getMagicCard() == null) {
+            return !fieldHouseCurr.getMagicCard().equals(observedCard);
+        } else {
+            isObservedCardInCurrFieldHouse = fieldHouseCurr.getMagicCard().equals(observedCard);
+            isObservedCardInOppoFieldHouse = fieldHouseOppo.getMagicCard().equals(observedCard);
+            return !(isObservedCardInCurrFieldHouse || isObservedCardInOppoFieldHouse);
+        }
     }
 
     private void performActionForNewCards() {

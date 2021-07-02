@@ -22,9 +22,11 @@ public interface ChangingSomethingByEquipCard {
         MonsterHouse monsterHouseOfEquipped = MonsterHouse.getMonsterHouseByMonsterCard(equippedCard);
 
         if (whichPower.equals("Attack")) {
-            monsterHouseOfEquipped.setPracticalAttack(monsterHouseOfEquipped.getPracticalAttack() + changeValue);
+            assert monsterHouseOfEquipped != null;
+            monsterHouseOfEquipped.setAdditionalAttack(monsterHouseOfEquipped.getAdditionalAttack() + changeValue);
         } else if (whichPower.equals("Defence")) {
-            monsterHouseOfEquipped.setPracticalDefence(monsterHouseOfEquipped.getPracticalDefence() + changeValue);
+            assert monsterHouseOfEquipped != null;
+            monsterHouseOfEquipped.setAdditionalDefence(monsterHouseOfEquipped.getAdditionalDefence() + changeValue);
         }
 
         equippedCard.setEquippedWith(equipCard);

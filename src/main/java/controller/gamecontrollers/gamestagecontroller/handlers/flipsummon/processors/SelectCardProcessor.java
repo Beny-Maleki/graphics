@@ -12,20 +12,21 @@ public class SelectCardProcessor extends FlipSummonProcessor {
         super(processor);
     }
 
-    public MainPhase process(SelectedCardProp cardProp, Game game) {
+    public String process(Game game) {
+        SelectedCardProp cardProp = game.getCardProp();
         if (cardProp == null)
-            return MainPhase.NO_CARD_SELECTED_YET;
+            return MainPhase.NO_CARD_SELECTED_YET.toString();
 
         if (game.getHiredMonster() != null)
-            return MainPhase.HIRE_MONSTER_BEFORE;
+            return MainPhase.HIRE_MONSTER_BEFORE.toString();
 
         if (!cardProp.getLocation().equals(CardLocation.MONSTER_ZONE))
-            return MainPhase.WRONG_LOCATION_FOR_CHANGE;
+            return MainPhase.WRONG_LOCATION_FOR_CHANGE.toString();
 
         if (!cardProp.getCardPlace().getState().equals(MonsterHouseVisibilityState.DH))
-            return MainPhase.CANT_FLIP_SUMMON_THIS_CARD;
+            return MainPhase.CANT_FLIP_SUMMON_THIS_CARD.toString();
 
 
-        return super.process(cardProp, game);
+        return super.process(game);
     }
 }

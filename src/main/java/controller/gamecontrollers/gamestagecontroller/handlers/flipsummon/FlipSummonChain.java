@@ -17,7 +17,7 @@ public class FlipSummonChain {
         processor = new SelectCardProcessor(new FlipCardProcessor(null));
     }
 
-    public MainPhase request(SelectedCardProp cardProp, Game game) {
-        return processor.process(cardProp, game);
+    public String request(Game game) {
+        return processor.process(game);
     }
 }

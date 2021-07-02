@@ -59,6 +59,7 @@ public class ChangingMonsterAttackWithGraveyardsMonster extends Action implement
         finalChangeValue = countMonstersInGraveyard * changeAttackForEachMonsterInGraveyard * addOrMinus;
 
         Player currentPlayer = GameInProcess.getGame().getPlayer(SideOfFeature.CURRENT);
+
         change(finalChangeValue, changeWhichTeamMonstersAttack, typesToChangeAttack, currentPlayer, "Attack");
 
         ArrayList<ExistenceObserver> existenceObservers = ExistenceObserver.getExistenceObservers();

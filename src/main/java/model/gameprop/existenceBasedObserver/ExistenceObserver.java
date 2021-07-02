@@ -36,7 +36,7 @@ public abstract class ExistenceObserver {
 
     public abstract void update();
 
-    public boolean exists() {
+    public boolean notExists() {
         if (observedCard != null) { // card is assigned to observer!
             if (observedCard instanceof MonsterCard) {
                 MonsterHouse[] monsterHouses = ownerOfCard.getBoard().getMonsterHouse();
@@ -57,7 +57,6 @@ public abstract class ExistenceObserver {
                         return false;
                     }
                 }
-
             }
         }
         return true;

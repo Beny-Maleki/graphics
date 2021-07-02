@@ -13,6 +13,8 @@ public enum Error {
     INVALID_PASSWORD("current password is invalid"),
     INVALID_NEW_PASSWORD("please enter a new password"),
     INVALID_LOGIN("another user has login already"),
+    // MainMenu errors:
+    CHEAT_DENIED("cheat denied!"),
     // DeckMenu errors:
     REPETITIOUS_DECK_NAME("deck with name %s already exists"),
     NOT_FOUND_DECK_NAME("deck with name %s does not exist"),

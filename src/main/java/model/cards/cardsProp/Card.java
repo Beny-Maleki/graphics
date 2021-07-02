@@ -41,7 +41,7 @@ public abstract class Card {
                 return card;
             }
         }
-        return null; // No such CArd exists.
+        return null; // No such CArd notExists.
     }
 
     public static int getCardPriceByName(String name) {
@@ -50,7 +50,7 @@ public abstract class Card {
                 return card.price;
             }
         }
-        return -1; // No such card exists.
+        return -1; // No such card notExists.
     }
 
     public static String getDescriptionByName(String name) {
@@ -59,7 +59,7 @@ public abstract class Card {
                 return card.description;
             }
         }
-        return null; // No such card exists.
+        return null; // No such card notExists.
     }
 
     public static void addMagicsToCards(ArrayList<MagicCard> magicCards) {
@@ -114,7 +114,10 @@ public abstract class Card {
         return null;
     }
 
+
+
     public int getID() {
         return ID;
     }
+
 }

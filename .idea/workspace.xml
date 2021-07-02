@@ -5,205 +5,96 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="45f87b1a-8403-4c06-b2b2-57ebfe555883" name="Default Changelist" comment="changing the name of a method">
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/lib.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/viewer/SceneCreator.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/viewer/StageController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/viewer/URLenums/AddressFXML.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/fxml/mainMenu.fxml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/fxml/registerMenu.fxml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/images/GUI_T_TowerBg2.dds.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/controller/gamecontrollers/gamestagecontroller/handlers/attack/attackdirect/AttackDirectChain.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/controller/gamecontrollers/gamestagecontroller/handlers/attack/attackdirect/AttackDirectProcessor.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/controller/gamecontrollers/gamestagecontroller/handlers/attack/attackdirect/processors/AttackProcessor.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/controller/gamecontrollers/gamestagecontroller/handlers/attack/attackdirect/processors/SelectedCardProcessor.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/controller/gamecontrollers/gamestagecontroller/handlers/attack/attackmonster/AttackMonsterChain.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/controller/gamecontrollers/gamestagecontroller/handlers/attack/attackmonster/AttackMonsterProcessor.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/controller/gamecontrollers/gamestagecontroller/handlers/attack/attackmonster/processors/AttackProcessor.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/controller/gamecontrollers/gamestagecontroller/handlers/attack/attackmonster/processors/SelectedCardProcessor.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/controller/gamecontrollers/gamestagecontroller/handlers/hirespell/SetSpellChain.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/controller/gamecontrollers/gamestagecontroller/handlers/hirespell/processors/SetSpellProcessor.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/model/cards/cardsEnum/Magic/RestrictionTypeInAdding.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/model/events/eventChildren/ActivationInOpponentTurn.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/model/events/eventChildren/CurrentMonsterWantsToAttack.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/model/events/eventChildren/FieldMagicFaceUp.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/model/events/eventChildren/GotAttacked.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/model/events/eventChildren/SummonMonster.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/model/userProp/DifficultyLevel.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/model/userProp/FatherUser.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/model/userProp/UserAI.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/compiler.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_19-Jun-21_17_21_[Default_Changelist]/shelved.patch" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_19-Jun-21_17_21__Default_Changelist_.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/encodings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/encodings.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_28-May-21_00_20__Default_Changelist_.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_28-May-21_00_20__Default_Changelist_.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/controller/ImportScanner.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controller/ImportScanner.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/controller/MenuHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controller/MenuHandler.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/controller/gamecontrollers/GeneralController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controller/gamecontrollers/GeneralController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/controller/gamecontrollers/GetStringInputFromView.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controller/gamecontrollers/GetStringInputFromView.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/controller/gamecontrollers/gamestagecontroller/BattlePhaseController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controller/gamecontrollers/gamestagecontroller/BattlePhaseController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/controller/gamecontrollers/gamestagecontroller/DrawPhaseController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controller/gamecontrollers/gamestagecontroller/DrawPhaseController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/controller/gamecontrollers/gamestagecontroller/HeadController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controller/gamecontrollers/gamestagecontroller/HeadController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/controller/gamecontrollers/gamestagecontroller/MainPhaseController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controller/gamecontrollers/gamestagecontroller/MainPhaseController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/controller/gamecontrollers/gamestagecontroller/SideStageController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controller/gamecontrollers/gamestagecontroller/SideStageController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/controller/gamecontrollers/gamestagecontroller/handlers/activeeffect/ActiveEffectProcessor.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controller/gamecontrollers/gamestagecontroller/handlers/activeeffect/ActiveEffectProcessor.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/controller/gamecontrollers/gamestagecontroller/handlers/activeeffect/processors/ActiveSpellProcessor.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controller/gamecontrollers/gamestagecontroller/handlers/activeeffect/processors/ActiveSpellProcessor.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/controller/gamecontrollers/gamestagecontroller/handlers/activeeffect/processors/SelectCardProcessor.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controller/gamecontrollers/gamestagecontroller/handlers/activeeffect/processors/SelectCardProcessor.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/controller/gamecontrollers/gamestagecontroller/handlers/attackdirect/AttackDirectChain.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/controller/gamecontrollers/gamestagecontroller/handlers/attackdirect/AttackDirectProcessor.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/controller/gamecontrollers/gamestagecontroller/handlers/attackdirect/processors/AttackProcessor.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/controller/gamecontrollers/gamestagecontroller/handlers/attackdirect/processors/SelectedCardProcessor.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/controller/gamecontrollers/gamestagecontroller/handlers/attackmonster/AttackMonsterChain.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/controller/gamecontrollers/gamestagecontroller/handlers/attackmonster/AttackMonsterProcessor.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/controller/gamecontrollers/gamestagecontroller/handlers/attackmonster/processors/AttackProcessor.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/controller/gamecontrollers/gamestagecontroller/handlers/attackmonster/processors/SelectedCardProcessor.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/controller/gamecontrollers/gamestagecontroller/handlers/changeposition/ChangePosChain.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controller/gamecontrollers/gamestagecontroller/handlers/changeposition/ChangePosChain.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/controller/gamecontrollers/gamestagecontroller/handlers/changeposition/ChangePosProcessor.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controller/gamecontrollers/gamestagecontroller/handlers/changeposition/ChangePosProcessor.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/controller/gamecontrollers/gamestagecontroller/handlers/changeposition/processors/CardStateProcessor.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controller/gamecontrollers/gamestagecontroller/handlers/changeposition/processors/CardStateProcessor.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/controller/gamecontrollers/gamestagecontroller/handlers/changeposition/processors/ChangeRequestProcessor.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controller/gamecontrollers/gamestagecontroller/handlers/changeposition/processors/ChangeRequestProcessor.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/controller/gamecontrollers/gamestagecontroller/handlers/changeposition/processors/SelectedCardProcessor.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controller/gamecontrollers/gamestagecontroller/handlers/changeposition/processors/SelectedCardProcessor.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/controller/gamecontrollers/gamestagecontroller/handlers/flipsummon/FlipSummonChain.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controller/gamecontrollers/gamestagecontroller/handlers/flipsummon/FlipSummonChain.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/controller/gamecontrollers/gamestagecontroller/handlers/flipsummon/FlipSummonProcessor.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controller/gamecontrollers/gamestagecontroller/handlers/flipsummon/FlipSummonProcessor.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/controller/gamecontrollers/gamestagecontroller/handlers/flipsummon/processors/FlipCardProcessor.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controller/gamecontrollers/gamestagecontroller/handlers/flipsummon/processors/FlipCardProcessor.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/controller/gamecontrollers/gamestagecontroller/handlers/flipsummon/processors/SelectCardProcessor.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controller/gamecontrollers/gamestagecontroller/handlers/flipsummon/processors/SelectCardProcessor.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/controller/gamecontrollers/gamestagecontroller/handlers/hiremonster/processors/HireMonsterProcessor.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controller/gamecontrollers/gamestagecontroller/handlers/hiremonster/processors/HireMonsterProcessor.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/controller/gamecontrollers/gamestagecontroller/handlers/hirespell/HireSpellChain.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/controller/gamecontrollers/gamestagecontroller/handlers/hirespell/processors/BoardProcessor.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controller/gamecontrollers/gamestagecontroller/handlers/hirespell/processors/BoardProcessor.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/controller/gamecontrollers/gamestagecontroller/handlers/hirespell/processors/HireSpellProcessor.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/controller/menues/menuhandlers/menucontrollers/DuelMenuController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controller/menues/menuhandlers/menucontrollers/DuelMenuController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/controller/menues/menuhandlers/menucontrollers/MainMenuController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controller/menues/menuhandlers/menucontrollers/MainMenuController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/controller/menues/menuhandlers/menucontrollers/RegisterMenuController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controller/menues/menuhandlers/menucontrollers/RegisterMenuController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/viewer/menu/MainMenu.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/viewer/menu/MainMenu.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/viewer/menu/RegisterMenu.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/viewer/menu/RegisterMenu.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/Main.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/controller/ImportScanner.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/controller/MenuHandler$1.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/controller/MenuHandler.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/controller/RockPaperScissorController.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/controller/gamecontrollers/GeneralController.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/controller/gamecontrollers/GetStringInputFromView.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/controller/gamecontrollers/gamestagecontroller/BattlePhaseController.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/controller/gamecontrollers/gamestagecontroller/DrawPhaseController.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/controller/gamecontrollers/gamestagecontroller/HeadController.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/controller/gamecontrollers/gamestagecontroller/MainPhaseController.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/controller/gamecontrollers/gamestagecontroller/SideStageController$1.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/controller/gamecontrollers/gamestagecontroller/SideStageController.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/controller/gamecontrollers/gamestagecontroller/StandByPhaseController.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/controller/gamecontrollers/gamestagecontroller/handlers/activeeffect/ActiveEffectChain.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/controller/gamecontrollers/gamestagecontroller/handlers/activeeffect/ActiveEffectProcessor.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/controller/gamecontrollers/gamestagecontroller/handlers/activeeffect/processors/ActiveSpellProcessor.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/controller/gamecontrollers/gamestagecontroller/handlers/activeeffect/processors/SelectCardProcessor.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/controller/gamecontrollers/gamestagecontroller/handlers/attackdirect/AttackDirectChain.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/controller/gamecontrollers/gamestagecontroller/handlers/attackdirect/AttackDirectProcessor.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/controller/gamecontrollers/gamestagecontroller/handlers/attackdirect/processors/AttackProcessor.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/controller/gamecontrollers/gamestagecontroller/handlers/attackdirect/processors/SelectedCardProcessor.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/controller/gamecontrollers/gamestagecontroller/handlers/attackmonster/AttackMonsterChain.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/controller/gamecontrollers/gamestagecontroller/handlers/attackmonster/AttackMonsterProcessor.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/controller/gamecontrollers/gamestagecontroller/handlers/attackmonster/processors/AttackProcessor.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/controller/gamecontrollers/gamestagecontroller/handlers/attackmonster/processors/SelectedCardProcessor.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/controller/gamecontrollers/gamestagecontroller/handlers/changeposition/ChangePosChain.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/controller/gamecontrollers/gamestagecontroller/handlers/changeposition/ChangePosProcessor.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/controller/gamecontrollers/gamestagecontroller/handlers/changeposition/processors/CardStateProcessor.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/controller/gamecontrollers/gamestagecontroller/handlers/changeposition/processors/ChangeRequestProcessor.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/controller/gamecontrollers/gamestagecontroller/handlers/changeposition/processors/SelectedCardProcessor.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/controller/gamecontrollers/gamestagecontroller/handlers/flipsummon/FlipSummonChain.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/controller/gamecontrollers/gamestagecontroller/handlers/flipsummon/FlipSummonProcessor.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/controller/gamecontrollers/gamestagecontroller/handlers/flipsummon/processors/FlipCardProcessor.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/controller/gamecontrollers/gamestagecontroller/handlers/flipsummon/processors/SelectCardProcessor.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/controller/gamecontrollers/gamestagecontroller/handlers/hiremonster/HireMonsterChain.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/controller/gamecontrollers/gamestagecontroller/handlers/hiremonster/MonsterProcessor.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/controller/gamecontrollers/gamestagecontroller/handlers/hiremonster/processors/BoardProcessor.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/controller/gamecontrollers/gamestagecontroller/handlers/hiremonster/processors/CardSelectProcessor.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/controller/gamecontrollers/gamestagecontroller/handlers/hiremonster/processors/HireMonsterProcessor.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/controller/gamecontrollers/gamestagecontroller/handlers/hirespell/HireSpellChain.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/controller/gamecontrollers/gamestagecontroller/handlers/hirespell/SpellProcessor.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/controller/gamecontrollers/gamestagecontroller/handlers/hirespell/processors/BoardProcessor.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/controller/gamecontrollers/gamestagecontroller/handlers/hirespell/processors/HireSpellProcessor.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/controller/gamecontrollers/gamestagecontroller/handlers/hirespell/processors/SelectedCardProcessor.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/controller/menues/menuhandlers/duelmenuhandler/DuelChain.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/controller/menues/menuhandlers/duelmenuhandler/DuelProcessor.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/controller/menues/menuhandlers/duelmenuhandler/processors/RoundNumberProcessor.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/controller/menues/menuhandlers/duelmenuhandler/processors/SecPlayerProcessor.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/controller/menues/menuhandlers/duelmenuhandler/processors/deckValidatorProcessor.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/controller/menues/menuhandlers/menucontrollers/DeckMenuController.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/controller/menues/menuhandlers/menucontrollers/DuelMenuController$1.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/controller/menues/menuhandlers/menucontrollers/DuelMenuController.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/controller/menues/menuhandlers/menucontrollers/MainMenuController.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/controller/menues/menuhandlers/menucontrollers/ProfileMenuController.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/controller/menues/menuhandlers/menucontrollers/RegisterMenuController.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/controller/menues/menuhandlers/menucontrollers/ScoreboardMenuController.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/controller/menues/menuhandlers/menucontrollers/ShopMenuController.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/exceptions/CardNotFoundException.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/model/DataBase$1.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/model/DataBase$2.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/model/DataBase.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/model/cards/cardsActions/Action.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/model/cards/cardsActions/magicActionChildren/AvoidAttackOfMonsters.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/model/cards/cardsActions/magicActionChildren/AvoidOpponentsCardDraw.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/model/cards/cardsActions/magicActionChildren/CancelSummon.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/model/cards/cardsActions/magicActionChildren/ChangeTeamOfMonsterCard.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/model/cards/cardsActions/magicActionChildren/ChangingEquipedMonsterAttack.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/model/cards/cardsActions/magicActionChildren/ChangingEquippedMonsterDefence.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/model/cards/cardsActions/magicActionChildren/ChangingLifePointAction.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/model/cards/cardsActions/magicActionChildren/ChangingMonsterAttackAction.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/model/cards/cardsActions/magicActionChildren/ChangingMonsterAttackWithGraveyardsMonster.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/model/cards/cardsActions/magicActionChildren/ChangingMonsterDefenceAction.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/model/cards/cardsActions/magicActionChildren/ChangingSomeRaceEquipedMonsterAttack.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/model/cards/cardsActions/magicActionChildren/ChangingSomeRaceEquipedMonsterDefence.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/model/cards/cardsActions/magicActionChildren/ChangingSomethingByEquipCard.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/model/cards/cardsActions/magicActionChildren/ChangingSomethingByFieldCard.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/model/cards/cardsActions/magicActionChildren/DamageOpponentHealthBar.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/model/cards/cardsActions/magicActionChildren/DestroyAMagicCard.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/model/cards/cardsActions/magicActionChildren/DestroyAllBoardMonsters.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/model/cards/cardsActions/magicActionChildren/DestroyAllOpponentAttackingMonsters.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/model/cards/cardsActions/magicActionChildren/DestroyAllOpponentMagics.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/model/cards/cardsActions/magicActionChildren/DestroyAllOpponentMonsters.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/model/cards/cardsActions/magicActionChildren/DrawCardFromTopOfDeck.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/model/cards/cardsActions/magicActionChildren/EndBattlePhaseAction.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/model/cards/cardsActions/magicActionChildren/GuessingCardInOpponentHandAction.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/model/cards/cardsActions/magicActionChildren/MakeDamageZero.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/model/cards/cardsActions/magicActionChildren/RitualSummonAction.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/model/cards/cardsActions/magicActionChildren/StoppingActivationAction.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/model/cards/cardsActions/magicActionChildren/SummonMonsterFromBothGraveYardsAction.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/model/cards/cardsActions/magicActionChildren/SummonMonsterFromOwnGraveYardAction.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/model/cards/cardsActions/magicActionChildren/TerraformingAction.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/model/cards/cardsActions/monsterActionChildren/DestroyOneOpponentMonster.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/model/cards/cardsActions/monsterActionChildren/DestroyTheAttackerMonsterOfOpponent.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/model/cards/cardsActions/monsterActionChildren/MakeAttackerMonsterAtkZero.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/model/cards/cardsEnum/Magic/MagicAttribute.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/model/cards/cardsEnum/Magic/MagicSpeed.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/model/cards/cardsEnum/Magic/MagicType.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/model/cards/cardsEnum/Monster/MonsterAttribute.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/model/cards/cardsEnum/Monster/MonsterRace.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/model/cards/cardsEnum/Monster/MonsterType.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/model/cards/cardsProp/Card.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/model/cards/cardsProp/MagicCard.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/model/cards/cardsProp/MonsterCard.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/model/enums/DeckParts.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/model/enums/Error.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/model/enums/GameEnums/CardLocation.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/model/enums/GameEnums/GameError.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/model/enums/GameEnums/GamePhaseEnums/BattlePhase.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/model/enums/GameEnums/GamePhaseEnums/DrawPhase.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/model/enums/GameEnums/GamePhaseEnums/General.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/model/enums/GameEnums/GamePhaseEnums/MainPhase.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/model/enums/GameEnums/GamePhaseEnums/SidePhase.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/model/enums/GameEnums/PlayerTurn.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/model/enums/GameEnums/RequestingInput.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/model/enums/GameEnums/SideOfFeature.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/model/enums/GameEnums/TypeOfHire.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/model/enums/GameEnums/WantedPos.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/model/enums/GameEnums/cardvisibility/MagicHouseVisibilityState.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/model/enums/GameEnums/cardvisibility/MonsterHouseVisibilityState.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/model/enums/GameEnums/gamestage/GameMainStage.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/model/enums/GameEnums/gamestage/GameSideStage.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/model/enums/Menu.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/model/enums/MenusMassages/DeckMessages.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/model/enums/MenusMassages/Duel.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/model/enums/MenusMassages/Main.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/model/enums/MenusMassages/Profile.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/model/enums/MenusMassages/Register.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/model/enums/MenusMassages/Scoreboard.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/model/enums/MenusMassages/ShopMessages.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/model/enums/rockpaperscissor/PaperRockScissorError.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/model/enums/rockpaperscissor/RockPaperScissorMessage.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/model/events/Event.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/model/events/eventChildren/ManuallyActivation.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/model/events/eventChildren/MonsterSummon.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/model/events/eventChildren/OpponentDoesNormalOrFipSummon.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/model/events/eventChildren/OpponentMonsterWantsToAttack.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/model/events/eventChildren/SpecialMonsterSummon.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/model/gameprop/BoardProp/GameHouse.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/model/gameprop/BoardProp/GraveYard.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/model/gameprop/BoardProp/MagicHouse.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/model/gameprop/BoardProp/MonsterHouse.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/model/gameprop/BoardProp/PlayerBoard$1.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/model/gameprop/BoardProp/PlayerBoard.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/model/gameprop/GameInProcess.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/model/gameprop/Player.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/model/gameprop/SelectedCardProp.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/model/gameprop/existenceBasedObserver/EquipCardObserver.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/model/gameprop/existenceBasedObserver/ExistenceObserver.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/model/gameprop/existenceBasedObserver/FieldCardObserver.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/model/gameprop/gamemodel/Game$1.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/model/gameprop/gamemodel/Game.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/model/gameprop/gamemodel/Turn.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/model/gameprop/turnBasedObserver/AvoidDrawingForSomeTurnsObserver.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/model/gameprop/turnBasedObserver/ChangeTeamForOneTurn.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/model/gameprop/turnBasedObserver/TurnObserver.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/model/userProp/Deck.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/model/userProp/LoginUser.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/model/userProp/User$1.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/model/userProp/User.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/model/userProp/UserInfoType.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/viewer/Regex.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/viewer/RockPaperScissorGame.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/viewer/game/GameViewer.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/viewer/game/GetStringInput.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/viewer/game/UserInterface.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/viewer/menu/DeckMenu.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/viewer/menu/DuelMenu.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/viewer/menu/MainMenu.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/viewer/menu/ProfileMenu.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/viewer/menu/RegisterMenu.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/viewer/menu/ScoreboardMenu.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/viewer/menu/ShopMenu.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/viewer/menudisplay/DeckMenuDisplay.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/viewer/menudisplay/MainMenuDisplay.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/viewer/menudisplay/ProfileMenuDisplay.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/viewer/menudisplay/RockPaperScissorDisplay.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/viewer/menudisplay/ScoreboardMenuDisplay.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/viewer/menudisplay/ShopMenuDisplay.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/compile/default-compile/createdFiles.lst" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/compile/default-compile/inputFiles.lst" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/untitled-1.0-SNAPSHOT.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/model/DataBase.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/model/DataBase.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/model/cards/cardsActions/magicActionChildren/ChangingMonsterAttackWithGraveyardsMonster.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/model/cards/cardsActions/magicActionChildren/ChangingMonsterAttackWithGraveyardsMonster.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/model/cards/cardsActions/magicActionChildren/ChangingSomethingByEquipCard.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/model/cards/cardsActions/magicActionChildren/ChangingSomethingByEquipCard.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/model/cards/cardsActions/magicActionChildren/ChangingSomethingByFieldCard.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/model/cards/cardsActions/magicActionChildren/ChangingSomethingByFieldCard.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/model/cards/cardsActions/magicActionChildren/DrawCardFromTopOfDeck.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/model/cards/cardsActions/magicActionChildren/DrawCardFromTopOfDeck.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/model/cards/cardsActions/magicActionChildren/SummonMonsterFromBothGraveYardsAction.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/model/cards/cardsActions/magicActionChildren/SummonMonsterFromBothGraveYardsAction.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/model/cards/cardsEnum/Magic/MagicSpeed.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/model/cards/cardsProp/Card.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/model/cards/cardsProp/Card.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/model/cards/cardsProp/MagicCard.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/model/cards/cardsProp/MagicCard.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/model/enums/Error.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/model/enums/Error.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/model/enums/GameEnums/GamePhaseEnums/BattlePhase.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/model/enums/GameEnums/GamePhaseEnums/BattlePhase.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/model/enums/GameEnums/GamePhaseEnums/General.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/model/enums/GameEnums/GamePhaseEnums/General.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/model/enums/GameEnums/GamePhaseEnums/MainPhase.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/model/enums/GameEnums/GamePhaseEnums/MainPhase.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/model/enums/GameEnums/GamePhaseEnums/SidePhase.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/model/enums/GameEnums/GamePhaseEnums/SidePhase.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/model/enums/GameEnums/RequestingInput.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/model/enums/GameEnums/RequestingInput.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/model/enums/GameEnums/TypeOfHire.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/model/enums/GameEnums/TypeOfHire.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/model/enums/MenusMassages/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/model/enums/MenusMassages/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/model/enums/MenusMassages/Register.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/model/enums/MenusMassages/Register.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/model/events/Event.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/model/events/Event.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/model/events/eventChildren/MonsterSummon.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/model/events/eventChildren/MonsterSummon.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/model/gameprop/BoardProp/MonsterHouse.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/model/gameprop/BoardProp/MonsterHouse.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/model/gameprop/BoardProp/PlayerBoard.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/model/gameprop/BoardProp/PlayerBoard.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/model/gameprop/Player.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/model/gameprop/Player.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/model/gameprop/existenceBasedObserver/EquipCardObserver.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/model/gameprop/existenceBasedObserver/EquipCardObserver.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/model/gameprop/existenceBasedObserver/ExistenceObserver.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/model/gameprop/existenceBasedObserver/ExistenceObserver.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/model/gameprop/existenceBasedObserver/FieldCardObserver.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/model/gameprop/existenceBasedObserver/FieldCardObserver.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/model/gameprop/gamemodel/Game.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/model/gameprop/gamemodel/Game.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/model/gameprop/gamemodel/Turn.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/model/gameprop/gamemodel/Turn.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/model/userProp/Deck.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/model/userProp/Deck.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/model/userProp/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/model/userProp/User.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -327,13 +218,15 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration default="true" type="ArquillianJUnit" factoryName="" nameIsGenerated="true">
+    <configuration default="true" type="ArquillianTestNG" factoryName="" nameIsGenerated="true">
       <option name="arquillianRunConfiguration">
         <value>
           <option name="containerStateName" value="" />
         </value>
       </option>
-      <option name="TEST_OBJECT" value="class" />
+      <option name="TEST_OBJECT" value="CLASS" />
+      <properties />
+      <listeners />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -432,6 +325,7 @@
       <workItem from="1624108738181" duration="9536000" />
       <workItem from="1624714931959" duration="1059000" />
       <workItem from="1624775130664" duration="510000" />
+      <workItem from="1625188760737" duration="419000" />
     </task>
     <task id="LOCAL-00023" summary="set magic and monsters card and enum">
       <created>1619304079536</created>

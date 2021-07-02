@@ -51,7 +51,6 @@ public class DuelMenuController {
     }
 
     private String makeNewDuel(String rounds, String secondPlayer) throws CmdLineParser.OptionException {
-
         DuelChain chain = new DuelChain();
         String[] data = new String[]{LoginUser.getUser().getUsername(), secondPlayer, rounds};
         Duel error;

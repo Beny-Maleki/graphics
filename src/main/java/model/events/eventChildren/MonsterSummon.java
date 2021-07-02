@@ -9,7 +9,8 @@ public class MonsterSummon extends Event {
         name = this.getClass().getSimpleName();
     }
 
-    private MonsterSummon() {}
+    private MonsterSummon() {
+    }
 
     public static MonsterSummon getInstance() {
         if (instance == null) {

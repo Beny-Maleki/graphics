@@ -12,12 +12,12 @@ public class ChangeRequestProcessor extends ChangePosProcessor {
         super(processor);
     }
 
-    public MainPhase process(SelectedCardProp cardProp, WantedPos pos, MonsterHouse summonedMonsterHouses) {
+    public String process(SelectedCardProp cardProp, WantedPos pos, MonsterHouse summonedMonsterHouses) {
         MonsterHouse monsterHouse = (MonsterHouse) cardProp.getCardPlace();
         if (monsterHouse == summonedMonsterHouses)
-            return MainPhase.CANT_CHANGE_POS_OF_HIRED_CARD;
+            return MainPhase.CANT_CHANGE_POS_OF_HIRED_CARD.toString();
         if (monsterHouse.isPosChange())
-            return MainPhase.POS_CHANGE_BEFORE;
+            return MainPhase.POS_CHANGE_BEFORE.toString();
         else {
             if (pos.equals(WantedPos.ATTACK)) {
                 monsterHouse.changePos();
@@ -26,7 +26,7 @@ public class ChangeRequestProcessor extends ChangePosProcessor {
                 monsterHouse.changePos();
                 monsterHouse.setState(MonsterHouseVisibilityState.DO);
             }
-            return MainPhase.MONSTER_CHANGE_POS;
+            return MainPhase.MONSTER_CHANGE_POS.toString();
         }
     }
 }

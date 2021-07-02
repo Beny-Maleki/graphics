@@ -2,5 +2,7 @@ package model.enums.GameEnums;
 
 public enum TypeOfHire {
     SUMMON,
-    SET
+    SET,
+    RITUAL_SUMMON,
+    RITUAL_SET
 }

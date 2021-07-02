@@ -12,7 +12,7 @@ public abstract class ChangePosProcessor {
         this.processor = processor;
     }
 
-    protected MainPhase process(SelectedCardProp cardProp, WantedPos pos, MonsterHouse monsterHouse) {
+    protected String process(SelectedCardProp cardProp, WantedPos pos, MonsterHouse monsterHouse) {
         if (processor != null) {
             return processor.process(cardProp, pos, monsterHouse);
         } else {

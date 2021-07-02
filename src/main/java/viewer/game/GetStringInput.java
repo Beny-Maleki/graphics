@@ -10,4 +10,11 @@ public class GetStringInput {
         Scanner scanner = new Scanner(System.in);
         return scanner.nextLine();
     }
+
+    public static String getInput(RequestingInput message, String name) {
+        System.out.println(message.toString() + name);
+        Scanner scanner = new Scanner(System.in);
+        return scanner.nextLine();
+    }
+
 }

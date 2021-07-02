@@ -4,7 +4,7 @@ import model.cards.cardsProp.Card;
 
 import java.util.ArrayList;
 
-public class User {
+public class User extends FatherUser{
 
     private static ArrayList<User> allUsers;
 
@@ -15,11 +15,7 @@ public class User {
     private final ArrayList<String> allUserDecksId;
     private final ArrayList<Integer> userCardCollection;
     private String username;
-    private String nickname;
     private String password;
-    private int score;
-    private int balance;
-    private Deck activeDeck;
 
     {
         allUserDecksId = new ArrayList<>();
@@ -80,14 +76,6 @@ public class User {
         return null;
     }
 
-    public int getScore() {
-        return score;
-    }
-
-    public void increaseScore(int score) {
-        this.score = score;
-    }
-
     public void setPassword(String password) {
         this.password = password;
     }
@@ -100,28 +88,8 @@ public class User {
         this.username = username;
     }
 
-    public String getNickname() {
-        return nickname;
-    }
-
-    public void setNickname(String nickname) {
-        this.nickname = nickname;
-    }
-
-    public int getBalance() {
-        return balance;
-    }
-
-    public void changeBalance(int cost) {
-        this.balance += cost;
-    }
-
     public boolean isPasswordMatch(String password) {
         return password.equals(this.password);
-    }
-
-    public Deck getActiveDeck() {
-        return activeDeck;
     }
 
     public void setActiveDeck(Deck activeDeck) {

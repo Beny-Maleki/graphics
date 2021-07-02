@@ -1,19 +1,23 @@
 package model.cards.cardsProp;
 
+import controller.gamecontrollers.GetStringInputFromView;
 import model.cards.cardsActions.Action;
 import model.cards.cardsActions.magicActionChildren.*;
 import model.cards.cardsEnum.Magic.MagicAttribute;
-import model.cards.cardsEnum.Magic.MagicSpeed;
 import model.cards.cardsEnum.Magic.MagicType;
+import model.cards.cardsEnum.Magic.RestrictionTypeInAdding;
 import model.cards.cardsEnum.Monster.MonsterRace;
+import model.enums.GameEnums.RequestingInput;
 import model.enums.GameEnums.SideOfFeature;
 import model.events.Event;
+import model.events.eventChildren.ActivationInOpponentTurn;
 import model.events.eventChildren.ManuallyActivation;
 import model.events.eventChildren.MonsterSummon;
 import model.events.eventChildren.OpponentMonsterWantsToAttack;
 import model.gameprop.gamemodel.Game;
 
 import java.util.ArrayList;
+import java.util.Locale;
 
 
 public class MagicCard extends Card {
@@ -24,23 +28,23 @@ public class MagicCard extends Card {
     }
 
     private final ArrayList<Action> actionsOfMagic;
-    private final ArrayList<Event> sideEvents;
     private final ArrayList<Event> triggers;
-    private MagicSpeed magicSpeed;
+    private RestrictionTypeInAdding restrictionTypeInAdding;
     private MagicAttribute magicAttribute;
     private MagicType typeOfMagic;
+    private boolean isActivated;
 
     {
+        isActivated = false;
         actionsOfMagic = new ArrayList<>();
-        sideEvents = new ArrayList<>();
         triggers = new ArrayList<>();
     }
 
-    public MagicCard(String name, String typeOfMagic, String magicAttribute, String description, String speed, String price) {
+    public MagicCard(String name, String typeOfMagic, String magicAttribute, String description, String typeOfRestriction, String price) {
         super(name, description, price);
         setTypeOfMagic(MagicType.setType(typeOfMagic));
         setMagicAttribute(MagicAttribute.setAttribute(magicAttribute));
-        setMagicSpeed(MagicSpeed.setSpeed(speed));
+        setMagicRestriction(RestrictionTypeInAdding.setSpeed(typeOfRestriction));
         magicCards.add(this);
         setMagicEffect(name);
         setMagicEvents(name);
@@ -63,69 +67,38 @@ public class MagicCard extends Card {
     }
 
     private void setMagicEvents(String name) {
-        if (name.equals("Monster Reborn")) {
-            triggers.add(ManuallyActivation.getInstance());
-        }
-        if (name.equals("Raigeki")) {
-            triggers.add(ManuallyActivation.getInstance());
-        }
-        if (name.equals("Harpie’s Feather Duster")) {
-            triggers.add(ManuallyActivation.getInstance());
-        }
-        if (name.equals("Dark Hole")) {
-            triggers.add(ManuallyActivation.getInstance());
-        }
-        if (name.equals("Mystical space typhoon")) {
-            triggers.add(ManuallyActivation.getInstance());
-        }
-        if (name.equals("Yami")) {
-            triggers.add(ManuallyActivation.getInstance());
-        }
-        if (name.equals("Forest")) {
-            triggers.add(ManuallyActivation.getInstance());
-        }
-        if (name.equals("Closed Forest")) {
-            triggers.add(ManuallyActivation.getInstance());
-        }
-        if (name.equals("Umiiruka")) {
-            triggers.add(ManuallyActivation.getInstance());
-        }
-        if (name.equals("Sword of Dark Destruction")) {
-            triggers.add(ManuallyActivation.getInstance());
-        }
-        if (name.equals("Black Pendant")) {
-            triggers.add(ManuallyActivation.getInstance());
-        }
-        if (name.equals("Mirror Force")) {
-            triggers.add(OpponentMonsterWantsToAttack.getInstance());
-        }
-        if (name.equals("Mind Crush")) {
-            triggers.add(ManuallyActivation.getInstance());
-        }
-        if (name.equals("Torrential Tribute")) {
-            triggers.add(MonsterSummon.getInstance());
-        }
-        if (name.equals("Call of the Haunted")) {
-            triggers.add(ManuallyActivation.getInstance());
-        }
-        if (name.equals("Change of Heart")) {
-            triggers.add(ManuallyActivation.getInstance());
-        }
-        if (name.equals("Time Seal")) {
-            triggers.add(ManuallyActivation.getInstance());
-        }
-        if (name.equals("Pot Of Greed")) {
-            triggers.add(ManuallyActivation.getInstance());
-        }
-        if (name.equals("Terraforming")) {
-            triggers.add(ManuallyActivation.getInstance());
+        switch (name) {
+            case "Forest":
+            case "Closed Forest":
+            case "Monster Reborn":
+            case "Umiiruka":
+            case "Rage":
+            case "Harpie’s Feather Duster":
+            case "Dark Hole":
+            case "Mystical space typhoon":
+            case "Yami":
+            case "Sword of Dark Destruction":
+            case "Black Pendant":
+            case "Mind Crush":
+            case "Call of the Haunted":
+            case "Change of Heart":
+            case "Time Seal":
+            case "Pot Of Greed":
+            case "Terraforming":
+                triggers.add(ManuallyActivation.getInstance());
+                break;
+            case "Mirror Force":
+                triggers.add(OpponentMonsterWantsToAttack.getInstance());
+                break;
+            case "Torrential Tribute":
+                triggers.add(MonsterSummon.getInstance());
+                break;
         }
     }
 
     private void setMagicEffect(String name) {
         if (name.equals("Monster Reborn")) {
             actionsOfMagic.add(new SummonMonsterFromBothGraveYardsAction());
-            triggers.add(ManuallyActivation.getInstance());
         }
         if (name.equals("Raigeki")) {
             actionsOfMagic.add(new DestroyAllOpponentMonsters());
@@ -208,19 +181,15 @@ public class MagicCard extends Card {
         }
         if (name.equals("Change of Heart")) {
             actionsOfMagic.add(new ChangeTeamOfMonsterCard());
-            triggers.add(ManuallyActivation.getInstance());
         }
         if (name.equals("Time Seal")) {
             actionsOfMagic.add(new AvoidOpponentsCardDraw(2));
-            triggers.add(ManuallyActivation.getInstance());
         }
         if (name.equals("Pot Of Greed")) {
             actionsOfMagic.add(new DrawCardFromTopOfDeck(2));
-            triggers.add(ManuallyActivation.getInstance());
         }
         if (name.equals("Terraforming")) {
             actionsOfMagic.add(new TerraformingAction());
-            triggers.add(ManuallyActivation.getInstance());
         }
 //        if (name.equals("Magic Jammer") || name.equals("Magic Cylinder"))
 //            actionsOfMagic.add(StoppingActivationAction.getInstance());
@@ -241,17 +210,51 @@ public class MagicCard extends Card {
     public void activeEffectsByEvent(Event event, Game game) {
         boolean shouldActiveEffects = false;
         for (Event trigger : triggers) {
-            if (trigger.equals(event)) {
+            if (eventEquals(trigger, event)) {
                 shouldActiveEffects = true;
                 break;
             }
         }
-        System.out.println(shouldActiveEffects);
+
+        if (event instanceof ActivationInOpponentTurn) {
+            String answer = GetStringInputFromView.getInputFromView(RequestingInput.DOES_PLAYER_WANT_TO_ACTIVE_SPELL, this.name);
+            while (true) {
+                switch (answer.toLowerCase(Locale.ROOT)) {
+                    case "yes": {
+                        isActivated = true;
+                        activeActions(game, shouldActiveEffects);
+                        return;
+                    }
+                    case "no": {
+                        return;
+                    }
+                    default: {
+                        answer = GetStringInputFromView.getInputFromView(RequestingInput.INVALID_ANSWER);
+                    }
+                }
+            }
+
+        }
+        isActivated = true;
+        activeActions(game, shouldActiveEffects);
+    }
+
+    private void activeActions(Game game, boolean shouldActiveEffects) {
         if (shouldActiveEffects) {
             for (Action actionOfMagic : actionsOfMagic) {
                 actionOfMagic.active(game);
             }
         }
+    }
+
+    private boolean eventEquals(Event firstEvent, Event secondEvent) {
+        if (firstEvent instanceof ActivationInOpponentTurn && secondEvent instanceof ActivationInOpponentTurn)
+            return true;
+        if (firstEvent instanceof ManuallyActivation && secondEvent instanceof ManuallyActivation)
+            return true;
+        if (firstEvent instanceof OpponentMonsterWantsToAttack && secondEvent instanceof OpponentMonsterWantsToAttack)
+            return true;
+        return firstEvent instanceof MonsterSummon && secondEvent instanceof MonsterSummon;
     }
 
     @Override
@@ -260,7 +263,7 @@ public class MagicCard extends Card {
                 "Name: " + name +
                         "\n" + typeOfMagic.toString() +
                         "\nType: " + magicAttribute +
-                        "\nSpeed: " + magicSpeed.toString() +
+                        "\nSpeed: " + restrictionTypeInAdding.toString() +
                         "\nDescription: " + description;
     }
 
@@ -280,23 +283,23 @@ public class MagicCard extends Card {
         this.typeOfMagic = typeOfMagic;
     }
 
-    public MagicSpeed getMagicSpeed() {
-        return magicSpeed;
+    public RestrictionTypeInAdding getMagicRestrictionType() {
+        return restrictionTypeInAdding;
     }
 
-    public void setMagicSpeed(MagicSpeed magicSpeed) {
-        this.magicSpeed = magicSpeed;
+    public void setMagicRestriction(RestrictionTypeInAdding restrictionTypeInAdding) {
+        this.restrictionTypeInAdding = restrictionTypeInAdding;
     }
 
     public void setDetails(String name, String typeOfMagic, String magicAttribute, String description, String speed, String price) {
         setName(name);
         setTypeOfMagic(MagicType.setType(typeOfMagic));
         setMagicAttribute(MagicAttribute.setAttribute(magicAttribute));
-        setMagicSpeed(MagicSpeed.setSpeed(speed));
+        setMagicRestriction(RestrictionTypeInAdding.setSpeed(speed));
         setDescription(description);
         setPrice(price);
         setMagicEffect(name);
-//        setMagicEvents(name);
+        setMagicEvents(name);
     }
 
     public ArrayList<Action> getActionsOfMagic() {
@@ -314,10 +317,18 @@ public class MagicCard extends Card {
         copy.ID = this.ID;
         //
 
-        copy.setMagicSpeed(this.magicSpeed);
+        copy.setMagicRestriction(this.restrictionTypeInAdding);
         copy.setTypeOfMagic(this.typeOfMagic);
         copy.setMagicAttribute(this.magicAttribute);
 
         return copy;
+    }
+
+    public boolean isActivated() {
+        return isActivated;
+    }
+
+    public void setActivated(boolean activated) {
+        isActivated = activated;
     }
 }

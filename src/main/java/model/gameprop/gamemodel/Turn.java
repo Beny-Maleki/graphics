@@ -8,6 +8,7 @@ import model.gameprop.SelectedCardProp;
 public class Turn {
     PlayerTurn playerWithTurn;
     TypeOfHire typeOfHighLevelMonsterHire;
+    boolean isHiredMonsterRitual;
     MonsterHouse monsterHouseOfHiredMonster;
     SelectedCardProp selectedCardProp;
     int tributeNumber;
@@ -15,7 +16,7 @@ public class Turn {
     boolean isFirstTurn;
 
     {
-        isFirstTurn = false;
+        isHiredMonsterRitual = false;
         typeOfHighLevelMonsterHire = null;
         tributeNumber = 0;
         isCardDraw = false;
@@ -73,5 +74,9 @@ public class Turn {
 
     public boolean isFirstTurn() {
         return isFirstTurn;
+    }
+
+    public void setHiredMonsterRitual(boolean isHiredMonsterRitual) {
+        this.isHiredMonsterRitual = isHiredMonsterRitual;
     }
 }

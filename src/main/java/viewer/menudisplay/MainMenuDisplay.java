@@ -8,6 +8,10 @@ public class MainMenuDisplay {
         System.out.println(message.getMainMessage());
     }
 
+    public static void display(Main message, String field1, String field2) {
+        System.out.printf(message.getMainMessage(), field1, field2);
+    }
+
     public static void display(Error message) {
         System.out.println(message.toString());
     }

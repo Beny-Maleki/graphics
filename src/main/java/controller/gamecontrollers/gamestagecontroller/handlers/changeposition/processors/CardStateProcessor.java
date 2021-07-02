@@ -13,15 +13,15 @@ public class CardStateProcessor extends ChangePosProcessor {
         super(processor);
     }
 
-    public MainPhase process(SelectedCardProp cardProp, WantedPos pos, MonsterHouse summonedMonsterHouse) {
+    public String process(SelectedCardProp cardProp, WantedPos pos, MonsterHouse summonedMonsterHouse) {
         MonsterHouse monsterHouse;
         monsterHouse = (MonsterHouse) cardProp.getCardPlace();
         if ((monsterHouse.getState().equals(MonsterHouseVisibilityState.DO) && pos.equals(WantedPos.DEFENCE)) ||
                 (monsterHouse.getState().equals(MonsterHouseVisibilityState.OO) && pos.equals(WantedPos.ATTACK))) {
-            return MainPhase.ALREADY_IN_WANTED_POS;
+            return MainPhase.ALREADY_IN_WANTED_POS.toString();
         }
         if ((monsterHouse.getState().equals(MonsterHouseVisibilityState.DH)))
-            return MainPhase.FLIP_NEEDED;
+            return MainPhase.FLIP_NEEDED.toString();
         return super.process(cardProp, pos, summonedMonsterHouse);
     }
 }

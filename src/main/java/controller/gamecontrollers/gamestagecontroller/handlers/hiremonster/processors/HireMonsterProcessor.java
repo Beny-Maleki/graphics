@@ -1,6 +1,7 @@
 package controller.gamecontrollers.gamestagecontroller.handlers.hiremonster.processors;
 
 import controller.gamecontrollers.gamestagecontroller.handlers.hiremonster.MonsterProcessor;
+import model.cards.cardsEnum.Monster.MonsterType;
 import model.cards.cardsProp.MonsterCard;
 import model.enums.GameEnums.GamePhaseEnums.MainPhase;
 import model.enums.GameEnums.SideOfFeature;
@@ -8,16 +9,25 @@ import model.enums.GameEnums.TypeOfHire;
 import model.enums.GameEnums.cardvisibility.MonsterHouseVisibilityState;
 import model.enums.GameEnums.gamestage.GameSideStage;
 import model.gameprop.BoardProp.MonsterHouse;
+import model.gameprop.BoardProp.PlayerBoard;
 import model.gameprop.gamemodel.Game;
 
 public class HireMonsterProcessor extends MonsterProcessor {
 
-    public HireMonsterProcessor(MonsterProcessor processor){
+    public HireMonsterProcessor(MonsterProcessor processor) {
         super(processor);
     }
 
     public String process(Game game, TypeOfHire type) {
         MonsterCard monsterCard = (MonsterCard) game.getCardProp().getCard();
+
+        if (monsterCard.getType() == MonsterType.RITUAL) {
+            PlayerBoard board = game.getPlayer(SideOfFeature.CURRENT).getBoard();
+            if (!board.doesRitualCardAvailable()) {
+                return MainPhase.CANT_FIND_ADVANCED_ART_FOR_HIRE_RITUAL_MONSTER.toString();
+            }
+            game.setHiredMonsterRitual(true);
+        }
         if (monsterCard.getLevel() < 5) {
             for (MonsterHouse monsterHouse : game.getPlayer(SideOfFeature.CURRENT).getBoard().getMonsterHouse()) {
                 if (monsterHouse.getMonsterCard() == null) {

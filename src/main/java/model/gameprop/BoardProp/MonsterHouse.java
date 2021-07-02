@@ -13,11 +13,13 @@ public class MonsterHouse extends GameHouse {
     MonsterCard monsterCard;
     MonsterHouseVisibilityState state;
     private boolean isMonsterAttacked;
-    private int practicalAttack;
-    private int practicalDefence;
+    private int additionalAttack;
+    private int additionalDefence;
     private boolean haveBeenImpactedByField;
 
     {
+        additionalAttack = 0;
+        additionalDefence = 0;
         isMonsterAttacked = false;
         changePos = false;
         haveBeenImpactedByField = false;
@@ -43,29 +45,23 @@ public class MonsterHouse extends GameHouse {
             state = MonsterHouseVisibilityState.E;
             isMonsterAttacked = false;
             haveBeenImpactedByField = false;
-            practicalAttack = 0;
-            practicalDefence = 0;
-        } else {
-            practicalAttack = monsterCard.getAttack();
-            practicalDefence = monsterCard.getDefence();
-
         }
     }
 
-    public int getPracticalAttack() {
-        return practicalAttack;
+    public int getAdditionalAttack() {
+        return additionalAttack;
     }
 
-    public void setPracticalAttack(int practicalAttack) {
-        this.practicalAttack = practicalAttack;
+    public void setAdditionalAttack(int additionalAttack) {
+        this.additionalAttack = additionalAttack;
     }
 
-    public int getPracticalDefence() {
-        return practicalDefence;
+    public int getAdditionalDefence() {
+        return additionalDefence;
     }
 
-    public void setPracticalDefence(int practicalDefence) {
-        this.practicalDefence = practicalDefence;
+    public void setAdditionalDefence(int additionalDefence) {
+        this.additionalDefence = additionalDefence;
     }
 
     public boolean getHaveBeenImpactedByField() {

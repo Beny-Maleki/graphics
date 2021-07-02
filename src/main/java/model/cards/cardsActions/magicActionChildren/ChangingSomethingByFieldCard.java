@@ -21,18 +21,20 @@ public interface ChangingSomethingByFieldCard {
             MonsterHouse[] monsterHouses = game.getPlayer(sideOfFeature).getBoard().getMonsterHouse();
 
             for (MonsterHouse monsterHouse : monsterHouses) {
-                if (typesToChangePower.contains(monsterHouse.getMonsterCard().getRace().toString())) {
+                MonsterCard monsterCard = monsterHouse.getMonsterCard();
+                if (monsterCard != null) {
+                    if (typesToChangePower.contains(monsterHouse.getMonsterCard().getRace().toString())) {
 
-                    MonsterCard monsterCard = monsterHouse.getMonsterCard();
 
-                    if (whichPower.equals("Attack")) {
-                        monsterCard.setAttack(monsterCard.getAttack() + change);
-                    } else if (whichPower.equals("Defence")) {
-                        monsterCard.setDefence(monsterCard.getDefence() + change);
+                        if (whichPower.equals("Attack")) {
+                            monsterCard.setAttack(monsterCard.getAttack() + change);
+                        } else if (whichPower.equals("Defence")) {
+                            monsterCard.setDefence(monsterCard.getDefence() + change);
+                        }
+
+                        monsterHouse.setHaveBeenImpactedByField(true);
+                        // Finished the job! Let's go home... Wait!NO! It continues...
                     }
-
-                    monsterHouse.setHaveBeenImpactedByField(true);
-                    // Finished the job! Let's go home... Wait!NO! It continues...
                 }
             }
         }
@@ -51,9 +53,9 @@ public interface ChangingSomethingByFieldCard {
             for (MonsterHouse monsterHouse : monsterHouses) {
                 if (monsterHouse.getHaveBeenImpactedByField()) { // it should be reverted!
                     if (whichPower.equals("Defence")) {
-                        monsterHouse.setPracticalDefence(monsterHouse.getPracticalDefence() + revertValue);
+                        monsterHouse.setAdditionalDefence(monsterHouse.getAdditionalDefence() - revertValue);
                     } else if (whichPower.equals("Attack")) {
-                        monsterHouse.setPracticalAttack(monsterHouse.getPracticalAttack() + revertValue);
+                        monsterHouse.setAdditionalAttack(monsterHouse.getAdditionalAttack() - revertValue);
                     }
 
                 }
