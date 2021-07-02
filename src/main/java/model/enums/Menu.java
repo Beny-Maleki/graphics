@@ -1,6 +1,9 @@
 package model.enums;
 
 public enum Menu {
+    WELCOME_MENU("WelcomePage.fxml"),
+    MAIN_MENU("MainPage.fxml"),
+    REGISTER_MENU("RegisterPage.fxml");
     MAIN_MENU("MainMenu.fxml"),
     PROFILE_CHANGE_PASSWORD("ProfileChangePassword.fxml"),
     PROFILE_CHANGE_NICKNAME("ProfileChangeNickname.fxml");

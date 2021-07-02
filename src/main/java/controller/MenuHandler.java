@@ -1,6 +1,8 @@
 package controller;
 
+import animatefx.animation.SlideInLeft;
 import animatefx.animation.SlideInRight;
+import animatefx.animation.SlideInUp;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 import javafx.scene.Parent;
@@ -29,6 +31,14 @@ public class MenuHandler {
     private void loadPane(Menu page) {
 
         switch (page) {
+            case WELCOME_MENU: {
+                new SlideInUp(parent).play();
+                break;
+            }
+            case REGISTER_MENU: {
+                new SlideInLeft(parent).play();
+                break;
+            }
             case MAIN_MENU: {
                 new SlideInRight(parent).play();
                 break;
