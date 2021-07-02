@@ -1,71 +1,39 @@
 package controller;
 
-import com.sanityinc.jargs.CmdLineParser;
+import animatefx.animation.SlideInRight;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Node;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
+import javafx.stage.Stage;
 import model.enums.Menu;
-import model.enums.MenusMassages.*;
-import viewer.menudisplay.ShopMenuDisplay;
-import viewer.menudisplay.DeckMenuDisplay;
-import viewer.menudisplay.ProfileMenuDisplay;
-import viewer.menudisplay.ScoreboardMenuDisplay;
-import viewer.menu.DeckMenu;
-import viewer.menu.*;
 
 import java.io.IOException;
-import java.util.ArrayList;
 
 public class MenuHandler {
-    private static final ArrayList<String> ALL_MENUS;
+    Parent parent;
 
-    static {
-        ALL_MENUS = new ArrayList<>() {
-            {
-                add("Register menu");
-                add("Main menu");
-                add("Duel menu");
-                add("Deck menu");
-                add("Scoreboard menu");
-                add("Profile menu");
-                add("Shop menu");
+    public void moveToPage(Node node, Menu menu) throws IOException {
+        Stage stage;
+        Scene scene;
+        FXMLLoader loader = new FXMLLoader(getClass().getResource(menu.getAddress()));
+        parent = loader.load();
+        stage = (Stage) node.getScene().getWindow();
+        scene = new Scene(parent);
+        stage.setScene(scene);
+        scene.getRoot().requestFocus();
+        loadPane(menu);
+        stage.show();
+    }
+
+    private void loadPane(Menu page) {
+
+        switch (page) {
+            case MAIN_MENU: {
+                new SlideInRight(parent).play();
+                break;
             }
-        };
-    }
-
-    public static void changeMenu(Menu menu) throws CmdLineParser.OptionException, IOException {
-        if (menu == Menu.REGISTER_MENU) {
-            RegisterMenu registerMenu = RegisterMenu.getInstance();
-            System.out.println(Register.SUCCESSFULLY_ENTER_MENU.getRegisterMessage());
-            registerMenu.run();
         }
-        else if (menu == Menu.MAIN_MENU) {
-            MainMenu mainMenu = MainMenu.getInstance();
-            System.out.println(Main.SUCCESSFULLY_ENTER_MENU.getMainMessage());
-            mainMenu.run();
-        }
-        else if (menu == Menu.SCORE_BOARD_MENU) {
-            ScoreboardMenu scoreboardMenu = ScoreboardMenu.getInstance();
-            ScoreboardMenuDisplay.display(Scoreboard.SUCCESSFULLY_ENTER_MENU);
-            scoreboardMenu.run();
-        }
-        else if (menu == Menu.USER_PROFILE_MENU) {
-            ProfileMenu profileMenu = ProfileMenu.getInstance();
-            ProfileMenuDisplay.display(Profile.SUCCESSFULLY_ENTER_MENU);
-            profileMenu.run();
-        } else if (menu == Menu.DECK_MENU) {
-            DeckMenu deckMenu = DeckMenu.getInstance();
-            DeckMenuDisplay.display(DeckMessages.SUCCESSFULLY_ENTER_MENU);
-            deckMenu.run();
-        } else if (menu == Menu.SHOP_MENU) {
-            ShopMenu shopMenu = ShopMenu.getInstance();
-            ShopMenuDisplay.display(ShopMessages.SUCCESSFULLY_ENTER_MENU);
-            shopMenu.run();
-        } else if (menu == Menu.START_DUEL) {
-            DuelMenu duelMenu = DuelMenu.getInstance();
-            duelMenu.run();
-        }
-    }
-
-    public static boolean isMenuExist(String menuName) {
-        return ALL_MENUS.contains(menuName);
     }
 
 }

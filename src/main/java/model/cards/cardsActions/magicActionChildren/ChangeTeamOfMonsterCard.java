@@ -9,7 +9,7 @@ import model.gameprop.BoardProp.PlayerBoard;
 import model.gameprop.Player;
 import model.gameprop.gamemodel.Game;
 import model.gameprop.turnBasedObserver.ChangeTeamForOneTurn;
-import viewer.game.GetStringInput;
+import view.game.GetStringInput;
 
 public class ChangeTeamOfMonsterCard extends Action {
     {

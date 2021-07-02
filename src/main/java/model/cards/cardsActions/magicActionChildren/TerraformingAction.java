@@ -9,7 +9,7 @@ import model.enums.GameEnums.SideOfFeature;
 import model.gameprop.GameInProcess;
 import model.gameprop.Player;
 import model.gameprop.gamemodel.Game;
-import viewer.game.GetStringInput;
+import view.game.GetStringInput;
 
 import java.util.ArrayList;
 

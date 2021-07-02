@@ -1,9 +1,9 @@
 package model.enums.MenusMassages;
 
 public enum Duel {
-    CURRENT_MENU("Duel menu"),
-    SUCCESSFULLY_ENTER_MENU("you entered Duel menu successfully"),
-    SUCCESSFULLY_EXIT_MENU("Duel menu exited successfully"),
+    CURRENT_MENU("Duel controller"),
+    SUCCESSFULLY_ENTER_MENU("you entered Duel controller successfully"),
+    SUCCESSFULLY_EXIT_MENU("Duel controller exited successfully"),
     INVALID_SECOND_PLAYER("there is no player with this username"),
     USER_ONE_NO_ACTIVE_DECK("U1 has no active deck"),
     USER_TWO_NO_ACTIVE_DECK("U2 has no active deck"),

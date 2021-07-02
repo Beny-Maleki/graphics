@@ -4,7 +4,7 @@ public enum Error {
 
     //Register and Profile errors:
     INVALID_COMMAND("invalid command"),
-    INVALID_NAVIGATION("menu navigation is not possible"),
+    INVALID_NAVIGATION("controller navigation is not possible"),
     INVALID_USER_OR_PASS("Username and password didn't match!"),
     INVALID_ENTER_MENU("please login first"),
     INVALID_NICKNAME("user with nickname N_N already exists"),

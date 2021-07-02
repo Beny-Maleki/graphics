@@ -1,19 +1,20 @@
 package controller.menues.menuhandlers.menucontrollers;
 
+import controller.MenuHandler;
 import model.enums.Error;
 import model.enums.MenusMassages.DeckMessages;
 import model.enums.MenusMassages.ShopMessages;
 import model.cards.cardsProp.Card;
 import model.userProp.LoginUser;
 import model.userProp.User;
-import viewer.menudisplay.DeckMenuDisplay;
-import viewer.menudisplay.ShopMenuDisplay;
+import view.menudisplay.DeckMenuDisplay;
+import view.menudisplay.ShopMenuDisplay;
 
 import java.util.Arrays;
 import java.util.Comparator;
 import java.util.List;
 
-public class ShopMenuController {
+public class ShopMenuController extends MenuHandler {
     public static void showCurrent() {
         DeckMenuDisplay.display(DeckMessages.CURRENT_MENU);
     }

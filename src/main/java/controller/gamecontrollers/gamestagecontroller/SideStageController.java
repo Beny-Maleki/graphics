@@ -18,8 +18,8 @@ import model.gameprop.gamemodel.Game;
 import model.userProp.Deck;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
-import viewer.Regex;
-import viewer.game.UserInterface;
+import view.Regex;
+import view.game.UserInterface;
 
 import java.util.ArrayList;
 import java.util.Objects;

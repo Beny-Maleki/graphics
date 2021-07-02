@@ -1,9 +1,9 @@
 package model.enums.MenusMassages;
 
 public enum Main {
-    CURRENT_MENU("Main menu"),
-    SUCCESSFULLY_ENTER_MENU("you entered Main menu successfully"),
-    SUCCESSFULLY_EXIT_MENU("Main menu exited successfully"),
+    CURRENT_MENU("Main controller"),
+    SUCCESSFULLY_ENTER_MENU("you entered Main controller successfully"),
+    SUCCESSFULLY_EXIT_MENU("Main controller exited successfully"),
     SUCCESSFULLY_LOGOUT("User logout successfully"),
     MONEY_CHEAT_ACCEPTED("Your money increased by %s and now is %s");
 

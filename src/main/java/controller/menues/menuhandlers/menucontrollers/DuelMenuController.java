@@ -1,6 +1,7 @@
 package controller.menues.menuhandlers.menucontrollers;
 
 import com.sanityinc.jargs.CmdLineParser;
+import controller.MenuHandler;
 import controller.menues.menuhandlers.duelmenuhandler.DuelChain;
 import model.enums.GameEnums.PlayerTurn;
 import model.enums.MenusMassages.Duel;
@@ -10,12 +11,12 @@ import model.gameprop.gamemodel.Game;
 import model.userProp.LoginUser;
 import model.userProp.User;
 import model.userProp.UserInfoType;
-import viewer.RockPaperScissorGame;
-import viewer.game.GameViewer;
+import view.RockPaperScissorGame;
+import view.game.GameViewer;
 
 import java.util.Objects;
 
-public class DuelMenuController {
+public class DuelMenuController extends MenuHandler {
     private static DuelMenuController controller;
 
     private DuelMenuController() {
@@ -28,7 +29,7 @@ public class DuelMenuController {
     }
 
     public String run(String command) throws CmdLineParser.OptionException {
-        if (command.startsWith("menu show")) {
+        if (command.startsWith("controller show")) {
             return showCurrentMenu();
         } else if (command.startsWith("duel --new")) {
             CmdLineParser parser = new CmdLineParser();
@@ -57,8 +58,8 @@ public class DuelMenuController {
         if ((error = chain.request(data)) != null) {
             return processAnswer(error, data);
         }
-        Player loggedInPlayer = new Player(LoginUser.getUser(), 0 );
-        Player opponentPlayer = new Player(User.getUserByUserInfo(secondPlayer, UserInfoType.USERNAME),  0 );
+        Player loggedInPlayer = new Player(LoginUser.getUser(), 0);
+        Player opponentPlayer = new Player(User.getUserByUserInfo(secondPlayer, UserInfoType.USERNAME), 0);
         Game game = null;
         PlayerTurn firstPlayer = RockPaperScissorGame.run(LoginUser.getUser().getNickname(),
                 Objects.requireNonNull(User.getUserByUserInfo(secondPlayer, UserInfoType.USERNAME)).getNickname());

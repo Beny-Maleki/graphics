@@ -6,8 +6,8 @@ public enum Register {
     SUCCESSFULLY_USER_CREATE("user created successfully!"),
     SUCCESSFULLY_LOGIN("user logged in successfully!"),
     SUCCESSFULLY_LOGOUT("user logged out successfully!"),
-    SUCCESSFULLY_ENTER_MENU("you entered Register menu successfully"),
-    SUCCESSFULLY_EXIT_MENU("Register menu exited successfully");
+    SUCCESSFULLY_ENTER_MENU("you entered Register controller successfully"),
+    SUCCESSFULLY_EXIT_MENU("Register controller exited successfully");
 
 
     private final String registerMessage;

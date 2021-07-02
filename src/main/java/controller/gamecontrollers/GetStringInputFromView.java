@@ -1,7 +1,7 @@
 package controller.gamecontrollers;
 
 import model.enums.GameEnums.RequestingInput;
-import viewer.game.GetStringInput;
+import view.game.GetStringInput;
 
 public class GetStringInputFromView {
     public static String getInputFromView(RequestingInput message) {

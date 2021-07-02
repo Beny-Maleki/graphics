@@ -2,8 +2,8 @@ package controller.menues.menuhandlers.menucontrollers;
 
 
 import com.google.gson.Gson;
-import com.sanityinc.jargs.CmdLineParser;
 import controller.MenuHandler;
+import javafx.scene.Node;
 import model.enums.Error;
 import model.enums.Menu;
 import model.enums.MenusMassages.Register;
@@ -15,7 +15,7 @@ import model.userProp.UserInfoType;
 import java.io.FileWriter;
 import java.io.IOException;
 
-public class RegisterMenuController {
+public class RegisterMenuController extends MenuHandler {
 
 
     private static RegisterMenuController controller;
@@ -45,20 +45,8 @@ public class RegisterMenuController {
         return Error.INVALID_USER_OR_PASS.toString();
     }
 
-    public String enterMenu(String command) {
-        if (command.contains("Main menu")) {
-            if (null == LoginUser.getUser()) {
-                return Error.INVALID_ENTER_MENU.toString();
-            } else {
-                try {
-                    MenuHandler.changeMenu(Menu.MAIN_MENU);
-                    return "enter Main menu successfully";
-                } catch (CmdLineParser.OptionException | IOException e) {
-                    e.printStackTrace();
-                }
-            }
-        }
-        return null;
+    public void enterMenu(Node node) throws IOException {
+        moveToPage(node, Menu.MAIN_MENU);
     }
 
     public String createUser(String username, String nickname, String password) {
@@ -81,35 +69,6 @@ public class RegisterMenuController {
         }
     }
 
-    public String run(String command) throws CmdLineParser.OptionException {
-        CmdLineParser parser = new CmdLineParser();
-        if (command.startsWith("user create")) {
-            CmdLineParser.Option<String> username = parser.addStringOption('u', "username");
-            CmdLineParser.Option<String> nickname = parser.addStringOption('n', "nickname");
-            CmdLineParser.Option<String> password = parser.addStringOption('p', "password");
-
-            String[] splitCommand = command.split(" ");
-            parser.parse(splitCommand);
-            return createUser(parser.getOptionValue(username),
-                    parser.getOptionValue(nickname),
-                    parser.getOptionValue(password));
-        } else if (command.startsWith("user login")) {
-            CmdLineParser.Option<String> username = parser.addStringOption('u', "username");
-            CmdLineParser.Option<String> password = parser.addStringOption('p', "password");
-            String[] splitCommand = command.split(" ");
-            parser.parse(splitCommand);
-            return login(parser.getOptionValue(password),
-                    parser.getOptionValue(username));
-        } else if (command.startsWith("menu show")) {
-            return Register.CURRENT_MENU.getRegisterMessage();
-        } else if (command.startsWith("user logout")) {
-            return logout();
-        } else if (command.startsWith("menu enter")) {
-            return enterMenu(command);
-        }
-        return null;
-    }
-
     private String processOutPut(String error, String name) {
         if (error.contains("U_N")) {
             error = error.replace("U_N", name);
@@ -127,5 +86,10 @@ public class RegisterMenuController {
         writer = new FileWriter("jsonResources//Users.Json");
         writer.write(new Gson().toJson(User.getAllUsers()));
         writer.close();
+    }
+
+    public void exit() throws IOException {
+        saveData();
+        System.exit(0);
     }
 }

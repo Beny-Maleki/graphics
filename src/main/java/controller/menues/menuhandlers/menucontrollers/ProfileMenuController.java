@@ -1,13 +1,14 @@
 package controller.menues.menuhandlers.menucontrollers;
 
+import controller.MenuHandler;
 import model.enums.Error;
 import model.enums.MenusMassages.Profile;
 import model.userProp.LoginUser;
 import model.userProp.User;
 import model.userProp.UserInfoType;
-import viewer.menudisplay.ProfileMenuDisplay;
+import view.menudisplay.ProfileMenuDisplay;
 
-public class ProfileMenuController {
+public class ProfileMenuController extends MenuHandler {
     public static void showCurrentMenu() {
         ProfileMenuDisplay.display(Profile.CURRENT_MENU);
     }

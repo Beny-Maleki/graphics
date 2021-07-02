@@ -1,9 +1,9 @@
 package model.enums.MenusMassages;
 
 public enum DeckMessages {
-    CURRENT_MENU("Deck menu"),
-    SUCCESSFULLY_ENTER_MENU("you entered Deck menu successfully"),
-    SUCCESSFULLY_EXIT_MENU("Deck menu exited successfully"),
+    CURRENT_MENU("Deck controller"),
+    SUCCESSFULLY_ENTER_MENU("you entered Deck controller successfully"),
+    SUCCESSFULLY_EXIT_MENU("Deck controller exited successfully"),
     SUCCESSFULLY_CREATE_DECK("deck created successfully!"),
     SUCCESSFULLY_DELETE_DECK("deck deleted successfully"),
     SUCCESSFULLY_ACTIVATE_DECK("deck activated successfully"),

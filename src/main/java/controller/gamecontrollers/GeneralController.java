@@ -14,7 +14,6 @@ import model.enums.GameEnums.cardvisibility.MagicHouseVisibilityState;
 import model.enums.GameEnums.cardvisibility.MonsterHouseVisibilityState;
 import model.enums.GameEnums.gamestage.GameMainStage;
 import model.enums.GameEnums.gamestage.GameSideStage;
-import model.events.eventChildren.ActivationInOpponentTurn;
 import model.gameprop.BoardProp.GraveYard;
 import model.gameprop.BoardProp.MagicHouse;
 import model.gameprop.BoardProp.MonsterHouse;
@@ -22,7 +21,7 @@ import model.gameprop.GameInProcess;
 import model.gameprop.Player;
 import model.gameprop.SelectedCardProp;
 import model.gameprop.gamemodel.Game;
-import viewer.game.UserInterface;
+import view.game.UserInterface;
 
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -273,7 +272,7 @@ public class GeneralController {
     }
 
     private String runCheatCode(String cheatCode) {
-        // increase money is implemented in main menu!
+        // increase money is implemented in main controller!
         if (cheatCode.contains("winner")) {
             Game game = GameInProcess.getGame();
             PlayerTurn playerTurn = game.getTurnOfGame();

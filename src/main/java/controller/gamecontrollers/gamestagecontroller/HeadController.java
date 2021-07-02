@@ -3,7 +3,7 @@ package controller.gamecontrollers.gamestagecontroller;
 import com.sanityinc.jargs.CmdLineParser;
 import controller.gamecontrollers.GeneralController;
 import model.gameprop.existenceBasedObserver.ExistenceObserver;
-import viewer.Regex;
+import view.Regex;
 import java.util.ArrayList;
 import java.util.Objects;
 
