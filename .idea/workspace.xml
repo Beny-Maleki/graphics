@@ -4,8 +4,18 @@
     <option name="autoReloadType" value="ALL" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="45f87b1a-8403-4c06-b2b2-57ebfe555883" name="Default Changelist" comment="Profile add">
+    <list default="true" id="45f87b1a-8403-4c06-b2b2-57ebfe555883" name="Default Changelist" comment="Profile fix">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/controller/menues/menuhandlers/menucontrollers/ProfileMenuController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controller/menues/menuhandlers/menucontrollers/ProfileMenuController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/model/enums/Error.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/model/enums/Error.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/model/enums/Menu.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/model/enums/Menu.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/view/StageController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/view/StageController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/view/controller/ProfileChangeNicknameView.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/view/controller/ProfileChangeNicknameView.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/view/controller/ProfileChangePasswordView.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/view/controller/ProfileChangePasswordView.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/view/controller/ProfileView.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/view/controller/ProfileView.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/graphicprop/fxml/ProfileChangeNickname.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/graphicprop/fxml/ProfileChangeNickname.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/graphicprop/fxml/ProfileChangePassword.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/graphicprop/fxml/ProfileChangePassword.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/graphicprop/fxml/ProfileMenu.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/graphicprop/fxml/ProfilePage.fxml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -255,13 +265,6 @@
       <workItem from="1625238823311" duration="623000" />
       <workItem from="1625239812144" duration="6392000" />
       <workItem from="1625249746493" duration="11877000" />
-    </task>
-    <task id="LOCAL-00025" summary="fix some bugs in main menu and change accessibleness of some contents">
-      <created>1619312049679</created>
-      <option name="number" value="00025" />
-      <option name="presentableId" value="LOCAL-00025" />
-      <option name="project" value="LOCAL" />
-      <updated>1619312049679</updated>
     </task>
     <task id="LOCAL-00026" summary="clean">
       <created>1619327375448</created>
@@ -579,7 +582,13 @@
       <option name="project" value="LOCAL" />
       <updated>1625252675244</updated>
     </task>
-    <option name="localTasksCounter" value="74" />
+    <task id="LOCAL‎۰۰۰۷۴" summary="Profile fix">
+      <created>1625246223499</created>
+      <option name="number" value="LOCAL‎۰۰۰۷۴" />
+      <option name="presentableId" value="LOCAL‎۰۰۰۷۴" />
+      <updated>1625246223499</updated>
+    </task>
+    <option name="localTasksCounter" value="75" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -599,7 +608,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="polymorphism in enums" />
     <MESSAGE value="polymorphism in enums and Fix raw use of enums" />
     <MESSAGE value="completing general command" />
     <MESSAGE value="add first event and effect" />
@@ -624,7 +632,8 @@
     <MESSAGE value="changing the name of a method" />
     <MESSAGE value="update graphic basic" />
     <MESSAGE value="Profile add" />
-    <option name="LAST_COMMIT_MESSAGE" value="Profile add" />
+    <MESSAGE value="Profile fix" />
+    <option name="LAST_COMMIT_MESSAGE" value="Profile fix" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

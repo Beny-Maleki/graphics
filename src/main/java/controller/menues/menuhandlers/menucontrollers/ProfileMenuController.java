@@ -9,6 +9,17 @@ import model.userProp.UserInfoType;
 import view.menudisplay.ProfileMenuDisplay;
 
 public class ProfileMenuController extends MenuHandler {
+    private static ProfileMenuController instance;
+
+    private ProfileMenuController() {}
+
+    public static ProfileMenuController getInstance() {
+        if (instance == null) {
+            instance = new ProfileMenuController();
+        }
+        return instance;
+    }
+
     public static void showCurrentMenu() {
         ProfileMenuDisplay.display(Profile.CURRENT_MENU);
     }
@@ -17,26 +28,29 @@ public class ProfileMenuController extends MenuHandler {
         ProfileMenuDisplay.display(Error.INVALID_COMMAND);
     }
 
-    public static void changeNickname(String newNickname) {
+    public String changeNickname(String newNickname) {
         User user = User.getUserByUserInfo(newNickname, UserInfoType.NICKNAME);
         if (user != null) {
-            ProfileMenuDisplay.display(Error.INVALID_NICKNAME, newNickname);
+            return Error.INVALID_NICKNAME.toString();
         } else {
             user = LoginUser.getUser();
             user.setNickname(newNickname);
-            ProfileMenuDisplay.display(Profile.SUCCESSFULLY_CHANGE_NICKNAME);
+            return Profile.SUCCESSFULLY_CHANGE_NICKNAME.getMessage();
         }
     }
 
-    public static void changePassword(String currentPassword, String newPassword) {
+    public String changePassword(String currentPassword, String newPassword, String repeatPassword) {
+        if (!newPassword.equals(repeatPassword)) {
+            return Error.REPEAT_PASS_WRONG.toString();
+        }
         User user = LoginUser.getUser();
         if (!user.isPasswordMatch(currentPassword)) {
-            ProfileMenuDisplay.display(Error.INVALID_PASSWORD);
+            return Error.INVALID_PASSWORD.toString();
         } else if (currentPassword.equals(newPassword)) {
-            ProfileMenuDisplay.display(Error.INVALID_NEW_PASSWORD);
+            return Error.INVALID_NEW_PASSWORD.toString();
         } else {
             user.setPassword(newPassword);
-            ProfileMenuDisplay.display(Profile.SUCCESSFULLY_CHANGE_PASSWORD);
+            return Profile.SUCCESSFULLY_CHANGE_PASSWORD.getMessage();
         }
     }
 }
