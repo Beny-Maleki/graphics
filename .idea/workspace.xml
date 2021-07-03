@@ -4,7 +4,7 @@
     <option name="autoReloadType" value="ALL" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="45f87b1a-8403-4c06-b2b2-57ebfe555883" name="Default Changelist" comment="fix profile" />
+    <list default="true" id="45f87b1a-8403-4c06-b2b2-57ebfe555883" name="Default Changelist" comment="fix little" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -261,13 +261,6 @@
       <workItem from="1625239812144" duration="6392000" />
       <workItem from="1625249746493" duration="11877000" />
       <workItem from="1625296768504" duration="8468000" />
-    </task>
-    <task id="LOCAL-00029" summary="game models and general structure">
-      <created>1619500541760</created>
-      <option name="number" value="00029" />
-      <option name="presentableId" value="LOCAL-00029" />
-      <option name="project" value="LOCAL" />
-      <updated>1619500541760</updated>
     </task>
     <task id="LOCAL-00030" summary="game models and general structure">
       <created>1619551361013</created>
@@ -584,7 +577,13 @@
       <option name="presentableId" value="LOCAL‎۰۰۰۷۷" />
       <updated>1625319852563</updated>
     </task>
-    <option name="localTasksCounter" value="78" />
+    <task id="LOCAL‎۰۰۰۷۸" summary="fix little">
+      <created>1625320142096</created>
+      <option name="number" value="LOCAL‎۰۰۰۷۸" />
+      <option name="presentableId" value="LOCAL‎۰۰۰۷۸" />
+      <updated>1625320142096</updated>
+    </task>
+    <option name="localTasksCounter" value="79" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -604,7 +603,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="add first event and effect" />
     <MESSAGE value="better naming" />
     <MESSAGE value="correction of effect and event to new structure" />
     <MESSAGE value="MindCrushEffect and some details" />
@@ -629,7 +627,8 @@
     <MESSAGE value="login and register and welcome page" />
     <MESSAGE value="login and register and welcome page controllers" />
     <MESSAGE value="fix profile" />
-    <option name="LAST_COMMIT_MESSAGE" value="fix profile" />
+    <MESSAGE value="fix little" />
+    <option name="LAST_COMMIT_MESSAGE" value="fix little" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
