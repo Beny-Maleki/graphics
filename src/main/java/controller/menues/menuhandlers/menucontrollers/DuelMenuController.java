@@ -1,7 +1,7 @@
 package controller.menues.menuhandlers.menucontrollers;
 
 import com.sanityinc.jargs.CmdLineParser;
-import controller.MenuHandler;
+import controller.Controller;
 import controller.menues.menuhandlers.duelmenuhandler.DuelChain;
 import model.enums.GameEnums.PlayerTurn;
 import model.enums.MenusMassages.Duel;
@@ -16,7 +16,7 @@ import view.game.GameViewer;
 
 import java.util.Objects;
 
-public class DuelMenuController extends MenuHandler {
+public class DuelMenuController extends Controller {
     private static DuelMenuController controller;
 
     private DuelMenuController() {

@@ -5,7 +5,28 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="45f87b1a-8403-4c06-b2b2-57ebfe555883" name="Default Changelist" comment="login and register and welcome page">
-      <change beforePath="$PROJECT_DIR$/src/main/java/model/Exceptions/EmptyFieldException.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/model/Exceptions/EmptyTextFieldException.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/controller/menues/menuhandlers/menucontrollers/LoginPageController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/controller/menues/menuhandlers/menucontrollers/RegisterPageController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/graphicprop/stylesheets/LoginPage.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/jsonResources/Users.Json" beforeDir="false" afterPath="$PROJECT_DIR$/jsonResources/Users.Json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/controller/MenuHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controller/Controller.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/controller/menues/menuhandlers/menucontrollers/DeckMenuController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controller/menues/menuhandlers/menucontrollers/DeckMenuController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/controller/menues/menuhandlers/menucontrollers/DuelMenuController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controller/menues/menuhandlers/menucontrollers/DuelMenuController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/controller/menues/menuhandlers/menucontrollers/MainMenuController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controller/menues/menuhandlers/menucontrollers/MainMenuController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/controller/menues/menuhandlers/menucontrollers/ProfileMenuController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controller/menues/menuhandlers/menucontrollers/ProfileMenuController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/controller/menues/menuhandlers/menucontrollers/RegisterMenuController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controller/menues/menuhandlers/menucontrollers/WelcomePageController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/controller/menues/menuhandlers/menucontrollers/ScoreboardMenuController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controller/menues/menuhandlers/menucontrollers/ScoreboardMenuController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/controller/menues/menuhandlers/menucontrollers/ShopMenuController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controller/menues/menuhandlers/menucontrollers/ShopMenuController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/model/Exceptions/EmptyTextFieldException.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/model/Exceptions/EmptyTextFieldException.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/model/enums/Menu.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/model/enums/Menu.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/model/userProp/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/model/userProp/User.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/view/controller/LoginView.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/view/controller/LoginView.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/view/controller/RegisterView.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/view/controller/RegisterView.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/view/controller/WelcomeView.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/view/controller/WelcomeView.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/graphicprop/fxml/LoginPage.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/graphicprop/fxml/LoginPage.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/graphicprop/fxml/RegisterPage.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/graphicprop/fxml/RegisterPage.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/graphicprop/fxml/WelcomePage.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/graphicprop/fxml/WelcomePage.fxml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -36,8 +57,8 @@
         <option value="JUnit4 Test Class" />
         <option value="package-info" />
         <option value="Enum" />
-        <option value="CSS File" />
         <option value="FxmlFile" />
+        <option value="CSS File" />
         <option value="Class" />
       </list>
     </option>
@@ -55,15 +76,23 @@
     </file-type-list>
   </component>
   <component name="HighlightingSettingsPerFile">
-    <setting file="file://$PROJECT_DIR$/src/main/java/view/controller/WelcomeView.java" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/src/main/resources/graphicprop/stylesheets/WelcomePage.css" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/src/main/resources/graphicprop/stylesheets/LoginPage.css" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/src/main/java/model/Exceptions/EmptyTextFieldException.java" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/src/main/java/view/StageController.java" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/src/main/java/controller/menues/menuhandlers/menucontrollers/ProfileMenuController.java" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/src/main/resources/graphicprop/fxml/MainPage.fxml" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/src/main/java/Main.java" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/src/main/java/model/enums/Menu.java" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/src/main/java/view/controller/MainMenu.java" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/src/main/java/controller/menues/menuhandlers/menucontrollers/WelcomePageController.java" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/src/main/java/view/controller/WelcomeView.java" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/src/main/resources/graphicprop/fxml/LoginPage.fxml" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/src/main/java/view/controller/RegisterView.java" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/src/main/java/view/controller/ProfileView.java" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/src/main/java/Main.java" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/src/main/java/view/controller/LoginView.java" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/src/main/resources/graphicprop/fxml/WelcomePage.fxml" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/src/main/java/view/controller/MainMenu.java" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/src/main/java/controller/menues/menuhandlers/menucontrollers/RegisterMenuController.java" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/src/main/resources/graphicprop/stylesheets/RegisterPage.css" root0="FORCE_HIGHLIGHTING" />
   </component>
   <component name="ProblemsViewState">
     <option name="proportion" value="0.6115204" />
@@ -101,7 +130,7 @@
     <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.2" />
     <property name="restartRequiresConfirmation" value="false" />
-    <property name="settings.editor.selected.configurable" value="configurable.group.language" />
+    <property name="settings.editor.selected.configurable" value="preferences.lookFeel" />
   </component>
   <component name="ReaderModeSettings">
     <option name="enabled" value="false" />
@@ -144,15 +173,13 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration default="true" type="ArquillianTestNG" factoryName="" nameIsGenerated="true">
+    <configuration default="true" type="ArquillianJUnit" factoryName="" nameIsGenerated="true">
       <option name="arquillianRunConfiguration">
         <value>
           <option name="containerStateName" value="" />
         </value>
       </option>
-      <option name="TEST_OBJECT" value="CLASS" />
-      <properties />
-      <listeners />
+      <option name="TEST_OBJECT" value="class" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -256,13 +283,7 @@
       <workItem from="1625238823311" duration="623000" />
       <workItem from="1625239812144" duration="6392000" />
       <workItem from="1625249746493" duration="11877000" />
-    </task>
-    <task id="LOCAL-00026" summary="clean">
-      <created>1619327375448</created>
-      <option name="number" value="00026" />
-      <option name="presentableId" value="LOCAL-00026" />
-      <option name="project" value="LOCAL" />
-      <updated>1619327375448</updated>
+      <workItem from="1625296768504" duration="4550000" />
     </task>
     <task id="LOCAL-00027" summary="clean">
       <created>1619328708612</created>
@@ -580,7 +601,14 @@
       <option name="project" value="LOCAL" />
       <updated>1625295721089</updated>
     </task>
-    <option name="localTasksCounter" value="75" />
+    <task id="LOCAL-00075" summary="login and register and welcome page">
+      <created>1625295860894</created>
+      <option name="number" value="00075" />
+      <option name="presentableId" value="LOCAL-00075" />
+      <option name="project" value="LOCAL" />
+      <updated>1625295860894</updated>
+    </task>
+    <option name="localTasksCounter" value="76" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -633,7 +661,7 @@
         <line-breakpoint enabled="true" type="java-method">
           <url>file://$PROJECT_DIR$/src/main/java/controller/gamecontrollers/gamestagecontroller/handlers/changeposition/processors/SelectedCardProcessor.java</url>
           <line>15</line>
-          <properties class="controller.gamecontrollers.gamestagecontroller.handlers.changeposition.processors.SelectedCardProcessor">
+          <properties class="controller.gamecontrollers.gamestagecontroller.handlers.changeposition.processors.SelectedCardProcessor" method="process">
             <option name="EMULATED" value="true" />
           </properties>
           <option name="timeStamp" value="3" />

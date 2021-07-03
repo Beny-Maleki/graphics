@@ -1,6 +1,6 @@
 package controller.menues.menuhandlers.menucontrollers;
 
-import controller.MenuHandler;
+import controller.Controller;
 import model.cards.cardsProp.Card;
 import model.enums.Error;
 import model.enums.MenusMassages.DeckMessages;
@@ -13,7 +13,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Comparator;
 
-public class DeckMenuController extends MenuHandler {
+public class DeckMenuController extends Controller {
     public static void showCurrent() {
         DeckMenuDisplay.display(DeckMessages.CURRENT_MENU);
     }

@@ -1,6 +1,6 @@
 package controller.menues.menuhandlers.menucontrollers;
 
-import controller.MenuHandler;
+import controller.Controller;
 import model.enums.Error;
 import model.enums.MenusMassages.DeckMessages;
 import model.enums.MenusMassages.ShopMessages;
@@ -14,7 +14,7 @@ import java.util.Arrays;
 import java.util.Comparator;
 import java.util.List;
 
-public class ShopMenuController extends MenuHandler {
+public class ShopMenuController extends Controller {
     public static void showCurrent() {
         DeckMenuDisplay.display(DeckMessages.CURRENT_MENU);
     }
