@@ -8,7 +8,7 @@
    <children>
       <ImageView fitHeight="401.0" fitWidth="454.0" layoutX="273.0" layoutY="77.0" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@images/YuGiOhLogo.png" />
+            <Image url="@../images/YuGiOhLogo.png" />
          </image>
       </ImageView>
    </children>

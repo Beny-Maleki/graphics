@@ -6,6 +6,7 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.GridPane;
+import model.cards.CardHouse;
 import model.cards.cardsProp.Card;
 import model.cards.cardsProp.MagicCard;
 import model.cards.cardsProp.MonsterCard;
@@ -19,16 +20,18 @@ public class ShopView {
     public AnchorPane gridPaneBGPane;
     public Label numberOfSlide;
     public Label message;
-    public ImageView selectedCard;
+    public ImageView selectedCardImageView;
+    public Label cardDescription;
 
     private ArrayList<GridPane> slidesOfShopCards;
     private int currentSlideNum;
     private GridPane shownOnStage;
+    private Card selectedCard;
 
     public void initialize() {
         drawSlides();
         try {
-            selectedCard.setImage(new Image(new FileInputStream("src/main/resources/graphicprop/images/Cards/Monsters/Unknown.jpg")));
+            selectedCardImageView.setImage(new Image(new FileInputStream("src/main/resources/graphicprop/images/Cards/Monsters/Unknown.jpg")));
         } catch (FileNotFoundException ignored) {
         }
         numberOfSlide.setText("1");
@@ -68,12 +71,19 @@ public class ShopView {
                        continue;
                    }
 
+
                    ImageView imageView = new ImageView(image);
+                   CardHouse cardHouse = new CardHouse(card, imageView, image);// creating a wrapper for pic and related card!
+
                    imageView.setFitWidth(98);
                    imageView.setFitHeight(140);
-                   imageView.setLayoutX((imageView.getFitWidth() + 5) * k + 5);
-                   imageView.setLayoutY((imageView.getFitHeight() + 4.5) * k + 4.5);
-                   imageView.setOnMouseClicked(mouseEvent -> selectedCard.setImage(imageView.getImage()));
+                   imageView.setX((imageView.getFitWidth() + 5) * k + 5);
+                   imageView.setY((imageView.getFitHeight() + 4.5) * k + 4.5);
+                   imageView.setOnMouseClicked(mouseEvent -> {
+                       selectedCardImageView.setImage(cardHouse.getImage());
+                       selectedCard = cardHouse.getCard();
+                       cardDescription.setText(selectedCard.getCardDetail());
+                   });
                    slidesOfShopCards.get(i).add(imageView, k, j);
                }
             }
