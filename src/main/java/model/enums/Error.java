@@ -7,10 +7,11 @@ public enum Error {
     INVALID_NAVIGATION("controller navigation is not possible"),
     INVALID_USER_OR_PASS("Username and password didn't match!"),
     INVALID_ENTER_MENU("please login first"),
-    INVALID_NICKNAME("user with nickname N_N already exists"),
+    INVALID_NICKNAME("user with this nickname already exists"),
     INVALID_USERNAME("user with username U_N already exists"),
     INVALID_LOGOUT("no user is logged in now"),
     INVALID_PASSWORD("current password is invalid"),
+    REPEAT_PASS_WRONG("you enter wrong repeat for password"),
     INVALID_NEW_PASSWORD("please enter a new password"),
     INVALID_LOGIN("another user has login already"),
     // MainMenu errors:
