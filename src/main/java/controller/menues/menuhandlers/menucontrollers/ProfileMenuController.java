@@ -1,6 +1,6 @@
 package controller.menues.menuhandlers.menucontrollers;
 
-import controller.MenuHandler;
+import controller.Controller;
 import model.enums.Error;
 import model.enums.MenusMassages.Profile;
 import model.userProp.LoginUser;
@@ -8,7 +8,7 @@ import model.userProp.User;
 import model.userProp.UserInfoType;
 import view.menudisplay.ProfileMenuDisplay;
 
-public class ProfileMenuController extends MenuHandler {
+public class ProfileMenuController extends Controller {
     private static ProfileMenuController instance;
 
     private ProfileMenuController() {}
