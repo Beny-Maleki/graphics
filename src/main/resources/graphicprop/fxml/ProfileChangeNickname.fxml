@@ -21,5 +21,5 @@
         <Button fx:id="back" layoutX="14.0" layoutY="419.0" mnemonicParsing="false" onMouseClicked="#run" onMouseEntered="#hoverAnimation" text="BACK" />
         <Line endY="441.0" layoutX="321.0" layoutY="14.0" startY="-14.0" stroke="#008000" />
     </Pane>
-    <Label fx:id="Topic" alignment="CENTER" layoutX="60.0" layoutY="104.0" prefHeight="40.0" prefWidth="160.0" text="MAKE A NEW DUELIST" />
+    <Label fx:id="Topic" alignment="CENTER" layoutX="60.0" layoutY="104.0" prefHeight="40.0" prefWidth="160.0" text="CHANGE NICKNAME" />
 </AnchorPane>

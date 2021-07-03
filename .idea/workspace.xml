@@ -4,21 +4,7 @@
     <option name="autoReloadType" value="ALL" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="45f87b1a-8403-4c06-b2b2-57ebfe555883" name="Default Changelist" comment="fix">
-      <change afterPath="$PROJECT_DIR$/src/main/resources/graphicprop/images/ProfileBackground.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/graphicprop/images/sakaki.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/graphicprop/stylesheets/ProfilePage.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/jsonResources/Users.Json" beforeDir="false" afterPath="$PROJECT_DIR$/jsonResources/Users.Json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/controller/Controller.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controller/Controller.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/controller/menues/menuhandlers/menucontrollers/ProfileMenuController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controller/menues/menuhandlers/menucontrollers/ProfileMenuController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/view/controller/ProfileChangeNicknameView.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/view/controller/ProfileChangeNicknameView.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/view/controller/ProfileChangePasswordView.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/view/controller/ProfileChangePasswordView.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/view/controller/ProfileView.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/view/controller/ProfileView.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/graphicprop/fxml/ProfileChangeNickname.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/graphicprop/fxml/ProfileChangeNickname.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/graphicprop/fxml/ProfileChangePassword.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/graphicprop/fxml/ProfileChangePassword.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/graphicprop/fxml/ProfilePage.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/graphicprop/fxml/ProfilePage.fxml" afterDir="false" />
-    </list>
+    <list default="true" id="45f87b1a-8403-4c06-b2b2-57ebfe555883" name="Default Changelist" comment="final version Profile menu" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -282,13 +268,6 @@
       <option name="presentableId" value="LOCAL-00030" />
       <option name="project" value="LOCAL" />
       <updated>1619551361013</updated>
-    </task>
-    <task id="LOCAL-00033" summary="-add abstract method &quot;getCopy&quot; to &quot;Card&quot;&#10;-override &quot;getCopy&quot; by &quot;Monster&quot; &amp; &quot;Magic&quot; classes.&#10;-add &quot;getCopy&quot; to &quot;Deck&quot; class&#10;-finish &quot;Deck&quot; model class&#10;-add empty classes; DeckController, DeckMenu, DeckMenuDisplay&#10;-fix fields in &quot;Card&quot; branch&#10;-relate &quot;User&quot; &amp; &quot;Deck&quot; classes&#10;-add &quot;DeckMenu&quot; errors to &quot;Error&quot; ENUM">
-      <created>1619545766295</created>
-      <option name="number" value="00033" />
-      <option name="presentableId" value="LOCAL-00033" />
-      <option name="project" value="LOCAL" />
-      <updated>1619545766295</updated>
     </task>
     <task id="LOCAL-00034" summary="deck">
       <created>1619938237542</created>
@@ -595,7 +574,13 @@
       <option name="presentableId" value="LOCAL‎۰۰۰۸۰" />
       <updated>1625320744539</updated>
     </task>
-    <option name="localTasksCounter" value="81" />
+    <task id="LOCAL‎۰۰۰۸۱" summary="final version Profile menu">
+      <created>1625331144217</created>
+      <option name="number" value="LOCAL‎۰۰۰۸۱" />
+      <option name="presentableId" value="LOCAL‎۰۰۰۸۱" />
+      <updated>1625331144217</updated>
+    </task>
+    <option name="localTasksCounter" value="82" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -615,7 +600,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="correction of effect and event to new structure" />
     <MESSAGE value="MindCrushEffect and some details" />
     <MESSAGE value="ManuallyActivation added" />
     <MESSAGE value="new structure for actions" />
@@ -640,7 +624,8 @@
     <MESSAGE value="fix profile" />
     <MESSAGE value="fix little" />
     <MESSAGE value="fix" />
-    <option name="LAST_COMMIT_MESSAGE" value="fix" />
+    <MESSAGE value="final version Profile menu" />
+    <option name="LAST_COMMIT_MESSAGE" value="final version Profile menu" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
