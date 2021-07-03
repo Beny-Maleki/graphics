@@ -1,10 +1,11 @@
 package model.userProp;
 
+import model.Exceptions.EmptyTextFieldException;
 import model.cards.cardsProp.Card;
 
 import java.util.ArrayList;
 
-public class User extends FatherUser{
+public class User extends FatherUser {
 
     private static ArrayList<User> allUsers;
 

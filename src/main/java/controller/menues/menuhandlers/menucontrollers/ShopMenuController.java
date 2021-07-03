@@ -1,6 +1,6 @@
 package controller.menues.menuhandlers.menucontrollers;
 
-import controller.MenuHandler;
+import controller.Controller;
 import model.enums.Error;
 import model.enums.MenusMassages.DeckMessages;
 import model.enums.MenusMassages.ShopMessages;
@@ -14,7 +14,17 @@ import java.util.Arrays;
 import java.util.Comparator;
 import java.util.List;
 
-public class ShopMenuController extends MenuHandler {
+public class ShopMenuController extends Controller {
+    private static ShopMenuController instance;
+
+    private ShopMenuController() {
+    }
+
+    public static ShopMenuController getInstance() {
+        if (instance == null) instance = new ShopMenuController();
+        return instance;
+    }
+
     public static void showCurrent() {
         DeckMenuDisplay.display(DeckMessages.CURRENT_MENU);
     }

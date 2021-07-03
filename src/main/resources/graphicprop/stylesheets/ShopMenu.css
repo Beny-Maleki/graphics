@@ -1,0 +1,20 @@
+.rootPane {
+    -fx-background-color: #a19c9c;
+}
+
+.selectedCardPane {
+    -fx-background-color: #BB5544;
+}
+
+.allCardsPane {
+    -fx-background-color: #a368e0;
+
+}
+
+.selectedCardNeutralBG {
+    -fx-background-color: #444444;
+}
+
+.messageLabel {
+    -fx-text-fill: #BB5544;
+}
