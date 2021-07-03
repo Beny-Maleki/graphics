@@ -1,4 +1,4 @@
 package view.controller;
 
-public class RegisterView {
+public class LoginView {
 }
