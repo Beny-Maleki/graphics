@@ -11,7 +11,7 @@
 .text-field {
     -fx-background-color: #ffd920;
     -fx-text-fill: black;
-}
+ }
 
 #Topic {
     -fx-background-radius: 0 20 0 0;
