@@ -1,5 +1,7 @@
 package view.controller;
 
+import animatefx.animation.Tada;
+import javafx.scene.Node;
 import javafx.scene.control.Button;
 import javafx.scene.input.MouseEvent;
 import model.enums.Menu;
@@ -38,5 +40,9 @@ public class ProfileView {
         } else if (event.getSource() == ChangeNickname) {
             controller.moveToPage(ChangeNickname, Menu.PROFILE_CHANGE_NICKNAME);
         }
+    }
+
+    public void hoverAnimation(MouseEvent event) {
+        new Tada((Node) event.getSource()).play();
     }
 }

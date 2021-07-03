@@ -34,11 +34,13 @@ public class Controller {
     private void loadPane(Menu page) {
 
         switch (page) {
-            case WELCOME_MENU: {
+            case WELCOME_MENU:
+            case PROFILE_MENU: {
                 new SlideInUp(parent).play();
                 break;
             }
-            case REGISTER_MENU: {
+            case REGISTER_MENU:
+            case PROFILE_CHANGE_PASSWORD: {
                 new SlideInLeft(parent).play();
                 break;
             }
@@ -47,7 +49,8 @@ public class Controller {
                 new SlideInDown(parent).play();
                 break;
             }
-            case MAIN_MENU: {
+            case MAIN_MENU:
+            case PROFILE_CHANGE_NICKNAME: {
                 new SlideInRight(parent).play();
                 break;
             }

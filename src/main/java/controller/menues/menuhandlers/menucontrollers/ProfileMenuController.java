@@ -1,6 +1,7 @@
 package controller.menues.menuhandlers.menucontrollers;
 
 import controller.Controller;
+import model.Exceptions.EmptyTextFieldException;
 import model.enums.Error;
 import model.enums.MenusMassages.Profile;
 import model.userProp.LoginUser;
@@ -29,6 +30,9 @@ public class ProfileMenuController extends Controller {
     }
 
     public String changeNickname(String newNickname) {
+        if (newNickname.equals("")) {
+            return "You must fill all the fields first";
+        }
         User user = User.getUserByUserInfo(newNickname, UserInfoType.NICKNAME);
         if (user != null) {
             return Error.INVALID_NICKNAME.toString();
@@ -40,6 +44,9 @@ public class ProfileMenuController extends Controller {
     }
 
     public String changePassword(String currentPassword, String newPassword, String repeatPassword) {
+        if (currentPassword.equals("") || newPassword.equals("") || repeatPassword.equals("")) {
+            return "You must fill all the fields first";
+        }
         if (!newPassword.equals(repeatPassword)) {
             return Error.REPEAT_PASS_WRONG.toString();
         }

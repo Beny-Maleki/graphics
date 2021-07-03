@@ -1,0 +1,49 @@
+.text-field {
+    -fx-background-color: #008000;
+    -fx-text-fill: black;
+}
+
+#Topic {
+    -fx-background-radius: 0 20 0 0;
+    -fx-background-color: #008000;
+    -fx-text-fill: black;
+    -fx-font-size: 15;
+    -fx-font-style: italic;
+}
+
+#TopicProfile {
+    -fx-background-radius: 20 20 20 20;
+    -fx-background-color: #008000;
+    -fx-text-fill: black;
+    -fx-font-size: 15;
+    -fx-font-style: italic;
+}
+
+.label {
+    -fx-font-size: 14;
+    -fx-text-fill: #008000;
+}
+
+.button {
+    -fx-border-radius: 5;
+    -fx-background-radius: 5;
+    -fx-font-size: 13;
+    -fx-background-color: black;
+    -fx-border-color: #008000;
+    -fx-text-fill: #008000;
+}
+
+#ProfileBox {
+    -fx-background-color: black;
+    -fx-border-color: #090967;
+}
+
+#result {
+        -fx-font-size: 14;
+        -fx-text-fill: #ff0000;
+}
+
+#pane {
+    -fx-background-image: url(../images/ProfileBackground.jpg);
+    -fx-background-size: cover;
+}

@@ -1,6 +1,8 @@
 package view.controller;
 
+import animatefx.animation.Tada;
 import controller.menues.menuhandlers.menucontrollers.ProfileMenuController;
+import javafx.scene.Node;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
@@ -32,5 +34,9 @@ public class ProfileChangeNicknameView {
     private String changeNickname() {
         String nicknameNew = nickname.getText();
         return controller.changeNickname(nicknameNew);
+    }
+
+    public void hoverAnimation(MouseEvent event) {
+        new Tada((Node) event.getSource()).play();
     }
 }
