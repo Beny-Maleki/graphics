@@ -41,7 +41,6 @@ public class WelcomeView {
         } else if (event.getSource() == Login) {
             controller.moveToPage(Login, Menu.LOGIN_MENU);
         } else if (event.getSource() == Logout) {
-            System.out.println("here");
             controller.logout(Message);
         }
     }
