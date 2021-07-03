@@ -4,12 +4,22 @@
     <option name="autoReloadType" value="ALL" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="45f87b1a-8403-4c06-b2b2-57ebfe555883" name="Default Changelist" comment="add and improve ShopView and DeckView">
-      <change afterPath="$PROJECT_DIR$/src/main/java/model/cards/CardHouse.java" afterDir="false" />
+    <list default="true" id="45f87b1a-8403-4c06-b2b2-57ebfe555883" name="Default Changelist" comment="add CardHouse for images and some other stuff">
+      <change afterPath="$PROJECT_DIR$/src/main/resources/graphicprop/images/redBG.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/graphicprop/images/silverBG.jpg" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/jsonResources/Users.Json" beforeDir="false" afterPath="$PROJECT_DIR$/jsonResources/Users.Json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/controller/Controller.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controller/Controller.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/controller/menues/menuhandlers/menucontrollers/ShopMenuController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controller/menues/menuhandlers/menucontrollers/ShopMenuController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/model/cards/cardsProp/Card.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/model/cards/cardsProp/Card.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/model/cards/cardsProp/MagicCard.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/model/cards/cardsProp/MagicCard.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/model/cards/cardsProp/MonsterCard.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/model/cards/cardsProp/MonsterCard.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/view/controller/ShopView.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/view/controller/ShopView.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/view/controller/WelcomeView.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/view/controller/WelcomeView.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/graphicprop/fxml/MainPage.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/graphicprop/fxml/MainPage.fxml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/graphicprop/fxml/ShopMenu.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/graphicprop/fxml/ShopMenu.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/graphicprop/fxml/WelcomePage.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/graphicprop/fxml/WelcomePage.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/graphicprop/stylesheets/ShopMenu.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/graphicprop/stylesheets/ShopMenu.css" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -269,13 +279,6 @@
       <workItem from="1625239812144" duration="6392000" />
       <workItem from="1625249746493" duration="11877000" />
       <workItem from="1625296768504" duration="8468000" />
-    </task>
-    <task id="LOCAL-00028" summary="game models and general structure">
-      <created>1619500368832</created>
-      <option name="number" value="00028" />
-      <option name="presentableId" value="LOCAL-00028" />
-      <option name="project" value="LOCAL" />
-      <updated>1619500368832</updated>
     </task>
     <task id="LOCAL-00029" summary="game models and general structure">
       <created>1619500541760</created>
@@ -593,7 +596,14 @@
       <option name="project" value="LOCAL" />
       <updated>1625332606773</updated>
     </task>
-    <option name="localTasksCounter" value="77" />
+    <task id="LOCAL-00077" summary="add CardHouse for images and some other stuff">
+      <created>1625308684409</created>
+      <option name="number" value="00077" />
+      <option name="presentableId" value="LOCAL-00077" />
+      <option name="project" value="LOCAL" />
+      <updated>1625308684409</updated>
+    </task>
+    <option name="localTasksCounter" value="78" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -613,7 +623,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="completing general command" />
     <MESSAGE value="add first event and effect" />
     <MESSAGE value="better naming" />
     <MESSAGE value="correction of effect and event to new structure" />
@@ -638,7 +647,8 @@
     <MESSAGE value="Profile add" />
     <MESSAGE value="login and register and welcome page" />
     <MESSAGE value="login and register and welcome page controllers" />
-    <option name="LAST_COMMIT_MESSAGE" value="login and register and welcome page controllers" />
+    <MESSAGE value="add CardHouse for images and some other stuff" />
+    <option name="LAST_COMMIT_MESSAGE" value="add CardHouse for images and some other stuff" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

@@ -76,6 +76,8 @@ public abstract class Card {
 
     public abstract String getCardDetail();
 
+    public abstract String getCardDetailWithEnters();
+
     public String getName() {
         return name;
     }
@@ -112,6 +114,42 @@ public abstract class Card {
             }
         }
         return null;
+    }
+
+    public String getCardDescriptionWithEnters() {
+        if (description.length() > 40) {
+            int startIndex = 0;
+            int endIndex = 0;
+            StringBuilder result = new StringBuilder();
+            while (endIndex < description.length()) {
+                int nextEndOfLineIndex = Math.min(startIndex + 35, description.length() - 1);
+
+                if(description.charAt(nextEndOfLineIndex) != ' ') {
+                    if (nextEndOfLineIndex == description.length() - 1) {
+                        result.append(description, startIndex, nextEndOfLineIndex);
+                        break;
+                    }
+
+                    int lastSpaceIndex = 0;
+                    for (int i = startIndex; i < nextEndOfLineIndex; i++) {
+                        if (description.charAt(i) == ' ') {
+                            lastSpaceIndex = i;
+                        }
+                    }
+
+                    result.append(description, startIndex, lastSpaceIndex).append("\n");
+                    startIndex = lastSpaceIndex + 1;
+                    endIndex = lastSpaceIndex;
+                } else {
+                    result.append(description, startIndex, nextEndOfLineIndex).append("\n");
+                    startIndex = nextEndOfLineIndex + 1;
+                    endIndex = nextEndOfLineIndex;
+                }
+            }
+            return result.toString();
+        } else {
+            return description;
+        }
     }
 
 

@@ -267,6 +267,17 @@ public class MagicCard extends Card {
                         "\nDescription: " + description;
     }
 
+    @Override
+    public String getCardDetailWithEnters() {
+        return
+                 "Name: " + name +
+                         "\n" + typeOfMagic.toString() +
+                         "\nType: " + magicAttribute +
+                         "\nSpeed: " + restrictionTypeInAdding.toString() +
+                         "\nDescription:\n" + getCardDescriptionWithEnters();
+    }
+
+
     public MagicAttribute getMagicAttribute() {
         return magicAttribute;
     }

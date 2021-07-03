@@ -66,6 +66,17 @@ public class MonsterCard extends Card {
 
     }
 
+    @Override
+    public String getCardDetailWithEnters() {
+        return
+                "Name: " + name +
+                "\nLevel: " + level +
+                "\nType: " + race.toString() +
+                "\nATK: " + attack +
+                "\nDEF: " + defence +
+                "\nDescription:\n" + getCardDescriptionWithEnters();
+    }
+
     public int getAttack() {
         return attack;
     }

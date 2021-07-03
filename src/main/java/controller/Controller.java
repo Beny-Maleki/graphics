@@ -51,6 +51,10 @@ public class Controller {
                 new SlideInRight(parent).play();
                 break;
             }
+            case SHOP_MENU: {
+                new JackInTheBox(parent).play();
+                break;
+            }
         }
     }
 

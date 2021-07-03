@@ -1,18 +1,27 @@
 package view.controller;
 
 import animatefx.animation.*;
+import controller.menues.menuhandlers.menucontrollers.ShopMenuController;
+import javafx.fxml.FXML;
+import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.effect.DropShadow;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.GridPane;
 import model.cards.CardHouse;
 import model.cards.cardsProp.Card;
 import model.cards.cardsProp.MagicCard;
 import model.cards.cardsProp.MonsterCard;
+import model.enums.Menu;
+import model.userProp.LoginUser;
+import model.userProp.User;
 
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
+import java.io.IOException;
 import java.util.ArrayList;
 
 public class ShopView {
@@ -22,21 +31,54 @@ public class ShopView {
     public Label message;
     public ImageView selectedCardImageView;
     public Label cardDescription;
+    public Button buyButton;
+    public Label numberOfCards;
+    public Button prevButton;
+    public Button nextButton;
+    public Label balanceOfUser;
+    public Label price;
+    public Button back;
 
     private ArrayList<GridPane> slidesOfShopCards;
     private int currentSlideNum;
     private GridPane shownOnStage;
     private Card selectedCard;
 
+    @FXML
     public void initialize() {
+        selectedCard = null;
+        currentSlideNum = 0;
+
+        balanceOfUser.setText(String.valueOf(LoginUser.getUser().getBalance()));
+
+        buyButton.setDisable(true);
+
         drawSlides();
+
         try {
             selectedCardImageView.setImage(new Image(new FileInputStream("src/main/resources/graphicprop/images/Cards/Monsters/Unknown.jpg")));
         } catch (FileNotFoundException ignored) {
         }
+
         numberOfSlide.setText("1");
+
         shownOnStage = slidesOfShopCards.get(0);
         gridPaneBGPane.getChildren().add(shownOnStage);
+    }
+
+    public void run(MouseEvent event) {
+        if (event.getSource() == buyButton) {
+            buy();
+        } else if (event.getSource() == prevButton) {
+            previousSlide();
+        } else if (event.getSource() == nextButton) {
+            nextSlide();
+        } else if (event.getSource() == back) {
+            try {
+                ShopMenuController.getInstance().moveToPage(back, Menu.MAIN_MENU);
+            } catch (IOException ignored) {
+            }
+        }
     }
 
     public void drawSlides() {
@@ -46,7 +88,7 @@ public class ShopView {
         int numOfSlides = (cards.size() / 15);
         if (cards.size() % 15 != 0) numOfSlides++; // for now because of additional not used cards there is one empty page left empty!
 
-        for (int i = 0; i < numOfSlides; i++) {
+        for (int i = 0; i < numOfSlides; i++) { // Creating Gridpane
             slidesOfShopCards.add(new GridPane());
         }
 
@@ -75,19 +117,80 @@ public class ShopView {
                    ImageView imageView = new ImageView(image);
                    CardHouse cardHouse = new CardHouse(card, imageView, image);// creating a wrapper for pic and related card!
 
-                   imageView.setFitWidth(98);
-                   imageView.setFitHeight(140);
-                   imageView.setX((imageView.getFitWidth() + 5) * k + 5);
-                   imageView.setY((imageView.getFitHeight() + 4.5) * k + 4.5);
-                   imageView.setOnMouseClicked(mouseEvent -> {
-                       selectedCardImageView.setImage(cardHouse.getImage());
-                       selectedCard = cardHouse.getCard();
-                       cardDescription.setText(selectedCard.getCardDetail());
-                   });
+                   setSizeAndCoordinates(k, imageView);
+
+                   imageView.setStyle("-fx-cursor: hand");
+
+                   handleMouseEnteredEvent(imageView);
+
+                   handleMouseExitedEvent(imageView);
+
+                   handleMouseOnClickEvent(imageView, cardHouse);
+
                    slidesOfShopCards.get(i).add(imageView, k, j);
                }
             }
         }
+    }
+
+    private void setSizeAndCoordinates(int k, ImageView imageView) {
+        imageView.setFitWidth(98);
+        imageView.setFitHeight(140);
+        imageView.setX((imageView.getFitWidth() + 5) * k + 5);
+        imageView.setY((imageView.getFitHeight() + 4.5) * k + 4.5);
+    }
+
+    private void handleMouseOnClickEvent(ImageView imageView, CardHouse cardHouse) {
+        imageView.setOnMouseClicked(mouseEvent -> {
+            selectedCardImageView.setImage(cardHouse.getImage());
+            new Tada(imageView).play();
+            new FlipInX(selectedCardImageView).play();
+
+            selectedCard = cardHouse.getCard();
+
+            cardDescription.setText(selectedCard.getCardDetailWithEnters());
+            new BounceInUp(cardDescription).play();
+
+            price.setText(String.valueOf(selectedCard.getPrice()));
+            new FlipInY(price).play();
+
+            User loggedInUser = LoginUser.getUser();
+            buyButton.setDisable(selectedCard.getPrice() > loggedInUser.getBalance());
+
+            int count = 0;
+            count = ShopMenuController.countCardInUserProperties(loggedInUser, count, selectedCard);
+            if (count != 0) {
+                numberOfCards.setText("You have " + count + " number of this card");
+            } else {
+                numberOfCards.setText("You don't have any of this card");
+            }
+            new FadeInUp(numberOfCards).play();
+
+        });
+    }
+
+    private void handleMouseExitedEvent(ImageView imageView) {
+        imageView.setOnMouseExited(mouseEvent -> {
+            imageView.setScaleX(1);
+            imageView.setScaleY(1);
+
+            imageView.setEffect(null);
+        });
+    }
+
+    private void handleMouseEnteredEvent(ImageView imageView) {
+        imageView.setOnMouseEntered(mouseEvent -> {
+            imageView.setScaleX(1.1);
+            imageView.setScaleY(1.1);
+
+            DropShadow dropShadow = new DropShadow();
+            dropShadow.setWidth(imageView.getFitWidth());
+            dropShadow.setHeight(imageView.getFitHeight());
+            imageView.setEffect(dropShadow);
+
+            imageView.toFront();
+
+        });
     }
 
     private Image getImageOfCard(Card card) throws FileNotFoundException {
@@ -150,5 +253,19 @@ public class ShopView {
             new SlideOutDown(numberOfSlide).play();
             new SlideInDown(numberOfSlide).play();
         }
+    }
+
+    public void buy() {
+        User loggedInUser = LoginUser.getUser();
+
+        ShopMenuController.buyCard(selectedCard.getName());
+
+        balanceOfUser.setText(String.valueOf(loggedInUser.getBalance()));
+        new FadeInDown(balanceOfUser).play();
+
+        numberOfCards.setText("You have " + ShopMenuController.countCardInUserProperties(loggedInUser, 0, selectedCard) + " number of this card");
+        new FadeInLeft(numberOfCards).play();
+
+        buyButton.setDisable(loggedInUser.getBalance() < selectedCard.getPrice());
     }
 }

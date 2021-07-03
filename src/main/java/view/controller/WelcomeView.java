@@ -1,12 +1,17 @@
 package view.controller;
 
 import animatefx.animation.Tada;
+import controller.menues.menuhandlers.menucontrollers.LoginPageController;
 import controller.menues.menuhandlers.menucontrollers.WelcomePageController;
+import javafx.event.ActionEvent;
 import javafx.scene.Node;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.input.MouseEvent;
 import model.enums.Menu;
+import model.userProp.LoginUser;
+import model.userProp.User;
+import model.userProp.UserInfoType;
 
 import java.io.IOException;
 
@@ -17,6 +22,10 @@ public class WelcomeView {
     public Button Exit;
     public Button Logout;
     public Label Message;
+
+    //TODO: delete this after Main Menu got connected!
+    public Button Shop;
+
     WelcomePageController controller;
 
     {
@@ -39,5 +48,15 @@ public class WelcomeView {
 
     public void hoverAnimation(MouseEvent event) {
         new Tada((Node) event.getSource()).play();
+    }
+
+    //TODO: delete this after Main Menu got connected!
+    public void shopMenu(ActionEvent actionEvent) {
+        try {
+            LoginUser.setUser(User.getUserByUserInfo("Yaroo", UserInfoType.USERNAME));
+            controller.moveToPage(Shop, Menu.SHOP_MENU);
+        } catch (IOException e) {
+            System.out.println("Ey Vaay!!");
+        }
     }
 }

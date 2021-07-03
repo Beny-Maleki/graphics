@@ -5,6 +5,7 @@ import model.enums.Error;
 import model.enums.MenusMassages.DeckMessages;
 import model.enums.MenusMassages.ShopMessages;
 import model.cards.cardsProp.Card;
+import model.userProp.Deck;
 import model.userProp.LoginUser;
 import model.userProp.User;
 import view.menudisplay.DeckMenuDisplay;
@@ -32,16 +33,10 @@ public class ShopMenuController extends Controller {
     public static void buyCard(String cardName) {
         User user = LoginUser.getUser();
         Card card = Card.getCardByName(cardName);
-        int userBalance = user.getBalance();
 
-        if (card == null) {
-            ShopMenuDisplay.display(Error.INVALID_CARD_NAME_IN_SHOP, cardName);
-        } else if (userBalance < card.getPrice()) {
-            ShopMenuDisplay.display(Error.NOT_ENOUGH_MONEY);
-        } else {
+        if (card != null) {
             user.addCard(card.getID());
             user.changeBalance(-card.getPrice());
-            ShopMenuDisplay.display(ShopMessages.SUCCESSFULLY_BOUGHT_A_CARD, "" + user.getBalance());
         }
     }
 
@@ -66,6 +61,27 @@ public class ShopMenuController extends Controller {
         } else {
             ShopMenuDisplay.printCardDetail(card);
         }
+    }
+
+    public static int countCardInUserProperties(User loggedInUser, int count, Card selectedCard) {
+        for (Card c : loggedInUser.getUserCardCollection()) {
+            if (c.getName().equals(selectedCard.getName())) {
+                count++;
+            }
+        }
+        for (Deck deck : loggedInUser.getAllUserDecksId()) {
+            for (Card c : deck.getMainDeck()) {
+                if (c.getName().equals(selectedCard.getName())) {
+                    count++;
+                }
+            }
+            for (Card c : deck.getSideDeck()) {
+                if (c.getName().equals(selectedCard.getName())) {
+                    count++;
+                }
+            }
+        }
+        return count;
     }
 
     public static void invalidCommand() {
