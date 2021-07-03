@@ -4,14 +4,7 @@
     <option name="autoReloadType" value="ALL" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="45f87b1a-8403-4c06-b2b2-57ebfe555883" name="Default Changelist" comment="login and register and welcome page controllers">
-      <change afterPath="$PROJECT_DIR$/src/main/java/view/controller/MainMenuView.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/graphicprop/stylesheets/MainPage.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/graphicprop/fxml/MainPage.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/graphicprop/fxml/MainPage.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/graphicprop/fxml/ProfileMenu.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/graphicprop/fxml/ProfilePage.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/graphicprop/stylesheets/LoginPage.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/graphicprop/stylesheets/LoginPage.css" afterDir="false" />
-    </list>
+    <list default="true" id="45f87b1a-8403-4c06-b2b2-57ebfe555883" name="Default Changelist" comment="fix profile" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -158,11 +151,11 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="Main" type="Application" factoryName="Application" activateToolWindowBeforeRun="false" temporary="true" nameIsGenerated="true">
+    <configuration name="Main" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="ALTERNATIVE_JRE_PATH" value="11" />
       <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="true" />
       <option name="MAIN_CLASS_NAME" value="Main" />
-      <module name="YuGiOh" />
+      <module name="graphics" />
       <option name="VM_PARAMETERS" value="--module-path F:\javaFx\lib --add-modules javafx.controls,javafx.fxml" />
       <method v="2">
         <option name="Make" enabled="true" />
@@ -268,13 +261,6 @@
       <workItem from="1625239812144" duration="6392000" />
       <workItem from="1625249746493" duration="11877000" />
       <workItem from="1625296768504" duration="8468000" />
-    </task>
-    <task id="LOCAL-00028" summary="game models and general structure">
-      <created>1619500368832</created>
-      <option name="number" value="00028" />
-      <option name="presentableId" value="LOCAL-00028" />
-      <option name="project" value="LOCAL" />
-      <updated>1619500368832</updated>
     </task>
     <task id="LOCAL-00029" summary="game models and general structure">
       <created>1619500541760</created>
@@ -592,7 +578,13 @@
       <option name="project" value="LOCAL" />
       <updated>1625332606773</updated>
     </task>
-    <option name="localTasksCounter" value="77" />
+    <task id="LOCAL‎۰۰۰۷۷" summary="fix profile">
+      <created>1625319852563</created>
+      <option name="number" value="LOCAL‎۰۰۰۷۷" />
+      <option name="presentableId" value="LOCAL‎۰۰۰۷۷" />
+      <updated>1625319852563</updated>
+    </task>
+    <option name="localTasksCounter" value="78" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -612,7 +604,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="completing general command" />
     <MESSAGE value="add first event and effect" />
     <MESSAGE value="better naming" />
     <MESSAGE value="correction of effect and event to new structure" />
@@ -637,7 +628,8 @@
     <MESSAGE value="Profile add" />
     <MESSAGE value="login and register and welcome page" />
     <MESSAGE value="login and register and welcome page controllers" />
-    <option name="LAST_COMMIT_MESSAGE" value="login and register and welcome page controllers" />
+    <MESSAGE value="fix profile" />
+    <option name="LAST_COMMIT_MESSAGE" value="fix profile" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
