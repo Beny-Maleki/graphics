@@ -9,7 +9,7 @@ public enum Menu {
     PROFILE_CHANGE_NICKNAME("ProfileChangeNickname"),
     SHOP_MENU("ShopMenu"),
     DECK_MENU("DeckMenu"),
-    PROFILE_MENU("ProfilePage.fxml");
+    PROFILE_MENU("ProfilePage");
 
     String address;
 
