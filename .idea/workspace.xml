@@ -4,8 +4,8 @@
     <option name="autoReloadType" value="ALL" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="45f87b1a-8403-4c06-b2b2-57ebfe555883" name="Default Changelist" comment="Profile add">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+    <list default="true" id="45f87b1a-8403-4c06-b2b2-57ebfe555883" name="Default Changelist" comment="login and register and welcome page">
+      <change beforePath="$PROJECT_DIR$/src/main/java/model/Exceptions/EmptyFieldException.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/model/Exceptions/EmptyTextFieldException.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -43,6 +43,7 @@
     </option>
   </component>
   <component name="Git.Settings">
+    <option name="PUSH_AUTO_UPDATE" value="true" />
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="GitSEFilterConfiguration">
@@ -54,15 +55,15 @@
     </file-type-list>
   </component>
   <component name="HighlightingSettingsPerFile">
-    <setting file="file://$PROJECT_DIR$/src/main/java/view/controller/RegisterView.java" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/src/main/java/view/controller/WelcomeView.java" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/src/main/resources/graphicprop/fxml/WelcomePage.fxml" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/src/main/resources/graphicprop/fxml/MainPage.fxml" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/src/main/java/view/controller/ProfileView.java" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/src/main/java/controller/menues/menuhandlers/menucontrollers/RegisterMenuController.java" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/src/main/java/view/controller/MainMenu.java" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/src/main/java/view/StageController.java" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/src/main/resources/graphicprop/fxml/MainPage.fxml" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/src/main/java/view/controller/RegisterView.java" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/src/main/java/view/controller/ProfileView.java" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/src/main/java/Main.java" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/src/main/resources/graphicprop/fxml/WelcomePage.fxml" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/src/main/java/view/controller/MainMenu.java" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/src/main/java/controller/menues/menuhandlers/menucontrollers/RegisterMenuController.java" root0="FORCE_HIGHLIGHTING" />
   </component>
   <component name="ProblemsViewState">
     <option name="proportion" value="0.6115204" />
@@ -255,13 +256,6 @@
       <workItem from="1625238823311" duration="623000" />
       <workItem from="1625239812144" duration="6392000" />
       <workItem from="1625249746493" duration="11877000" />
-    </task>
-    <task id="LOCAL-00025" summary="fix some bugs in main menu and change accessibleness of some contents">
-      <created>1619312049679</created>
-      <option name="number" value="00025" />
-      <option name="presentableId" value="LOCAL-00025" />
-      <option name="project" value="LOCAL" />
-      <updated>1619312049679</updated>
     </task>
     <task id="LOCAL-00026" summary="clean">
       <created>1619327375448</created>
@@ -579,7 +573,14 @@
       <option name="project" value="LOCAL" />
       <updated>1625252675244</updated>
     </task>
-    <option name="localTasksCounter" value="74" />
+    <task id="LOCAL-00074" summary="login and register and welcome page">
+      <created>1625295721089</created>
+      <option name="number" value="00074" />
+      <option name="presentableId" value="LOCAL-00074" />
+      <option name="project" value="LOCAL" />
+      <updated>1625295721089</updated>
+    </task>
+    <option name="localTasksCounter" value="75" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -599,7 +600,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="polymorphism in enums" />
     <MESSAGE value="polymorphism in enums and Fix raw use of enums" />
     <MESSAGE value="completing general command" />
     <MESSAGE value="add first event and effect" />
@@ -624,7 +624,8 @@
     <MESSAGE value="changing the name of a method" />
     <MESSAGE value="update graphic basic" />
     <MESSAGE value="Profile add" />
-    <option name="LAST_COMMIT_MESSAGE" value="Profile add" />
+    <MESSAGE value="login and register and welcome page" />
+    <option name="LAST_COMMIT_MESSAGE" value="login and register and welcome page" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
