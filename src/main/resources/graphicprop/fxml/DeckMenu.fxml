@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<AnchorPane fx:id="anchorPane" prefHeight="700.0" prefWidth="1000" styleClass="pane"
+            stylesheets="/graphicprop/stylesheets/DeckMenu.css" xmlns="http://javafx.com/javafx/11.0.1"
+            xmlns:fx="http://javafx.com/fxml/1" fx:controller="view.controller.DeckView">
+   <Pane layoutX="50.0" layoutY="240.0" prefHeight="383.0" prefWidth="267.5" styleClass="selected">
+      <children>
+         <ImageView fx:id="selectedCardImageView" fitHeight="383.0" fitWidth="268.0" pickOnBounds="true"
+                    preserveRatio="true"/>
+      </children>
+   </Pane>
+   <Pane layoutX="358.0" layoutY="367.0" prefHeight="256.0" prefWidth="356.0">
+      <children>
+         <Label fx:id="details" layoutX="21.0" layoutY="22.0">
+            <font>
+               <Font size="13.0"/>
+            </font>
+         </Label>
+      </children>
+   </Pane>
+   <Label fx:id="cardName" layoutX="358.0" layoutY="301.0">
+      <font>
+         <Font size="25.0"/>
+      </font>
+   </Label>
+   <Label fx:id="message" layoutX="752.0" layoutY="377.0"/>
+   <Button layoutX="770.0" layoutY="515.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="189.0" text="Buy"/>
+   <AnchorPane layoutX="50.0" fx:id="anchorPaneOverHBox" layoutY="20.0" prefHeight="160.0" prefWidth="900.0">
+      <children>
+         <HBox fx:id="HBoxAllCards" prefHeight="155.0" prefWidth="900.0" styleClass="hbox"/>
+         <ScrollBar fx:id="scrollBar" layoutY="155.0" prefWidth="900.0"/>
+      </children>
+   </AnchorPane>
+</AnchorPane>

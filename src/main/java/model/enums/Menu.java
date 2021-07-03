@@ -6,7 +6,9 @@ public enum Menu {
     REGISTER_MENU("RegisterPage"),
     LOGIN_MENU("LoginPage"),
     PROFILE_CHANGE_PASSWORD("ProfileChangePassword"),
-    PROFILE_CHANGE_NICKNAME("ProfileChangeNickname");
+    PROFILE_CHANGE_NICKNAME("ProfileChangeNickname"),
+    SHOP_MENU("ShopMenu"),
+    DECK_MENU("DeckMenu");
 
     String address;
 
