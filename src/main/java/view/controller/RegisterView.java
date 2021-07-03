@@ -1,29 +1,34 @@
 package view.controller;
 
-import controller.menues.menuhandlers.menucontrollers.RegisterMenuController;
+import controller.menues.menuhandlers.menucontrollers.RegisterPageController;
 import javafx.scene.control.Button;
+import javafx.scene.control.Label;
+import javafx.scene.control.TextField;
 import javafx.scene.input.MouseEvent;
 import model.enums.Menu;
 
 import java.io.IOException;
 
-
 public class RegisterView {
+    public TextField Username;
+    public TextField Password;
+    public TextField Nickname;
     public Button Register;
-    public Button Login;
-    public Button Exit;
-    RegisterMenuController controller;
+    public Button Back;
+    public Label Message;
+
+    private final RegisterPageController controller;
 
     {
-        controller = RegisterMenuController.getInstance();
+        controller = new RegisterPageController();
     }
-
 
     public void run(MouseEvent event) throws IOException {
-        if (event.getSource() == Exit) {
-            controller.exit();
-        } else if (event.getSource() == Login) {
-            controller.moveToPage(Login, Menu.SHOP_MENU);
+        if (event.getSource() == Register) {
+            controller.createUser(Username.getText(), Password.getText(), Nickname.getText(), Message);
+        } else if (event.getSource() == Back) {
+            controller.moveToPage(Back, Menu.WELCOME_MENU);
         }
     }
+
 }

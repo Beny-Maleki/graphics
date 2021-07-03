@@ -1,9 +1,14 @@
 package model.enums;
 
 public enum Menu {
-    MAIN_MENU("MainMenu.fxml"),
-    SHOP_MENU("ShopMenu.fxml"),
-    DECK_MENU("DeckMenu.fxml");
+    WELCOME_MENU("WelcomePage"),
+    MAIN_MENU("MainPage"),
+    REGISTER_MENU("RegisterPage"),
+    LOGIN_MENU("LoginPage"),
+    PROFILE_CHANGE_PASSWORD("ProfileChangePassword"),
+    PROFILE_CHANGE_NICKNAME("ProfileChangeNickname"),
+    SHOP_MENU("ShopMenu"),
+    DECK_MENU("DeckMenu");
 
     String address;
 
@@ -12,6 +17,6 @@ public enum Menu {
     }
 
     public String getAddress() {
-        return "/graphicprop/fxml/" + address;
+        return "/graphicprop/fxml/" + address + ".fxml";
     }
 }

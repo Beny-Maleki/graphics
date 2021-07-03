@@ -1,6 +1,6 @@
 package controller.menues.menuhandlers.menucontrollers;
 
-import controller.MenuHandler;
+import controller.Controller;
 import model.enums.Error;
 import model.enums.MenusMassages.Scoreboard;
 import model.userProp.User;
@@ -9,7 +9,7 @@ import view.menudisplay.ScoreboardMenuDisplay;
 import java.util.ArrayList;
 import java.util.Comparator;
 
-public class ScoreboardMenuController extends MenuHandler {
+public class ScoreboardMenuController extends Controller {
     public static void invalidCommand() {
         ScoreboardMenuDisplay.display(Error.INVALID_COMMAND);
     }

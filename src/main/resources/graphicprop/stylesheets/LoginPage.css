@@ -1,21 +1,21 @@
-#pane {
-    -fx-background-image: url(../images/RegisterWallpaper.png);
+ .root{
+    -fx-background-image: url(../images/BrownBackGround.jpg);
     -fx-background-size: cover;
 }
 
 #RegisterBox {
     -fx-background-color: black;
-    -fx-border-color: #090967;
+    -fx-border-color: #ffd920;
 }
 
 .text-field {
-    -fx-background-color: #090967;
+    -fx-background-color: #ffd920;
     -fx-text-fill: black;
 }
 
 #Topic {
     -fx-background-radius: 0 20 0 0;
-    -fx-background-color: #090967;
+    -fx-background-color: #ffd920;
     -fx-text-fill: black;
     -fx-font-size: 15;
     -fx-font-style: italic;
@@ -23,7 +23,7 @@
 
 .label {
     -fx-font-size: 14;
-    -fx-text-fill: #090967;
+    -fx-text-fill: #ffd920;
 }
 
 .button {
@@ -31,12 +31,12 @@
     -fx-background-radius: 5;
     -fx-font-size: 13;
     -fx-background-color: black;
-    -fx-border-color: #090967;
-    -fx-text-fill: #090967;
+    -fx-border-color: #ffd920;
+    -fx-text-fill: #ffd920;
 }
 
-.button:hover{
-    -fx-background-color: #090967;
+.button:hover {
+    -fx-background-color: #ffd920;
     -fx-border-color: black;
     -fx-text-fill: black;
 }
