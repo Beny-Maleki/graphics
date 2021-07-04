@@ -8,7 +8,7 @@ public enum Menu {
     PROFILE_CHANGE_PASSWORD("ProfileChangePassword"),
     PROFILE_CHANGE_NICKNAME("ProfileChangeNickname"),
     SHOP_MENU("ShopMenu"),
-    DECK_MENU("DeckMenu"),
+    DECKS_VIEW("DecksView"),
     PROFILE_MENU("ProfilePage");
 
     String address;

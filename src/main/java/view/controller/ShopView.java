@@ -56,7 +56,9 @@ public class ShopView {
         drawSlides();
 
         try {
-            selectedCardImageView.setImage(new Image(new FileInputStream("src/main/resources/graphicprop/images/Cards/Monsters/Unknown.jpg")));
+            selectedCardImageView.
+                    setImage(new Image(new FileInputStream
+                            ("src/main/resources/graphicprop/images/Cards/Monsters/Unknown.jpg")));
         } catch (FileNotFoundException ignored) {
         }
 

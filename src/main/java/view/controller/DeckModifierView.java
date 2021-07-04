@@ -22,7 +22,7 @@ import java.util.TreeMap;
 
 // ** a little buggy! **
 
-public class DeckView {
+public class DeckModifierView {
 
     public ImageView selectedCardImageView;
     public Label details;

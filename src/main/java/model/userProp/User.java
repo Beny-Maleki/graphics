@@ -1,6 +1,5 @@
 package model.userProp;
 
-import model.Exceptions.EmptyTextFieldException;
 import model.cards.cardsProp.Card;
 
 import java.util.ArrayList;
@@ -17,8 +16,10 @@ public class User extends FatherUser {
     private final ArrayList<Integer> userCardCollection;
     private String username;
     private String password;
+    private int numberOfDeckHolder;
 
     {
+        numberOfDeckHolder = 1;
         allUserDecksId = new ArrayList<>();
         userCardCollection = new ArrayList<>();
         activeDeck = null;
@@ -132,6 +133,12 @@ public class User extends FatherUser {
         allUserDecksId.add(ID);
     }
 
+    public int getNumberOfDeckHolder() {
+        return numberOfDeckHolder;
+    }
 
+    public void increaseNumberOfDeckHolder() {
+        numberOfDeckHolder++;
+    }
 }
 

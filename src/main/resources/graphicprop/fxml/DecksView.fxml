@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane fx:id="MainPane" prefHeight="700.0" prefWidth="1000.0" stylesheets="@../stylesheets/DecksView.css" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="view.controller.DecksView">
+    <children>
+        <Pane fx:id="DeckOneHolder" layoutX="310.0" layoutY="35.0" onMouseClicked="#run" prefHeight="293.0" prefWidth="211.0" stylesheets="@../stylesheets/DecksView.css">
+         <children>
+            <ImageView fitHeight="318.0" fitWidth="268.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../images/packOfCard-removebg-preview.png" />
+               </image>
+            </ImageView>
+         </children></Pane>
+        <Pane fx:id="DeckTwoHolder" layoutX="670.0" layoutY="35.0" onMouseClicked="#run" prefHeight="294.0" prefWidth="211.0" />
+        <Pane fx:id="DeckThreeHolder" layoutX="670.0" layoutY="372.0" onMouseClicked="#run" prefHeight="294.0" prefWidth="211.0" />
+        <Pane fx:id="DeckFourHolder" layoutX="310.0" layoutY="372.0" onMouseClicked="#run" prefHeight="294.0" prefWidth="211.0" />
+        <Pane fx:id="DescriptionArea" prefHeight="700.0" prefWidth="232.0">
+         <children>
+            <Label alignment="CENTER" layoutX="63.0" layoutY="21.0" prefHeight="31.0" prefWidth="106.0" text="Decks view " textFill="#feffd4">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Label>
+         </children></Pane>
+    </children>
+</AnchorPane>
