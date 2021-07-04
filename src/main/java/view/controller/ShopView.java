@@ -16,6 +16,7 @@ import model.cards.cardsProp.Card;
 import model.cards.cardsProp.MagicCard;
 import model.cards.cardsProp.MonsterCard;
 import model.enums.Menu;
+import model.enums.Origin;
 import model.userProp.LoginUser;
 import model.userProp.User;
 
@@ -117,7 +118,7 @@ public class ShopView {
 
 
                    ImageView imageView = new ImageView(image);
-                   CardHouse cardHouse = new CardHouse(card, imageView, image);// creating a wrapper for pic and related card!
+                   CardHouse cardHouse = new CardHouse(card, imageView, image, Origin.SHOP_MENU);// creating a wrapper for pic and related card!
 
                    setSizeAndCoordinates(k, imageView);
 

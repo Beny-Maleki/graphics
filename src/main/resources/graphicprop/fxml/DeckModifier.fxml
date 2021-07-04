@@ -1,35 +1,78 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.scene.control.*?>
-<?import javafx.scene.image.*?>
 <?import javafx.scene.layout.*?>
+<?import javafx.scene.shape.*?>
 <?import javafx.scene.text.*?>
 
-<AnchorPane fx:id="anchorPane" prefHeight="700.0" prefWidth="1000" styleClass="pane"
-            stylesheets="/graphicprop/stylesheets/DecksView.css" xmlns="http://javafx.com/javafx/11.0.1"
-            xmlns:fx="http://javafx.com/fxml/1" fx:controller="view.controller.DeckModifierView">
-   <Pane layoutX="50.0" layoutY="240.0" prefHeight="383.0" prefWidth="267.5" styleClass="selected">
-      <ImageView fx:id="selectedCardImageView" fitHeight="383.0" fitWidth="268.0" pickOnBounds="true"
-                 preserveRatio="true"/>
-   </Pane>
-   <Pane layoutX="358.0" layoutY="367.0" prefHeight="256.0" prefWidth="356.0">
-      <Label fx:id="details" layoutX="21.0" layoutY="22.0">
-         <font>
-            <Font size="13.0"/>
-         </font>
-      </Label>
-   </Pane>
-   <Label fx:id="cardName" layoutX="358.0" layoutY="301.0">
-      <font>
-         <Font size="25.0"/>
-      </font>
-   </Label>
-   <Label fx:id="message" layoutX="752.0" layoutY="377.0"/>
-   <Button layoutX="770.0" layoutY="515.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="189.0" text="Buy"/>
-   <AnchorPane layoutX="50.0" fx:id="anchorPaneOverHBox" layoutY="20.0" prefHeight="160.0" prefWidth="900.0">
+<AnchorPane fx:id="anchorPane" onMouseClicked="#run" prefHeight="700.0" prefWidth="1000" styleClass="root" stylesheets="/graphicprop/stylesheets/DeckModifier.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="view.controller.DeckModifierView">
+   <AnchorPane fx:id="anchorPaneOverHBox" layoutX="30.0" layoutY="30.0" prefHeight="160.0" prefWidth="900.0">
       <children>
-         <HBox fx:id="HBoxAllCards" prefHeight="155.0" prefWidth="900.0" styleClass="hbox"/>
-         <ScrollBar fx:id="scrollBar" layoutY="155.0" prefWidth="900.0"/>
+         <HBox fx:id="hBoxCollection" prefHeight="160.0" prefWidth="900.0" styleClass="hboxCollection" />
+         <ScrollBar fx:id="scrollBar" layoutY="155.0" prefWidth="900.0" />
       </children>
    </AnchorPane>
+   <AnchorPane fx:id="mainDeckPane" layoutX="30.0" layoutY="241.0" prefHeight="270.0" prefWidth="500.0" styleClass="mainDeckPane">
+      <children>
+         <Rectangle fx:id="previousMainDeck" height="87.0" layoutX="5.0" layoutY="81.0" onMouseClicked="#run" style="-fx-cursor: hand;" width="15.0" />
+         <Label fx:id="previousMainDeckButtonLabel" layoutX="-10.0" layoutY="116.0" onMouseClicked="#run" rotate="270.0" style="-fx-cursor: hand;" text="Previous" textFill="WHITE" />
+         <Rectangle fx:id="nextMainDeck" height="87.0" layoutX="480.0" layoutY="81.0" onMouseClicked="#run" style="-fx-cursor: hand;" width="15.0" />
+         <Label fx:id="nextMainDeckButtonLabel" layoutX="475.0" layoutY="116.0" onMouseClicked="#run" rotate="90.0" style="-fx-cursor: hand;" text="Next" textFill="WHITE" />
+      </children></AnchorPane>
+   <AnchorPane fx:id="sideDeckPane" layoutX="30.0" layoutY="546.0" prefHeight="140.0" prefWidth="500.0" styleClass="sideDeckPane">
+      <children>
+         <Rectangle fx:id="nextSideDeck" height="87.0" layoutX="479.0" layoutY="27.0" onMouseClicked="#run" style="-fx-cursor: hand;" width="15.0" />
+         <Label fx:id="nextSideDeckButtonLabel" layoutX="474.0" layoutY="61.0" onMouseClicked="#run" rotate="90.0" style="-fx-cursor: hand;" text="Next" textFill="WHITE" />
+         <Rectangle fx:id="previousSideDeck" height="87.0" layoutX="5.0" layoutY="27.0" onMouseClicked="#run" width="15.0" />
+         <Label fx:id="previousSideDeckButtonLabel" layoutX="-9.0" layoutY="61.0" onMouseClicked="#run" rotate="270.0" style="-fx-cursor: hand;" text="Previous" textFill="WHITE" />
+      </children></AnchorPane>
+   <HBox alignment="CENTER" layoutX="592.0" layoutY="635.0" prefHeight="45.0" prefWidth="235.0" styleClass="titleOfPage">
+      <children>
+         <Label layoutX="10.0" prefHeight="36.0" prefWidth="219.0" text="Deck Construction">
+            <font>
+               <Font name="System Bold Italic" size="25.0" />
+            </font>
+         </Label>
+      </children>
+   </HBox>
+   <Button layoutX="864.0" layoutY="640.0" mnemonicParsing="false" prefHeight="36.0" prefWidth="65.0" style="-fx-cursor: hand;" styleClass="button" text="Back" />
+   <Button layoutX="592.0" layoutY="563.0" mnemonicParsing="false" onMouseClicked="#run" text="Move to Main Deck" />
+   <Button layoutX="728.0" layoutY="563.0" mnemonicParsing="false" text="Move to Side Deck" />
+   <Button layoutX="864.0" layoutY="563.0" mnemonicParsing="false" onMouseClicked="#run" text="Move to Collection" />
+   <Pane fx:id="messageContainer" layoutX="595.0" layoutY="600.0" prefHeight="32.0" prefWidth="403.0">
+      <children>
+         <Label fx:id="message" alignment="TOP_LEFT" layoutX="5.0" textFill="#3a5048">
+            <font>
+               <Font name="System Bold Italic" size="20.0" />
+            </font>
+         </Label>
+      </children>
+   </Pane>
+   <Pane layoutX="530.0" layoutY="241.0" prefHeight="270.0" prefWidth="30.0" style="-fx-background-color: #22364E;">
+      <children>
+         <Label layoutX="-35.0" layoutY="35.0" rotate="90.0" text="Main Deck" textFill="WHITE">
+            <font>
+               <Font name="System Bold" size="20.0" />
+            </font>
+         </Label>
+      </children>
+   </Pane>
+   <Pane layoutX="530.0" layoutY="546.0" prefHeight="140.0" prefWidth="30.0" style="-fx-background-color: #22364E;">
+      <children>
+         <Label layoutX="-30.0" layoutY="31.0" rotate="90.0" text="Side Deck" textFill="WHITE">
+            <font>
+               <Font name="System Bold" size="20.0" />
+            </font>
+         </Label>
+      </children>
+   </Pane>
+   <Pane layoutX="595.0" layoutY="200.0" prefHeight="32.0" prefWidth="274.0" style="-fx-background-color: white; -fx-background-radius: 20; -fx-border-radius: 20;">
+      <children>
+         <Label layoutX="10.0" layoutY="2.0" text="Your Collection Of Cards">
+            <font>
+               <Font name="System Bold" size="22.0" />
+            </font>
+         </Label>
+      </children>
+   </Pane>
 </AnchorPane>

@@ -26,7 +26,7 @@ public class User extends FatherUser {
     }
 
     {
-        balance = 10000000;
+        balance = 100000;
         score = 0;
     }
 

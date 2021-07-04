@@ -4,8 +4,26 @@
     <option name="autoReloadType" value="ALL" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="45f87b1a-8403-4c06-b2b2-57ebfe555883" name="Default Changelist" comment="complete ShopView">
+    <list default="true" id="45f87b1a-8403-4c06-b2b2-57ebfe555883" name="Default Changelist" comment="initial page changed">
+      <change afterPath="$PROJECT_DIR$/src/main/java/model/enums/Origin.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/graphicprop/images/brickBGpng.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/graphicprop/images/brickwall.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/graphicprop/images/dirtSignBG.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/graphicprop/images/dirtyBoardBG.jpg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/jsonResources/Decks.Json" beforeDir="false" afterPath="$PROJECT_DIR$/jsonResources/Decks.Json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/jsonResources/Users.Json" beforeDir="false" afterPath="$PROJECT_DIR$/jsonResources/Users.Json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/model/cards/CardHouse.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/model/cards/CardHouse.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/model/enums/Menu.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/model/enums/Menu.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/model/userProp/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/model/userProp/User.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/view/StageController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/view/StageController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/view/controller/DeckModifierView.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/view/controller/DeckModifierView.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/view/controller/DecksView.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/view/controller/DecksView.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/view/controller/ShopView.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/view/controller/ShopView.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/view/controller/WelcomeView.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/view/controller/WelcomeView.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/graphicprop/fxml/DeckModifier.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/graphicprop/fxml/DeckModifier.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/graphicprop/images/Cards/Monsters/BlueEyesWhiteDragon.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/graphicprop/images/Cards/Monsters/Blue-Eyeswhitedragon.jpg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/graphicprop/stylesheets/DeckModifier.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/graphicprop/stylesheets/DeckModifier.css" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -35,10 +53,10 @@
         <option value="JUnit5 Test Class" />
         <option value="JUnit4 Test Class" />
         <option value="package-info" />
-        <option value="Enum" />
         <option value="CSS File" />
         <option value="FxmlFile" />
         <option value="Class" />
+        <option value="Enum" />
       </list>
     </option>
   </component>
@@ -152,6 +170,19 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <configuration default="true" type="ArquillianTestNG" factoryName="" nameIsGenerated="true">
+      <option name="arquillianRunConfiguration">
+        <value>
+          <option name="containerStateName" value="" />
+        </value>
+      </option>
+      <option name="TEST_OBJECT" value="CLASS" />
+      <properties />
+      <listeners />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <configuration name="G:/semister 2/java Yu_gi_oh project/yu-gi-oh-Project" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
       <ExternalSystemSettings>
         <option name="executionName" />
@@ -252,13 +283,6 @@
       <workItem from="1625239812144" duration="6392000" />
       <workItem from="1625249746493" duration="11877000" />
       <workItem from="1625296768504" duration="8468000" />
-    </task>
-    <task id="LOCAL-00030" summary="game models and general structure">
-      <created>1619551361013</created>
-      <option name="number" value="00030" />
-      <option name="presentableId" value="LOCAL-00030" />
-      <option name="project" value="LOCAL" />
-      <updated>1619551361013</updated>
     </task>
     <task id="LOCAL-00034" summary="deck">
       <created>1619938237542</created>
@@ -571,7 +595,14 @@
       <option name="presentableId" value="LOCAL‎۰۰۰۸۱" />
       <updated>1625331144217</updated>
     </task>
-    <option name="localTasksCounter" value="82" />
+    <task id="LOCAL-00082" summary="initial page changed">
+      <created>1625337745101</created>
+      <option name="number" value="00082" />
+      <option name="presentableId" value="LOCAL-00082" />
+      <option name="project" value="LOCAL" />
+      <updated>1625337745101</updated>
+    </task>
+    <option name="localTasksCounter" value="83" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -591,7 +622,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="MindCrushEffect and some details" />
     <MESSAGE value="ManuallyActivation added" />
     <MESSAGE value="new structure for actions" />
     <MESSAGE value="json" />
@@ -616,7 +646,8 @@
     <MESSAGE value="fix little" />
     <MESSAGE value="fix" />
     <MESSAGE value="final version Profile menu" />
-    <option name="LAST_COMMIT_MESSAGE" value="final version Profile menu" />
+    <MESSAGE value="initial page changed" />
+    <option name="LAST_COMMIT_MESSAGE" value="initial page changed" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

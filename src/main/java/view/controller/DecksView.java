@@ -33,7 +33,7 @@ public class DecksView {
         int numberOfDeckHolder = loginUser.getNumberOfDeckHolder();
         for (int i = numberOfDeckHolder; i < 4; i++) {
             ImageView imageView = new ImageView();
-            FileInputStream fileInputStream = new FileInputStream("src/main/resources/graphicprop/images/LockIcon.png");
+            FileInputStream fileInputStream = new FileInputStream("src/main/resources/graphicprop/images/GreyLockBG.jpg");
             Image image = new Image(fileInputStream);
             imageView.setImage(image);
             imageView.setFitHeight(100);

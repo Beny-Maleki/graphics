@@ -1,1 +1,22 @@
-[]
+[
+  {
+    "allUserDecksId": [],
+    "userCardCollection": [],
+    "username": "ali",
+    "password": "ali",
+    "numberOfDeckHolder": 1,
+    "score": 0,
+    "nickname": "ali",
+    "balance": 10000000
+  },
+  {
+    "allUserDecksId": ["202105241815571"],
+    "userCardCollection": [],
+    "username": "Yaroo",
+    "password": "KaftarBaz",
+    "numberOfDeckHolder": 1,
+    "score": 0,
+    "nickname": "1234",
+    "balance": 100000
+  }
+]

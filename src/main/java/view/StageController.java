@@ -22,7 +22,7 @@ public class StageController extends Application {
     public void start(Stage stage) throws Exception {
         stage.setTitle("YuGiOh!");
         LoginUser.setUser(new User("ali", "ali", "ali"));
-        Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource(Menu.DECKS_VIEW.getAddress())));
+        Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource(Menu.WELCOME_MENU.getAddress())));
         Scene scene = new Scene(root);
         stage.setScene(scene);
         stage.show();
