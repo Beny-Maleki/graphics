@@ -34,7 +34,6 @@ public class DeckMenuController extends Controller {
             DeckMenuDisplay.display(Error.REPETITIOUS_DECK_NAME, name);
         } else {
             Deck deck = new Deck(name);
-            LoginUser.getUser().addDeckId(deck.getID());
             DeckMenuDisplay.display(DeckMessages.SUCCESSFULLY_CREATE_DECK);
         }
     }
