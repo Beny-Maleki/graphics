@@ -1,9 +1,9 @@
 package controller.menues.menuhandlers.menucontrollers;
 
 import controller.Controller;
+import model.cards.cardsProp.MonsterCard;
 import model.enums.Error;
 import model.enums.MenusMassages.DeckMessages;
-import model.enums.MenusMassages.ShopMessages;
 import model.cards.cardsProp.Card;
 import model.userProp.Deck;
 import model.userProp.LoginUser;
@@ -11,6 +11,7 @@ import model.userProp.User;
 import view.menudisplay.DeckMenuDisplay;
 import view.menudisplay.ShopMenuDisplay;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Comparator;
 import java.util.List;
@@ -39,19 +40,13 @@ public class ShopMenuController extends Controller {
             user.changeBalance(-card.getPrice());
         }
     }
-
-    public static void showAllCards() {
-        List<Card> cards = Card.getCards();
-        Card[] sortedCards = ShopMenuController.cardNameAlphabetSorter(cards);
-        ShopMenuDisplay.printAllCards(sortedCards);
-    }
-
-    public static Card[] cardNameAlphabetSorter(List<Card> cards) {
+    
+    public static ArrayList<Card> cardNameAlphabetSorter(List<Card> cards) {
         Card[] sortedCards = cards.toArray(new Card[0]);
         Comparator<Card> cardNameSorter = Comparator.comparing(Card::getName);
 
         Arrays.sort(sortedCards, cardNameSorter);
-        return sortedCards;
+        return new ArrayList<>(Arrays.asList(sortedCards));
     }
 
     public static void showCard(String cardName) {

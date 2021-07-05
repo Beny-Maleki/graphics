@@ -117,10 +117,11 @@ public class User extends FatherUser {
     }
 
     public void addCard(Integer ID) {
+
         userCardCollection.add(ID);
     }
 
-    public void removeCard(int ID) {
+    public void removeCardFromUserCollection(Integer ID) {
         userCardCollection.remove(ID);
     }
 

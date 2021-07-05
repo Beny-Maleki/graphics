@@ -99,12 +99,7 @@ public class Deck {
     }
 
     public void removeCardFromMainDeck(Card card) {
-        for (Integer integer : this.mainDeck) {
-            if (integer == card.getID()) {
-                mainDeck.remove(integer);
-                break;
-            }
-        }
+        this.mainDeck.remove(card.getID());
     }
 
     public void removeCardFromSideDeck(Card card) {

@@ -154,7 +154,7 @@ public abstract class Card {
 
 
 
-    public int getID() {
+    public Integer getID() {
         return ID;
     }
 

@@ -3,10 +3,6 @@
     -fx-background-size: cover;
 }
 
-.hboxCollection {
-    -fx-background-color: white;
-}
-
 .mainDeckPane {
     -fx-background-image: url('/graphicprop/images/dirtyBoardBG.jpg');
     -fx-background-size: cover;
@@ -33,4 +29,9 @@
     -fx-border-radius: 1000;
     -fx-text-fill: white;
     -fx-cursor: hand;
+}
+
+.selectedCardContainer {
+    -fx-background-image: url('/graphicprop/images/dirtyBoardBG.jpg');
+    -fx-background-size: cover;
 }

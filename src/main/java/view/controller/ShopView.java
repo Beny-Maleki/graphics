@@ -87,7 +87,7 @@ public class ShopView {
     public void drawSlides() {
         slidesOfShopCards = new ArrayList<>();
 
-        ArrayList<Card> cards = new ArrayList<>(Card.getCards());
+        ArrayList<Card> cards = ShopMenuController.cardNameAlphabetSorter(Card.getCards());
         int numOfSlides = (cards.size() / 15);
         if (cards.size() % 15 != 0) numOfSlides++; // for now because of additional not used cards there is one empty page left empty!
 
