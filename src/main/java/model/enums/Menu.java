@@ -9,6 +9,7 @@ public enum Menu {
     PROFILE_CHANGE_NICKNAME("ProfileChangeNickname"),
     SHOP_MENU("ShopMenu"),
     DECKS_VIEW("DecksView"),
+    SCOREBOARD_MENU("ScoreBoardPage"),
     PROFILE_MENU("ProfilePage"),
     DECK_MODIFIER("DeckModifier");
 

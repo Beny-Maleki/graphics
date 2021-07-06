@@ -12,6 +12,7 @@ import javafx.scene.control.Label;
 import javafx.stage.Stage;
 import javafx.util.Duration;
 import model.enums.Menu;
+import view.controller.ScoreboardView;
 
 import java.io.IOException;
 
@@ -22,6 +23,10 @@ public abstract class Controller {
         Stage stage;
         Scene scene;
         FXMLLoader loader = new FXMLLoader(getClass().getResource(menu.getAddress()));
+        if (menu == Menu.SCOREBOARD_MENU) {
+            ScoreboardView controller = loader.getController();
+            controller.setDetails();
+        }
         parent = loader.load();
         stage = (Stage) node.getScene().getWindow();
         scene = new Scene(parent);
