@@ -15,7 +15,7 @@ import model.enums.Menu;
 
 import java.io.IOException;
 
-public class Controller {
+public abstract class Controller {
     Parent parent;
 
     public void moveToPage(Node node, Menu menu) throws IOException {

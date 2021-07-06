@@ -3,6 +3,7 @@ package model.userProp;
 import model.cards.cardsProp.Card;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 
 public class User extends FatherUser {
 
@@ -16,17 +17,17 @@ public class User extends FatherUser {
     private final ArrayList<Integer> userCardCollection;
     private String username;
     private String password;
-    private int numberOfDeckHolder;
+    private ArrayList<Boolean> unlockedDeckHolders;
 
     {
-        numberOfDeckHolder = 1;
-        allUserDecksId = new ArrayList<>();
+        unlockedDeckHolders = new ArrayList<>(Arrays.asList(true, false, false, false));
+        allUserDecksId = new ArrayList<>(Arrays.asList(null, null, null, null));
         userCardCollection = new ArrayList<>();
         activeDeck = null;
     }
 
     {
-        balance = 10000000;
+        balance = 1000000;
         score = 0;
     }
 
@@ -129,16 +130,21 @@ public class User extends FatherUser {
         return !this.getUserCardCollection().contains(card);
     }
 
-    public void addDeckId(String ID) {
-        allUserDecksId.add(ID);
+    public void addDeckId(String ID, int place) {
+        allUserDecksId.set(place, ID);
     }
 
-    public int getNumberOfDeckHolder() {
-        return numberOfDeckHolder;
+    public ArrayList<Boolean> getUnlockedDeckHolders() {
+        return unlockedDeckHolders;
     }
 
-    public void increaseNumberOfDeckHolder() {
-        numberOfDeckHolder++;
+    public void unlockDeckHolder(int i) {
+        unlockedDeckHolders.set(i, true);
+    }
+
+
+    public void removeDeck(int i) {
+        allUserDecksId.remove(i);
     }
 }
 
