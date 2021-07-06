@@ -4,6 +4,7 @@ import animatefx.animation.*;
 import controller.menues.menuhandlers.menucontrollers.DeckModifierController;
 import javafx.animation.Animation;
 import javafx.animation.Interpolator;
+import javafx.animation.Timeline;
 import javafx.animation.Transition;
 import javafx.fxml.FXML;
 import javafx.geometry.Insets;
@@ -85,8 +86,10 @@ public class DecksView {
     }
 
     public void run(MouseEvent event) throws IOException {
-        if (event.getSource() == backButton)
+        if (event.getSource() == backButton) {
             controller.moveToPage(backButton, Menu.MAIN_MENU);
+            System.out.println("hello");
+        }
     }
 
     private void showPackOfCards(int i) throws FileNotFoundException {
@@ -230,7 +233,7 @@ public class DecksView {
                 deckHolders.get(i).getChildren().forEach(node -> {
                     FadeOut fadeOut = new FadeOut(node);
                     fadeOut.setSpeed(0.5);
-//                    fadeOut.setOn(event1 -> deckHolders.get(i).getChildren().remove(node));
+                    fadeOut.getTimeline().setOnFinished(event1 -> deckHolders.get(i).getChildren().remove(node));
                     fadeOut.play();
                 });
                 changeColorOfBackGround(deckHolders.get(i));

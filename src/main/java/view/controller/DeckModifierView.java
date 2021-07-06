@@ -224,27 +224,27 @@ public class DeckModifierView {
     }
 
     private void makeIntendedTransferButtonsVisible() {
-        if (selectedCard == null) {
-            return;
-        } else if (mainDeck.contains(selectedCard)) {
-            moveToSideDeckButton.setVisible(true);
-            moveToCollectionButton.setVisible(true);
+        if (selectedCard != null) {
+            if (mainDeck.contains(selectedCard)) {
+                moveToSideDeckButton.setVisible(true);
+                moveToCollectionButton.setVisible(true);
 
-            new FadeInDown(moveToCollectionButton).play();
-            new FadeInDown(moveToSideDeckButton).play();
-        } else if (sideDeck.contains(selectedCard)) {
-            System.out.println("here 2");
-            moveToMainDeckButton.setVisible(true);
-            moveToCollectionButton.setVisible(true);
+                new FadeInDown(moveToCollectionButton).play();
+                new FadeInDown(moveToSideDeckButton).play();
+            } else if (sideDeck.contains(selectedCard)) {
+                System.out.println("here 2");
+                moveToMainDeckButton.setVisible(true);
+                moveToCollectionButton.setVisible(true);
 
-            new FadeInDown(moveToCollectionButton).play();
-            new FadeInDown(moveToMainDeckButton).play();
-        } else if (LoginUser.getUser().getUserCardCollection().contains(selectedCard)) {
-            moveToSideDeckButton.setVisible(true);
-            moveToMainDeckButton.setVisible(true);
+                new FadeInDown(moveToCollectionButton).play();
+                new FadeInDown(moveToMainDeckButton).play();
+            } else if (LoginUser.getUser().getUserCardCollection().contains(selectedCard)) {
+                moveToSideDeckButton.setVisible(true);
+                moveToMainDeckButton.setVisible(true);
 
-            new FadeInDown(moveToMainDeckButton).play();
-            new FadeInDown(moveToSideDeckButton).play();
+                new FadeInDown(moveToMainDeckButton).play();
+                new FadeInDown(moveToSideDeckButton).play();
+            }
         }
     }
 
@@ -537,13 +537,18 @@ public class DeckModifierView {
     }
 
     private void disappearMessageContainer() {
-        if (!message.getText().equals("")) new FadeOutRight(messageContainer).play();
+        if (!message.getText().equals("")) {
+            message.setText("");
+            new FadeOutRight(messageContainer).play();
+        }
     }
 
     private void moveToCollection() {
         if (selectedCard == null) {
-            message.setText("You don't have any card selected!");
             prepareMessageContainer();
+
+            message.setText("You don't have any card selected!");
+            new Shake(message).play();
         } else {
             addCardToCollection();
             disappearMessageContainer();
@@ -552,7 +557,6 @@ public class DeckModifierView {
     }
 
     private void addCardToCollection() {
-        message.setText("");
         disappearMessageContainer();
 
         if (toShowDeck.getMainDeck().contains(selectedCard)) {
@@ -579,29 +583,41 @@ public class DeckModifierView {
 
     private void moveToMainDeck() {
         if (selectedCard == null) {
+            prepareMessageContainer();
+
             message.setText("You don't have any card selected!");
-            prepareMessageContainer();
+            new Shake(message).play();
         } else if (mainDeck.contains(selectedCard)) {
+            prepareMessageContainer();
+
             message.setText("This card is already in your Main Deck");
-            prepareMessageContainer();
+            new Shake(message).play();
         } else if (toShowDeck.getMainDeck().size() == 60) {
-            message.setText("Your main deck is full!");
             prepareMessageContainer();
+
+            message.setText("Your main deck is full!");
+            new Shake(message).play();
         } else if (selectedCard instanceof MonsterCard) {
             if ((toShowDeck.numOfCardOccurrence(selectedCard.getName(), "both decks") == 3)) {
-                message.setText("You already have 3 of this card in this deck");
                 prepareMessageContainer();
+
+                message.setText("You already have 3 of this card in this deck");
+                new Shake(message).play();
             } else {
                 addCardToMainDeck();
                 disappearMessageContainer();
             }
         } else {
             if (((MagicCard) selectedCard).getMagicRestrictionType() == RestrictionTypeInAdding.LIMITED && (toShowDeck.numOfCardOccurrence(selectedCard.getName(), "both decks") == 1)) {
+                prepareMessageContainer();
+
                 message.setText("You already have 1 of this card in this deck");
-                prepareMessageContainer();
+                new Shake(message).play();
             } else if (((MagicCard) selectedCard).getMagicRestrictionType() == RestrictionTypeInAdding.UNLIMITED && (toShowDeck.numOfCardOccurrence(selectedCard.getName(), "both decks") == 3)) {
-                message.setText("You already have 3 of this card in this deck");
                 prepareMessageContainer();
+
+                message.setText("You already have 3 of this card in this deck");
+                new Shake(message).play();
             } else {
                 addCardToMainDeck();
                 disappearMessageContainer();
@@ -611,29 +627,41 @@ public class DeckModifierView {
 
     private void moveToSideDeck() {
         if (selectedCard == null) {
+            prepareMessageContainer();
+
             message.setText("You don't have any card selected!");
-            prepareMessageContainer();
+            new Shake(message).play();
         } else if (sideDeck.contains(selectedCard)) {
+            prepareMessageContainer();
+
             message.setText("This card is already in your Side Deck");
-            prepareMessageContainer();
+            new Shake(message).play();
         } else if (toShowDeck.getMainDeck().size() == 15) {
-            message.setText("Your side deck is full!");
             prepareMessageContainer();
+
+            message.setText("Your side deck is full!");
+            new Shake(message).play();
         } else if (selectedCard instanceof MonsterCard) {
             if ((toShowDeck.numOfCardOccurrence(selectedCard.getName(), "both decks") == 3)) {
-                message.setText("You already have 3 of this card in this deck");
                 prepareMessageContainer();
+
+                message.setText("You already have 3 of this card in this deck");
+                new Shake(message).play();
             } else {
                 addCardToSideDeck();
                 disappearMessageContainer();
             }
         } else {
             if (((MagicCard) selectedCard).getMagicRestrictionType() == RestrictionTypeInAdding.LIMITED && (toShowDeck.numOfCardOccurrence(selectedCard.getName(), "both decks") == 1)) {
+                prepareMessageContainer();
+
                 message.setText("You already have 1 of this card in this deck");
-                prepareMessageContainer();
+                new Shake(message).play();
             } else if (((MagicCard) selectedCard).getMagicRestrictionType() == RestrictionTypeInAdding.UNLIMITED && (toShowDeck.numOfCardOccurrence(selectedCard.getName(), "both decks") == 3)) {
-                message.setText("You already have 3 of this card in this deck");
                 prepareMessageContainer();
+
+                message.setText("You already have 3 of this card in this deck");
+                new Shake(message).play();
             } else {
                 addCardToSideDeck();
                 disappearMessageContainer();
@@ -642,7 +670,6 @@ public class DeckModifierView {
     }
 
     private void addCardToSideDeck() {
-        message.setText("");
         disappearMessageContainer();
 
         DeckModifierController.addCardToSideDeck(selectedCard, toShowDeck.getName());
@@ -657,7 +684,6 @@ public class DeckModifierView {
     }
 
     private void addCardToMainDeck() {
-        message.setText("");
         disappearMessageContainer();
 
         DeckModifierController.addCardToMainDeck(selectedCard, toShowDeck.getName());
