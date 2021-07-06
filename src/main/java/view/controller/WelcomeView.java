@@ -50,14 +50,4 @@ public class WelcomeView {
         new Tada((Node) event.getSource()).play();
     }
 
-    //TODO: delete this after Main Menu got connected!
-    public void shopMenu(ActionEvent actionEvent) {
-        try {
-            LoginUser.setUser(User.getUserByUserInfo("Yaroo", UserInfoType.USERNAME));
-            LoginUser.getUser().setActiveDeck(Deck.getDeckById("202105241815571"));
-            controller.moveToPage(Shop, Menu.DECK_MODIFIER);
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-    }
 }

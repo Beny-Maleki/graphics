@@ -39,7 +39,6 @@ public class DataBase {
         } catch (IOException e) {
             e.printStackTrace();
         }
-        System.out.println(magicCards.size());
         try {
             String json = new String(Files.readAllBytes(Paths.get("jsonResources\\MonsterCard.json")));
             monsterCards = new Gson().fromJson(json,
@@ -48,7 +47,6 @@ public class DataBase {
         } catch (IOException e) {
             e.printStackTrace();
         }
-        System.out.println(monsterCards.size());
         try (CSVReader reader = new CSVReader(new FileReader("csvFile\\SpellTrap.csv"))) {
             String[] lineInArray;
             int counter = 0;
