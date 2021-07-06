@@ -230,7 +230,7 @@ public class DecksView {
                 deckHolders.get(i).getChildren().forEach(node -> {
                     FadeOut fadeOut = new FadeOut(node);
                     fadeOut.setSpeed(0.5);
-                    fadeOut.setOnFinished(event1 -> deckHolders.get(i).getChildren().remove(node));
+                    fadeOut.getTimeline().setOnFinished(event1 -> deckHolders.get(i).getChildren().remove(node));
                     fadeOut.play();
                 });
                 changeColorOfBackGround(deckHolders.get(i));
