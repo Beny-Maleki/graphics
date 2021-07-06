@@ -10,10 +10,11 @@
 <AnchorPane prefHeight="700.0" prefWidth="1000.0" styleClass="pane" stylesheets="/graphicprop/stylesheets/WelcomePage.css" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="view.controller.WelcomeView">
     <Pane fx:id="MenuCover" layoutX="46.0" layoutY="109.0" prefHeight="378.0" prefWidth="334.0" style="-fx-background-color: black; -fx-border-radius: 12; -fx-background-radius: 12;">
         <Pane fx:id="Menu" layoutX="52.0" layoutY="63.0" prefHeight="251.0" prefWidth="224.0" stylesheets="@../stylesheets/WelcomePage.css">
-            <Button fx:id="Register" layoutX="72.0" layoutY="77.0" mnemonicParsing="false" onMouseClicked="#run" onMouseEntered="#hoverAnimation" prefHeight="25.0" prefWidth="80.0" text="Register" />
-            <Button fx:id="Login" layoutX="72.0" layoutY="120.0" mnemonicParsing="false" onMouseClicked="#run" onMouseEntered="#hoverAnimation" prefHeight="26.0" prefWidth="80.0" text="Login" />
+            <Button fx:id="Register" layoutX="71.0" layoutY="65.0" mnemonicParsing="false" onMouseClicked="#run" onMouseEntered="#hoverAnimation" prefHeight="25.0" prefWidth="80.0" text="Register" />
+            <Button fx:id="Login" layoutX="71.0" layoutY="105.0" mnemonicParsing="false" onMouseClicked="#run" onMouseEntered="#hoverAnimation" prefHeight="26.0" prefWidth="80.0" text="Login" />
             <Button fx:id="Exit" layoutX="72.0" layoutY="206.0" mnemonicParsing="false" onMouseClicked="#run" onMouseEntered="#hoverAnimation" prefHeight="25.0" prefWidth="80.0" text="Exit" />
             <Label layoutX="84.0" layoutY="14.0" text="WELCOME" textFill="#101010" />
+         <Button fx:id="Scoreboard" layoutX="72.0" layoutY="144.0" mnemonicParsing="false" onMouseClicked="#run" onMouseEntered="#hoverAnimation" prefHeight="25.0" prefWidth="80.0" text="Scoreboard" />
         </Pane>
         <ImageView fitHeight="129.0" fitWidth="147.0" layoutX="228.0" layoutY="293.0" pickOnBounds="true" preserveRatio="true">
             <Image url="@../images/MBB_007200.dds.png" />

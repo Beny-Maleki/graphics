@@ -23,13 +23,13 @@ public abstract class Controller {
         Stage stage;
         Scene scene;
         FXMLLoader loader = new FXMLLoader(getClass().getResource(menu.getAddress()));
+        parent = loader.load();
+        stage = (Stage) node.getScene().getWindow();
+        scene = new Scene(parent);
         if (menu == Menu.SCOREBOARD_MENU) {
             ScoreboardView controller = loader.getController();
             controller.setDetails();
         }
-        parent = loader.load();
-        stage = (Stage) node.getScene().getWindow();
-        scene = new Scene(parent);
         stage.setScene(scene);
         scene.getRoot().requestFocus();
         loadPane(menu);
