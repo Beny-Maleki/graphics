@@ -12,7 +12,7 @@ public abstract class Card {
 
     static {
         cards = new ArrayList<>();
-        numberOfCard = 115;
+        numberOfCard = 74;
     }
 
     protected int ID;
