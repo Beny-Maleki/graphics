@@ -1,7 +1,7 @@
 package view.controller;
 
 import animatefx.animation.*;
-import controller.menues.menuhandlers.menucontrollers.DeckMenuController;
+import controller.menues.menuhandlers.menucontrollers.DeckModifierController;
 import javafx.geometry.Insets;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
@@ -19,6 +19,7 @@ import model.cards.cardsEnum.Magic.RestrictionTypeInAdding;
 import model.cards.cardsProp.Card;
 import model.cards.cardsProp.MagicCard;
 import model.cards.cardsProp.MonsterCard;
+import model.enums.Menu;
 import model.enums.Origin;
 import model.userProp.Deck;
 import model.userProp.LoginUser;
@@ -64,7 +65,7 @@ public class DeckModifierView {
 
     private Pane shownOnStageMainDeck;
     private Pane shownOnStageSideDeck;
-    private DeckMenuController controller;
+    private DeckModifierController controller;
     private User loggedInUser;
     private Deck toShowDeck;
     private Card selectedCard;
@@ -74,16 +75,15 @@ public class DeckModifierView {
     private double scrolled;
 
     {
-        controller = DeckMenuController.getInstance();
+        controller = DeckModifierController.getInstance();
         loggedInUser = LoginUser.getUser();
-        toShowDeck = loggedInUser.getActiveDeck();
-        mainDeck = toShowDeck.getMainDeck();
-        sideDeck = toShowDeck.getSideDeck();
+        toShowDeck = loggedInUser.getDeckOnModify();
         collection = loggedInUser.getUserCardCollection();
     }
 
     public void initialize() {
         cardPictures = new TreeMap<>();
+        initializeDeck();
 
         initializeRoot();
 
@@ -103,6 +103,11 @@ public class DeckModifierView {
         } catch (FileNotFoundException ignored) {
         }
 
+    }
+
+    private void initializeDeck() {
+        mainDeck = toShowDeck.getMainDeck();
+        sideDeck = toShowDeck.getSideDeck();
     }
 
     public void run(MouseEvent mouseEvent) throws IOException {
@@ -125,6 +130,9 @@ public class DeckModifierView {
             emptySelectedCard();
         } else if (mouseEvent.getSource() == backButton) {
             back();
+            System.out.println("here body");
+        }else{
+            System.out.println("may name is nobody");
         }
     }
 
@@ -225,7 +233,7 @@ public class DeckModifierView {
             new FadeInDown(moveToCollectionButton).play();
             new FadeInDown(moveToSideDeckButton).play();
         } else if (sideDeck.contains(selectedCard)) {
-                    System.out.println("here 2");
+            System.out.println("here 2");
             moveToMainDeckButton.setVisible(true);
             moveToCollectionButton.setVisible(true);
 
@@ -272,7 +280,7 @@ public class DeckModifierView {
     private void initializeScrollBar() {
         User user = LoginUser.getUser();
 
-        ArrayList<Card> collection = DeckMenuController.cardNameAlphabetSorter(user.getUserCardCollection()); // note this arrayList doesn't have the same refrence as the actual collection of user!
+        ArrayList<Card> collection = DeckModifierController.cardNameAlphabetSorter(user.getUserCardCollection()); // note this arrayList doesn't have the same refrence as the actual collection of user!
 
         FlowPane collectionFlowPane = new FlowPane();
         collectionFlowPaneStyler(collection, collectionFlowPane);
@@ -325,17 +333,15 @@ public class DeckModifierView {
 
     private void initializeMainDeck() {
         int numberOfMainDeckSlides = 6;
-
         for (int i = 0; i < numberOfMainDeckSlides; i++) {
+            slidesOfMainDeck.get(i).getChildren().clear();
             slidesOfMainDeck.get(i).setLayoutX(15);
             slidesOfMainDeck.get(i).setLayoutY(10);
 
             for (int j = 0; j < 2; j++) {
                 for (int k = 0; k < 5; k++) {
                     ImageView imageView = new ImageView();
-
                     mainDeckCardSlotStyler(j, k, imageView);
-
                     handleOnMouseEntered(imageView);
                     handleOnMouseExited(imageView);
 
@@ -350,16 +356,15 @@ public class DeckModifierView {
                                 imageView.setImage(image);
                                 imageView.setDisable(true);
                             } catch (Exception ignored) {
+
                             }
                         } else {
                             Card card = mainDeck.get((i * 10) + (5 * j) + k);
                             CardHouse cardHouse = makeCardHouseAndAssignImage(imageView, card);
-
                             handleOnMouseClick(imageView, cardHouse);
                         }
                     } catch (FileNotFoundException ignored) {
                     }
-
                     slidesOfMainDeck.get(i).getChildren().add(imageView);
                 }
             }
@@ -369,6 +374,7 @@ public class DeckModifierView {
     private void initializeSideDeck() {
         int numberOfSideDeckSlides = 3;
         for (int i = 0; i < numberOfSideDeckSlides; i++) {
+            slidesOfSideDeck.get(i).getChildren().clear();
             slidesOfSideDeck.get(i).setLayoutX(15);
             slidesOfSideDeck.get(i).setLayoutY(10);
 
@@ -549,8 +555,14 @@ public class DeckModifierView {
         message.setText("");
         disappearMessageContainer();
 
-        if (toShowDeck.getMainDeck().contains(selectedCard)) DeckMenuController.removeCardFromMainDeck(selectedCard.getName(), toShowDeck.getName());
-        if (toShowDeck.getSideDeck().contains(selectedCard)) DeckMenuController.removeCardFromSideDeck(selectedCard.getName(), toShowDeck.getName());
+        if (toShowDeck.getMainDeck().contains(selectedCard)) {
+            DeckModifierController.removeCardFromMainDeck(selectedCard, toShowDeck.getName());
+            initializeDeck();
+        }
+        if (toShowDeck.getSideDeck().contains(selectedCard)) {
+            DeckModifierController.removeCardFromSideDeck(selectedCard, toShowDeck.getName());
+            initializeDeck();
+        }
 
         mainDeck = toShowDeck.getMainDeck();
         sideDeck = toShowDeck.getSideDeck();
@@ -633,10 +645,8 @@ public class DeckModifierView {
         message.setText("");
         disappearMessageContainer();
 
-        DeckMenuController.addCardToSideDeck(selectedCard.getName(), toShowDeck.getName());
-
-        sideDeck = toShowDeck.getSideDeck();
-
+        DeckModifierController.addCardToSideDeck(selectedCard, toShowDeck.getName());
+        initializeDeck();
         initializeCollection();
         initializeMainDeck();
         initializeSideDeck();
@@ -650,10 +660,8 @@ public class DeckModifierView {
         message.setText("");
         disappearMessageContainer();
 
-        DeckMenuController.addCardToMainDeck(selectedCard.getName(), toShowDeck.getName());
-
-        mainDeck = toShowDeck.getMainDeck();
-
+        DeckModifierController.addCardToMainDeck(selectedCard, toShowDeck.getName());
+        initializeDeck();
         initializeCollection();
         initializeMainDeck();
         initializeSideDeck();
@@ -663,6 +671,7 @@ public class DeckModifierView {
         new SlideInLeft(sideDeckPane).play();
     }
 
-    private void back() {
+    private void back() throws IOException {
+        controller.moveToPage(backButton, Menu.DECKS_VIEW);
     }
 }

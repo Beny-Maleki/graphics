@@ -66,6 +66,12 @@ public class MagicCard extends Card {
         return null;
     }
 
+    @Override
+    public Card getSimilarCard() {
+        return new MagicCard(name, typeOfMagic.toString(), magicAttribute.toString(),
+                description, restrictionTypeInAdding.toString(), String.valueOf(price));
+    }
+
     private void setMagicEvents(String name) {
         switch (name) {
             case "Forest":
@@ -270,11 +276,11 @@ public class MagicCard extends Card {
     @Override
     public String getCardDetailWithEnters() {
         return
-                 "Name: " + name +
-                         "\n" + typeOfMagic.toString() +
-                         "\nType: " + magicAttribute +
-                         "\nSpeed: " + restrictionTypeInAdding.toString() +
-                         "\nDescription:\n" + getCardDescriptionWithEnters();
+                "Name: " + name +
+                        "\n" + typeOfMagic.toString() +
+                        "\nType: " + magicAttribute +
+                        "\nSpeed: " + restrictionTypeInAdding.toString() +
+                        "\nDescription:\n" + getCardDescriptionWithEnters();
     }
 
 

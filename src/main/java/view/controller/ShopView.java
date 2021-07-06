@@ -261,7 +261,7 @@ public class ShopView {
     public void buy() {
         User loggedInUser = LoginUser.getUser();
 
-        ShopMenuController.buyCard(selectedCard.getName());
+        ShopMenuController.buyCard(selectedCard);
 
         balanceOfUser.setText(String.valueOf(loggedInUser.getBalance()));
         new FadeInDown(balanceOfUser).play();

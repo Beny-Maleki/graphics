@@ -26,7 +26,7 @@ public class StageController extends Application {
         LoginUser.setUser(user);
         Deck deck = new Deck("ali");
         user.addDeckId(deck.getID(), 0);
-        Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource(Menu.DECKS_VIEW.getAddress())));
+        Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource(Menu.SHOP_MENU.getAddress())));
         Scene scene = new Scene(root);
         stage.setScene(scene);
         stage.show();

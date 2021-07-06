@@ -99,7 +99,7 @@ public class Deck {
     }
 
     public void removeCardFromMainDeck(Card card) {
-        this.mainDeck.remove(card.getID());
+        mainDeck.remove(card.getID());
     }
 
     public void removeCardFromSideDeck(Card card) {

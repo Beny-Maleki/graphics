@@ -17,9 +17,11 @@ public class User extends FatherUser {
     private final ArrayList<Integer> userCardCollection;
     private String username;
     private String password;
+    private Deck deckOnModify;
     private ArrayList<Boolean> unlockedDeckHolders;
 
     {
+        deckOnModify = null;
         unlockedDeckHolders = new ArrayList<>(Arrays.asList(true, false, false, false));
         allUserDecksId = new ArrayList<>(Arrays.asList(null, null, null, null));
         userCardCollection = new ArrayList<>();
@@ -121,16 +123,20 @@ public class User extends FatherUser {
         return cards;
     }
 
+    public ArrayList<Integer> getUserCardCollectionInInteger(){
+        return userCardCollection;
+    }
+
     public ArrayList<Integer> getUserCardCollectionInteger() {
         return userCardCollection;
     }
 
-    public void addCard(Integer ID) {
-        userCardCollection.add(ID);
+    public void addCard(Card card ) {
+        userCardCollection.add(card.getID());
     }
 
-    public void removeCardFromUserCollection(Integer ID) {
-        userCardCollection.remove(ID);
+    public void removeCardFromUserCollection(Card card) {
+        userCardCollection.remove(card.getID());
     }
 
 
@@ -153,6 +159,14 @@ public class User extends FatherUser {
 
     public void removeDeck(int i) {
         allUserDecksId.set(i, null);
+    }
+
+    public void setDeckOnModify(Deck deckOnModify) {
+        this.deckOnModify = deckOnModify;
+    }
+
+    public Deck getDeckOnModify() {
+        return deckOnModify;
     }
 }
 

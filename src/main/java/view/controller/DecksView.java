@@ -1,6 +1,7 @@
 package view.controller;
 
 import animatefx.animation.*;
+import controller.menues.menuhandlers.menucontrollers.DeckModifierController;
 import javafx.animation.Animation;
 import javafx.animation.Interpolator;
 import javafx.animation.Transition;
@@ -20,12 +21,14 @@ import javafx.scene.layout.Pane;
 import javafx.scene.paint.Color;
 import javafx.util.Duration;
 import model.Exceptions.EmptyTextFieldException;
+import model.enums.Menu;
 import model.userProp.Deck;
 import model.userProp.LoginUser;
 import model.userProp.User;
 
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Arrays;
 
@@ -44,6 +47,11 @@ public class DecksView {
     public Pane DeckThreeHolder;
     public Pane DescriptionArea;
     private ArrayList<Pane> deckHolders;
+    private DeckModifierController controller;
+
+    {
+        controller = new DeckModifierController();
+    }
 
     @FXML
     public void initialize() throws FileNotFoundException {
@@ -66,8 +74,7 @@ public class DecksView {
                 imageView.setLayoutY(90);
                 deckHolders.get(i).setStyle("-fx-background-color : #a9a8a8; -fx-background-radius: 15; -fx-opacity: 0.75");
                 deckHolders.get(i).getChildren().add(imageView);
-            }
-            else if (USER.getAllUserDecksId().get(i) != null){
+            } else if (USER.getAllUserDecksId().get(i) != null) {
                 showPackOfCards(i);
             }
         }
@@ -419,7 +426,14 @@ public class DecksView {
         setNodesPosition(modifyButton, 130, 286, 88, 25);
         styleButton(modifyButton);
         DECK_NOTIFICATION.add(modifyButton);
-
+        modifyButton.setOnMouseClicked(event -> {
+            try {
+                USER.setDeckOnModify(deck);
+                controller.moveToPage(modifyButton , Menu.DECK_MODIFIER);
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        });
         new BounceIn(modifyButton).play();
 
         Button activeButton = new Button("Active");
@@ -437,7 +451,7 @@ public class DecksView {
                         activeButton.setStyle("-fx-text-fill: #A61210; -fx-background-radius: 15; -fx-focus-color : transparent");
                     }
             );
-        }
+        } else USER.setActiveDeck(deck);
         DECK_NOTIFICATION.add(activeButton);
 
         new BounceIn(activeButton).play();

@@ -12,7 +12,7 @@ public abstract class Card {
 
     static {
         cards = new ArrayList<>();
-        numberOfCard = 0;
+        numberOfCard = 115;
     }
 
     protected int ID;
@@ -29,20 +29,13 @@ public abstract class Card {
         cards.add(this);
         ID = numberOfCard;
         numberOfCard++;
-        System.out.println("ID of card : " + ID + "number of Cards : " + numberOfCard);
     }
 
     public Card() {
     }
 
-    public static Card getCardByName(String name) {
-        for (Card card : cards) {
-            if (card.name.equals(name)) {
-                return card;
-            }
-        }
-        return null; // No such CArd notExists.
-    }
+    public abstract Card getSimilarCard();
+
 
     public static int getCardPriceByName(String name) {
         for (Card card : cards) {

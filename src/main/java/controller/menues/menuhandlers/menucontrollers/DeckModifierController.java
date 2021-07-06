@@ -12,16 +12,15 @@ import view.menudisplay.DeckMenuDisplay;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Comparator;
-import java.util.List;
 
-public class DeckMenuController extends Controller {
-    private static DeckMenuController instance;
+public class DeckModifierController extends Controller {
+    private static DeckModifierController instance;
 
-    private DeckMenuController() {
+    public DeckModifierController() {
     }
 
-    public static DeckMenuController getInstance() {
-        if (instance == null) instance = new DeckMenuController();
+    public static DeckModifierController getInstance() {
+        if (instance == null) instance = new DeckModifierController();
         return instance;
     }
 
@@ -61,7 +60,7 @@ public class DeckMenuController extends Controller {
     public static void showAllDecks() {
         ArrayList<Deck> decks = LoginUser.getUser().getAllUserDecksId();
         Deck activeDeck = LoginUser.getUser().getActiveDeck();
-        Deck[] sortedDecks = DeckMenuController.deckNameAlphabetSorter(decks);
+        Deck[] sortedDecks = DeckModifierController.deckNameAlphabetSorter(decks);
         DeckMenuDisplay.showAllDecks(sortedDecks, activeDeck);
     }
 
@@ -70,7 +69,7 @@ public class DeckMenuController extends Controller {
 //        if (deck == null) {
 //            DeckMenuDisplay.display(Error.NOT_FOUND_DECK_NAME, deckName);
 //        } else {
-//            Card[] sortedMainDeck = DeckMenuController.cardNameAlphabetSorter(deck.getMainDeck());
+//            Card[] sortedMainDeck = DeckModifierController.cardNameAlphabetSorter(deck.getMainDeck());
 //            DeckMenuDisplay.showOneMainDeck(sortedMainDeck, deckName);
 //        }
 //    }
@@ -80,7 +79,7 @@ public class DeckMenuController extends Controller {
 //        if (deck == null) {
 //            DeckMenuDisplay.display(Error.NOT_FOUND_DECK_NAME, deckName);
 //        } else {
-//            Card[] sortedSideDeck = DeckMenuController.cardNameAlphabetSorter(deck.getSideDeck());
+//            Card[] sortedSideDeck = DeckModifierController.cardNameAlphabetSorter(deck.getSideDeck());
 //            DeckMenuDisplay.showOneSideDeck(sortedSideDeck, deckName);
 //        }
 //    }
@@ -95,7 +94,7 @@ public class DeckMenuController extends Controller {
 //            unionOfDecksAndCollection.addAll(deck.getSideDeck());
 //        }
 //
-//        Card[] sortedCards = DeckMenuController.cardNameAlphabetSorter(unionOfDecksAndCollection);
+//        Card[] sortedCards = DeckModifierController.cardNameAlphabetSorter(unionOfDecksAndCollection);
 //        DeckMenuDisplay.printAllCards(sortedCards);
 //    }
 
@@ -113,63 +112,43 @@ public class DeckMenuController extends Controller {
 
         Arrays.sort(sortedCards, cardNameSorter);
 
-        return new ArrayList(Arrays.asList(sortedCards));
+        return new ArrayList<>(Arrays.asList(sortedCards));
     }
 
-    public static void addCardToMainDeck(String cardName, String deckName) {
+    public static void addCardToMainDeck(Card card, String deckName) {
         User user = LoginUser.getUser();
         Deck selectedDeck = user.getDeckByName(deckName);
-        Card selectedCard = Card.getCardByName(cardName);
 
-        selectedDeck.addCardToMainDeck(selectedCard);
-        if (user.getUserCardCollection().contains(selectedCard)) user.removeCardFromUserCollection(selectedCard.getID());
-        else if (selectedDeck.getSideDeck().contains(selectedCard)) selectedDeck.removeCardFromSideDeck(selectedCard);
+        selectedDeck.addCardToMainDeck(card);
+        if (user.getUserCardCollection().contains(card))
+            user.removeCardFromUserCollection(card);
+        else if (selectedDeck.getSideDeck().contains(card))
+            selectedDeck.removeCardFromSideDeck(card);
     }
 
-    public static void addCardToSideDeck(String cardName, String deckName) {
+    public static void addCardToSideDeck(Card card, String deckName) {
         User user = LoginUser.getUser();
         Deck selectedDeck = user.getDeckByName(deckName);
-        Card selectedCard = Card.getCardByName(cardName);
 
-        selectedDeck.addCardToSideDeck(selectedCard);
-        if (user.getUserCardCollection().contains(selectedCard)) user.removeCardFromUserCollection(selectedCard.getID());
-        else if (selectedDeck.getMainDeck().contains(selectedCard)) selectedDeck.removeCardFromMainDeck(selectedCard);
-    }
-
-    public static void removeCardFromMainDeck(String cardName, String deckName) {
-        Deck selectedDeck = LoginUser.getUser().getDeckByName(deckName);
-        Card selectedCard = Card.getCardByName(cardName);
-
-        assert selectedCard != null;
-        selectedDeck.removeCardFromMainDeck(selectedCard);
-        LoginUser.getUser().addCard(selectedCard.getID());
-    }
-
-    public static void removeCardFromSideDeck(String cardName, String deckName) {
-        Deck selectedDeck = LoginUser.getUser().getDeckByName(deckName);
-        Card selectedCard = Card.getCardByName(cardName);
-        if (selectedDeck == null) {
-            DeckMenuDisplay.display(Error.NOT_FOUND_DECK_NAME, deckName);
-        } else if (selectedDeck.numOfCardOccurrence(cardName, "side deck") == 0) {
-            DeckMenuDisplay.display(Error.NOT_FOUND_CARD_NAME_IN_SIDE_DECK, cardName, deckName);
-        } else {
-            assert selectedCard != null;
-            selectedDeck.removeCardFromSideDeck(selectedCard);
-            LoginUser.getUser().addCard(selectedCard.getID());
-            DeckMenuDisplay.display(DeckMessages.SUCCESSFULLY_REMOVE_CARD_FROM_DECK);
+        selectedDeck.addCardToSideDeck(card);
+        if (user.getUserCardCollection().contains(card))
+            user.removeCardFromUserCollection(card);
+        else if (selectedDeck.getMainDeck().contains(card)) {
+            selectedDeck.removeCardFromMainDeck(card);
         }
     }
 
-    public static void showCard(String cardName) {
-        Card card = Card.getCardByName(cardName);
-        if (card == null) {
-            DeckMenuDisplay.display(Error.INVALID_CARD_NAME);
-        } else {
-            DeckMenuDisplay.printCardDetail(card);
-        }
+    public static void removeCardFromMainDeck(Card card, String deckName) {
+        Deck selectedDeck = LoginUser.getUser().getDeckByName(deckName);
+
+        selectedDeck.removeCardFromMainDeck(card);
+        LoginUser.getUser().addCard(card);
     }
 
-    public static void invalidCommand() {
-        DeckMenuDisplay.display(Error.INVALID_COMMAND);
+    public static void removeCardFromSideDeck(Card card, String deckName) {
+        Deck selectedDeck = LoginUser.getUser().getDeckByName(deckName);
+        selectedDeck.removeCardFromSideDeck(card);
+        LoginUser.getUser().addCard(card);
+        DeckMenuDisplay.display(DeckMessages.SUCCESSFULLY_REMOVE_CARD_FROM_DECK);
     }
 }

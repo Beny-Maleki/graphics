@@ -7,6 +7,7 @@ public class LoginUser {
         return user;
     }
 
+
     public static void setUser(User user) {
         LoginUser.user = user;
     }
