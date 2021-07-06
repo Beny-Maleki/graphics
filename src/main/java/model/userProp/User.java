@@ -109,12 +109,20 @@ public class User extends FatherUser {
         return allUserDecks;
     }
 
+    public ArrayList<Integer> getAllUserDecksIdInInteger() {
+        return this.userCardCollection;
+    }
+
     public ArrayList<Card> getUserCardCollection() {
         ArrayList<Card> cards = new ArrayList<>();
         for (Integer ID : userCardCollection) {
             cards.add(Card.getCardById(ID));
         }
         return cards;
+    }
+
+    public ArrayList<Integer> getUserCardCollectionInteger() {
+        return userCardCollection;
     }
 
     public void addCard(Integer ID) {
@@ -144,7 +152,7 @@ public class User extends FatherUser {
 
 
     public void removeDeck(int i) {
-        allUserDecksId.remove(i);
+        allUserDecksId.set(i, null);
     }
 }
 

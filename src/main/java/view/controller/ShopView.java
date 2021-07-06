@@ -270,5 +270,6 @@ public class ShopView {
         new FadeInLeft(numberOfCards).play();
 
         buyButton.setDisable(loggedInUser.getBalance() < selectedCard.getPrice());
+
     }
 }
