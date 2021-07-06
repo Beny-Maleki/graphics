@@ -9,6 +9,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.input.MouseEvent;
 import model.enums.Menu;
+import model.userProp.Deck;
 import model.userProp.LoginUser;
 import model.userProp.User;
 import model.userProp.UserInfoType;
@@ -53,9 +54,10 @@ public class WelcomeView {
     public void shopMenu(ActionEvent actionEvent) {
         try {
             LoginUser.setUser(User.getUserByUserInfo("Yaroo", UserInfoType.USERNAME));
-            controller.moveToPage(Shop, Menu.SHOP_MENU);
+            LoginUser.getUser().setActiveDeck(Deck.getDeckById("202105241815571"));
+            controller.moveToPage(Shop, Menu.DECK_MODIFIER);
         } catch (IOException e) {
-            System.out.println("Ey Vaay!!");
+            e.printStackTrace();
         }
     }
 }

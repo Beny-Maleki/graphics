@@ -2,12 +2,17 @@ package model.cards.cardsEnum.Monster;
 
 
 public enum MonsterAttribute {
-    DARK,
-    EARTH,
-    FIRE,
-    LIGHT,
-    WATER,
-    WIND;
+    DARK("DARK"),
+    EARTH("EARTH"),
+    FIRE("FIRE"),
+    LIGHT("LIGHT"),
+    WATER("WATER"),
+    WIND("WIND");
+    String enumToString;
+
+    MonsterAttribute(String enumToString) {
+        this.enumToString = enumToString;
+    }
 
     public static MonsterAttribute assignAttribute(String attribute) {
         switch (attribute) {
@@ -33,6 +38,11 @@ public enum MonsterAttribute {
                 return null;
             }
         }
+    }
+
+    @Override
+    public String toString() {
+        return enumToString;
     }
 }
 

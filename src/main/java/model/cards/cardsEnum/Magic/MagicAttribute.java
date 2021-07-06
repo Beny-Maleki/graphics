@@ -1,16 +1,19 @@
 package model.cards.cardsEnum.Magic;
 
 public enum MagicAttribute {
-    RITUAL(),
-    QUICK_PLAY(),
-    FIELD(),
-    EQUIP(),
-    CONTINUOUS(),
-    COUNTER(),
-    ANTI_TRAP(),
-    NORMAL();
+    RITUAL("Ritual"),
+    QUICK_PLAY("Quick-play"),
+    FIELD("Field"),
+    EQUIP("Equip"),
+    CONTINUOUS("Continous"),
+    COUNTER("Coutner"),
+    ANTI_TRAP("Anti-Trap"),
+    NORMAL("Normal");
 
-    MagicAttribute() {
+    String enumToString;
+
+    MagicAttribute(String enumToString) {
+        this.enumToString = enumToString;
     }
 
     public static MagicAttribute setAttribute(String attribute) {
@@ -42,5 +45,10 @@ public enum MagicAttribute {
             default:
                 return null;
         }
+    }
+
+    @Override
+    public String toString() {
+        return enumToString;
     }
 }

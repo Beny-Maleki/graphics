@@ -37,6 +37,12 @@ public class MonsterCard extends Card {
     public MonsterCard() {
     }
 
+    @Override
+    public Card getSimilarCard() {
+        return new MonsterCard(name , String.valueOf(level) , attribute.toString() , race.toString() , type.toString() ,
+                String.valueOf(attack) , String.valueOf(defence) , description , String.valueOf(price));
+    }
+
     public static void setMonsterCards(ArrayList<MonsterCard> monsterCards) {
         MonsterCard.monsterCards = monsterCards;
         Card.addMonstersToCards(monsterCards);

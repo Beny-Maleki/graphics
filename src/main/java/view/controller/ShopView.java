@@ -16,6 +16,7 @@ import model.cards.cardsProp.Card;
 import model.cards.cardsProp.MagicCard;
 import model.cards.cardsProp.MonsterCard;
 import model.enums.Menu;
+import model.enums.Origin;
 import model.userProp.LoginUser;
 import model.userProp.User;
 
@@ -86,7 +87,7 @@ public class ShopView {
     public void drawSlides() {
         slidesOfShopCards = new ArrayList<>();
 
-        ArrayList<Card> cards = new ArrayList<>(Card.getCards());
+        ArrayList<Card> cards = ShopMenuController.cardNameAlphabetSorter(Card.getCards());
         int numOfSlides = (cards.size() / 15);
         if (cards.size() % 15 != 0) numOfSlides++; // for now because of additional not used cards there is one empty page left empty!
 
@@ -117,7 +118,7 @@ public class ShopView {
 
 
                    ImageView imageView = new ImageView(image);
-                   CardHouse cardHouse = new CardHouse(card, imageView, image);// creating a wrapper for pic and related card!
+                   CardHouse cardHouse = new CardHouse(card, imageView, image, Origin.SHOP_MENU);// creating a wrapper for pic and related card!
 
                    setSizeAndCoordinates(k, imageView);
 
@@ -260,7 +261,7 @@ public class ShopView {
     public void buy() {
         User loggedInUser = LoginUser.getUser();
 
-        ShopMenuController.buyCard(selectedCard.getName());
+        ShopMenuController.buyCard(selectedCard);
 
         balanceOfUser.setText(String.valueOf(loggedInUser.getBalance()));
         new FadeInDown(balanceOfUser).play();
@@ -269,5 +270,6 @@ public class ShopView {
         new FadeInLeft(numberOfCards).play();
 
         buyButton.setDisable(loggedInUser.getBalance() < selectedCard.getPrice());
+
     }
 }

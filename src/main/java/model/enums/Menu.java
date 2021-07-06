@@ -10,7 +10,8 @@ public enum Menu {
     SHOP_MENU("ShopMenu"),
     DECKS_VIEW("DecksView"),
     SCOREBOARD_MENU("ScoreBoardPage"),
-    PROFILE_MENU("ProfilePage");
+    PROFILE_MENU("ProfilePage"),
+    DECK_MODIFIER("DeckModifier");
 
     String address;
 

@@ -16,7 +16,7 @@ import view.controller.ScoreboardView;
 
 import java.io.IOException;
 
-public class Controller {
+public abstract class Controller {
     Parent parent;
 
     public void moveToPage(Node node, Menu menu) throws IOException {

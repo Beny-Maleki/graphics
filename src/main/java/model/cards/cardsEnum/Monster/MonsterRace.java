@@ -1,13 +1,13 @@
 package model.cards.cardsEnum.Monster;
 
 public enum MonsterRace {
-    BEAST_WARRIOR("Beast / Warrior"),
+    BEAST_WARRIOR("Beast-Warrior"),
     WARRIOR("Warrior"),
     AQUA("Aqua"),
     FIEND("Fiend"),
     BEAST("Beast"),
     PYRO("Pyro"),
-    SPELLCASTER("SpellCaster"),
+    SPELLCASTER("Spellcaster"),
     THUNDER("Thunder"),
     DRAGON("Dragon"),
     MACHINE("Machine"),
@@ -15,7 +15,7 @@ public enum MonsterRace {
     INSECT("Insect"),
     CYBERSE("Cyberse"),
     FAIRY("Fairy"),
-    SEA_SERPENT("Sea / Serpent");
+    SEA_SERPENT("Sea Serpent");
     String MonsterRaceToString;
 
     MonsterRace(String monsterRaceToString) {

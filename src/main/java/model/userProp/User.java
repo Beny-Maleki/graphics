@@ -3,6 +3,7 @@ package model.userProp;
 import model.cards.cardsProp.Card;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 
 public class User extends FatherUser {
 
@@ -16,17 +17,19 @@ public class User extends FatherUser {
     private final ArrayList<Integer> userCardCollection;
     private String username;
     private String password;
-    private int numberOfDeckHolder;
+    private Deck deckOnModify;
+    private ArrayList<Boolean> unlockedDeckHolders;
 
     {
-        numberOfDeckHolder = 1;
-        allUserDecksId = new ArrayList<>();
+        deckOnModify = null;
+        unlockedDeckHolders = new ArrayList<>(Arrays.asList(true, false, false, false));
+        allUserDecksId = new ArrayList<>(Arrays.asList(null, null, null, null));
         userCardCollection = new ArrayList<>();
         activeDeck = null;
     }
 
     {
-        balance = 10000000;
+        balance = 1000000;
         score = 0;
     }
 
@@ -108,6 +111,10 @@ public class User extends FatherUser {
         return allUserDecks;
     }
 
+    public ArrayList<Integer> getAllUserDecksIdInInteger() {
+        return this.userCardCollection;
+    }
+
     public ArrayList<Card> getUserCardCollection() {
         ArrayList<Card> cards = new ArrayList<>();
         for (Integer ID : userCardCollection) {
@@ -116,12 +123,20 @@ public class User extends FatherUser {
         return cards;
     }
 
-    public void addCard(Integer ID) {
-        userCardCollection.add(ID);
+    public ArrayList<Integer> getUserCardCollectionInInteger(){
+        return userCardCollection;
     }
 
-    public void removeCard(int ID) {
-        userCardCollection.remove(ID);
+    public ArrayList<Integer> getUserCardCollectionInteger() {
+        return userCardCollection;
+    }
+
+    public void addCard(Card card ) {
+        userCardCollection.add(card.getID());
+    }
+
+    public void removeCardFromUserCollection(Card card) {
+        userCardCollection.remove(card.getID());
     }
 
 
@@ -129,16 +144,29 @@ public class User extends FatherUser {
         return !this.getUserCardCollection().contains(card);
     }
 
-    public void addDeckId(String ID) {
-        allUserDecksId.add(ID);
+    public void addDeckId(String ID, int place) {
+        allUserDecksId.set(place, ID);
     }
 
-    public int getNumberOfDeckHolder() {
-        return numberOfDeckHolder;
+    public ArrayList<Boolean> getUnlockedDeckHolders() {
+        return unlockedDeckHolders;
     }
 
-    public void increaseNumberOfDeckHolder() {
-        numberOfDeckHolder++;
+    public void unlockDeckHolder(int i) {
+        unlockedDeckHolders.set(i, true);
+    }
+
+
+    public void removeDeck(int i) {
+        allUserDecksId.set(i, null);
+    }
+
+    public void setDeckOnModify(Deck deckOnModify) {
+        this.deckOnModify = deckOnModify;
+    }
+
+    public Deck getDeckOnModify() {
+        return deckOnModify;
     }
 }
 

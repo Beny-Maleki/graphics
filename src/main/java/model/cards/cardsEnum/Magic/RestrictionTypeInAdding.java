@@ -1,8 +1,13 @@
 package model.cards.cardsEnum.Magic;
 
 public enum RestrictionTypeInAdding {
-    UNLIMITED,
-    LIMITED;
+    UNLIMITED("Unlimited"),
+    LIMITED("Limited");
+    String enumToString;
+
+    RestrictionTypeInAdding(String enumToString) {
+        this.enumToString = enumToString;
+    }
 
     public static RestrictionTypeInAdding setSpeed(String speed) {
         switch (speed) {
@@ -15,5 +20,10 @@ public enum RestrictionTypeInAdding {
             default:
                 return null;
         }
+    }
+
+    @Override
+    public String toString() {
+        return enumToString;
     }
 }
