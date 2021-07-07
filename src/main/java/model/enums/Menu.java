@@ -11,7 +11,8 @@ public enum Menu {
     DECKS_VIEW("DecksView"),
     SCOREBOARD_MENU("ScoreBoardPage"),
     PROFILE_MENU("ProfilePage"),
-    DECK_MODIFIER("DeckModifier");
+    DECK_MODIFIER("DeckModifier"),
+    GAME_PAGE("GamePage");
 
     String address;
 

@@ -1,0 +1,32 @@
+.selectedCardContainer {
+    -fx-border-color: black;
+}
+
+.chatBoxContainer {
+    -fx-border-color: black;
+}
+
+.yourInfoContainer {
+    -fx-border-color: black;
+}
+
+.opponentInfoContainer {
+    -fx-border-color: black;
+}
+
+.buttonsContainer {
+    -fx-border-color: black;
+}
+
+.selectedCardPane {
+    -fx-border-color: black;
+}
+
+.field {
+    -fx-background-image: url(../images/Field/fie_normal.jpeg);
+    -fx-background-size: 480 700;
+}
+
+.phaseVBox {
+    -fx-border-color: black;
+}
