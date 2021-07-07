@@ -86,8 +86,10 @@ public class DecksView {
     }
 
     public void run(MouseEvent event) throws IOException {
-        if (event.getSource() == backButton)
+        if (event.getSource() == backButton) {
             controller.moveToPage(backButton, Menu.MAIN_MENU);
+            System.out.println("hello");
+        }
     }
 
     private void showPackOfCards(int i) throws FileNotFoundException {

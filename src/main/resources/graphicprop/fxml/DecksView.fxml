@@ -28,6 +28,6 @@
             </children>
         </Pane>
         <Pane fx:id="DeckFourHolder" layoutX="670.0" layoutY="392.0" prefHeight="270.0" prefWidth="211.0" />
-      <Button fx:id="backButton" layoutX="572.0" layoutY="662.0" mnemonicParsing="false" text="Back" />
+      <Button fx:id="backButton" layoutX="572.0" layoutY="662.0" mnemonicParsing="false" onMouseClicked="#run" text="Back" />
     </children>
 </AnchorPane>
