@@ -39,6 +39,8 @@ public abstract class Controller {
     private void loadPane(Menu page) {
 
         switch (page) {
+            case SCOREBOARD_MENU:
+                break;
             case WELCOME_MENU:
             case PROFILE_MENU: {
                 new SlideInUp(parent).play();
@@ -50,12 +52,14 @@ public abstract class Controller {
                 break;
             }
 
-            case LOGIN_MENU: {
+            case LOGIN_MENU:
+            case DECKS_VIEW: {
                 new SlideInDown(parent).play();
                 break;
             }
             case MAIN_MENU:
-            case PROFILE_CHANGE_NICKNAME: {
+            case PROFILE_CHANGE_NICKNAME:
+            case DECK_MODIFIER: {
                 new SlideInRight(parent).play();
                 break;
             }

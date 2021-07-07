@@ -1,8 +1,10 @@
 package controller.menues.menuhandlers.menucontrollers;
 
+import controller.Controller;
+import javafx.scene.control.Label;
 import model.enums.Error;
 import model.enums.MenusMassages.Main;
-import controller.Controller;
+import model.userProp.LoginUser;
 import view.menudisplay.MainMenuDisplay;
 
 import java.util.regex.Matcher;
@@ -18,4 +20,9 @@ public class MainMenuController extends Controller {
 
     public static void enterMenu(Matcher matcher) {
     }
+
+    public void logout() {
+        LoginUser.setUser(null);
+    }
+
 }

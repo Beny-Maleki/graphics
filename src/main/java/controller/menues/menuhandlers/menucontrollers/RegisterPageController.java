@@ -22,7 +22,7 @@ public class RegisterPageController extends Controller {
             } else if (null != User.getUserByUserInfo(nickname, UserInfoType.NICKNAME)) {
                 message.setText(processOutPut(Error.INVALID_NICKNAME.toString(), nickname));
             } else {
-                new User(username, nickname, password);
+                new User(username, password, nickname);
                 moveToPage(message , Menu.LOGIN_MENU);
                 return;
             }
@@ -30,7 +30,7 @@ public class RegisterPageController extends Controller {
         } catch (EmptyTextFieldException | IOException e) {
             message.setText(e.getMessage());
         }
-        message.setStyle("-fx-text-fill: red ; -fx-font-size: 20");
+        message.setStyle("-fx-text-fill: red ; -fx-font-size: 15");
         displayMessage(message);
     }
 

@@ -24,19 +24,6 @@ public class WelcomePageController extends Controller {
         return controller;
     }
 
-    public void logout(Label message) {
-        if (LoginUser.getUser() == null) {
-            message.setText("No User Login yet !!!");
-            message.setStyle("-fx-text-fill: red ; -fx-font-size: 20");
-            displayMessage(message);
-        } else {
-            LoginUser.setUser(null);
-            message.setText("User Logout successfully !!!");
-            message.setStyle("-fx-text-fill: green ; -fx-font-size: 20");
-            displayMessage(message);
-        }
-    }
-
     public void saveData() throws IOException {
         FileWriter writer = new FileWriter("jsonResources//Decks.Json");
         writer.write(new Gson().toJson(Deck.getAllDecks()));

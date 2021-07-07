@@ -9,21 +9,25 @@ import java.io.IOException;
 
 public class MainMenuView {
 
-    public Button Duel;
-    public Button DecksConstruction;
-    public Button Shop;
-    public Button Setting;
-    public Button Logout;
+    public Button duel;
+    public Button decksConstruction;
+    public Button shop;
+    public Button setting;
+    public Button logout;
     private MainMenuController controller;
 
     {
-        controller = new MainMenuController() ;
+        controller = new MainMenuController();
     }
+
     public void run(MouseEvent event) throws IOException {
-        if (event.getSource() == Shop) {
-            controller.moveToPage(Shop , Menu.SHOP_MENU);
-        }else if (event.getSource() == DecksConstruction){
-            controller.moveToPage(DecksConstruction , Menu.DECKS_VIEW);
+        if (event.getSource() == shop) {
+            controller.moveToPage(shop, Menu.SHOP_MENU);
+        } else if (event.getSource() == decksConstruction) {
+            controller.moveToPage(decksConstruction, Menu.DECKS_VIEW);
+        } else if (event.getSource() == logout) {
+            controller.logout();
+            controller.moveToPage(logout, Menu.WELCOME_MENU);
         }
     }
 }

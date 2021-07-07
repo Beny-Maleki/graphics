@@ -14,6 +14,7 @@ import javafx.scene.control.TextField;
 import javafx.scene.effect.DropShadow;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.Background;
 import javafx.scene.layout.BackgroundFill;
 import javafx.scene.layout.CornerRadii;
@@ -46,6 +47,7 @@ public class DecksView {
     public Pane DeckFourHolder;
     public Pane DeckThreeHolder;
     public Pane DescriptionArea;
+    public Button backButton;
     private ArrayList<Pane> deckHolders;
     private DeckModifierController controller;
 
@@ -80,6 +82,11 @@ public class DecksView {
         }
 
 
+    }
+
+    public void run(MouseEvent event) throws IOException {
+        if (event.getSource() == backButton)
+            controller.moveToPage(backButton, Menu.MAIN_MENU);
     }
 
     private void showPackOfCards(int i) throws FileNotFoundException {
@@ -429,7 +436,7 @@ public class DecksView {
         modifyButton.setOnMouseClicked(event -> {
             try {
                 USER.setDeckOnModify(deck);
-                controller.moveToPage(modifyButton , Menu.DECK_MODIFIER);
+                controller.moveToPage(modifyButton, Menu.DECK_MODIFIER);
             } catch (IOException e) {
                 e.printStackTrace();
             }
