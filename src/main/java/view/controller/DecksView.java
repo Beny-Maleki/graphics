@@ -4,6 +4,7 @@ import animatefx.animation.*;
 import controller.menues.menuhandlers.menucontrollers.DeckModifierController;
 import javafx.animation.Animation;
 import javafx.animation.Interpolator;
+import javafx.animation.Timeline;
 import javafx.animation.Transition;
 import javafx.fxml.FXML;
 import javafx.geometry.Insets;
