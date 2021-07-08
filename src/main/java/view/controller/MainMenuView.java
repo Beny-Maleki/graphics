@@ -15,7 +15,7 @@ public class MainMenuView {
     public Button setting;
     public Button logout;
     public Button profile;
-    private MainMenuController controller;
+    private final MainMenuController controller;
 
     {
         controller = new MainMenuController();

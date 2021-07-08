@@ -48,7 +48,7 @@ public final class Regex {
     };
 
 
-    //DuelMenu commands:
+    //DuelPageView commands:
     public static String[] duelMenuCommands = new String[]{
             ".+(?<= |^)--second-player (\\S+)(?= --new| --rounds.*|$).*$",
             ".+(?<= |^)--rounds (\\S+)(?= --new| --second-player.*|$).*$",

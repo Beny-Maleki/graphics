@@ -17,16 +17,6 @@ import view.game.GameViewer;
 import java.util.Objects;
 
 public class DuelMenuController extends Controller {
-    private static DuelMenuController controller;
-
-    private DuelMenuController() {
-    }
-
-    public static DuelMenuController getController() {
-        if (controller == null)
-            controller = new DuelMenuController();
-        return controller;
-    }
 
     public String run(String command) throws CmdLineParser.OptionException {
         if (command.startsWith("controller show")) {
