@@ -4,9 +4,30 @@
     <option name="autoReloadType" value="ALL" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="45f87b1a-8403-4c06-b2b2-57ebfe555883" name="Default Changelist" comment="a small bug fix">
+    <list default="true" id="45f87b1a-8403-4c06-b2b2-57ebfe555883" name="Default Changelist" comment="a small warning fix">
+      <change afterPath="$PROJECT_DIR$/src/main/java/view/controller/GameView.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/graphicprop/fxml/GamePage.fxml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/graphicprop/images/Field/fie_burn.bmp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/graphicprop/images/Field/fie_dark.bmp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/graphicprop/images/Field/fie_desert.bmp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/graphicprop/images/Field/fie_fusion.bmp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/graphicprop/images/Field/fie_gaia.bmp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/graphicprop/images/Field/fie_mori.bmp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/graphicprop/images/Field/fie_normal.bmp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/graphicprop/images/Field/fie_normal.jpeg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/graphicprop/images/Field/fie_normal.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/graphicprop/images/Field/fie_sanctu.bmp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/graphicprop/images/Field/fie_shine.bmp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/graphicprop/images/Field/fie_sougen.bmp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/graphicprop/images/Field/fie_umi.bmp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/graphicprop/images/Field/fie_water.bmp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/graphicprop/images/Field/fie_yama.bmp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/graphicprop/images/Field/fie_yami.bmp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/graphicprop/images/LPIcon.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/graphicprop/stylesheets/GamePage.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/view/controller/DeckModifierView.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/view/controller/DeckModifierView.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/model/enums/Menu.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/model/enums/Menu.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/view/StageController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/view/StageController.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -36,10 +57,10 @@
         <option value="JUnit5 Test Class" />
         <option value="JUnit4 Test Class" />
         <option value="package-info" />
-        <option value="CSS File" />
-        <option value="FxmlFile" />
-        <option value="Class" />
         <option value="Enum" />
+        <option value="Class" />
+        <option value="FxmlFile" />
+        <option value="CSS File" />
       </list>
     </option>
   </component>
@@ -98,7 +119,7 @@
     <property name="com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.JUnit4" value="" />
     <property name="com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.JUnit5" value="" />
     <property name="last_directory_selection" value="$PROJECT_DIR$/src/main/java/Viewer" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../animateFX-1.2.2.jar" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/src/main/resources/graphicprop/images/Field" />
     <property name="list.type.of.created.stylesheet" value="CSS" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.path.for.package.eslint" value="project" />
@@ -119,6 +140,10 @@
     <key name="CreateClassDialog.RecentsKey">
       <recent name="Model" />
       <recent name="" />
+    </key>
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\Asus\Desktop\graphics\src\main\resources\graphicprop\images\Field" />
+      <recent name="C:\Users\Asus\Desktop\graphics\src\main\resources\graphicprop\images" />
     </key>
     <key name="CreateTestDialog.Recents.Supers">
       <recent name="" />
@@ -255,13 +280,9 @@
       <workItem from="1625296768504" duration="8468000" />
       <workItem from="1625475375366" duration="29200000" />
       <workItem from="1625517072898" duration="464000" />
-      <workItem from="1625576381733" duration="2494000" />
-    </task>
-    <task id="LOCAL‎۰۰۰۳۶" summary="DuelMenu added">
-      <created>1619951562582</created>
-      <option name="number" value="LOCAL‎۰۰۰۳۶" />
-      <option name="presentableId" value="LOCAL‎۰۰۰۳۶" />
-      <updated>1619951562583</updated>
+      <workItem from="1625576381733" duration="2978000" />
+      <workItem from="1625667151400" duration="13512000" />
+      <workItem from="1625688434985" duration="1559000" />
     </task>
     <task id="LOCAL‎۰۰۰۳۷" summary="DuelMenu adding final error">
       <created>1619958835634</created>
@@ -576,7 +597,14 @@
       <option name="project" value="LOCAL" />
       <updated>1625578119367</updated>
     </task>
-    <option name="localTasksCounter" value="85" />
+    <task id="LOCAL-00085" summary="a small warning fix">
+      <created>1625578958178</created>
+      <option name="number" value="00085" />
+      <option name="presentableId" value="LOCAL-00085" />
+      <option name="project" value="LOCAL" />
+      <updated>1625578958178</updated>
+    </task>
+    <option name="localTasksCounter" value="86" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -596,8 +624,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="adding magic actions to json" />
-    <MESSAGE value="add some actions" />
     <MESSAGE value="actions almost completed" />
     <MESSAGE value="add actions to cards" />
     <MESSAGE value="restore data again" />
@@ -621,7 +647,9 @@
     <MESSAGE value="--DeckModifier updated:&#10;hovering cards whilst on them,&#10;changing slides&#10;relevant message&#10;other nodes scheme designed" />
     <MESSAGE value="--DeckModifier updated:&#10;move cards logic added&#10;selected Card improved&#10;button visibilities fixed" />
     <MESSAGE value="a small bug fix" />
-    <option name="LAST_COMMIT_MESSAGE" value="a small bug fix" />
+    <MESSAGE value="a small bug fix in messages in DeckModifierView" />
+    <MESSAGE value="a small warning fix" />
+    <option name="LAST_COMMIT_MESSAGE" value="a small warning fix" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
