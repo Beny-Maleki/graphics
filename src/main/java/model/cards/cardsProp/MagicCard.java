@@ -292,6 +292,10 @@ public class MagicCard extends Card {
         this.magicAttribute = magicAttribute;
     }
 
+    public ArrayList<Event> getTriggers() {
+        return triggers;
+    }
+
     public MagicType getTypeOfMagic() {
         return typeOfMagic;
     }

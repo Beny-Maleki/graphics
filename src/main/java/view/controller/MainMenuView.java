@@ -28,6 +28,8 @@ public class MainMenuView {
         } else if (event.getSource() == logout) {
             controller.logout();
             controller.moveToPage(logout, Menu.WELCOME_MENU);
+        } else if (event.getSource() == setting) {
+            controller.moveToPage(setting, Menu.PROFILE_MENU);
         }
     }
 }

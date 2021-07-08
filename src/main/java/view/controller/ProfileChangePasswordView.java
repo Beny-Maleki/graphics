@@ -5,15 +5,16 @@ import controller.menues.menuhandlers.menucontrollers.ProfileMenuController;
 import javafx.scene.Node;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.control.TextField;
 import javafx.scene.input.MouseEvent;
 import model.enums.Menu;
 
 import java.io.IOException;
 
 public class ProfileChangePasswordView {
-    public Label currentPassword;
-    public Label newPassword;
-    public Label repeatPassword;
+    public TextField currentPassword;
+    public TextField newPassword;
+    public TextField repeatPassword;
     public Button Change;
     public Label result;
     public Button Back;
