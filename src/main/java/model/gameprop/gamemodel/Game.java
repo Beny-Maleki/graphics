@@ -86,11 +86,19 @@ public class Game {
         turn.setMonsterHouseOfHiredMonster(monsterHouse);
     }
 
-    private void setFirstPlayer(Player firstPlayer) {
+    public Player getFirstPlayer() {
+        return firstPlayer;
+    }
+
+    public void setFirstPlayer(Player firstPlayer) {
         this.firstPlayer = firstPlayer;
     }
 
-    private void setSecondPlayer(Player secondPlayer) {
+    public Player getSecondPlayer() {
+        return secondPlayer;
+    }
+
+    public void setSecondPlayer(Player secondPlayer) {
         this.secondPlayer = secondPlayer;
     }
 
@@ -214,11 +222,13 @@ public class Game {
 
     private void resetLastTurnData() {
         ArrayList<TurnObserver> turnObservers = TurnObserver.getTurnObservers();
-        if (turnObservers != null) {
-            for (TurnObserver turnObserver : turnObservers) {
-                turnObserver.update();
+
+        if (turnObservers != null && turnObservers.size() > 0) {
+            for (int i = turnObservers.size() - 1; i == 0; i--) {
+                turnObservers.get(i).update();
             }
         }
+
         if (turn.getPlayerWithTurn() == PlayerTurn.PLAYER_ONE) {
             turn = new Turn(PlayerTurn.PLAYER_TWO, false);
         } else turn = new Turn(PlayerTurn.PLAYER_ONE, false);

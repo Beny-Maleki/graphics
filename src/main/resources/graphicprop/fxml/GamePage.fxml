@@ -47,11 +47,11 @@
                      </font>
                   </Label>
                   <ImageView fx:id="opponentAvatar" fitHeight="100.0" fitWidth="100.0" layoutX="61.0" layoutY="40.0" pickOnBounds="true" preserveRatio="true" />
-                  <Label layoutX="15.0" layoutY="150.0" text="Username:">
+                  <Label fx:id="opponentUsername" layoutX="15.0" layoutY="150.0" text="Username:">
                      <font>
                         <Font size="13.0" />
                      </font></Label>
-                  <Label layoutX="15.0" layoutY="180.0" text="Nickname:">
+                  <Label fx:id="opponentNickname" layoutX="15.0" layoutY="180.0" text="Nickname:">
                      <font>
                         <Font size="13.0" />
                      </font></Label>
@@ -80,11 +80,11 @@
                      </font>
                   </Label>
                   <ImageView fx:id="yourAvatar" fitHeight="100.0" fitWidth="100.0" layoutX="61.0" layoutY="40.0" pickOnBounds="true" preserveRatio="true" />
-                  <Label layoutX="14.0" layoutY="150.0" text="Username:">
+                  <Label fx:id="yourUsername" layoutX="14.0" layoutY="150.0" text="Username:">
                      <font>
                         <Font size="13.0" />
                      </font></Label>
-                  <Label layoutX="15.0" layoutY="180.0" text="Nickname:">
+                  <Label fx:id="yourNickname" layoutX="15.0" layoutY="180.0" text="Nickname:">
                      <font>
                         <Font size="13.0" />
                      </font></Label>

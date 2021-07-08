@@ -2,6 +2,7 @@ package model.gameprop.turnBasedObserver;
 
 import model.cards.cardsProp.Card;
 import model.cards.cardsProp.MonsterCard;
+import model.enums.GameEnums.cardvisibility.MonsterHouseVisibilityState;
 import model.gameprop.BoardProp.MonsterHouse;
 import model.gameprop.Player;
 
@@ -47,6 +48,7 @@ public class ChangeTeamForOneTurn extends TurnObserver{
             for (MonsterHouse iterator : oppoMonsterHouses) {
                 if (iterator.getMonsterCard() == null) { // empty monster house...
                     iterator.setMonsterCard(((MonsterCard) this.card));
+                    iterator.setState(MonsterHouseVisibilityState.OO);
                 }
             }
 

@@ -8,7 +8,7 @@ public class AvoidDrawingForSomeTurnsObserver extends TurnObserver{
 
     public AvoidDrawingForSomeTurnsObserver(int numOfTurns, Player player) {
         super();
-        this.remainedTurns = numOfTurns;
+        this.remainedTurns = 2 * numOfTurns;
         this.setPlayer(player);
     }
 
