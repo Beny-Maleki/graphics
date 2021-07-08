@@ -24,7 +24,7 @@ import java.io.IOException;
 
 public class ProfileView {
     private static ProfileView profileView;
-    private final User user;
+    private User user;
     public Button changeNickname;
     public Button changePassword;
     public Button exit;
@@ -44,12 +44,12 @@ public class ProfileView {
     ProfilePageController controller;
 
     {
-        user = LoginUser.getUser();
         controller = new ProfilePageController();
     }
 
     @FXML
     public void initialize() throws FileNotFoundException {
+        user = LoginUser.getUser();
         username.setText("Username : " + user.getUsername());
         nickname.setText("Nickname : " + user.getNickname());
         score.setText("Total Scores : " + user.getScore());
@@ -59,8 +59,7 @@ public class ProfileView {
         oldPassword.setVisible(false);
         cancel.setVisible(false);
         change.setVisible(false);
-        userAvatar.setImage(new Image(new FileInputStream(user.getAvatarAddress())));
-        System.out.println(user.getAvatarAddress());
+            userAvatar.setImage(new Image(new FileInputStream(user.getAvatarAddress())));
     }
 
     public void run(MouseEvent event) throws IOException {
