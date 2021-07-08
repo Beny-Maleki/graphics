@@ -190,4 +190,9 @@ public class UserAI extends FatherUser {
         int selectCard = rand.nextInt(validElements.size());
         return validElements.get(selectCard);
     }
+
+    @Override
+    public Deck getActiveDeck() {
+        return null;
+    }
 }
