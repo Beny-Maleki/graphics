@@ -35,3 +35,13 @@
     -fx-border-radius: 10;
 
 }
+
+#gameSetUpPopUp {
+    -fx-border-color: brown;
+    -fx-border-width: 3;
+    -fx-background-image: url(../images/yellowBrownBg.jpg);
+}
+
+.choice-box{
+    -fx-background-radius: 10;
+}

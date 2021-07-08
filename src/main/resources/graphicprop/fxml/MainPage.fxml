@@ -12,7 +12,6 @@
     <Button fx:id="duel" layoutX="44.0" layoutY="176.0" mnemonicParsing="false" onMouseClicked="#run" prefHeight="58.0" prefWidth="238.0" text="DUEL" />
     <Button fx:id="decksConstruction" layoutX="44.0" layoutY="402.0" mnemonicParsing="false" onMouseClicked="#run" prefHeight="58.0" prefWidth="238.0" text="Decks Construction" />
     <Button fx:id="shop" layoutX="44.0" layoutY="326.0" mnemonicParsing="false" onMouseClicked="#run" prefHeight="37.0" prefWidth="238.0" text="Shop" />
-    <Button fx:id="setting" layoutX="43.0" layoutY="479.0" mnemonicParsing="false" onMouseClicked="#run" prefHeight="40.0" prefWidth="238.0" text="Setting" />
-    <Button fx:id="logout" layoutX="44.0" layoutY="553.0" mnemonicParsing="false" onMouseClicked="#run" prefHeight="30.0" prefWidth="238.0" text="Logout" />
+    <Button fx:id="logout" layoutX="44.0" layoutY="478.0" mnemonicParsing="false" onMouseClicked="#run" prefHeight="30.0" prefWidth="238.0" text="Logout" />
    <Button fx:id="profile" layoutX="44.0" layoutY="252.0" mnemonicParsing="false" onMouseClicked="#run" prefHeight="58.0" prefWidth="238.0" text="Profile" />
 </AnchorPane>

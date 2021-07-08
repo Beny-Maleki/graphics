@@ -204,8 +204,10 @@ public class User extends FatherUser {
     @Override
     public Deck getActiveDeck() {
         for (Deck deck : getAllUserDecksId()) {
-            if (deck.isDeckActivated())
-                return deck;
+            if (deck != null) {
+                if (deck.isDeckActivated())
+                    return deck;
+            }
         }
         return null;
     }
