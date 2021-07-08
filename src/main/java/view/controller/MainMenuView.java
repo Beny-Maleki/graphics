@@ -12,7 +12,6 @@ public class MainMenuView {
     public Button duel;
     public Button decksConstruction;
     public Button shop;
-    public Button setting;
     public Button logout;
     public Button profile;
     private final MainMenuController controller;
@@ -31,6 +30,8 @@ public class MainMenuView {
             controller.moveToPage(logout, Menu.WELCOME_MENU);
         } else if (event.getSource() == profile) {
             controller.moveToPage(profile, Menu.PROFILE_MENU);
+        } else if (event.getSource() == duel) {
+            controller.moveToPage(duel, Menu.DUEL_MENU);
         }
     }
 }
