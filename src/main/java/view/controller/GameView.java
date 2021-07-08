@@ -1,8 +1,13 @@
 package view.controller;
 
+import javafx.geometry.Insets;
 import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.layout.GridPane;
+import javafx.scene.layout.Pane;
+import model.gameprop.BoardProp.MagicHouse;
+import model.gameprop.BoardProp.MonsterHouse;
 import model.gameprop.GameInProcess;
 import model.gameprop.Player;
 import model.gameprop.gamemodel.Game;
@@ -21,20 +26,66 @@ public class GameView {
     public Label opponentNickname;
     public Label yourUsername;
     public Label yourNickname;
+    public Pane yourHousesContainer;
+    public Pane opponentHousesContainer;
+    public GridPane yourMonsterHousesGridPane;
+    public GridPane yourMagicHousesGridPane;
+    public GridPane opponentMagicHousesGridPane;
+    public GridPane opponentMonsterHousesGridPane;
+    public Pane opponentHandContainer;
+    public Pane yourHandContainer;
 
     public void initialize() {
         LoginUser.setUser(User.getUserByUserInfo("Yaroo", UserInfoType.USERNAME));
 
-        Player firstPlayer = new Player(User.getUserByUserInfo("Yaroo", UserInfoType.USERNAME), 0);
-        Player secondPlayer = new Player(User.getUserByUserInfo("ali", UserInfoType.USERNAME), 0);
+        User you = LoginUser.getUser();
+
+        //TODO: Replace this  instantiation with a more general one!
+        User opponent =User.getUserByUserInfo("ali", UserInfoType.USERNAME);
+        //
+
+        Player playerYou = new Player(you, 0);
+        Player playerOpponent = new Player(opponent, 0);
+
+        //TODO: replace this block with the result of Rock/paper/scissors
+        Player firstPlayer = playerYou;
+        Player secondPlayer = playerOpponent;
+        //
 
         GameInProcess.setGame(new Game(firstPlayer, secondPlayer, 1 ));
 
-        User you = LoginUser.getUser();
-        User opponent;
-        if (GameInProcess.getGame().getFirstPlayer().getUser().equals(you)) opponent = (User) GameInProcess.getGame().getSecondPlayer().getUser();
-        else opponent = (User) GameInProcess.getGame().getFirstPlayer().getUser();
 
+        initializeInfos(you, opponent);
+
+
+        initializeHouses(playerYou, yourMonsterHousesGridPane, yourMagicHousesGridPane);
+        initializeHouses(playerOpponent, opponentMagicHousesGridPane, opponentMonsterHousesGridPane);
+
+
+    }
+
+    private void initializeHouses(Player player, GridPane monsterHousesGridPane, GridPane magicHousesGridPane) {
+        monsterHousesGridPane.setHgap(25);
+        monsterHousesGridPane.setPadding(new Insets(10));
+        magicHousesGridPane.setHgap(25);
+        magicHousesGridPane.setPadding(new Insets(10));
+
+        MonsterHouse[] monsterHouses = player.getBoard().getMonsterHouse();
+        for (int i = 0; i < monsterHouses.length; i++) {
+            monsterHousesGridPane.add(monsterHouses[i], i, 0, 1, 1);
+            monsterHouses[i].setStyle("-fx-background-color: red");
+            monsterHouses[i].setPrefSize(42, 70);
+        }
+
+        MagicHouse[] magicHouses = player.getBoard().getMagicHouse();
+        for (int i = 0; i < magicHouses.length; i++) {
+            magicHousesGridPane.add(magicHouses[i], i, 0, 1, 1);
+            magicHouses[i].setStyle("-fx-background-color: yellow");
+            magicHouses[i].setPrefSize(42, 70);
+        }
+    }
+
+    private void initializeInfos(User you, User opponent) {
         try {
             yourAvatar.setImage(new Image(new FileInputStream(you.getAvatarAddress())));
             opponentAvatar.setImage(new Image(new FileInputStream(opponent.getAvatarAddress())));
@@ -42,11 +93,10 @@ public class GameView {
             System.out.println("Aks ha inja naboodan ke :(");
         }
 
-        yourUsername.setText(you.getUsername());
-        yourNickname.setText(you.getNickname());
+        yourUsername.setText("Username: " + you.getUsername());
+        yourNickname.setText("Nickname: " + you.getNickname());
 
-        opponentUsername.setText(opponent.getUsername());
-        opponentNickname.setText(opponent.getNickname());
-
+        opponentUsername.setText("Username: " + opponent.getUsername());
+        opponentNickname.setText("Nickname: " + opponent.getNickname());
     }
 }
