@@ -1,11 +1,17 @@
 package view.controller;
 
+import animatefx.animation.FlipInX;
+import animatefx.animation.FlipInY;
 import javafx.geometry.Insets;
 import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.layout.Background;
+import javafx.scene.layout.BackgroundImage;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.Pane;
+
+import model.gameprop.BoardProp.GameHouse;
 import model.gameprop.BoardProp.MagicHouse;
 import model.gameprop.BoardProp.MonsterHouse;
 import model.gameprop.GameInProcess;
@@ -34,6 +40,13 @@ public class GameView {
     public GridPane opponentMonsterHousesGridPane;
     public Pane opponentHandContainer;
     public Pane yourHandContainer;
+    public Pane yourGraveyardPane;
+    public Pane opponentGraveyardPane;
+    public Pane yourFieldPane;
+    public Pane opponentFieldPane;
+    public Pane yourDeckPane;
+    public Pane opponentDeckPane;
+    public ImageView selectedCardImageView;
 
     public void initialize() {
         LoginUser.setUser(User.getUserByUserInfo("Yaroo", UserInfoType.USERNAME));
@@ -41,7 +54,7 @@ public class GameView {
         User you = LoginUser.getUser();
 
         //TODO: Replace this  instantiation with a more general one!
-        User opponent =User.getUserByUserInfo("ali", UserInfoType.USERNAME);
+        User opponent = User.getUserByUserInfo("ali", UserInfoType.USERNAME);
         //
 
         Player playerYou = new Player(you, 0);
@@ -60,8 +73,6 @@ public class GameView {
 
         initializeHouses(playerYou, yourMonsterHousesGridPane, yourMagicHousesGridPane);
         initializeHouses(playerOpponent, opponentMagicHousesGridPane, opponentMonsterHousesGridPane);
-
-
     }
 
     private void initializeHouses(Player player, GridPane monsterHousesGridPane, GridPane magicHousesGridPane) {
@@ -72,18 +83,62 @@ public class GameView {
 
         MonsterHouse[] monsterHouses = player.getBoard().getMonsterHouse();
         for (int i = 0; i < monsterHouses.length; i++) {
-            monsterHousesGridPane.add(monsterHouses[i], i, 0, 1, 1);
-            monsterHouses[i].setStyle("-fx-background-color: red");
-            monsterHouses[i].setPrefSize(42, 70);
+            MonsterHouse monsterHouse = monsterHouses[i];
+            monsterHousesGridPane.add(monsterHouse, i, 0, 1, 1);
+
+            Image image = null;
+            try {
+                 image = new Image(new FileInputStream("src/main/resources/graphicprop/images/Cards/Monsters/Unknown.jpg"));
+            } catch (FileNotFoundException e) {
+                System.out.println("Ey baba! Aks chi shod pas :(");
+            }
+
+            ImageView imageView = new ImageView();
+            imageView.setFitWidth(47);
+            imageView.setFitHeight(70);
+            monsterHouse.getChildren().add(imageView);
+            monsterHouse.setCardImage(image);
+            imageView.setImage(image);
+
+            monsterHouse.setPrefSize(42, 70);
+            handleOnMouseEntered(monsterHouse);
         }
 
         MagicHouse[] magicHouses = player.getBoard().getMagicHouse();
         for (int i = 0; i < magicHouses.length; i++) {
-            magicHousesGridPane.add(magicHouses[i], i, 0, 1, 1);
-            magicHouses[i].setStyle("-fx-background-color: yellow");
-            magicHouses[i].setPrefSize(42, 70);
+            MagicHouse magicHouse = magicHouses[i];
+            magicHousesGridPane.add(magicHouse, i, 0, 1, 1);
+
+            Image image = null;
+            try {
+                image = new Image(new FileInputStream("src/main/resources/graphicprop/images/Cards/Monsters/Unknown.jpg"));
+            } catch (FileNotFoundException e) {
+                System.out.println("Ey baba! Aks chi shod pas :(");
+            }
+
+            ImageView imageView = new ImageView();
+            imageView.setFitWidth(47);
+            imageView.setFitHeight(70);
+            magicHouse.getChildren().add(imageView);
+            magicHouse.setCardImage(image);
+            imageView.setImage(image);
+            magicHouse.setPrefSize(42, 70);
+
+            handleOnMouseEntered(magicHouse);
         }
     }
+
+    private void handleOnMouseEntered(GameHouse gameHouse) {
+        gameHouse.setOnMouseEntered(e -> {
+            if (gameHouse.getCardImage() != null) {
+                selectedCardImageView.setImage(gameHouse.getCardImage());
+                new FlipInX(selectedCardImageView).play();
+            }
+
+            //TODO: make a field "selectedCard : Card" which holds the selected card!
+        });
+    }
+
 
     private void initializeInfos(User you, User opponent) {
         try {
