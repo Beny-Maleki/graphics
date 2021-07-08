@@ -5,6 +5,7 @@ import model.cards.cardsProp.Card;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
+import java.util.HashMap;
 
 public class Deck {
     private static int totalNumberOfDeck;
@@ -48,6 +49,56 @@ public class Deck {
 
     public static void setAllDecks(ArrayList<Deck> allDecks) {
         Deck.allDecks = allDecks;
+    }
+
+    public static void serialize() {
+        for (Deck deck : allDecks) {
+            ArrayList<Integer> mainDeck = deck.mainDeck;
+            ArrayList<Integer> sideDeck = deck.sideDeck;
+            findSimilarCard(mainDeck);
+            findSimilarCard(sideDeck);
+        }
+    }
+
+    static void findSimilarCard(ArrayList<Integer> mainDeck) {
+        for (int i = 0; i < mainDeck.size(); i++) {
+            Integer ID = mainDeck.get(i);
+            if (ID >= 74) {
+                for (Card card : Card.getOriginalCard()) {
+                    Card similarCard = Card.getCardById(ID);
+                    assert similarCard != null;
+                    if (card.getName().equals(similarCard.getName())) {
+                        mainDeck.set(i, card.getID());
+                        break;
+                    }
+                }
+            }
+        }
+    }
+
+    public static void deSerialize() {
+        HashMap<Integer, Boolean> isIDSeenBefore = Card.getIsSeenBefore();
+        for (Deck deck : allDecks) {
+            ArrayList<Integer> mainDeck = deck.mainDeck;
+            ArrayList<Integer> sideDeck = deck.sideDeck;
+            findSimilarCard(isIDSeenBefore, mainDeck);
+            findSimilarCard(isIDSeenBefore, sideDeck);
+        }
+
+    }
+
+    private static void findSimilarCard(HashMap<Integer, Boolean> isIDSeenBefore, ArrayList<Integer> sideDeck) {
+        for (int i = 0; i < sideDeck.size(); i++) {
+            Integer ID = sideDeck.get(i);
+            if (isIDSeenBefore.containsKey(ID)) {
+                Card card = Card.getCardById(ID);
+                assert card != null;
+                card.getSimilarCard();
+              sideDeck.set(i, Card.newSimilarCard());
+            } else {
+                isIDSeenBefore.put(ID, true);
+            }
+        }
     }
 
     public ArrayList<Card> getMainDeck() {

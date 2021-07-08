@@ -4,15 +4,22 @@ import model.events.Event;
 import model.gameprop.gamemodel.Game;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 
 public abstract class Card {
     protected static List<Card> cards;
     protected static int numberOfCard;
+    private static HashMap<Integer, Boolean> isSeenBefore;
 
     static {
+        isSeenBefore = new HashMap<>();
         cards = new ArrayList<>();
         numberOfCard = 74;
+    }
+
+    public static HashMap<Integer, Boolean> getIsSeenBefore() {
+        return isSeenBefore;
     }
 
     protected int ID;
@@ -27,15 +34,12 @@ public abstract class Card {
         setDescription(description);
         setPrice(price);
         cards.add(this);
-        ID = numberOfCard;
+        setID(numberOfCard);
         numberOfCard++;
     }
 
     public Card() {
     }
-
-    public abstract Card getSimilarCard();
-
 
     public static int getCardPriceByName(String name) {
         for (Card card : cards) {
@@ -66,6 +70,33 @@ public abstract class Card {
     public static List<Card> getCards() {
         return cards;
     }
+
+    public static ArrayList<Card> getOriginalCard() {
+        ArrayList<Card> originalCard = new ArrayList<>();
+        cards.forEach((card -> {
+            if (card.getID() < 74) {
+                originalCard.add(card);
+            }
+        }));
+        return originalCard;
+    }
+
+    public static Card getCardById(int ID) {
+        for (Card card : cards) {
+            if (card.ID == ID) {
+                return card;
+            }
+        }
+        System.out.println("cant find " + ID);
+        return null;
+    }
+
+    public static Integer newSimilarCard() {
+        return numberOfCard - 1;
+
+    }
+
+    public abstract Card getSimilarCard();
 
     public abstract String getCardDetail();
 
@@ -100,15 +131,6 @@ public abstract class Card {
 
     public abstract Card getCopy(); // semi duplicate code in overrides; cause -> Card is abstract and not constructable!
 
-    public static Card getCardById(int ID) {
-        for (Card card : cards) {
-            if (card.ID == ID) {
-                return card;
-            }
-        }
-        return null;
-    }
-
     public String getCardDescriptionWithEnters() {
         if (description.length() > 40) {
             int startIndex = 0;
@@ -117,7 +139,7 @@ public abstract class Card {
             while (endIndex < description.length()) {
                 int nextEndOfLineIndex = Math.min(startIndex + 35, description.length() - 1);
 
-                if(description.charAt(nextEndOfLineIndex) != ' ') {
+                if (description.charAt(nextEndOfLineIndex) != ' ') {
                     if (nextEndOfLineIndex == description.length() - 1) {
                         result.append(description, startIndex, nextEndOfLineIndex);
                         break;
@@ -145,10 +167,13 @@ public abstract class Card {
         }
     }
 
-
-
     public Integer getID() {
         return ID;
     }
+
+    public void setID(int ID) {
+        this.ID = ID;
+    }
+
 
 }

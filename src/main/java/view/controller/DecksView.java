@@ -4,7 +4,6 @@ import animatefx.animation.*;
 import controller.menues.menuhandlers.menucontrollers.DeckModifierController;
 import javafx.animation.Animation;
 import javafx.animation.Interpolator;
-import javafx.animation.Timeline;
 import javafx.animation.Transition;
 import javafx.fxml.FXML;
 import javafx.geometry.Insets;
@@ -23,6 +22,7 @@ import javafx.scene.layout.Pane;
 import javafx.scene.paint.Color;
 import javafx.util.Duration;
 import model.Exceptions.EmptyTextFieldException;
+import model.cards.cardsProp.Card;
 import model.enums.Menu;
 import model.userProp.Deck;
 import model.userProp.LoginUser;
@@ -88,7 +88,6 @@ public class DecksView {
     public void run(MouseEvent event) throws IOException {
         if (event.getSource() == backButton) {
             controller.moveToPage(backButton, Menu.MAIN_MENU);
-            System.out.println("hello");
         }
     }
 
@@ -424,8 +423,10 @@ public class DecksView {
         DECK_NOTIFICATION.add(removeDeckButton);
         removeDeckButton.setOnMouseClicked(event -> {
             USER.removeDeck(i);
-            USER.getUserCardCollection().addAll(deck.getMainDeck());
-            USER.getUserCardCollection().addAll(deck.getSideDeck());
+
+            deck.getMainDeck().forEach(USER::addCard);
+            deck.getSideDeck().forEach(USER::addCard);
+
             deckHolders.get(i).getChildren().forEach(node -> new FadeOut(node).play());
             removeNotification();
             emptyHolder(i);

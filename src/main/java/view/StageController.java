@@ -7,9 +7,8 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 import model.enums.Menu;
-import view.controller.ScoreboardView;
-
-import java.util.Objects;
+import model.userProp.LoginUser;
+import model.userProp.User;
 
 public class StageController extends Application {
 

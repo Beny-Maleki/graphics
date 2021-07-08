@@ -14,6 +14,7 @@ public class MainMenuView {
     public Button shop;
     public Button setting;
     public Button logout;
+    public Button profile;
     private MainMenuController controller;
 
     {
@@ -28,6 +29,8 @@ public class MainMenuView {
         } else if (event.getSource() == logout) {
             controller.logout();
             controller.moveToPage(logout, Menu.WELCOME_MENU);
+        } else if (event.getSource() == profile) {
+            controller.moveToPage(profile, Menu.PROFILE_MENU);
         }
     }
 }

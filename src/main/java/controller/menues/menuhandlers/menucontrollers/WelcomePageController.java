@@ -3,9 +3,7 @@ package controller.menues.menuhandlers.menucontrollers;
 
 import com.google.gson.Gson;
 import controller.Controller;
-import javafx.scene.control.Label;
 import model.userProp.Deck;
-import model.userProp.LoginUser;
 import model.userProp.User;
 
 import java.io.FileWriter;
@@ -25,6 +23,8 @@ public class WelcomePageController extends Controller {
     }
 
     public void saveData() throws IOException {
+        User.serialize();
+        Deck.serialize();
         FileWriter writer = new FileWriter("jsonResources//Decks.Json");
         writer.write(new Gson().toJson(Deck.getAllDecks()));
         writer.close();

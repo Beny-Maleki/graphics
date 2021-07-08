@@ -4,6 +4,7 @@ import model.cards.cardsProp.Card;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.HashMap;
 
 public class User extends FatherUser {
 
@@ -14,18 +15,18 @@ public class User extends FatherUser {
     }
 
     private final ArrayList<String> allUserDecksId;
-    private final ArrayList<Integer> userCardCollection;
+    private final ArrayList<Integer> cardCollection;
+    private final ArrayList<Boolean> unlockedDeckHolders;
     private String username;
     private String password;
     private String avatarAddress;
     private Deck deckOnModify;
-    private final ArrayList<Boolean> unlockedDeckHolders;
 
     {
         deckOnModify = null;
         unlockedDeckHolders = new ArrayList<>(Arrays.asList(true, false, false, false));
         allUserDecksId = new ArrayList<>(Arrays.asList(null, null, null, null));
-        userCardCollection = new ArrayList<>();
+        cardCollection = new ArrayList<>();
         activeDeck = null;
     }
 
@@ -40,10 +41,6 @@ public class User extends FatherUser {
         setPassword(password);
         setAvatarAddress(imageAddress);
         allUsers.add(this);
-    }
-
-    public String getAvatarAddress() {
-        return avatarAddress;
     }
 
     public static User getUserByUserInfo(String info, UserInfoType userInfoType) {
@@ -73,6 +70,35 @@ public class User extends FatherUser {
 
     public static void setAllUsers(ArrayList<User> users) {
         allUsers = users;
+    }
+
+    public static void serialize() {
+        for (User user : allUsers) {
+            ArrayList<Integer> cardCollection = user.cardCollection;
+            Deck.findSimilarCard(cardCollection);
+        }
+    }
+
+    public static void deSerialize() {
+        HashMap<Integer, Boolean> isIDSeenBefore = Card.getIsSeenBefore();
+        for (User user : allUsers) {
+            ArrayList<Integer> cardCollection = user.cardCollection;
+            for (int i = 0; i < cardCollection.size(); i++) {
+                Integer ID = cardCollection.get(i);
+                if (isIDSeenBefore.containsKey(ID)) {
+                    Card card = Card.getCardById(ID);
+                    assert card != null;
+                    card.getSimilarCard();
+                    user.cardCollection.set(i, Card.newSimilarCard());
+                } else {
+                    isIDSeenBefore.put(ID, true);
+                }
+            }
+        }
+    }
+
+    public String getAvatarAddress() {
+        return avatarAddress;
     }
 
     public void setAvatarAddress(String avatarAddress) {
@@ -122,36 +148,35 @@ public class User extends FatherUser {
     }
 
     public ArrayList<Integer> getAllUserDecksIdInInteger() {
-        return this.userCardCollection;
+        return this.cardCollection;
     }
 
-    public ArrayList<Card> getUserCardCollection() {
+    public ArrayList<Card> getCardCollection() {
         ArrayList<Card> cards = new ArrayList<>();
-        for (Integer ID : userCardCollection) {
+        for (Integer ID : cardCollection) {
             cards.add(Card.getCardById(ID));
         }
         return cards;
     }
 
     public ArrayList<Integer> getUserCardCollectionInInteger() {
-        return userCardCollection;
+        return cardCollection;
     }
 
     public ArrayList<Integer> getUserCardCollectionInteger() {
-        return userCardCollection;
+        return cardCollection;
     }
 
     public void addCard(Card card) {
-        userCardCollection.add(card.getID());
+        cardCollection.add(card.getID());
     }
 
     public void removeCardFromUserCollection(Card card) {
-        userCardCollection.remove(card.getID());
+        cardCollection.remove(card.getID());
     }
 
-
     public boolean isCardInUserCardCollection(Card card) {
-        return !this.getUserCardCollection().contains(card);
+        return !this.getCardCollection().contains(card);
     }
 
     public void addDeckId(String ID, int place) {
@@ -165,7 +190,6 @@ public class User extends FatherUser {
     public void unlockDeckHolder(int i) {
         unlockedDeckHolders.set(i, true);
     }
-
 
     public void removeDeck(int i) {
         allUserDecksId.set(i, null);

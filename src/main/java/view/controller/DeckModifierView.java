@@ -78,7 +78,7 @@ public class DeckModifierView {
         controller = DeckModifierController.getInstance();
         loggedInUser = LoginUser.getUser();
         toShowDeck = loggedInUser.getDeckOnModify();
-        collection = loggedInUser.getUserCardCollection();
+        collection = loggedInUser.getCardCollection();
     }
 
     public void initialize() {
@@ -130,9 +130,6 @@ public class DeckModifierView {
             emptySelectedCard();
         } else if (mouseEvent.getSource() == backButton) {
             back();
-            System.out.println("here body");
-        }else{
-            System.out.println("may name is nobody");
         }
     }
 
@@ -238,7 +235,7 @@ public class DeckModifierView {
 
                 new FadeInDown(moveToCollectionButton).play();
                 new FadeInDown(moveToMainDeckButton).play();
-            } else if (LoginUser.getUser().getUserCardCollection().contains(selectedCard)) {
+            } else if (LoginUser.getUser().getCardCollection().contains(selectedCard)) {
                 moveToSideDeckButton.setVisible(true);
                 moveToMainDeckButton.setVisible(true);
 
@@ -265,7 +262,7 @@ public class DeckModifierView {
             moveToSideDeckButton.setVisible(false);
 
             new FadeOutDown(moveToSideDeckButton).play();
-        } else if (LoginUser.getUser().getUserCardCollection().contains(selectedCard)) {
+        } else if (LoginUser.getUser().getCardCollection().contains(selectedCard)) {
             moveToCollectionButton.setVisible(false);
 
             new FadeOutDown(moveToCollectionButton).play();
@@ -280,7 +277,8 @@ public class DeckModifierView {
     private void initializeScrollBar() {
         User user = LoginUser.getUser();
 
-        ArrayList<Card> collection = DeckModifierController.cardNameAlphabetSorter(user.getUserCardCollection()); // note this arrayList doesn't have the same refrence as the actual collection of user!
+        ArrayList<Card> collection = DeckModifierController.cardNameAlphabetSorter(user.getCardCollection());
+        // note this arrayList doesn't have the same refrence as the actual collection of user!
 
         FlowPane collectionFlowPane = new FlowPane();
         collectionFlowPaneStyler(collection, collectionFlowPane);

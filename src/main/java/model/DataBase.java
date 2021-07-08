@@ -30,60 +30,13 @@ public class DataBase {
     public void restoreDate() {
         ArrayList<MonsterCard> monsterCards = new ArrayList<>();
         ArrayList<MagicCard> magicCards = new ArrayList<>();
-        loadUsers();
-        try {
-            String json = new String(Files.readAllBytes(Paths.get("jsonResources\\MagicCard.json")));
-            magicCards = new Gson().fromJson(json,
-                    new TypeToken<List<MagicCard>>() {
-                    }.getType());
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-        try {
-            String json = new String(Files.readAllBytes(Paths.get("jsonResources\\MonsterCard.json")));
-            monsterCards = new Gson().fromJson(json,
-                    new TypeToken<List<MonsterCard>>() {
-                    }.getType());
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-        try (CSVReader reader = new CSVReader(new FileReader("csvFile\\SpellTrap.csv"))) {
-            String[] lineInArray;
-            int counter = 0;
-            while ((lineInArray = reader.readNext()) != null) {
-                MagicCard magicCard = magicCards.get(counter);
-                magicCard.setDetails(lineInArray[0], lineInArray[1],
-                        lineInArray[2], lineInArray[3],
-                        lineInArray[4], lineInArray[5]);
-                counter++;
-//              magicCards.add(new MagicCard(lineInArray[0], lineInArray[1],
-//                       lineInArray[2], lineInArray[3],
-//                       lineInArray[4], lineInArray[5]));
-            }
-            MagicCard.setMagicCards(magicCards);
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-        try (CSVReader reader = new CSVReader(new FileReader("csvFile\\Monster.csv"))) {
-            String[] infoRow;
-            int counter = 0;
-            reader.readNext(); // dummy read to skip the title row
-            while ((infoRow = reader.readNext()) != null) {
-                MonsterCard monsterCard = monsterCards.get(counter);
-                monsterCard.setDetails(infoRow[0], infoRow[1], infoRow[2],
-                        infoRow[3], infoRow[4], infoRow[5],
-                        infoRow[6], infoRow[7], infoRow[8]);
-                counter++;
-//                MonsterCard monsterCard = new MonsterCard(infoRow[0], infoRow[1], infoRow[2],
-//                        infoRow[3], infoRow[4], infoRow[5],
-//                        infoRow[6], infoRow[7], infoRow[8]);
-//                monsterCards.add(monsterCard);
-            }
-            MonsterCard.setMonsterCards(monsterCards);
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
 
+        magicCards = loadMagicCards(magicCards);
+        monsterCards = loadMonsterCards(monsterCards);
+        setMagicCardsDetail(magicCards);
+        setMonsterCardsDetail(monsterCards);
+        loadUsers();
+        deserializeData();
         //card Json
 //        String json = new Gson().toJson(magicCards);
 //        Writer writer = null;
@@ -141,6 +94,78 @@ public class DataBase {
 //        }
     }
 
+    private void deserializeData() {
+        User.deSerialize();
+        Deck.deSerialize();
+    }
+
+    private void setMonsterCardsDetail(ArrayList<MonsterCard> monsterCards) {
+        try (CSVReader reader = new CSVReader(new FileReader("csvFile\\Monster.csv"))) {
+            String[] infoRow;
+            int counter = 0;
+            reader.readNext(); // dummy read to skip the title row
+            while ((infoRow = reader.readNext()) != null) {
+                MonsterCard monsterCard = monsterCards.get(counter);
+                monsterCard.setDetails(infoRow[0], infoRow[1], infoRow[2],
+                        infoRow[3], infoRow[4], infoRow[5],
+                        infoRow[6], infoRow[7], infoRow[8]);
+                counter++;
+//                MonsterCard monsterCard = new MonsterCard(infoRow[0], infoRow[1], infoRow[2],
+//                        infoRow[3], infoRow[4], infoRow[5],
+//                        infoRow[6], infoRow[7], infoRow[8]);
+//                monsterCards.add(monsterCard);
+            }
+            MonsterCard.setMonsterCards(monsterCards);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    private void setMagicCardsDetail(ArrayList<MagicCard> magicCards) {
+        try (CSVReader reader = new CSVReader(new FileReader("csvFile\\SpellTrap.csv"))) {
+            String[] lineInArray;
+            int counter = 0;
+            while ((lineInArray = reader.readNext()) != null) {
+                MagicCard magicCard = magicCards.get(counter);
+                magicCard.setDetails(lineInArray[0], lineInArray[1],
+                        lineInArray[2], lineInArray[3],
+                        lineInArray[4], lineInArray[5]);
+                counter++;
+//              magicCards.add(new MagicCard(lineInArray[0], lineInArray[1],
+//                       lineInArray[2], lineInArray[3],
+//                       lineInArray[4], lineInArray[5]));
+            }
+            MagicCard.setMagicCards(magicCards);
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    private ArrayList<MonsterCard> loadMonsterCards(ArrayList<MonsterCard> monsterCards) {
+        try {
+            String json = new String(Files.readAllBytes(Paths.get("jsonResources\\MonsterCard.json")));
+            monsterCards = new Gson().fromJson(json,
+                    new TypeToken<List<MonsterCard>>() {
+                    }.getType());
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        return monsterCards;
+    }
+
+    private ArrayList<MagicCard> loadMagicCards(ArrayList<MagicCard> magicCards) {
+        try {
+            String json = new String(Files.readAllBytes(Paths.get("jsonResources\\MagicCard.json")));
+            magicCards = new Gson().fromJson(json,
+                    new TypeToken<List<MagicCard>>() {
+                    }.getType());
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        return magicCards;
+    }
+
     private void loadUsers() {
         //User Json
         String json;
@@ -168,4 +193,5 @@ public class DataBase {
             e.printStackTrace();
         }
     }
+
 }
