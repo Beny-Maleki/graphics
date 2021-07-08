@@ -14,19 +14,17 @@
     -fx-border-color: black;
 }
 
-.buttonsContainer {
-    -fx-border-color: black;
-}
-
 .selectedCardPane {
     -fx-border-color: black;
 }
 
 .field {
-    -fx-background-image: url(../images/Field/fie_normal.jpeg);
-    -fx-background-size: 480 700;
+    -fx-background-image: url(../images/Field/fie_normal.png);
+    -fx-background-size: 511 700;
 }
 
 .phaseVBox {
     -fx-border-color: black;
+    -fx-background-color: white;
+    -fx-cursor: hand;
 }

@@ -4,30 +4,11 @@
     <option name="autoReloadType" value="ALL" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="45f87b1a-8403-4c06-b2b2-57ebfe555883" name="Default Changelist" comment="a small warning fix">
-      <change afterPath="$PROJECT_DIR$/src/main/java/view/controller/GameView.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/graphicprop/fxml/GamePage.fxml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/graphicprop/images/Field/fie_burn.bmp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/graphicprop/images/Field/fie_dark.bmp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/graphicprop/images/Field/fie_desert.bmp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/graphicprop/images/Field/fie_fusion.bmp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/graphicprop/images/Field/fie_gaia.bmp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/graphicprop/images/Field/fie_mori.bmp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/graphicprop/images/Field/fie_normal.bmp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/graphicprop/images/Field/fie_normal.jpeg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/graphicprop/images/Field/fie_normal.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/graphicprop/images/Field/fie_sanctu.bmp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/graphicprop/images/Field/fie_shine.bmp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/graphicprop/images/Field/fie_sougen.bmp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/graphicprop/images/Field/fie_umi.bmp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/graphicprop/images/Field/fie_water.bmp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/graphicprop/images/Field/fie_yama.bmp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/graphicprop/images/Field/fie_yami.bmp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/graphicprop/images/LPIcon.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/graphicprop/stylesheets/GamePage.css" afterDir="false" />
+    <list default="true" id="45f87b1a-8403-4c06-b2b2-57ebfe555883" name="Default Changelist" comment="initialized GameView">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/model/enums/Menu.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/model/enums/Menu.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/view/StageController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/view/StageController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/graphicprop/fxml/GamePage.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/graphicprop/fxml/GamePage.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/graphicprop/stylesheets/GamePage.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/graphicprop/stylesheets/GamePage.css" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -85,7 +66,6 @@
     <setting file="file://$PROJECT_DIR$/src/main/java/controller/menues/menuhandlers/menucontrollers/WelcomePageController.java" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/src/main/java/view/controller/WelcomeView.java" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/src/main/resources/graphicprop/fxml/LoginPage.fxml" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/src/main/java/controller/menues/menuhandlers/menucontrollers/ProfileMenuController.java" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/src/main/java/view/controller/LoginView.java" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/src/main/resources/graphicprop/stylesheets/RegisterPage.css" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/src/main/resources/graphicprop/fxml/WelcomePage.fxml" root0="FORCE_HIGHLIGHTING" />
@@ -282,13 +262,8 @@
       <workItem from="1625517072898" duration="464000" />
       <workItem from="1625576381733" duration="2978000" />
       <workItem from="1625667151400" duration="13512000" />
-      <workItem from="1625688434985" duration="1559000" />
-    </task>
-    <task id="LOCAL‎۰۰۰۳۷" summary="DuelMenu adding final error">
-      <created>1619958835634</created>
-      <option name="number" value="LOCAL‎۰۰۰۳۷" />
-      <option name="presentableId" value="LOCAL‎۰۰۰۳۷" />
-      <updated>1619958835634</updated>
+      <workItem from="1625688434985" duration="1722000" />
+      <workItem from="1625734126848" duration="5349000" />
     </task>
     <task id="LOCAL-00038" summary="clean code and package classes">
       <created>1620057160988</created>
@@ -604,7 +579,14 @@
       <option name="project" value="LOCAL" />
       <updated>1625578958178</updated>
     </task>
-    <option name="localTasksCounter" value="86" />
+    <task id="LOCAL-00086" summary="initialized GameView">
+      <created>1625690124489</created>
+      <option name="number" value="00086" />
+      <option name="presentableId" value="LOCAL-00086" />
+      <option name="project" value="LOCAL" />
+      <updated>1625690124489</updated>
+    </task>
+    <option name="localTasksCounter" value="87" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -624,7 +606,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="actions almost completed" />
     <MESSAGE value="add actions to cards" />
     <MESSAGE value="restore data again" />
     <MESSAGE value="restore data:(" />
@@ -649,7 +630,8 @@
     <MESSAGE value="a small bug fix" />
     <MESSAGE value="a small bug fix in messages in DeckModifierView" />
     <MESSAGE value="a small warning fix" />
-    <option name="LAST_COMMIT_MESSAGE" value="a small warning fix" />
+    <MESSAGE value="initialized GameView" />
+    <option name="LAST_COMMIT_MESSAGE" value="initialized GameView" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
