@@ -8,26 +8,26 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane fx:id="MainPane" prefHeight="700.0" prefWidth="1000.0" stylesheets="@../stylesheets/DecksView.css" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="view.controller.DecksView">
-    <children>
-        <Pane fx:id="DeckOneHolder" layoutX="310.0" layoutY="35.0" prefHeight="270.0" prefWidth="211.0" stylesheets="@../stylesheets/DecksView.css" />
-        <Pane fx:id="DeckTwoHolder" layoutX="670.0" layoutY="35.0" prefHeight="270.0" prefWidth="211.0" />
-        <Pane fx:id="DeckThreeHolder" layoutX="310.0" layoutY="392.0" prefHeight="270.0" prefWidth="211.0" />
-        <Pane fx:id="DescriptionArea" prefHeight="700.0" prefWidth="232.0">
-            <children>
-                <Label alignment="CENTER" layoutX="63.0" layoutY="21.0" prefHeight="31.0" prefWidth="106.0" text="Decks view " textFill="#feffd4">
-                    <font>
-                        <Font size="18.0" />
-                    </font>
-                </Label>
-                <ImageView fitHeight="427.0" fitWidth="426.0" layoutX="9.0" layoutY="336.0" pickOnBounds="true" preserveRatio="true">
-                    <image>
-                        <Image url="@../images/redCharecter.png" />
-                    </image>
-                </ImageView>
-            </children>
-        </Pane>
-        <Pane fx:id="DeckFourHolder" layoutX="670.0" layoutY="392.0" prefHeight="270.0" prefWidth="211.0" />
-      <Button fx:id="backButton" layoutX="572.0" layoutY="662.0" mnemonicParsing="false" onMouseClicked="#run" text="Back" />
-    </children>
+<AnchorPane fx:id="MainPane" prefHeight="700.0" prefWidth="1000.0" stylesheets="@../stylesheets/DecksView.css"
+            xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="view.controller.DecksView">
+    <Pane fx:id="DeckOneHolder" layoutX="310.0" layoutY="35.0" prefHeight="270.0" prefWidth="211.0"
+          stylesheets="@../stylesheets/DecksView.css"/>
+    <Pane fx:id="DeckTwoHolder" layoutX="670.0" layoutY="35.0" prefHeight="270.0" prefWidth="211.0"/>
+    <Pane fx:id="DeckThreeHolder" layoutX="310.0" layoutY="392.0" prefHeight="270.0" prefWidth="211.0"/>
+    <Pane fx:id="DescriptionArea" prefHeight="700.0" prefWidth="232.0">
+        <Label alignment="CENTER" layoutX="63.0" layoutY="21.0" prefHeight="31.0" prefWidth="106.0"
+               text="Decks view " textFill="#feffd4">
+            <font>
+                <Font size="18.0"/>
+            </font>
+        </Label>
+        <ImageView fitHeight="427.0" fitWidth="426.0" layoutX="9.0" layoutY="336.0" pickOnBounds="true"
+                   preserveRatio="true">
+            <Image url="@../images/redCharecter.png"/>
+        </ImageView>
+    </Pane>
+    <Pane fx:id="DeckFourHolder" layoutX="670.0" layoutY="392.0" prefHeight="270.0" prefWidth="211.0"/>
+    <Button fx:id="backButton" layoutX="572.0" layoutY="662.0" mnemonicParsing="false" onMouseClicked="#run"
+            text="Back"/>
 </AnchorPane>

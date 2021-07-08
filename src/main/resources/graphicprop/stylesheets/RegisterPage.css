@@ -1,9 +1,9 @@
-#pane {
+#mainPane {
     -fx-background-image: url(../images/RegisterWallpaper.png);
     -fx-background-size: cover;
 }
 
-#RegisterBox {
+#registerBox {
     -fx-background-color: black;
     -fx-border-color: #1c1cb1;
 }

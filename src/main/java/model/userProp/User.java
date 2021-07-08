@@ -17,8 +17,9 @@ public class User extends FatherUser {
     private final ArrayList<Integer> userCardCollection;
     private String username;
     private String password;
+    private String avatarAddress;
     private Deck deckOnModify;
-    private ArrayList<Boolean> unlockedDeckHolders;
+    private final ArrayList<Boolean> unlockedDeckHolders;
 
     {
         deckOnModify = null;
@@ -33,11 +34,16 @@ public class User extends FatherUser {
         score = 0;
     }
 
-    public User(String username, String nickname, String password) {
+    public User(String username, String nickname, String password, String imageAddress) {
         setUsername(username);
         setNickname(nickname);
         setPassword(password);
+        setAvatarAddress(imageAddress);
         allUsers.add(this);
+    }
+
+    public String getAvatarAddress() {
+        return avatarAddress;
     }
 
     public static User getUserByUserInfo(String info, UserInfoType userInfoType) {
@@ -67,6 +73,10 @@ public class User extends FatherUser {
 
     public static void setAllUsers(ArrayList<User> users) {
         allUsers = users;
+    }
+
+    public void setAvatarAddress(String avatarAddress) {
+        this.avatarAddress = avatarAddress;
     }
 
     public Deck getDeckByName(String name) {
@@ -123,7 +133,7 @@ public class User extends FatherUser {
         return cards;
     }
 
-    public ArrayList<Integer> getUserCardCollectionInInteger(){
+    public ArrayList<Integer> getUserCardCollectionInInteger() {
         return userCardCollection;
     }
 
@@ -131,7 +141,7 @@ public class User extends FatherUser {
         return userCardCollection;
     }
 
-    public void addCard(Card card ) {
+    public void addCard(Card card) {
         userCardCollection.add(card.getID());
     }
 
@@ -161,12 +171,12 @@ public class User extends FatherUser {
         allUserDecksId.set(i, null);
     }
 
-    public void setDeckOnModify(Deck deckOnModify) {
-        this.deckOnModify = deckOnModify;
-    }
-
     public Deck getDeckOnModify() {
         return deckOnModify;
+    }
+
+    public void setDeckOnModify(Deck deckOnModify) {
+        this.deckOnModify = deckOnModify;
     }
 }
 
