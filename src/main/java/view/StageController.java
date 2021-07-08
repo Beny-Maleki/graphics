@@ -17,7 +17,7 @@ public class StageController extends Application {
     @Override
     public void start(Stage stage) throws Exception {
         stage.setTitle("YuGiOh!");
-        FXMLLoader loader = new FXMLLoader(getClass().getResource(Menu.GAME_PAGE.getAddress()));
+        FXMLLoader loader = new FXMLLoader(getClass().getResource(Menu.REGISTER_MENU.getAddress()));
         Parent root = loader.load();
         Scene scene = new Scene(root);
         stage.setScene(scene);

@@ -1,0 +1,4 @@
+.root {
+    -fx-background-image: url(../images/mainPagePic.jpg);
+    -fx-background-size: cover;
+}

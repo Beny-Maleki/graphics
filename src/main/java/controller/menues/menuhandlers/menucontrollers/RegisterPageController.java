@@ -64,9 +64,14 @@ public class RegisterPageController extends Controller {
         Button button = new Button("Back");
         button.setOnMouseClicked(event -> {
             FadeOut fadeOut = new FadeOut(avatarSelector);
-            fadeOut.getTimeline().setOnFinished(event1 -> pane.getChildren().remove(button.getParent()));
+            fadeOut.getTimeline().setOnFinished(event1 -> pane.getChildren().remove(avatarSelector));
             fadeOut.play();
+            pane.setStyle("-fx-opacity: 1");
+            pane.getChildren().forEach(node -> node.setDisable(false));
         });
+        button.setLayoutY(395);
+        pane.setStyle("-fx-opacity: 0.5");
+        pane.getChildren().forEach(node -> node.setDisable(true));
         avatarSelector.getChildren().add(button);
         setAvatarsSize(avatarOne, avatarTwo, avatarThree, avatarFour);
         setImageOnMouseCLickEvent(imageView, avatarOne, avatarTwo, avatarThree, avatarFour);
