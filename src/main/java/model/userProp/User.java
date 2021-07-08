@@ -23,6 +23,7 @@ public class User extends FatherUser {
     private Deck deckOnModify;
 
     {
+        avatarAddress = "src/main/resources/graphicprop/images/avatar1.png";
         deckOnModify = null;
         unlockedDeckHolders = new ArrayList<>(Arrays.asList(true, false, false, false));
         allUserDecksId = new ArrayList<>(Arrays.asList(null, null, null, null));

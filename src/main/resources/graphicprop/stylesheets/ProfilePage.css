@@ -1,6 +1,12 @@
 .text-field {
-    -fx-background-color: #008000;
+    -fx-background-color: #f8a552;
+    -fx-background-radius: 20;
+    -fx-font-size: 14;
     -fx-text-fill: black;
+    -fx-border-width: 1;
+    -fx-border-radius: 20;
+    -fx-border-color: #8c530d;
+    -fx-prompt-text-fill: #373636;
 }
 
 
@@ -53,4 +59,10 @@
 
 #userInfo {
     -fx-background-image: url(../images/brickwall.jpg);;
+}
+
+.error {
+    -fx-text-fill: red;
+    -fx-background-color: transparent;
+    -fx-border-color: transparent;
 }

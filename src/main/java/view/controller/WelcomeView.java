@@ -20,7 +20,6 @@ public class WelcomeView {
     public Button Register;
     public Button Login;
     public Button Exit;
-    public Label Message;
     public Button Scoreboard;
 
     WelcomePageController controller;
