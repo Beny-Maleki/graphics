@@ -9,17 +9,8 @@ import model.userProp.User;
 import model.userProp.UserInfoType;
 import view.menudisplay.ProfileMenuDisplay;
 
-public class ProfileMenuController extends Controller {
-    private static ProfileMenuController instance;
+public class ProfilePageController extends Controller {
 
-    private ProfileMenuController() {}
-
-    public static ProfileMenuController getInstance() {
-        if (instance == null) {
-            instance = new ProfileMenuController();
-        }
-        return instance;
-    }
 
     public static void showCurrentMenu() {
         ProfileMenuDisplay.display(Profile.CURRENT_MENU);
@@ -43,12 +34,9 @@ public class ProfileMenuController extends Controller {
         }
     }
 
-    public String changePassword(String currentPassword, String newPassword, String repeatPassword) {
-        if (currentPassword.equals("") || newPassword.equals("") || repeatPassword.equals("")) {
+    public String changePassword(String currentPassword, String newPassword) {
+        if (currentPassword.equals("") || newPassword.equals("")) {
             return "You must fill all the fields first";
-        }
-        if (!newPassword.equals(repeatPassword)) {
-            return Error.REPEAT_PASS_WRONG.toString();
         }
         User user = LoginUser.getUser();
         if (!user.isPasswordMatch(currentPassword)) {

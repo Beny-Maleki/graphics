@@ -2,6 +2,7 @@ package model.gameprop.BoardProp;
 
 import exceptions.CardNotFoundException;
 import model.cards.cardsProp.Card;
+import model.cards.cardsProp.MagicCard;
 import model.cards.cardsProp.MonsterCard;
 
 import java.awt.*;
@@ -19,6 +20,7 @@ public class GraveYard {
     }
 
     public void addCardToGraveYard(Card card) {
+        if (card instanceof MagicCard) ((MagicCard) card).setActivated(false);
         destroyedCards.add(card);
     }
 

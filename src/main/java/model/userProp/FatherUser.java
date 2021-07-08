@@ -18,9 +18,7 @@ public abstract class FatherUser {
         this.score = score;
     }
 
-    public Deck getActiveDeck() {
-        return activeDeck;
-    }
+    public abstract Deck getActiveDeck();
 
     public int getScore() {
         return score;

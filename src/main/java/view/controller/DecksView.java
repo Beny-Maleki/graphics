@@ -4,7 +4,6 @@ import animatefx.animation.*;
 import controller.menues.menuhandlers.menucontrollers.DeckModifierController;
 import javafx.animation.Animation;
 import javafx.animation.Interpolator;
-import javafx.animation.Timeline;
 import javafx.animation.Transition;
 import javafx.fxml.FXML;
 import javafx.geometry.Insets;
@@ -16,10 +15,7 @@ import javafx.scene.effect.DropShadow;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
-import javafx.scene.layout.Background;
-import javafx.scene.layout.BackgroundFill;
-import javafx.scene.layout.CornerRadii;
-import javafx.scene.layout.Pane;
+import javafx.scene.layout.*;
 import javafx.scene.paint.Color;
 import javafx.util.Duration;
 import model.Exceptions.EmptyTextFieldException;
@@ -50,7 +46,7 @@ public class DecksView {
     public Pane DescriptionArea;
     public Button backButton;
     private ArrayList<Pane> deckHolders;
-    private DeckModifierController controller;
+    private final DeckModifierController controller;
 
     {
         controller = new DeckModifierController();
@@ -88,7 +84,7 @@ public class DecksView {
     public void run(MouseEvent event) throws IOException {
         if (event.getSource() == backButton) {
             controller.moveToPage(backButton, Menu.MAIN_MENU);
-            System.out.println("hello");
+            System.out.println("here");
         }
     }
 
@@ -328,7 +324,7 @@ public class DecksView {
                     showPackOfCards(i);
                     fullHolder(newDeck, i);
                 } catch (EmptyTextFieldException e) {
-                    //TODO make label for error
+
                 } catch (FileNotFoundException e) {
                     e.printStackTrace();
                 }
@@ -379,6 +375,7 @@ public class DecksView {
 
         Label mainDeckSize = new Label("Main Deck size: " + deck.getMainDeck().size());
         setNodesPosition(mainDeckSize, 121, 128, 106, 17);
+        mainDeckSize.setPrefWidth(Region.USE_COMPUTED_SIZE);
         mainDeckSize.setStyle("-fx-font-size: 12 ; -fx-text-fill: white");
         new BounceIn(mainDeckSize).play();
         DECK_NOTIFICATION.add(mainDeckSize);
@@ -424,8 +421,10 @@ public class DecksView {
         DECK_NOTIFICATION.add(removeDeckButton);
         removeDeckButton.setOnMouseClicked(event -> {
             USER.removeDeck(i);
-            USER.getUserCardCollection().addAll(deck.getMainDeck());
-            USER.getUserCardCollection().addAll(deck.getSideDeck());
+
+            deck.getMainDeck().forEach(USER::addCard);
+            deck.getSideDeck().forEach(USER::addCard);
+
             deckHolders.get(i).getChildren().forEach(node -> new FadeOut(node).play());
             removeNotification();
             emptyHolder(i);
@@ -449,19 +448,23 @@ public class DecksView {
         Button activeButton = new Button("Active");
         setNodesPosition(activeButton, 92, 324, 55, 25);
         styleButton(activeButton);
+        activeButton.setOnMouseExited(event ->
+                {
+                    activeButton.setText("Active");
+                    new FlipInX(activeButton).play();
+                    activeButton.setStyle("-fx-text-fill: #A61210; -fx-background-radius: 15; -fx-focus-color : transparent");
+                }
+        );
         if (!deck.getValidity()) {
             activeButton.setOnMouseEntered(event -> {
                 activeButton.setStyle("-fx-background-color: #fab700; -fx-background-radius: 15");
                 activeButton.setText("Invalid");
             });
-            activeButton.setOnMouseExited(event ->
-                    {
-                        activeButton.setText("Active");
-                        new FlipInX(activeButton).play();
-                        activeButton.setStyle("-fx-text-fill: #A61210; -fx-background-radius: 15; -fx-focus-color : transparent");
-                    }
-            );
-        } else USER.setActiveDeck(deck);
+        } else {
+            USER.setActiveDeck(deck);
+            isActive.setText("deck is active");
+            isActive.setStyle("-fx-font-size: 12 ; -fx-text-fill: #00ff08");
+        }
         DECK_NOTIFICATION.add(activeButton);
 
         new BounceIn(activeButton).play();

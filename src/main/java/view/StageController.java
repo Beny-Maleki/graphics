@@ -7,9 +7,6 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 import model.enums.Menu;
-import view.controller.ScoreboardView;
-
-import java.util.Objects;
 
 public class StageController extends Application {
 
@@ -20,7 +17,7 @@ public class StageController extends Application {
     @Override
     public void start(Stage stage) throws Exception {
         stage.setTitle("YuGiOh!");
-        FXMLLoader loader = new FXMLLoader(getClass().getResource(Menu.WELCOME_MENU.getAddress()));
+        FXMLLoader loader = new FXMLLoader(getClass().getResource(Menu.GAME_PAGE.getAddress()));
         Parent root = loader.load();
         Scene scene = new Scene(root);
         stage.setScene(scene);

@@ -21,7 +21,7 @@ public enum MagicAttribute {
             case "Ritual": {
                 return RITUAL;
             }
-            case "Quick-Play": {
+            case "Quick-play": {
                 return QUICK_PLAY;
             }
             case "Field": {

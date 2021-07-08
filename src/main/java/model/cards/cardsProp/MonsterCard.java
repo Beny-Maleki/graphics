@@ -37,15 +37,15 @@ public class MonsterCard extends Card {
     public MonsterCard() {
     }
 
-    @Override
-    public Card getSimilarCard() {
-        return new MonsterCard(name , String.valueOf(level) , attribute.toString() , race.toString() , type.toString() ,
-                String.valueOf(attack) , String.valueOf(defence) , description , String.valueOf(price));
-    }
-
     public static void setMonsterCards(ArrayList<MonsterCard> monsterCards) {
         MonsterCard.monsterCards = monsterCards;
         Card.addMonstersToCards(monsterCards);
+    }
+
+    @Override
+    public Card getSimilarCard() {
+            return new MonsterCard(name, String.valueOf(level), attribute.toString(), race.toString(), type.toString(),
+                    String.valueOf(attack), String.valueOf(defence), description, String.valueOf(price));
     }
 
     public void setDetails(String name, String level, String attribute, String race, String type,
@@ -76,11 +76,11 @@ public class MonsterCard extends Card {
     public String getCardDetailWithEnters() {
         return
                 "Name: " + name +
-                "\nLevel: " + level +
-                "\nType: " + race.toString() +
-                "\nATK: " + attack +
-                "\nDEF: " + defence +
-                "\nDescription:\n" + getCardDescriptionWithEnters();
+                        "\nLevel: " + level +
+                        "\nType: " + race.toString() +
+                        "\nATK: " + attack +
+                        "\nDEF: " + defence +
+                        "\nDescription:\n" + getCardDescriptionWithEnters();
     }
 
     public int getAttack() {

@@ -120,7 +120,7 @@ public class DeckModifierController extends Controller {
         Deck selectedDeck = user.getDeckByName(deckName);
 
         selectedDeck.addCardToMainDeck(card);
-        if (user.getUserCardCollection().contains(card))
+        if (user.getCardCollection().contains(card))
             user.removeCardFromUserCollection(card);
         else if (selectedDeck.getSideDeck().contains(card))
             selectedDeck.removeCardFromSideDeck(card);
@@ -131,7 +131,7 @@ public class DeckModifierController extends Controller {
         Deck selectedDeck = user.getDeckByName(deckName);
 
         selectedDeck.addCardToSideDeck(card);
-        if (user.getUserCardCollection().contains(card))
+        if (user.getCardCollection().contains(card))
             user.removeCardFromUserCollection(card);
         else if (selectedDeck.getMainDeck().contains(card)) {
             selectedDeck.removeCardFromMainDeck(card);

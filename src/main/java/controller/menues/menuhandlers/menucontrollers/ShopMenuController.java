@@ -46,7 +46,7 @@ public class ShopMenuController extends Controller {
     }
 
     public static int countCardInUserProperties(User loggedInUser, int count, Card selectedCard) {
-        for (Card c : loggedInUser.getUserCardCollection()) {
+        for (Card c : loggedInUser.getCardCollection()) {
             if (c.getName().equals(selectedCard.getName())) {
                 count++;
             }

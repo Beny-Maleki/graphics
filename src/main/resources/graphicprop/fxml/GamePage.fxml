@@ -1,0 +1,156 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.shape.*?>
+<?import javafx.scene.text.*?>
+
+<AnchorPane prefHeight="700.0" prefWidth="1002.0" stylesheets="/graphicprop/stylesheets/GamePage.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="view.controller.GameView">
+   <children>
+      <AnchorPane prefHeight="700.0" prefWidth="260.0" styleClass="anchorPane">
+         <children>
+            <AnchorPane fx:id="selectedCardContainer" prefHeight="375.0" prefWidth="260.0" styleClass="selectedCardContainer">
+               <children>
+                  <Pane fx:id="selectedCardPane" layoutX="31.0" layoutY="14.0" prefHeight="291.0" prefWidth="200.0" styleClass="selectedCardPane" />
+                  <ScrollPane layoutX="1.0" layoutY="305.0" prefHeight="71.0" prefWidth="259.0">
+                    <content>
+                      <AnchorPane fx:id="descriptionScrollPane" minHeight="0.0" minWidth="0.0" prefHeight="88.0" prefWidth="243.0" />
+                    </content>
+                  </ScrollPane>
+               </children>
+            </AnchorPane>
+            <AnchorPane fx:id="chatBoxContainer" layoutY="378.0" prefHeight="323.0" prefWidth="260.0" styleClass="chatBoxContainer">
+               <children>
+                  <Label layoutX="96.0" layoutY="14.0" text="Chat Box">
+                     <font>
+                        <Font name="System Bold" size="16.0" />
+                     </font></Label>
+                  <ScrollPane fx:id="chatBoxScrollPane" layoutX="1.0" layoutY="206.0" prefHeight="117.0" prefWidth="259.0">
+                    <content>
+                      <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="203.0" prefWidth="243.0" />
+                    </content>
+                  </ScrollPane>
+                  <TextArea layoutX="1.0" layoutY="54.0" prefHeight="79.0" prefWidth="259.0" promptText="Type your message.." />
+                  <Button layoutX="1.0" layoutY="133.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="259.0" text="Send" />
+                  <Label layoutX="96.0" layoutY="183.0" text="Chat History" />
+               </children></AnchorPane>
+         </children>
+      </AnchorPane>
+      <AnchorPane layoutX="780.0" prefHeight="702.0" prefWidth="222.0">
+         <children>
+            <AnchorPane fx:id="opponentInfoContainer" prefHeight="299.0" prefWidth="222.0" styleClass="opponentInfoContainer">
+               <children>
+                  <Label layoutX="77.0" layoutY="14.0" text="Opponent">
+                     <font>
+                        <Font name="System Bold" size="14.0" />
+                     </font>
+                  </Label>
+                  <ImageView fx:id="opponentAvatar" fitHeight="100.0" fitWidth="100.0" layoutX="61.0" layoutY="40.0" pickOnBounds="true" preserveRatio="true" />
+                  <Label fx:id="opponentUsername" layoutX="15.0" layoutY="150.0" text="Username:">
+                     <font>
+                        <Font size="13.0" />
+                     </font></Label>
+                  <Label fx:id="opponentNickname" layoutX="15.0" layoutY="180.0" text="Nickname:">
+                     <font>
+                        <Font size="13.0" />
+                     </font></Label>
+                  <ImageView fitHeight="40.0" fitWidth="40.0" layoutX="15.0" layoutY="230.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../images/LPIcon.png" />
+                     </image></ImageView>
+                  <Rectangle arcHeight="5.0" arcWidth="5.0" fill="GREEN" height="40.0" layoutX="61.0" layoutY="230.0" stroke="BLACK" strokeType="INSIDE" width="150.0" />
+                  <Label layoutX="77.0" layoutY="240.0" text="8000" textFill="WHITE">
+                     <font>
+                        <Font name="System Bold" size="14.0" />
+                     </font>
+                  </Label>
+               </children></AnchorPane>
+            <AnchorPane fx:id="buttonsContainer" layoutY="301.0" prefHeight="79.0" prefWidth="222.0">
+               <children>
+                  <Button mnemonicParsing="false" prefHeight="40.0" prefWidth="222.0" text="Next phase" />
+                  <Button layoutY="40.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="222.0" text="Cheat!" />
+               </children>
+            </AnchorPane>
+            <AnchorPane fx:id="yourInfoContainer" layoutY="387.0" prefHeight="314.0" prefWidth="222.0" styleClass="yourInfoContainer">
+               <children>
+                  <Label layoutX="98.0" layoutY="14.0" text="You">
+                     <font>
+                        <Font name="System Bold" size="14.0" />
+                     </font>
+                  </Label>
+                  <ImageView fx:id="yourAvatar" fitHeight="100.0" fitWidth="100.0" layoutX="61.0" layoutY="40.0" pickOnBounds="true" preserveRatio="true" />
+                  <Label fx:id="yourUsername" layoutX="14.0" layoutY="150.0" text="Username:">
+                     <font>
+                        <Font size="13.0" />
+                     </font></Label>
+                  <Label fx:id="yourNickname" layoutX="15.0" layoutY="180.0" text="Nickname:">
+                     <font>
+                        <Font size="13.0" />
+                     </font></Label>
+                  <ImageView fitHeight="40.0" fitWidth="40.0" layoutX="15.0" layoutY="230.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../images/LPIcon.png" />
+                     </image></ImageView>
+                  <Rectangle arcHeight="5.0" arcWidth="5.0" fill="GREEN" height="40.0" layoutX="61.0" layoutY="230.0" stroke="BLACK" strokeType="INSIDE" width="150.0" />
+                  <Label layoutX="78.0" layoutY="241.0" text="8000" textFill="WHITE">
+                     <font>
+                        <Font name="System Bold" size="14.0" />
+                     </font>
+                  </Label>
+               </children></AnchorPane>
+         </children>
+      </AnchorPane>
+      <Pane fx:id="field" layoutX="265.0" layoutY="2.0" prefHeight="700.0" prefWidth="512.0" styleClass="field" stylesheets="@../stylesheets/GamePage.css">
+         <children>
+            <Pane layoutY="533.0" prefHeight="70.0" prefWidth="17.0" styleClass="phaseVBox">
+               <children>
+                  <Label layoutX="-14.0" layoutY="27.0" rotate="90.0" text="End Phase">
+                     <font>
+                        <Font size="10.0" />
+                     </font></Label>
+               </children>
+            </Pane>
+            <Pane layoutY="450.0" prefHeight="70.0" prefWidth="17.0" styleClass="phaseVBox">
+               <children>
+                  <Label layoutX="-21.0" layoutY="27.0" rotate="90.0" text="Main Phase 2">
+                     <font>
+                        <Font size="10.0" />
+                     </font></Label>
+               </children>
+            </Pane>
+            <Pane layoutY="358.0" prefHeight="70.0" prefWidth="17.0" styleClass="phaseVBox">
+               <children>
+                  <Label layoutX="-18.0" layoutY="27.0" rotate="90.0" text="Battle Phase">
+                     <font>
+                        <Font size="10.0" />
+                     </font></Label>
+               </children>
+            </Pane>
+            <Pane layoutY="270.0" prefHeight="70.0" prefWidth="17.0" styleClass="phaseVBox">
+               <children>
+                  <Label layoutX="-21.0" layoutY="27.0" rotate="90.0" text="Main Phase 1">
+                     <font>
+                        <Font size="10.0" />
+                     </font></Label>
+               </children>
+            </Pane>
+            <Pane layoutY="184.0" prefHeight="70.0" prefWidth="17.0" styleClass="phaseVBox">
+               <children>
+                  <Label layoutX="-24.0" layoutY="27.0" rotate="90.0" text="Standby Phase">
+                     <font>
+                        <Font size="10.0" />
+                     </font></Label>
+               </children>
+            </Pane>
+            <Pane layoutY="97.0" prefHeight="70.0" prefWidth="17.0" styleClass="phaseVBox">
+               <children>
+                  <Label layoutX="-17.0" layoutY="27.0" rotate="90.0" text="Draw Phase">
+                     <font>
+                        <Font size="10.0" />
+                     </font></Label>
+               </children>
+            </Pane>
+         </children></Pane>
+   </children>
+</AnchorPane>

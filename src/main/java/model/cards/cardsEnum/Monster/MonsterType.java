@@ -3,7 +3,7 @@ package model.cards.cardsEnum.Monster;
 public enum MonsterType {
     NORMAL("Normal"),
     EFFECT("Effect"),
-    RITUAL("RITUAL");
+    RITUAL("Ritual");
 
     String enumToString;
 
@@ -19,7 +19,7 @@ public enum MonsterType {
             case "Effect": {
                 return EFFECT;
             }
-            case "RITUAL": {
+            case "Ritual": {
                 return RITUAL;
             }
             default: {

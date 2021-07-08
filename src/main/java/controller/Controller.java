@@ -42,11 +42,13 @@ public abstract class Controller {
             case SCOREBOARD_MENU:
                 break;
             case WELCOME_MENU:
-            case PROFILE_MENU: {
-                new SlideInUp(parent).play();
+            case PROFILE_MENU:
+            case REGISTER_MENU:
+            case MAIN_MENU:
+            case PROFILE_CHANGE_NICKNAME: {
+                new FadeIn(parent).play();
                 break;
             }
-            case REGISTER_MENU:
             case PROFILE_CHANGE_PASSWORD: {
                 new SlideInLeft(parent).play();
                 break;
@@ -57,8 +59,6 @@ public abstract class Controller {
                 new SlideInDown(parent).play();
                 break;
             }
-            case MAIN_MENU:
-            case PROFILE_CHANGE_NICKNAME:
             case DECK_MODIFIER: {
                 new SlideInRight(parent).play();
                 break;
