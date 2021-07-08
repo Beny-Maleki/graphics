@@ -99,6 +99,9 @@ public class User extends FatherUser {
     }
 
     public String getAvatarAddress() {
+        if (avatarAddress == null) {
+            avatarAddress = "src/main/resources/graphicprop/images/avatar1.png";
+        }
         return avatarAddress;
     }
 
