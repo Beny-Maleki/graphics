@@ -4,11 +4,20 @@
     <option name="autoReloadType" value="ALL" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="45f87b1a-8403-4c06-b2b2-57ebfe555883" name="Default Changelist" comment="add hand to GameView">
+    <list default="true" id="45f87b1a-8403-4c06-b2b2-57ebfe555883" name="Default Changelist" comment="add GraveYard">
+      <change afterPath="$PROJECT_DIR$/src/main/resources/graphicprop/images/Field/fie_mori.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/graphicprop/images/opponentUserInfoBgjpeg.jpeg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/graphicprop/images/youUserInfoBGjpeg.jpeg" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/model/enums/Origin.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/model/enums/Origin.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/jsonResources/Users.Json" beforeDir="false" afterPath="$PROJECT_DIR$/jsonResources/Users.Json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/controller/RockPaperScissorController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controller/RockPaperScissorController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/view/StageController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/view/StageController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/view/controller/DuelPageView.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/view/controller/DuelPageView.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/view/controller/GameView.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/view/controller/GameView.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/graphicprop/fxml/GamePage.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/graphicprop/fxml/GamePage.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/view/controller/RockPaperScissorView.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/view/controller/RockPaperScissorView.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/graphicprop/fxml/DuelPage.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/graphicprop/fxml/DuelPage.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/graphicprop/fxml/RockPaperScissor.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/graphicprop/fxml/RockPaperScissor.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/graphicprop/stylesheets/GamePage.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/graphicprop/stylesheets/GamePage.css" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -102,7 +111,7 @@
     <property name="com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.JUnit4" value="" />
     <property name="com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.JUnit5" value="" />
     <property name="last_directory_selection" value="$PROJECT_DIR$/src/main/java/Viewer" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/src/main/java/model/gameprop" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/src/main/resources/graphicprop/images/Field" />
     <property name="list.type.of.created.stylesheet" value="CSS" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.path.for.package.eslint" value="project" />
@@ -125,8 +134,8 @@
       <recent name="" />
     </key>
     <key name="CopyFile.RECENT_KEYS">
-      <recent name="C:\Users\Asus\Desktop\graphics\src\main\java\model\gameprop" />
       <recent name="C:\Users\Asus\Desktop\graphics\src\main\resources\graphicprop\images\Field" />
+      <recent name="C:\Users\Asus\Desktop\graphics\src\main\java\model\gameprop" />
       <recent name="C:\Users\Asus\Desktop\graphics\src\main\resources\graphicprop\images" />
     </key>
     <key name="CreateTestDialog.Recents.Supers">
@@ -280,14 +289,7 @@
       <workItem from="1625688434985" duration="1722000" />
       <workItem from="1625734126848" duration="5349000" />
       <workItem from="1625746738104" duration="1006000" />
-      <workItem from="1625812832910" duration="13089000" />
-    </task>
-    <task id="LOCAL-00042" summary="entery of the game">
-      <created>1620095240397</created>
-      <option name="number" value="00042" />
-      <option name="presentableId" value="LOCAL-00042" />
-      <option name="project" value="LOCAL" />
-      <updated>1620095240397</updated>
+      <workItem from="1625812832910" duration="26840000" />
     </task>
     <task id="LOCAL-00043" summary="edit register menu login messages">
       <created>1620095998860</created>
@@ -602,7 +604,14 @@
       <option name="project" value="LOCAL" />
       <updated>1625822638397</updated>
     </task>
-    <option name="localTasksCounter" value="91" />
+    <task id="LOCAL-00091" summary="add GraveYard">
+      <created>1625838878670</created>
+      <option name="number" value="00091" />
+      <option name="presentableId" value="LOCAL-00091" />
+      <option name="project" value="LOCAL" />
+      <updated>1625838878670</updated>
+    </task>
+    <option name="localTasksCounter" value="92" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -622,7 +631,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="user Gson" />
     <MESSAGE value="Gson deck and users" />
     <MESSAGE value="add java fx" />
     <MESSAGE value="fix turn changing bug" />
@@ -647,7 +655,8 @@
     <MESSAGE value="continue a little more on GameView" />
     <MESSAGE value="a small bug fix at DeckModifier" />
     <MESSAGE value="add hand to GameView" />
-    <option name="LAST_COMMIT_MESSAGE" value="add hand to GameView" />
+    <MESSAGE value="add GraveYard" />
+    <option name="LAST_COMMIT_MESSAGE" value="add GraveYard" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

@@ -81,23 +81,11 @@ public class GameView {
     }
 
     public void initialize() throws FileNotFoundException {
-        LoginUser.setUser(User.getUserByUserInfo("Yaroo", UserInfoType.USERNAME));
+        playerYou = GameInProcess.getGame().getFirstPlayer();
+        playerOpponent = GameInProcess.getGame().getSecondPlayer();
 
-        User you = LoginUser.getUser();
-
-        //TODO: Replace this  instantiation with a more general one!
-        User opponent = User.getUserByUserInfo("ali", UserInfoType.USERNAME);
-        //
-
-        playerYou = new Player(you, 0);
-        playerOpponent = new Player(opponent, 0);
-
-        //TODO: replace this block with the result of Rock/paper/scissors
-        Player firstPlayer = playerYou;
-        Player secondPlayer = playerOpponent;
-        //
-
-        GameInProcess.setGame(game = new Game(firstPlayer, secondPlayer, 1));
+        User you = (User) playerYou.getUser();
+        User opponent = (User) playerOpponent.getUser();
 
 
         assert opponent != null;
@@ -230,7 +218,6 @@ public class GameView {
                 selectedCardImageView.setImage(gameHouse.getCardImage());
                 new FlipInX(selectedCardImageView).play();
             }
-
             //TODO: make a field "selectedCard : Card" which holds the selected card!
         });
     }
@@ -368,7 +355,7 @@ public class GameView {
 
     public void run(MouseEvent mouseEvent) throws FileNotFoundException {
         if (mouseEvent.getSource() == yourGraveyardPane) {
-            showGraveYard(playerYou);
+             showGraveYard(playerYou);
         } else if (mouseEvent.getSource() == opponentGraveyardPane) {
             showGraveYard(playerOpponent);
         } else if (mouseEvent.getSource() == nextPhase) {

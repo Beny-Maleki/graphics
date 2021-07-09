@@ -76,7 +76,7 @@
     ],
     "username": "ali",
     "password": "1234",
-    "avatarAddress": "src/main/resources/graphicprop/images/avatar1.png",
+    "avatarAddress": "src/main/resources/graphicprop/images/avatar2.png",
     "deckOnModify": {
       "mainDeck": [
         46,
