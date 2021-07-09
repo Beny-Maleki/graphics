@@ -9,13 +9,13 @@ import java.io.IOException;
 
 public class MainMenuView {
 
-    private final MainMenuController controller;
     public Button duel;
     public Button decksConstruction;
     public Button shop;
     public Button setting;
     public Button logout;
     public Button profile;
+    private final MainMenuController controller;
 
     {
         controller = new MainMenuController();
@@ -32,7 +32,7 @@ public class MainMenuView {
         } else if (event.getSource() == profile) {
             controller.moveToPage(profile, Menu.PROFILE_MENU);
         } else if (event.getSource() == duel) {
-            controller.moveToPage(duel, Menu.DUEL_PAGE);
+            controller.moveToPage(duel, Menu.DUEL_MENU);
         }
     }
 }

@@ -1,7 +1,6 @@
 package model.userProp;
 
 import model.cards.cardsProp.Card;
-import model.cards.cardsProp.MagicCard;
 import model.cards.cardsProp.MonsterCard;
 import model.enums.GameEnums.SideOfFeature;
 import model.enums.GameEnums.cardvisibility.MonsterHouseVisibilityState;

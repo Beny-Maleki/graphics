@@ -1,1 +1,96 @@
-[{"allUserDecksId":["202107081100401"],"cardCollection":[46,46,57,33,33,32,42,70,55,32,32,10,11,9,2,3,1,66,6,6,8,41],"unlockedDeckHolders":[true,false,false,false],"username":"ali","password":"1234","avatarAddress":"src/main/resources/graphicprop/images/avatar1.png","deckOnModify":{"mainDeck":[46,29],"sideDeck":[29],"name":"arashDeck","ID":"202107081100401","isDeckActivated":true},"score":0,"nickname":"sas","balance":986500},{"allUserDecksId":["202107081100402"],"cardCollection":[46,46,57,53,23,20,11,11,10,46,46],"unlockedDeckHolders":[true,false,false,false],"username":"Yaroo","password":"1234","deckOnModify":{"mainDeck":[46,29],"sideDeck":[29],"name":"YarooDeck","ID":"202107081100402","isDeckActivated":true},"score":0,"nickname":"KaftarBaz","balance":986500},{"allUserDecksId":[null,null,null,null],"cardCollection":[],"unlockedDeckHolders":[true,false,false,false],"username":"1","password":"1","score":0,"nickname":"1","balance":1000000}]
+[
+  {
+    "allUserDecksId": [
+      "202107081100402"
+    ],
+    "cardCollection": [
+      46,
+      46,
+      57,
+      53,
+      23,
+      20,
+      11,
+      11,
+      10,
+      46,
+      46
+    ],
+    "unlockedDeckHolders": [
+      true,
+      false,
+      false,
+      false
+    ],
+    "username": "Yaroo",
+    "password": "1234",
+    "deckOnModify": {
+      "mainDeck": [
+        46,
+        29
+      ],
+      "sideDeck": [
+        29
+      ],
+      "name": "YarooDeck",
+      "ID": "202107081100402",
+      "isDeckActivated": true
+    },
+    "score": 0,
+    "nickname": "KaftarBaz",
+    "balance": 986500
+  },
+  {
+    "allUserDecksId": [
+      "202107081100401"
+    ],
+    "cardCollection": [
+      46,
+      46,
+      57,
+      33,
+      33,
+      32,
+      42,
+      70,
+      55,
+      32,
+      32,
+      10,
+      11,
+      9,
+      2,
+      3,
+      1,
+      66,
+      6,
+      6,
+      8,
+      41
+    ],
+    "unlockedDeckHolders": [
+      true,
+      false,
+      false,
+      false
+    ],
+    "username": "ali",
+    "password": "1234",
+    "avatarAddress": "src/main/resources/graphicprop/images/avatar1.png",
+    "deckOnModify": {
+      "mainDeck": [
+        46,
+        29
+      ],
+      "sideDeck": [
+        29
+      ],
+      "name": "arashDeck",
+      "ID": "202107081100401",
+      "isDeckActivated": true
+    },
+    "score": 0,
+    "nickname": "sas",
+    "balance": 986500
+  }
+]
