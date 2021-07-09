@@ -1,13 +1,16 @@
 package view.controller;
 
 import animatefx.animation.FlipInX;
+import animatefx.animation.SlideInUp;
 import javafx.geometry.Insets;
 import javafx.scene.control.Label;
+import javafx.scene.effect.DropShadow;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.Pane;
 import model.gameprop.BoardProp.GameHouse;
+import model.gameprop.BoardProp.HandHouse;
 import model.gameprop.BoardProp.MagicHouse;
 import model.gameprop.BoardProp.MonsterHouse;
 import model.gameprop.GameInProcess;
@@ -70,6 +73,69 @@ public class GameView {
 
         initializeHouses(playerYou, yourMonsterHousesGridPane, yourMagicHousesGridPane);
         initializeHouses(playerOpponent, opponentMagicHousesGridPane, opponentMonsterHousesGridPane);
+
+        initializeHand(playerYou, yourHandContainer);
+        initializeHand(playerOpponent, opponentHandContainer);
+    }
+
+    private void initializeHand(Player player, Pane handContainer) {
+        HandHouse[] handHouses = player.getBoard().getPlayerHand();
+
+        handContainer.setPadding(new Insets(20));
+
+        for (int i = 0; i < handHouses.length; i++) {
+            HandHouse handHouse = handHouses[i];
+            handHouse.setLayoutX(i * (10 + 61));
+            handHouse.setLayoutY(20);
+            handHouse.setStyle("-fx-background-color: red");
+            handHouse.setPrefSize(61, 90);
+
+            handHouse.setOnMouseEntered(e -> {
+                handHouse.setLayoutY(10);
+                handHouse.setScaleX(1.1);
+                handHouse.setScaleY(1.1);
+                handHouse.toFront();
+
+                DropShadow dropShadow = new DropShadow();
+                handHouse.setEffect(dropShadow);
+            });
+
+            handHouse.setOnMouseExited(e -> {
+                handHouse.setLayoutY(20);
+                handHouse.setScaleX(1);
+                handHouse.setScaleY(1);
+
+                handHouse.setEffect(null);
+            });
+
+            handHouse.setOnMouseClicked(e -> {
+                handHouse.setStyle(null);
+
+                for (int j = 0; j < handHouses.length; j++) {
+                    for (int k = 0; k < handHouses.length - 1; k++) {
+                        if (handHouses[k].getStyle().equals(null) || handHouses[k].getStyle().equals("")) {
+                            HandHouse temp = handHouses[k];
+                            handHouses[k] = handHouses[k + 1];
+                            handHouses[k + 1] = temp;
+                        }
+                    }
+                }
+
+                handContainer.getChildren().clear();
+                for (int j = 0; j < handHouses.length; j++) {
+                    if (handHouses[j].getStyle() == null) {
+                        break;
+                    }
+                    handHouses[j].setLayoutX(j * (10 + 61));
+                    handHouses[j].setLayoutY(20);
+                    handHouses[j].setPrefSize(61, 90);
+                    handContainer.getChildren().add(j, handHouses[j]);
+                }
+                new SlideInUp(handContainer).play();
+            });
+
+            handContainer.getChildren().add(i, handHouse);
+        }
     }
 
     private void initializeHouses(Player player, GridPane monsterHousesGridPane, GridPane magicHousesGridPane) {
@@ -98,7 +164,7 @@ public class GameView {
             imageView.setImage(image);
 
             monsterHouse.setPrefSize(42, 70);
-            handleOnMouseEntered(monsterHouse);
+            handleOnMouseClicked(monsterHouse);
         }
 
         MagicHouse[] magicHouses = player.getBoard().getMagicHouse();
@@ -111,12 +177,12 @@ public class GameView {
             magicHouse.getChildren().add(imageView);
             magicHouse.setPrefSize(42, 70);
 
-            handleOnMouseEntered(magicHouse);
+            handleOnMouseClicked(magicHouse);
         }
     }
 
-    private void handleOnMouseEntered(GameHouse gameHouse) {
-        gameHouse.setOnMouseEntered(e -> {
+    private void handleOnMouseClicked(GameHouse gameHouse) {
+        gameHouse.setOnMouseClicked(e -> {
             if (gameHouse.getCardImage() != null) {
                 selectedCardImageView.setImage(gameHouse.getCardImage());
                 new FlipInX(selectedCardImageView).play();
