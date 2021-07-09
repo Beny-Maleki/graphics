@@ -28,7 +28,7 @@ public class User extends FatherUser {
         unlockedDeckHolders = new ArrayList<>(Arrays.asList(true, false, false, false));
         allUserDecksId = new ArrayList<>(Arrays.asList(null, null, null, null));
         cardCollection = new ArrayList<>();
-        activeDeck = null;
+        activeDeck = getActiveDeck();
     }
 
     {
@@ -137,12 +137,6 @@ public class User extends FatherUser {
         return password.equals(this.password);
     }
 
-    public void setActiveDeck(Deck activeDeck) {
-        if (this.activeDeck != null) this.activeDeck.setDeckActivated(false);
-        this.activeDeck = activeDeck;
-        if (activeDeck != null) activeDeck.setDeckActivated(true);
-    }
-
     public ArrayList<Deck> getAllUserDecksId() {
         ArrayList<Deck> allUserDecks = new ArrayList<>();
         for (String deckId : allUserDecksId) {
@@ -205,6 +199,21 @@ public class User extends FatherUser {
 
     public void setDeckOnModify(Deck deckOnModify) {
         this.deckOnModify = deckOnModify;
+    }
+
+    @Override
+    public Deck getActiveDeck() {
+        for (Deck deck : getAllUserDecksId()) {
+            if (deck.isDeckActivated())
+                return deck;
+        }
+        return null;
+    }
+
+    public void setActiveDeck(Deck activeDeck) {
+        if (this.activeDeck != null) this.activeDeck.setDeckActivated(false);
+        this.activeDeck = activeDeck;
+        if (activeDeck != null) activeDeck.setDeckActivated(true);
     }
 }
 

@@ -19,7 +19,6 @@ import javafx.scene.layout.*;
 import javafx.scene.paint.Color;
 import javafx.util.Duration;
 import model.Exceptions.EmptyTextFieldException;
-import model.cards.cardsProp.Card;
 import model.enums.Menu;
 import model.userProp.Deck;
 import model.userProp.LoginUser;
@@ -47,7 +46,7 @@ public class DecksView {
     public Pane DescriptionArea;
     public Button backButton;
     private ArrayList<Pane> deckHolders;
-    private DeckModifierController controller;
+    private final DeckModifierController controller;
 
     {
         controller = new DeckModifierController();
@@ -325,7 +324,7 @@ public class DecksView {
                     showPackOfCards(i);
                     fullHolder(newDeck, i);
                 } catch (EmptyTextFieldException e) {
-                    //TODO make label for error
+
                 } catch (FileNotFoundException e) {
                     e.printStackTrace();
                 }

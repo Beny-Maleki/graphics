@@ -21,6 +21,7 @@ public class Player {
     public Player(FatherUser user, int numberOfWinningRound) {
         setUser(user);
         board = new PlayerBoard();
+        System.out.println(user.getActiveDeck());
         deck = user.getActiveDeck().getCopy();
         gameSetUp();
         this.numberOfWinningRound = numberOfWinningRound;

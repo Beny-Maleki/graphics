@@ -208,4 +208,7 @@ public class Deck {
         return ID;
     }
 
+    public boolean isDeckActivated() {
+        return isDeckActivated;
+    }
 }

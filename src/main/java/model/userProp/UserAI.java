@@ -67,4 +67,9 @@ public class UserAI extends FatherUser {
             activeDeck.addCardToMainDeck(magicCards.get(i));
         }
     }
+
+    @Override
+    public Deck getActiveDeck() {
+        return activeDeck;
+    }
 }
