@@ -3,13 +3,15 @@ package model;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 import com.opencsv.CSVReader;
+import model.cards.cardsEnum.Monster.MonsterRace;
+import model.cards.cardsProp.Card;
 import model.cards.cardsProp.MagicCard;
 import model.cards.cardsProp.MonsterCard;
 import model.userProp.Deck;
 import model.userProp.User;
 
-import java.io.FileReader;
-import java.io.IOException;
+import java.io.*;
+import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.util.ArrayList;
@@ -27,12 +29,40 @@ public class DataBase {
         return instance;
     }
 
+    public void saveMonsters() {
+        ArrayList<MonsterCard> monsterCards;
+        monsterCards = (ArrayList<MonsterCard>) MonsterCard.getMonsterCards();
+        String json = new Gson().toJson(monsterCards);
+            try {
+                Writer writer = new BufferedWriter(new OutputStreamWriter(
+                        new FileOutputStream("jsonResources\\MonsterCard.json"), StandardCharsets.UTF_8));
+                writer.write(json);
+                writer.close();
+            } catch (IOException ignore) {
+            }
+    }
+
+    public void saveMagics() {
+        ArrayList<MagicCard> magicCards;
+        magicCards = MagicCard.getMagicCards();
+        String json = new Gson().toJson(magicCards);
+        Writer writer;
+        try {
+            writer = new BufferedWriter(new OutputStreamWriter(
+                    new FileOutputStream("jsonResources\\MagicCard.json"), StandardCharsets.UTF_8));
+            writer.write(json);
+            writer.close();
+        } catch (IOException ignore) {
+        }
+    }
+
     public void restoreDate() {
         ArrayList<MonsterCard> monsterCards = new ArrayList<>();
         ArrayList<MagicCard> magicCards = new ArrayList<>();
 
         magicCards = loadMagicCards(magicCards);
         monsterCards = loadMonsterCards(monsterCards);
+        Card.setNumberOfCard(magicCards.size() + monsterCards.size());
         setMagicCardsDetail(magicCards);
         setMonsterCardsDetail(monsterCards);
         loadUsers();

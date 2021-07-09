@@ -28,8 +28,8 @@ public class MagicCard extends Card {
         magicCards = new ArrayList<>();
     }
 
-    private final ArrayList<Action> actionsOfMagic;
-    private final ArrayList<Event> triggers;
+    private ArrayList<Action> actionsOfMagic;
+    private ArrayList<Event> triggers;
     private RestrictionTypeInAdding restrictionTypeInAdding;
     private MagicAttribute magicAttribute;
     private MagicType typeOfMagic;
@@ -60,6 +60,10 @@ public class MagicCard extends Card {
         Card.addMagicsToCards(magicCards);
     }
 
+    public static ArrayList<MagicCard> getMagicCards() {
+        return magicCards;
+    }
+
     public static MagicCard getMagicCardByName(String name) {
         for (MagicCard magicCard : magicCards) {
             if (magicCard.name.equals(name)) return magicCard;
@@ -71,6 +75,14 @@ public class MagicCard extends Card {
     public Card getSimilarCard() {
         return new MagicCard(name, typeOfMagic.toString(), magicAttribute.toString(),
                 description, restrictionTypeInAdding.toString(), String.valueOf(price));
+    }
+
+    public void setActionsOfMagic(ArrayList<Action> actionsOfMagic) {
+        this.actionsOfMagic = actionsOfMagic;
+    }
+
+    public void setTriggers(ArrayList<Event> triggers) {
+        this.triggers = triggers;
     }
 
     private void setMagicEvents(String name) {
