@@ -16,7 +16,7 @@ import view.game.GameViewer;
 
 import java.util.Objects;
 
-public class DuelMenuController extends Controller {
+public class DuelPageController extends Controller {
 
     public String run(String command) throws CmdLineParser.OptionException {
         if (command.startsWith("controller show")) {
@@ -64,6 +64,15 @@ public class DuelMenuController extends Controller {
         }
         GameInProcess.setGame(game);
         GameViewer.run();
+        return null;
+    }
+
+    public User findOpponent(String name) {
+        for (User user : User.getAllUsers()) {
+            if (user.getNickname().equals(name)) {
+                return user;
+            }
+        }
         return null;
     }
 

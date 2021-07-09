@@ -1,6 +1,7 @@
 package model.gameprop.BoardProp;
 
 import exceptions.CardNotFoundException;
+import javafx.scene.layout.Pane;
 import model.cards.cardsProp.Card;
 import model.cards.cardsProp.MagicCard;
 import model.cards.cardsProp.MonsterCard;
