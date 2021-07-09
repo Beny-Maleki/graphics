@@ -307,9 +307,9 @@ public class DeckModifierView {
     }
 
     private void configureScrollPane(FlowPane collectionFlowPane) {
+        collectionFlowPane.setMinWidth(1000);
         scrollPane.setContent(collectionFlowPane);
         scrollPane.setPrefViewportHeight(190);
-        scrollPane.fitToWidthProperty();
         scrollPane.hbarPolicyProperty().setValue(ScrollPane.ScrollBarPolicy.ALWAYS);
         scrollPane.vbarPolicyProperty().setValue(ScrollPane.ScrollBarPolicy.NEVER);
     }

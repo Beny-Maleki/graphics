@@ -14,11 +14,12 @@ import model.userProp.UserInfoType;
 import view.RockPaperScissorGame;
 import view.game.GameViewer;
 
+import java.io.FileNotFoundException;
 import java.util.Objects;
 
-public class DuelMenuController extends Controller {
+public class DuelPageController extends Controller {
 
-    public String run(String command) throws CmdLineParser.OptionException {
+    public String run(String command) throws CmdLineParser.OptionException, FileNotFoundException {
         if (command.startsWith("controller show")) {
             return showCurrentMenu();
         } else if (command.startsWith("duel --new")) {
@@ -41,14 +42,14 @@ public class DuelMenuController extends Controller {
         return Duel.CURRENT_MENU.toString();
     }
 
-    private String makeNewDuel(String rounds, String secondPlayer) throws CmdLineParser.OptionException {
+    private String makeNewDuel(String rounds, String secondPlayer) throws CmdLineParser.OptionException, FileNotFoundException {
         DuelChain chain = new DuelChain();
         String[] data = new String[]{LoginUser.getUser().getUsername(), secondPlayer, rounds};
         Duel error;
         if ((error = chain.request(data)) != null) {
             return processAnswer(error, data);
         }
-        Player loggedInPlayer = new Player(LoginUser.getUser(), 0);
+        Player loggedInPlayer = new Player(LoginUser.getUser(), 0);;
         Player opponentPlayer = new Player(User.getUserByUserInfo(secondPlayer, UserInfoType.USERNAME), 0);
         Game game = null;
         PlayerTurn firstPlayer = RockPaperScissorGame.run(LoginUser.getUser().getNickname(),
@@ -64,6 +65,15 @@ public class DuelMenuController extends Controller {
         }
         GameInProcess.setGame(game);
         GameViewer.run();
+        return null;
+    }
+
+    public User findOpponent(String name) {
+        for (User user : User.getAllUsers()) {
+            if (user.getNickname().equals(name)) {
+                return user;
+            }
+        }
         return null;
     }
 

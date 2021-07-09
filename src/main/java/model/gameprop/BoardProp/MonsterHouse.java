@@ -1,15 +1,21 @@
 package model.gameprop.BoardProp;
 
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
+import model.cards.cardsProp.Card;
 import model.cards.cardsProp.MonsterCard;
 import model.enums.GameEnums.SideOfFeature;
 import model.enums.GameEnums.cardvisibility.MonsterHouseVisibilityState;
 import model.gameprop.GameInProcess;
 import model.gameprop.Player;
+import model.gameprop.Selectable;
 import model.gameprop.gamemodel.Game;
 
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
 import java.util.ArrayList;
 
-public class MonsterHouse extends GameHouse {
+public class MonsterHouse extends GameHouse implements Selectable {
     MonsterCard monsterCard;
     MonsterHouseVisibilityState state;
     private boolean isMonsterAttacked;
@@ -27,12 +33,48 @@ public class MonsterHouse extends GameHouse {
         state = MonsterHouseVisibilityState.E;
     }
 
+    public static MonsterHouse getMonsterHouseByMonsterCard(MonsterCard monsterCard) {
+        Game game = GameInProcess.getGame();
+
+        ArrayList<SideOfFeature> sides = new ArrayList<>();
+        sides.add(SideOfFeature.CURRENT);
+        sides.add(SideOfFeature.OPPONENT);
+
+        for (SideOfFeature side : sides) {
+            Player player = game.getPlayer(side);
+            MonsterHouse[] monsterHouses = player.getBoard().getMonsterHouse();
+
+            for (MonsterHouse monsterHouse : monsterHouses) {
+                if (monsterHouse.getMonsterCard().equals(monsterCard)) {
+                    return monsterHouse;
+                }
+            }
+        }
+        return null;
+    }
+
     public MonsterHouseVisibilityState getState() {
         return state;
     }
 
     public void setState(MonsterHouseVisibilityState state) {
         this.state = state;
+    }
+
+    @Override
+    public Image getCardImage() {
+        switch (state) {
+            case E:
+                return null;
+            case DH:
+                try {
+                    return new Image(new FileInputStream("src/main/resources/graphicprop/images/Cards/Monsters/Unknown.jpg"));
+                } catch (FileNotFoundException e) {
+                    e.printStackTrace();
+                }
+            default:
+                return cardImage;
+        }
     }
 
     public MonsterCard getMonsterCard() {
@@ -88,23 +130,14 @@ public class MonsterHouse extends GameHouse {
         isMonsterAttacked = true;
     }
 
-    public static MonsterHouse getMonsterHouseByMonsterCard(MonsterCard monsterCard) {
-        Game game = GameInProcess.getGame();
+    @Override
+    public Card getCard() {
+        return monsterCard;
+    }
 
-        ArrayList<SideOfFeature> sides = new ArrayList<>();
-        sides.add(SideOfFeature.CURRENT); sides.add(SideOfFeature.OPPONENT);
-
-        for (SideOfFeature side : sides) {
-            Player player = game.getPlayer(side);
-            MonsterHouse[] monsterHouses = player.getBoard().getMonsterHouse();
-
-            for (MonsterHouse monsterHouse : monsterHouses) {
-                if (monsterHouse.getMonsterCard().equals(monsterCard)) {
-                    return monsterHouse;
-                }
-            }
-        }
-        return null;
+    @Override
+    public void setImageOfCard() {
+        this.getChildren().add(cardImageFrame);
     }
 }
 //TODO game map and where to add it

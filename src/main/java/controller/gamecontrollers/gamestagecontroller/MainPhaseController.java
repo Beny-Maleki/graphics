@@ -18,10 +18,12 @@ import model.gameprop.GameInProcess;
 import model.gameprop.SelectedCardProp;
 import model.gameprop.gamemodel.Game;
 
+import java.io.FileNotFoundException;
+
 public class MainPhaseController extends GeneralController {
     private static MainPhaseController instance;
 
-    private MainPhaseController() {
+    public MainPhaseController() {
     }
 
     public static MainPhaseController getInstance() {
@@ -29,7 +31,7 @@ public class MainPhaseController extends GeneralController {
         return instance;
     }
 
-    public String run(String command) throws CmdLineParser.OptionException {
+    public String run(String command) throws CmdLineParser.OptionException, FileNotFoundException {
         Game game = GameInProcess.getGame();
         String output = null;
         if (game.getGameSideStage().equals(GameSideStage.NONE)) {

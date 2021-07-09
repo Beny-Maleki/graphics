@@ -8,6 +8,8 @@ import model.gameprop.BoardProp.MonsterHouse;
 import model.gameprop.BoardProp.PlayerBoard;
 import model.gameprop.gamemodel.Game;
 
+import java.io.FileNotFoundException;
+
 public class Event {
     protected String name;
 
@@ -15,7 +17,7 @@ public class Event {
         return name;
     }
 
-    public void activeEffects(Game game) {
+    public void activeEffects(Game game) throws FileNotFoundException {
         PlayerBoard currentPlayerBoard = game.getPlayer(SideOfFeature.CURRENT).getBoard();
         PlayerBoard opponentPlayerBoard = game.getPlayer(SideOfFeature.OPPONENT).getBoard();
         if (this instanceof ManuallyActivation) {

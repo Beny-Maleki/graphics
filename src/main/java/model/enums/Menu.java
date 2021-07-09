@@ -12,7 +12,7 @@ public enum Menu {
     SCOREBOARD_MENU("ScoreBoardPage"),
     PROFILE_MENU("ProfilePage"),
     DECK_MODIFIER("DeckModifier"),
-    DUEL_MENU("DuelPage"),
+    DUEL_PAGE("DuelPage"),
     ROCK_PAPER_SCISSOR_PAGE("RockPaperScissor"),
     CARD_CREATOR_PAGE("CardCreatorPage"),
     CHOOSE_MONSTER_ACTIONS("ChooseMonsterActions"),

@@ -21,6 +21,7 @@ import org.jetbrains.annotations.Nullable;
 import view.Regex;
 import view.game.UserInterface;
 
+import java.io.FileNotFoundException;
 import java.util.ArrayList;
 import java.util.Objects;
 import java.util.regex.Matcher;
@@ -147,7 +148,7 @@ public class SideStageController {
         try {
             String drawCard = Objects.requireNonNull(GeneralController.getInstance()).run("START");
             outPut = "ROUND " + game.getRoundNumber() + "\n" + drawCard;
-        } catch (CmdLineParser.OptionException e) {
+        } catch (CmdLineParser.OptionException | FileNotFoundException e) {
             e.printStackTrace();
         }
         return outPut;

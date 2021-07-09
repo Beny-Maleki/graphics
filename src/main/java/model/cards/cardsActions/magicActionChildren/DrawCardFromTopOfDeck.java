@@ -4,6 +4,8 @@ import controller.gamecontrollers.gamestagecontroller.DrawPhaseController;
 import model.cards.cardsActions.Action;
 import model.gameprop.gamemodel.Game;
 
+import java.io.FileNotFoundException;
+
 public class DrawCardFromTopOfDeck extends Action {
     int numOfDraws;
 
@@ -16,7 +18,7 @@ public class DrawCardFromTopOfDeck extends Action {
     }
 
     @Override
-    public void active(Game game) {
+    public void active(Game game) throws FileNotFoundException {
         for (int i = 0; i < numOfDraws; i++) {
             (DrawPhaseController.getInstance()).draw(true);
         }

@@ -2,10 +2,7 @@ package view.game;
 
 import model.cards.cardsProp.Card;
 import model.enums.GameEnums.SideOfFeature;
-import model.gameprop.BoardProp.GameHouse;
-import model.gameprop.BoardProp.MagicHouse;
-import model.gameprop.BoardProp.MonsterHouse;
-import model.gameprop.BoardProp.PlayerBoard;
+import model.gameprop.BoardProp.*;
 import model.gameprop.Player;
 import model.gameprop.gamemodel.Game;
 
@@ -69,7 +66,7 @@ public class UserInterface {
                 append(opponentPlayer.getPlayerLifePoint()).append("\n");
 
         PlayerBoard board = opponentPlayer.getBoard();
-        for (Card ignored : board.getPlayerHand()) {
+        for (HandHouse ignored : board.getPlayerHand()) {
             mapDisplay.append("\tc");
         }
         mapDisplay.append("\n").append(opponentPlayer.
@@ -106,7 +103,7 @@ public class UserInterface {
                 getDeck().getMainDeck().size()).append("\n");
 
 
-        for (Card ignored : currentPlayer.getBoard().getPlayerHand()) {
+        for (HandHouse ignored : currentPlayer.getBoard().getPlayerHand()) {
             mapDisplay.append("\tc");
         }
         mapDisplay.append("\n").append(currentPlayer.getUser().getNickname()).append(" : ").

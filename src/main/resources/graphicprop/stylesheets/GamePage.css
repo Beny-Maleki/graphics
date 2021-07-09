@@ -7,12 +7,22 @@
 }
 
 .yourInfoContainer {
+    -fx-text-fill: white;
+    -fx-background-image: url(../images/dirtyBoardBG.jpg);
+    -fx-background-size: cover;
     -fx-border-color: black;
 }
 
+.label {
+    -fx-text-fill: white;
+}
+
 .opponentInfoContainer {
+    -fx-background-image: url(../images/dirtyBoardBG.jpg);
+    -fx-background-size: cover;
     -fx-border-color: black;
 }
+
 
 .selectedCardPane {
     -fx-border-color: black;
@@ -27,4 +37,9 @@
     -fx-border-color: black;
     -fx-background-color: white;
     -fx-cursor: hand;
+}
+
+#phaseName{
+    -fx-text-fill: red;
+    -fx-font-size: 15;
 }

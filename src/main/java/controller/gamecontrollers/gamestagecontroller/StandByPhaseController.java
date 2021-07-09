@@ -7,7 +7,7 @@ public class StandByPhaseController extends GeneralController {
 
     private static StandByPhaseController instance;
 
-    private StandByPhaseController(){}
+    public StandByPhaseController(){}
 
     public static StandByPhaseController getInstance() {
         if (instance == null) instance = new StandByPhaseController() ;

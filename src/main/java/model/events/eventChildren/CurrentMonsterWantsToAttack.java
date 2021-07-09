@@ -7,6 +7,8 @@ import model.gameprop.BoardProp.MonsterHouse;
 import model.gameprop.BoardProp.PlayerBoard;
 import model.gameprop.gamemodel.Game;
 
+import java.io.FileNotFoundException;
+
 public class CurrentMonsterWantsToAttack extends Event {
     private static CurrentMonsterWantsToAttack instance;
 
@@ -21,7 +23,7 @@ public class CurrentMonsterWantsToAttack extends Event {
     }
 
     @Override
-    public void activeEffects(Game game) {
+    public void activeEffects(Game game) throws FileNotFoundException {
         PlayerBoard opponentPlayerBoard = game.getPlayer(SideOfFeature.OPPONENT).getBoard();
         for (MagicHouse magicHouse : opponentPlayerBoard.getMagicHouse()) {
             magicHouse.getMagicCard().activeEffectsByEvent(this, game);

@@ -3,6 +3,7 @@ package model.cards.cardsProp;
 import model.events.Event;
 import model.gameprop.gamemodel.Game;
 
+import java.io.FileNotFoundException;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -10,16 +11,16 @@ import java.util.List;
 public abstract class Card {
     protected static List<Card> cards;
     protected static int numberOfCard;
-    private static HashMap<Integer, Boolean> isSeenBefore;
+    private static final HashMap<Integer, Boolean> IS_SEEN_BEFORE;
 
     static {
-        isSeenBefore = new HashMap<>();
+        IS_SEEN_BEFORE = new HashMap<>();
         cards = new ArrayList<>();
         numberOfCard = 74;
     }
 
     public static HashMap<Integer, Boolean> getIsSeenBefore() {
-        return isSeenBefore;
+        return IS_SEEN_BEFORE;
     }
 
     protected int ID;
@@ -143,7 +144,7 @@ public abstract class Card {
         this.description = description;
     }
 
-    public void activeEffectsByEvent(Event event, Game game) {
+    public void activeEffectsByEvent(Event event, Game game) throws FileNotFoundException {
     }
 
     public abstract Card getCopy(); // semi duplicate code in overrides; cause -> Card is abstract and not constructable!

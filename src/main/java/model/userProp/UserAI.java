@@ -6,6 +6,7 @@ import model.enums.GameEnums.SideOfFeature;
 import model.enums.GameEnums.cardvisibility.MonsterHouseVisibilityState;
 import model.events.Event;
 import model.events.eventChildren.ManuallyActivation;
+import model.gameprop.BoardProp.HandHouse;
 import model.gameprop.BoardProp.MagicHouse;
 import model.gameprop.BoardProp.MonsterHouse;
 import model.gameprop.Player;
@@ -86,7 +87,8 @@ public class UserAI extends FatherUser {
         if (random == 0) {//summon monster
             MonsterCard monster = null;
             int elementOfHand = 0;
-            for (Card card : aiPlayer.getBoard().getPlayerHand()) {
+            for (HandHouse house : aiPlayer.getBoard().getPlayerHand()) {//TODO fix bug in hand
+                Card card = house.getCard();
                 elementOfHand++;
                 if (card instanceof MonsterCard) {
                     monster = (MonsterCard) card;
@@ -97,10 +99,10 @@ public class UserAI extends FatherUser {
                 result = "select --hand " + elementOfHand + "\nsummon\n";
             }
         } else if (random == 1) {//set a card
-            int randomCard = rand.nextInt(aiPlayer.getBoard().getPlayerHand().size()) + 1;
+            int randomCard = rand.nextInt(aiPlayer.getBoard().getPlayerHand().length) + 1;
             result = "select --hand " + randomCard + "\nset\n";
         } else if (random == 2) {
-            int randomCard = rand.nextInt(aiPlayer.getBoard().getPlayerHand().size()) + 1;
+            int randomCard = rand.nextInt(aiPlayer.getBoard().getPlayerHand().length) + 1;
             int attackOrDefense = rand.nextInt(2);
             if (attackOrDefense == 0) {
                 result = "select --hand " + randomCard + "\nset --position attack\n";

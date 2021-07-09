@@ -8,10 +8,12 @@ import model.gameprop.BoardProp.MonsterHouse;
 import model.gameprop.GameInProcess;
 import model.gameprop.gamemodel.Game;
 
+import java.io.FileNotFoundException;
+
 public class BattlePhaseController extends GeneralController {
     private static BattlePhaseController instance;
 
-    private BattlePhaseController() {
+    public BattlePhaseController() {
     }
 
     public static BattlePhaseController getInstance() {
@@ -19,7 +21,7 @@ public class BattlePhaseController extends GeneralController {
         return instance;
     }
 
-    public String run(String command) {
+    public String run(String command) throws FileNotFoundException {
         Game game = GameInProcess.getGame();
         String output = null;
         if (command.equals("attack direct")) {

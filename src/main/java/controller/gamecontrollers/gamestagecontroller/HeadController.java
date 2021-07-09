@@ -4,6 +4,8 @@ import com.sanityinc.jargs.CmdLineParser;
 import controller.gamecontrollers.GeneralController;
 import model.gameprop.existenceBasedObserver.ExistenceObserver;
 import view.Regex;
+
+import java.io.FileNotFoundException;
 import java.util.ArrayList;
 import java.util.Objects;
 
@@ -24,7 +26,7 @@ public class HeadController {
         battlePhaseController = BattlePhaseController.getInstance();
     }
 
-    public String run(String command) throws CmdLineParser.OptionException {
+    public String run(String command) throws CmdLineParser.OptionException, FileNotFoundException {
         ArrayList<ExistenceObserver> existenceObservers = ExistenceObserver.getExistenceObservers();
 
         for (int i = existenceObservers.size() - 1; i == 0; i--) {
