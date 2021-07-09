@@ -13,11 +13,13 @@ import model.enums.GameEnums.SideOfFeature;
 import model.gameprop.BoardProp.PlayerBoard;
 import model.gameprop.gamemodel.Game;
 
+import java.io.FileNotFoundException;
+
 public class Action {
     protected String name;
     protected boolean isActivatedBefore;
 
-    public void active(Game game) {
+    public void active(Game game) throws FileNotFoundException {
     }
 
     public static MonsterCard equipAMonsterWithSpell(Action action, Game game) { // Because of Polymorphism and JSON problems the best approach was this way!!!

@@ -1,9 +1,12 @@
 package model.gameprop;
 
 import model.cards.cardsProp.Card;
+import model.gameprop.BoardProp.HandHouse;
 import model.gameprop.BoardProp.PlayerBoard;
 import model.userProp.Deck;
 import model.userProp.FatherUser;
+
+import java.io.FileNotFoundException;
 
 public class Player {
     public boolean isAllowedToDraw;
@@ -18,7 +21,7 @@ public class Player {
         playerLifePoint = 8000;
     }
 
-    public Player(FatherUser user, int numberOfWinningRound) {
+    public Player(FatherUser user, int numberOfWinningRound) throws FileNotFoundException {
         setUser(user);
         board = new PlayerBoard();
         deck = user.getActiveDeck().getCopy();
@@ -56,12 +59,14 @@ public class Player {
             playerLifePoint = 0;
     }
 
-    private void gameSetUp() {
+    private void gameSetUp() throws FileNotFoundException {
         for (Card card : deck.getMainDeck()) {
             System.out.println(card.getName());
         }
+
+        HandHouse[] hand = board.getPlayerHand();
         for (int i = 0; i < 5; i++) {
-            board.getPlayerHand().add(deck.getMainDeck().get(i));
+            hand[i].setCard(deck.getMainDeck().get(i));
         }
 
         for (int i = 0; i < 5; i++) {

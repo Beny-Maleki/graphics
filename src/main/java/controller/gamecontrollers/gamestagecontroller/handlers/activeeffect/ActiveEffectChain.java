@@ -4,6 +4,8 @@ import controller.gamecontrollers.gamestagecontroller.handlers.activeeffect.proc
 import controller.gamecontrollers.gamestagecontroller.handlers.activeeffect.processors.SelectCardProcessor;
 import model.gameprop.gamemodel.Game;
 
+import java.io.FileNotFoundException;
+
 public class ActiveEffectChain {
     ActiveEffectProcessor processor;
 
@@ -15,7 +17,7 @@ public class ActiveEffectChain {
         processor = new SelectCardProcessor(new ActiveSpellProcessor(null));
     }
 
-    public String request(Game game) {
+    public String request(Game game) throws FileNotFoundException {
         return processor.process(game);
     }
 

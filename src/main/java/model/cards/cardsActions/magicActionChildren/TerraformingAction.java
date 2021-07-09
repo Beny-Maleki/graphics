@@ -6,11 +6,13 @@ import model.cards.cardsProp.Card;
 import model.cards.cardsProp.MagicCard;
 import model.enums.GameEnums.RequestingInput;
 import model.enums.GameEnums.SideOfFeature;
+import model.gameprop.BoardProp.HandHouse;
 import model.gameprop.GameInProcess;
 import model.gameprop.Player;
 import model.gameprop.gamemodel.Game;
 import view.game.GetStringInput;
 
+import java.io.FileNotFoundException;
 import java.util.ArrayList;
 
 public class TerraformingAction extends Action {
@@ -20,13 +22,13 @@ public class TerraformingAction extends Action {
     }
 
     @Override
-    public void active(Game game) {
+    public void active(Game game) throws FileNotFoundException {
         Player player = game.getPlayer(SideOfFeature.CURRENT);
         ArrayList<Card> mainDeck = player.getDeck().getMainDeck();
         ArrayList<Card> toShowCards = new ArrayList<>();
 
-        ArrayList<Card> hand = player.getBoard().getPlayerHand();
-        if (hand.size() <= 6) {
+        HandHouse[] hand = player.getBoard().getPlayerHand();
+        if (hand.length <= 6) {
             for (Card card : mainDeck) { // seeking "FIELD" spells in deck...
                 if (card instanceof MagicCard) {
                     if (((MagicCard) card).getMagicAttribute() == MagicAttribute.FIELD) {

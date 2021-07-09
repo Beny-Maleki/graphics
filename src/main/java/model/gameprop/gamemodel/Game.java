@@ -6,6 +6,7 @@ import model.enums.GameEnums.SideOfFeature;
 import model.enums.GameEnums.TypeOfHire;
 import model.enums.GameEnums.gamestage.GameMainStage;
 import model.enums.GameEnums.gamestage.GameSideStage;
+import model.gameprop.BoardProp.HandHouse;
 import model.gameprop.BoardProp.MonsterHouse;
 import model.gameprop.GameInProcess;
 import model.gameprop.Player;
@@ -14,6 +15,7 @@ import model.gameprop.existenceBasedObserver.ExistenceObserver;
 import model.gameprop.turnBasedObserver.TurnObserver;
 import model.userProp.Deck;
 
+import java.io.FileNotFoundException;
 import java.util.ArrayList;
 import java.util.Collections;
 
@@ -136,7 +138,7 @@ public class Game {
         return isRoundFinish;
     }
 
-    public void finishRound(PlayerTurn looserTurn) {
+    public void finishRound(PlayerTurn looserTurn) throws FileNotFoundException {
         switch (looserTurn) {
             case PLAYER_ONE: {
                 secondPlayer.increaseWinningRound();
@@ -254,13 +256,17 @@ public class Game {
         turn.setTypeOfHighLevelMonsterHire(typeOfMonsterHire);
     }
 
-    public void moveCardFromDeckToHand(Card card) {
+    public void moveCardFromDeckToHand(Card card) throws FileNotFoundException {
         Player player = GameInProcess.getGame().getPlayer(SideOfFeature.CURRENT);
         Deck deck = player.getDeck();
-        ArrayList<Card> hand = player.getBoard().getPlayerHand();
+        HandHouse[] hand = player.getBoard().getPlayerHand();
 
         deck.removeCardFromMainDeck(card);
-        hand.add(card);
+        for (HandHouse handHouse : hand) {
+            if (handHouse.getCard() == null){
+                handHouse.setCard(card);
+            }
+        }
 
         Collections.shuffle(deck.getMainDeck());
     }

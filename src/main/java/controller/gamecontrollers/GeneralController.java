@@ -23,6 +23,7 @@ import model.gameprop.SelectedCardProp;
 import model.gameprop.gamemodel.Game;
 import view.game.UserInterface;
 
+import java.io.FileNotFoundException;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -102,7 +103,7 @@ public class GeneralController {
             cardAddress = 0;
         } else {
             cardAddress = parser.getOptionValue(hand);
-            if (cardAddress > player.getBoard().getPlayerHand().size()) {
+            if (cardAddress > player.getBoard().getPlayerHand().length) {
                 return GameError.INVALID_SELECTION.toString();
             }
             location = CardLocation.PLAYER_HAND;
@@ -172,7 +173,7 @@ public class GeneralController {
         return output;
     }
 
-    public String nextPhase(Game game) {
+    public String nextPhase(Game game) throws FileNotFoundException {
         DrawPhaseController drawController = DrawPhaseController.getInstance();
         game.goToNextPhase();
         String output = process(General.NEXT_PHASE_MESSAGE.toString(), game.getGameMainStage().getPhaseName());
@@ -191,7 +192,7 @@ public class GeneralController {
         return process(General.NEXT_PHASE_MESSAGE.toString(), game.getGameMainStage().getPhaseName()) + "\n" + drawBoard(game);
     }
 
-    public String finishRound(Game game) {
+    public String finishRound(Game game) throws FileNotFoundException {
         GameInProcess.getGame().finishRound(game.getTurnOfGame());
         return roundOrGameResults(game);
     }
@@ -221,7 +222,7 @@ public class GeneralController {
         return drawer.showSideDeck(player);
     }
 
-    public String run(String command) throws CmdLineParser.OptionException {
+    public String run(String command) throws CmdLineParser.OptionException, FileNotFoundException {
         Game game = GameInProcess.getGame();
         String output = null;
         if (game.getGameSideStage().equals(GameSideStage.START_STAGE)) {
@@ -266,12 +267,12 @@ public class GeneralController {
         return generalMessage;
     }
 
-    private String activeEffect(Game game) {
+    private String activeEffect(Game game) throws FileNotFoundException {
         ActiveEffectChain chain = new ActiveEffectChain();
         return chain.request(game);
     }
 
-    private String runCheatCode(String cheatCode) {
+    private String runCheatCode(String cheatCode) throws FileNotFoundException {
         // increase money is implemented in main controller!
         if (cheatCode.contains("winner")) {
             Game game = GameInProcess.getGame();
@@ -317,7 +318,7 @@ public class GeneralController {
         }
     }
 
-    protected String processAnswer(Game game, String rawOutPut) {
+    protected String processAnswer(Game game, String rawOutPut) throws FileNotFoundException {
         game.checkRoundFinishCondition();
         if (game.isRoundFinish()) {
             return rawOutPut + "\n" + finishRound(game);

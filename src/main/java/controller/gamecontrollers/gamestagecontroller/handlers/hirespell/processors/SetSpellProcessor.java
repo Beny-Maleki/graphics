@@ -7,6 +7,7 @@ import model.enums.GameEnums.CardLocation;
 import model.enums.GameEnums.GamePhaseEnums.MainPhase;
 import model.enums.GameEnums.SideOfFeature;
 import model.enums.GameEnums.cardvisibility.MagicHouseVisibilityState;
+import model.gameprop.BoardProp.HandHouse;
 import model.gameprop.BoardProp.MagicHouse;
 import model.gameprop.BoardProp.PlayerBoard;
 import model.gameprop.gamemodel.Game;
@@ -44,7 +45,13 @@ public class SetSpellProcessor extends SpellProcessor {
         magicHouse.setMagicCard(magicCard);
         magicHouse.setState(MagicHouseVisibilityState.H);
         game.setCardProp(null);
-        game.getPlayer(SideOfFeature.CURRENT).getBoard().getPlayerHand().remove(magicCard);
+        HandHouse[] playerHand = game.getPlayer(SideOfFeature.CURRENT).getBoard().getPlayerHand();
+        for (HandHouse handHouse : playerHand) {
+            if (handHouse.getCard() == magicCard) {
+                handHouse.removeCard();
+                break;
+            }
+        }
         return MainPhase.SET_SUCCESSFULLY.toString();
     }
 }

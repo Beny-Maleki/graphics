@@ -16,6 +16,7 @@ import model.events.eventChildren.MonsterSummon;
 import model.events.eventChildren.OpponentMonsterWantsToAttack;
 import model.gameprop.gamemodel.Game;
 
+import java.io.FileNotFoundException;
 import java.util.ArrayList;
 import java.util.Locale;
 
@@ -213,7 +214,7 @@ public class MagicCard extends Card {
     }
 
     @Override
-    public void activeEffectsByEvent(Event event, Game game) {
+    public void activeEffectsByEvent(Event event, Game game) throws FileNotFoundException {
         boolean shouldActiveEffects = false;
         for (Event trigger : triggers) {
             if (eventEquals(trigger, event)) {
@@ -245,7 +246,7 @@ public class MagicCard extends Card {
         activeActions(game, shouldActiveEffects);
     }
 
-    private void activeActions(Game game, boolean shouldActiveEffects) {
+    private void activeActions(Game game, boolean shouldActiveEffects) throws FileNotFoundException {
         if (shouldActiveEffects) {
             for (Action actionOfMagic : actionsOfMagic) {
                 actionOfMagic.active(game);

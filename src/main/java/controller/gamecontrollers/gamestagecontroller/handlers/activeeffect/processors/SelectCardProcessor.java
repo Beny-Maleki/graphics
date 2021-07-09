@@ -10,13 +10,15 @@ import model.enums.GameEnums.gamestage.GameMainStage;
 import model.gameprop.SelectedCardProp;
 import model.gameprop.gamemodel.Game;
 
+import java.io.FileNotFoundException;
+
 public class SelectCardProcessor extends ActiveEffectProcessor {
 
     public SelectCardProcessor(ActiveEffectProcessor processor) {
         super(processor);
     }
 
-    public String process(Game game) {
+    public String process(Game game) throws FileNotFoundException {
         SelectedCardProp cardProp = game.getCardProp();
         if (cardProp == null)
             return General.NO_CARD_SELECT.toString();

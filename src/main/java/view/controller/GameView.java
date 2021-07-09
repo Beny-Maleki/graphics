@@ -1,16 +1,12 @@
 package view.controller;
 
 import animatefx.animation.FlipInX;
-import animatefx.animation.FlipInY;
 import javafx.geometry.Insets;
 import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
-import javafx.scene.layout.Background;
-import javafx.scene.layout.BackgroundImage;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.Pane;
-
 import model.gameprop.BoardProp.GameHouse;
 import model.gameprop.BoardProp.MagicHouse;
 import model.gameprop.BoardProp.MonsterHouse;
@@ -48,7 +44,7 @@ public class GameView {
     public Pane opponentDeckPane;
     public ImageView selectedCardImageView;
 
-    public void initialize() {
+    public void initialize() throws FileNotFoundException {
         LoginUser.setUser(User.getUserByUserInfo("Yaroo", UserInfoType.USERNAME));
 
         User you = LoginUser.getUser();
@@ -68,6 +64,7 @@ public class GameView {
         GameInProcess.setGame(new Game(firstPlayer, secondPlayer, 1 ));
 
 
+        assert opponent != null;
         initializeInfos(you, opponent);
 
 
@@ -108,20 +105,10 @@ public class GameView {
         for (int i = 0; i < magicHouses.length; i++) {
             MagicHouse magicHouse = magicHouses[i];
             magicHousesGridPane.add(magicHouse, i, 0, 1, 1);
-
-            Image image = null;
-            try {
-                image = new Image(new FileInputStream("src/main/resources/graphicprop/images/Cards/Monsters/Unknown.jpg"));
-            } catch (FileNotFoundException e) {
-                System.out.println("Ey baba! Aks chi shod pas :(");
-            }
-
             ImageView imageView = new ImageView();
             imageView.setFitWidth(47);
             imageView.setFitHeight(70);
             magicHouse.getChildren().add(imageView);
-            magicHouse.setCardImage(image);
-            imageView.setImage(image);
             magicHouse.setPrefSize(42, 70);
 
             handleOnMouseEntered(magicHouse);

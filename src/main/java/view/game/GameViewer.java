@@ -6,8 +6,10 @@ import controller.gamecontrollers.gamestagecontroller.HeadController;
 import model.gameprop.GameInProcess;
 import view.Regex;
 
+import java.io.FileNotFoundException;
+
 public class GameViewer {
-    public static void run() throws CmdLineParser.OptionException {
+    public static void run() throws CmdLineParser.OptionException, FileNotFoundException {
         HeadController headController = new HeadController();
         String command;
         String output;

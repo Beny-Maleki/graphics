@@ -3,6 +3,7 @@ package model.cards.cardsProp;
 import model.events.Event;
 import model.gameprop.gamemodel.Game;
 
+import java.io.FileNotFoundException;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -126,7 +127,7 @@ public abstract class Card {
         this.description = description;
     }
 
-    public void activeEffectsByEvent(Event event, Game game) {
+    public void activeEffectsByEvent(Event event, Game game) throws FileNotFoundException {
     }
 
     public abstract Card getCopy(); // semi duplicate code in overrides; cause -> Card is abstract and not constructable!

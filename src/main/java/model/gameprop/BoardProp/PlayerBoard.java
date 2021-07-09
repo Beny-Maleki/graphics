@@ -1,7 +1,6 @@
 package model.gameprop.BoardProp;
 
 import exceptions.CardNotFoundException;
-import javafx.scene.layout.Pane;
 import model.cards.cardsProp.Card;
 import model.cards.cardsProp.MagicCard;
 import model.cards.cardsProp.MonsterCard;
@@ -9,18 +8,15 @@ import model.enums.GameEnums.CardLocation;
 import model.enums.GameEnums.cardvisibility.MagicHouseVisibilityState;
 import model.enums.GameEnums.cardvisibility.MonsterHouseVisibilityState;
 
-import java.util.ArrayList;
-
 public class PlayerBoard {
     MagicHouse[] magicHouse;
     MonsterHouse[] monsterHouse;
+    HandHouse[] playerHand;
     MagicHouse fieldHouse;
-    ArrayList<Card> playerHand;
     GraveYard graveYard;
 
     {
         initializeBoardHouses();
-        playerHand = new ArrayList<>();
         graveYard = new GraveYard();
     }
 
@@ -32,9 +28,26 @@ public class PlayerBoard {
         return monsterHouse;
     }
 
-    public ArrayList<Card> getPlayerHand() {
+    public HandHouse[] getPlayerHand() {
         return playerHand;
     }
+
+    public void removeCardFromPlayerHand(Card card) {
+        for (HandHouse handHouse : playerHand) {
+            if (handHouse.getCard() == card) {
+                handHouse.removeCard();
+            }
+        }
+    }
+
+    public HandHouse getFirstEmptyHouse() {
+        for (HandHouse handHouse : playerHand) {
+            if (handHouse.getCard() == null)
+                return handHouse;
+        }
+        return null;
+    }
+
 
     public GraveYard getGraveYard() {
         return graveYard;
@@ -50,6 +63,10 @@ public class PlayerBoard {
             magicHouse[i] = new MagicHouse();
         }
         fieldHouse = new MagicHouse();
+        playerHand = new HandHouse[6];
+        for (int i = 0; i < playerHand.length; i++) {
+            playerHand[i] = new HandHouse();
+        }
     }
 
     public MagicHouse getFieldHouse() {
@@ -59,13 +76,13 @@ public class PlayerBoard {
     public Card getCard(Integer address, CardLocation location) {
         switch (location) {
             case PLAYER_HAND:
-                return playerHand.get(address);
+                return playerHand[address].getCard();
             case FIELD_ZONE:
-                return fieldHouse.getMagicCard();
+                return fieldHouse.getCard();
             case SPELL_ZONE:
-                return magicHouse[address].getMagicCard();
+                return magicHouse[address].getCard();
             case MONSTER_ZONE:
-                return monsterHouse[address].getMonsterCard();
+                return monsterHouse[address].getCard();
             default:
                 return null;
         }
@@ -90,10 +107,12 @@ public class PlayerBoard {
     public void moveCardToGraveYard(Card card) {
         if (card instanceof MonsterCard) {
             MonsterHouse monsterHouse = MonsterHouse.getMonsterHouseByMonsterCard((MonsterCard) card);
+            assert monsterHouse != null;
             monsterHouse.setMonsterCard(null);
             graveYard.addCardToGraveYard(card);
         } else if (card instanceof MagicCard) {
             MagicHouse magicHouse = MagicHouse.getMagicHouseByMagicCard((MagicCard) card);
+            assert magicHouse != null;
             magicHouse.setMagicCard(null);
             graveYard.addCardToGraveYard(card);
         }
@@ -146,8 +165,8 @@ public class PlayerBoard {
     }
 
     public boolean doesRitualCardAvailable() {
-        for (Card card : getPlayerHand()) {
-            if (card.getName().equals("Advanced Ritual Art")) {
+        for (HandHouse house : playerHand) {
+            if (house.getCard().getName().equals("Advanced Ritual Art")) {
                 return true;
             }
         }
@@ -160,8 +179,8 @@ public class PlayerBoard {
     }
 
     public void removeRitualSummonCard() {
-        for (int i = 0; i < playerHand.size(); i++) {
-            if (playerHand.get(i).getName().equals("Advanced Ritual Art")) {
+        for (int i = 0; i < playerHand.length; i++) {
+            if (playerHand[i].getCard().getName().equals("Advanced Ritual Art")) {
                 moveCardToGraveYard(i, CardLocation.PLAYER_HAND);
             }
         }

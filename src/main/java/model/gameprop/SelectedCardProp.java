@@ -6,7 +6,7 @@ import model.enums.GameEnums.SideOfFeature;
 import model.gameprop.BoardProp.GameHouse;
 import model.gameprop.BoardProp.PlayerBoard;
 
-public class SelectedCardProp {
+public class SelectedCardProp<T extends Selectable> {
     int cardAddress;
     CardLocation location;
     SideOfFeature side;
@@ -19,6 +19,7 @@ public class SelectedCardProp {
     }
 
     public Card getCard() {
+        //return selectable.getCard();
         Player player;
 
         if (side == SideOfFeature.OPPONENT)

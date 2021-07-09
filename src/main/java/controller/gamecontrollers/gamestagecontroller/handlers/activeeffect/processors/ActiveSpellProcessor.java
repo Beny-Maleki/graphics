@@ -13,6 +13,8 @@ import model.gameprop.BoardProp.MagicHouse;
 import model.gameprop.SelectedCardProp;
 import model.gameprop.gamemodel.Game;
 
+import java.io.FileNotFoundException;
+
 public class ActiveSpellProcessor extends ActiveEffectProcessor {
 
 
@@ -20,7 +22,7 @@ public class ActiveSpellProcessor extends ActiveEffectProcessor {
         super(processor);
     }
 
-    public String process(Game game) {
+    public String process(Game game) throws FileNotFoundException {
         SelectedCardProp cardProp = game.getCardProp();
         MagicCard magicCard = (MagicCard) cardProp.getCard();
         if (((MagicCard) cardProp.getCard()).isActivated()) return General.IS_ACTIVATED_BEFORE.toString();
@@ -38,11 +40,11 @@ public class ActiveSpellProcessor extends ActiveEffectProcessor {
                             game.getPlayer(SideOfFeature.CURRENT).getBoard().moveCardToGraveYard(0, CardLocation.FIELD_ZONE);
                         }
                         setCardOnBoard(game, magicCard, house);
-                        game.getPlayer(SideOfFeature.CURRENT).getBoard().getPlayerHand().remove(cardProp.getCard());
+                        game.getPlayer(SideOfFeature.CURRENT).getBoard().removeCardFromPlayerHand(cardProp.getCard());
                     } else {
                         for (MagicHouse house : game.getPlayer(SideOfFeature.CURRENT).getBoard().getMagicHouse()) {
                             if (house.getMagicCard() == null) {
-                                game.getPlayer(SideOfFeature.CURRENT).getBoard().getPlayerHand().remove(cardProp.getCard());
+                                game.getPlayer(SideOfFeature.CURRENT).getBoard().removeCardFromPlayerHand(cardProp.getCard());
                                 setCardOnBoard(game, magicCard, house);
                                 magicCard.setActivated(true);
                                 break;

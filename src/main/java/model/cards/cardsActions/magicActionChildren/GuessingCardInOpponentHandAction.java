@@ -6,6 +6,7 @@ import model.cards.cardsActions.Action;
 import model.cards.cardsProp.Card;
 import model.enums.GameEnums.RequestingInput;
 import model.enums.GameEnums.SideOfFeature;
+import model.gameprop.BoardProp.HandHouse;
 import model.gameprop.BoardProp.MonsterHouse;
 import model.gameprop.BoardProp.PlayerBoard;
 import model.gameprop.gamemodel.Game;
@@ -25,7 +26,8 @@ public class GuessingCardInOpponentHandAction extends Action {
         String name = GetStringInputFromView.getInputFromView(RequestingInput.GUESS_CARD);
         boolean isCardInOpponentHand = false;
         PlayerBoard opponentBoard = game.getPlayer(SideOfFeature.OPPONENT).getBoard();
-        for (Card card : opponentBoard.getPlayerHand()) {
+        for (HandHouse house  : opponentBoard.getPlayerHand()) {
+            Card card = house.getCard();
             if (name.equals(card.getName())) {
                 isCardInOpponentHand = true;
                 break;
@@ -42,13 +44,12 @@ public class GuessingCardInOpponentHandAction extends Action {
                     mainDeckIterator.remove();
                 }
             }
-            ArrayList<Card> opponentHand = opponentBoard.getPlayerHand();
-            Iterator<Card> handIterator = opponentHand.iterator();
-            while (handIterator.hasNext()) {
-                Card card = handIterator.next();
+            HandHouse[] opponentHand = opponentBoard.getPlayerHand();
+            for (HandHouse handHouse : opponentHand) {
+                Card card = handHouse.getCard();
                 if (card.getName().equals(name)) {
                     opponentBoard.getGraveYard().addCardToGraveYard(card);
-                    handIterator.remove();
+                    handHouse.removeCard();
                 }
             }
             MonsterHouse[] opponentMonsterHouse = opponentBoard.getMonsterHouse();
@@ -61,11 +62,11 @@ public class GuessingCardInOpponentHandAction extends Action {
         }
         else {
             PlayerBoard currentPlayerBoard = game.getPlayer(SideOfFeature.CURRENT).getBoard();
-            ArrayList<Card> hand = currentPlayerBoard.getPlayerHand();
-            Collections.shuffle(hand);
-            Card card = hand.get(0);
+            HandHouse[] hand = currentPlayerBoard.getPlayerHand();
+            //Collections.shuffle(hand);TODO fix the bug
+            Card card = hand[0].getCard();
             currentPlayerBoard.getGraveYard().addCardToGraveYard(card);
-            hand.remove(0);
+            hand[0].removeCard();
         }
         isActivatedBefore = true;
     }

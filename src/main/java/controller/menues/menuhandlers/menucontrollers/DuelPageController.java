@@ -14,11 +14,12 @@ import model.userProp.UserInfoType;
 import view.RockPaperScissorGame;
 import view.game.GameViewer;
 
+import java.io.FileNotFoundException;
 import java.util.Objects;
 
 public class DuelPageController extends Controller {
 
-    public String run(String command) throws CmdLineParser.OptionException {
+    public String run(String command) throws CmdLineParser.OptionException, FileNotFoundException {
         if (command.startsWith("controller show")) {
             return showCurrentMenu();
         } else if (command.startsWith("duel --new")) {
@@ -41,7 +42,7 @@ public class DuelPageController extends Controller {
         return Duel.CURRENT_MENU.toString();
     }
 
-    private String makeNewDuel(String rounds, String secondPlayer) throws CmdLineParser.OptionException {
+    private String makeNewDuel(String rounds, String secondPlayer) throws CmdLineParser.OptionException, FileNotFoundException {
         DuelChain chain = new DuelChain();
         String[] data = new String[]{LoginUser.getUser().getUsername(), secondPlayer, rounds};
         Duel error;
