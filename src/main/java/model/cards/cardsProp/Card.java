@@ -59,6 +59,10 @@ public abstract class Card {
         return null; // No such card notExists.
     }
 
+    public static void setNumberOfCard(int numberOfCard) {
+        Card.numberOfCard = numberOfCard;
+    }
+
     public static void addMagicsToCards(ArrayList<MagicCard> magicCards) {
         cards.addAll(magicCards);
     }
@@ -120,6 +124,19 @@ public abstract class Card {
 
     public String getDescription() {
         return description;
+    }
+
+    public String getDescriptionWithDifferentLine() {
+        StringBuilder result = new StringBuilder();
+        String[] arrayRes = description.split(" ");
+        for (int i = 0; i < arrayRes.length; i++) {
+            if (i % 7 == 0 && i != 0) {
+                result.append("\n");
+            } else {
+                result.append(arrayRes[i]).append(" ");
+            }
+        }
+        return result.toString();
     }
 
     public void setDescription(String description) {

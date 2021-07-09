@@ -12,6 +12,7 @@ import javafx.scene.control.Label;
 import javafx.stage.Stage;
 import javafx.util.Duration;
 import model.enums.Menu;
+import view.controller.ChooseMagicActionsView;
 import view.controller.ScoreboardView;
 
 import java.io.IOException;

@@ -210,7 +210,12 @@ public class ShopView {
                 image = new Image(fileInputStream);
             }
         } catch (FileNotFoundException e) {
-            throw new FileNotFoundException();
+            if (card instanceof MonsterCard) {
+                fileInputStream = new FileInputStream("src/main/resources/graphicprop/images/Cards/Monsters/newMonster.jpg");
+            } else {
+                fileInputStream = new FileInputStream("src/main/resources/graphicprop/images/Cards/SpellTrap/newMagic.jpg");
+            }
+            image = new Image(fileInputStream);
         }
         return image;
     }

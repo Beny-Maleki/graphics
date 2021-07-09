@@ -78,7 +78,7 @@ public class UserAI extends FatherUser {
         }
     }
 
-    private String mainPhaseCommand(Game game) {
+    public String mainPhaseCommand(Game game) {
         String result = "";
         Random rand = new Random();
         Player aiPlayer = game.getPlayer(SideOfFeature.CURRENT);
@@ -124,7 +124,7 @@ public class UserAI extends FatherUser {
         return result;
     }
 
-    private String battlePhaseCommand(Game game) {
+    public String battlePhaseCommand(Game game) {
         String result = "";
         Random rand = new Random();
         Player aiPlayer = game.getPlayer(SideOfFeature.CURRENT);
@@ -134,6 +134,19 @@ public class UserAI extends FatherUser {
         } else if (random == 1) {
             result = "select --monster " + getValidMonsterElementToAttack(aiPlayer) + "\nattack " + getValidTargetMonster(game.getPlayer(SideOfFeature.OPPONENT)) + "\n";
         } else if (random == 2) {
+            result = "select --spell " + getValidSpellToActiveEffect(aiPlayer) + "\nactive effect\n";
+        } else {
+            result = "next phase";
+        }
+        return result;
+    }
+
+    public String generalCommand(Game game) {
+        String result = "";
+        Random rand = new Random();
+        Player aiPlayer = game.getPlayer(SideOfFeature.CURRENT);
+        int random = rand.nextInt(2);
+        if (random == 0) {
             result = "select --spell " + getValidSpellToActiveEffect(aiPlayer) + "\nactive effect\n";
         } else {
             result = "next phase";
