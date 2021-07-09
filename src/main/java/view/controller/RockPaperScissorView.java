@@ -1,7 +1,9 @@
 package view.controller;
 
 import animatefx.animation.FadeInLeft;
+import animatefx.animation.FadeInUp;
 import animatefx.animation.SlideInDown;
+import animatefx.animation.SlideInUp;
 import controller.RockPaperScissorController;
 import javafx.fxml.FXML;
 import javafx.scene.control.Alert;
@@ -9,6 +11,7 @@ import javafx.scene.control.ButtonType;
 import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.layout.AnchorPane;
 import model.enums.GameEnums.PlayerTurn;
 import model.enums.Menu;
 import model.gameprop.GameInProcess;
@@ -17,9 +20,11 @@ import model.gameprop.gamemodel.Game;
 import model.userProp.LoginUser;
 import model.userProp.User;
 
+import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
+import java.time.LocalDateTime;
 import java.util.concurrent.TimeUnit;
 
 public class RockPaperScissorView {
@@ -33,7 +38,8 @@ public class RockPaperScissorView {
     public ImageView scissorUp;
     public ImageView rockUp;
     public ImageView paperUp;
-    public ImageView choiceImageView;
+    public AnchorPane root;
+
 
     RockPaperScissorController controller = RockPaperScissorController.getInstance();
 
@@ -54,6 +60,14 @@ public class RockPaperScissorView {
         setAvatars(userOne.getAvatarAddress(), userTwo.getAvatarAddress());
 
         setNicknames(userOne.getNickname(), userTwo.getNickname());
+
+        rock.setStyle("-fx-cursor: hand");
+        scissor.setStyle("-fx-cursor: hand");
+        paper.setStyle("-fx-cursor: hand");
+
+        hoverOnImage(rock);
+        hoverOnImage(scissor);
+        hoverOnImage(paper);
 
         blockUpBox();
     }
@@ -79,42 +93,35 @@ public class RockPaperScissorView {
             paperUp.setImage(image);
             scissorUp.setImage(image);
 
+            new FadeInLeft(frameDown).play();
+            new FadeInLeft(frameUp).play();
+            new FadeInLeft(nicknameDown).play();
+            new FadeInLeft(nicknameUp).play();
+
+
             new SlideInDown(rockUp).play();
             new SlideInDown(paperUp).play();
             new SlideInDown(scissorUp).play();
 
+            new SlideInUp(rock).play();
+            new SlideInUp(paper).play();
+            new SlideInUp(scissor).play();
+
             rock.setOnMouseClicked(e -> {
                 userOneChoice = "rock";
-                try {
-                    choiceImageView.setImage(new Image(new FileInputStream("src/main/resources/graphicprop/images/RockPaperScissor/rock-upside.jpg")));
-                } catch (FileNotFoundException fileNotFoundException) {
-                    fileNotFoundException.printStackTrace();
-                }
-                try {
-                    TimeUnit.SECONDS.sleep(1);
-                } catch (InterruptedException interruptedException) {
-                    interruptedException.printStackTrace();
-                }
+                showAnimationOfRock();
                 changeTurn();
             });
 
             paper.setOnMouseClicked(e -> {
                 userOneChoice = "paper";
-                try {
-                    choiceImageView.setImage(new Image(new FileInputStream("src/main/resources/graphicprop/images/RockPaperScissor/paper-upside.jpg")));
-                } catch (FileNotFoundException fileNotFoundException) {
-                    fileNotFoundException.printStackTrace();
-                }
-                try {
-                    TimeUnit.SECONDS.sleep(1);
-                } catch (InterruptedException interruptedException) {
-                    interruptedException.printStackTrace();
-                }
+                showAnimationOfPaper();
                 changeTurn();
             });
 
             scissor.setOnMouseClicked(e -> {
                 userOneChoice = "scissor";
+                showAnimationOfScissors();
                 changeTurn();
             });
 
@@ -122,6 +129,7 @@ public class RockPaperScissorView {
             e.printStackTrace();
         }
     }
+
 
     private void changeTurn() {
         try {
@@ -137,22 +145,29 @@ public class RockPaperScissorView {
         new FadeInLeft(nicknameDown).play();
         new FadeInLeft(nicknameUp).play();
 
-        new SlideInDown(rock).play();
-        new SlideInDown(paper).play();
-        new SlideInDown(scissor).play();
+        new SlideInUp(rock).play();
+        new SlideInUp(paper).play();
+        new SlideInUp(scissor).play();
+
+        new SlideInDown(rockUp).play();
+        new SlideInDown(paperUp).play();
+        new SlideInDown(scissorUp).play();
 
         rock.setOnMouseClicked(e -> {
             userTwoChoice = "rock";
+            showAnimationOfRock();
             analyzeResult();
         });
 
         paper.setOnMouseClicked(e -> {
             userTwoChoice = "paper";
+            showAnimationOfPaper();
             analyzeResult();
         });
 
         scissor.setOnMouseClicked(e -> {
             userTwoChoice = "scissor";
+            showAnimationOfScissors();
             analyzeResult();
         });
 
@@ -203,5 +218,60 @@ public class RockPaperScissorView {
             (image).setScaleX(1.0);
             (image).setScaleY(1.0);
         });
+    }
+
+    private void createDelay(int second) {
+        LocalDateTime start = LocalDateTime.now();
+        while((LocalDateTime.now().getSecond() - start.getSecond()) < second) {}
+    }
+
+    private void showAnimationOfRock() {
+        ImageView choiceImageView = null;
+        choiceImageView = setImageView(choiceImageView, "src/main/resources/graphicprop/images/RockPaperScissor/rockVisual.png");
+
+        createDelay(2);
+
+        root.getChildren().remove(choiceImageView);
+    }
+
+
+    private void showAnimationOfPaper() {
+        ImageView choiceImageView = null;
+        choiceImageView = setImageView(choiceImageView, "src/main/resources/graphicprop/images/RockPaperScissor/paperVisual.png");
+
+        createDelay(2);
+
+        root.getChildren().remove(choiceImageView);
+    }
+
+    private void showAnimationOfScissors() {
+        ImageView choiceImageView = null;
+        choiceImageView = setImageView(choiceImageView, "src/main/resources/graphicprop/images/RockPaperScissor/scissorVisual.png");
+
+        createDelay(2);
+
+        root.getChildren().remove(choiceImageView);
+    }
+
+    private ImageView setImageView(ImageView choiceImageView, String s) {
+        try {
+            FileInputStream fileInputStream = new FileInputStream(s);
+            Image image = new Image(fileInputStream);
+
+
+            choiceImageView = new ImageView();
+            choiceImageView.setLayoutX(415);
+            choiceImageView.setLayoutY(275);
+            choiceImageView.setFitHeight(150);
+            choiceImageView.setFitWidth(170);
+
+            choiceImageView.setImage(image);
+            choiceImageView.toFront();
+            root.getChildren().add(choiceImageView);
+            new FadeInUp(choiceImageView).play();
+        } catch (FileNotFoundException fileNotFoundException) {
+            fileNotFoundException.printStackTrace();
+        }
+        return choiceImageView;
     }
 }

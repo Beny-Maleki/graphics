@@ -32,7 +32,7 @@ public class MainMenuView {
         } else if (event.getSource() == profile) {
             controller.moveToPage(profile, Menu.PROFILE_MENU);
         } else if (event.getSource() == duel) {
-            controller.moveToPage(duel, Menu.DUEL_MENU);
+            controller.moveToPage(duel, Menu.DUEL_PAGE);
         } else if (event.getSource() == createCard) {
             controller.moveToPage(createCard, Menu.CARD_CREATOR_PAGE);
         }
