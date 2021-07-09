@@ -40,11 +40,12 @@ public abstract class Controller {
 
         switch (page) {
             case SCOREBOARD_MENU:
-                break;
             case WELCOME_MENU:
             case PROFILE_MENU:
             case REGISTER_MENU:
             case MAIN_MENU:
+            case DUEL_PAGE:
+            case ROCK_PAPER_SCISSOR_PAGE:
             case PROFILE_CHANGE_NICKNAME: {
                 new FadeIn(parent).play();
                 break;

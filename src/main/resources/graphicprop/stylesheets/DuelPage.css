@@ -81,3 +81,10 @@
     -fx-font-size: 11;
     -fx-text-fill: white;
 }
+
+#Topic{
+    -fx-text-fill: black;
+    -fx-font-weight: bold;
+    -fx-background-color: transparent;
+
+}

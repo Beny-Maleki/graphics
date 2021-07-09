@@ -17,6 +17,7 @@ import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.Pane;
 import model.enums.Menu;
 import model.userProp.Deck;
+import model.userProp.LoginUser;
 import model.userProp.User;
 
 import java.io.FileInputStream;
@@ -56,7 +57,7 @@ public class DuelPageView {
         opponentNickname.setOnKeyPressed(event -> {
             if (event.getCode() == KeyCode.ENTER) {
                 User user = findUserAndDisplayPopUp();
-                if (user == null) {
+                if (user == null || user == LoginUser.getUser()) {
                     noPlayerFindForm();
                 } else {
                     setUserNameAndScore(user);
@@ -65,6 +66,11 @@ public class DuelPageView {
                 }
             }
         });
+        cancel.setOnMouseClicked(event -> {
+            gameSetUpPopUp.setVisible(false);
+            mainPain.getChildren().forEach(node -> node.setDisable(false));
+        });
+
     }
 
     private void doesPlayerHaveActiveDeck(Deck deck) {
@@ -124,6 +130,8 @@ public class DuelPageView {
                     node.setDisable(true);
                 }
             });
+        } else if (event.getSource() == duel) {
+            controller.moveToPage(duel, Menu.ROCK_PAPER_SCISSOR_PAGE);
         }
     }
 }
