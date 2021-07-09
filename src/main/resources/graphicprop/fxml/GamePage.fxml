@@ -6,7 +6,7 @@
 <?import javafx.scene.shape.*?>
 <?import javafx.scene.text.*?>
 
-<AnchorPane prefHeight="700.0" prefWidth="1002.0" stylesheets="/graphicprop/stylesheets/GamePage.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="view.controller.GameView">
+<AnchorPane fx:id="root" prefHeight="700.0" prefWidth="1002.0" stylesheets="/graphicprop/stylesheets/GamePage.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="view.controller.GameView">
    <AnchorPane prefHeight="700.0" prefWidth="260.0" styleClass="anchorPane">
       <AnchorPane fx:id="selectedCardContainer" prefHeight="375.0" prefWidth="260.0" styleClass="selectedCardContainer">
          <Pane fx:id="selectedCardPane" layoutX="31.0" layoutY="14.0" prefHeight="291.0" prefWidth="200.0" styleClass="selectedCardPane">
@@ -174,10 +174,10 @@
          </Pane>
          <Pane fx:id="opponentHandContainer" layoutX="43.0" prefHeight="100.0" prefWidth="435.0" />
          <Pane fx:id="yourHandContainer" layoutX="45.0" layoutY="603.0" prefHeight="100.0" prefWidth="435.0" />
-         <Pane fx:id="yourGraveyardPane" layoutX="32.0" layoutY="368.0" prefHeight="70.0" prefWidth="42.0" />
-         <Pane fx:id="opponentGraveyardPane" layoutX="459.0" layoutY="235.0" prefHeight="70.0" prefWidth="42.0" />
-         <Pane fx:id="yourFieldPane" layoutX="457.0" layoutY="403.0" prefHeight="70.0" prefWidth="42.0" />
-         <Pane fx:id="opponentFieldPane" layoutX="32.0" layoutY="212.0" prefHeight="70.0" prefWidth="42.0" />
+         <Pane fx:id="yourFieldPane" layoutX="32.0" layoutY="368.0" prefHeight="70.0" prefWidth="42.0" />
+         <Pane fx:id="opponentFieldPane" layoutX="459.0" layoutY="235.0" prefHeight="70.0" prefWidth="42.0" />
+         <Pane fx:id="yourGraveyardPane" layoutX="457.0" layoutY="403.0" onMouseClicked="#run" prefHeight="70.0" prefWidth="42.0" style="-fx-cursor: hand;" />
+         <Pane fx:id="opponentGraveyardPane" layoutX="32.0" layoutY="212.0" onMouseClicked="#run" prefHeight="70.0" prefWidth="42.0" style="-fx-cursor: hand;" />
          <Pane fx:id="yourDeckPane" layoutX="32.0" layoutY="498.0" prefHeight="70.0" prefWidth="42.0" />
          <Pane fx:id="opponentDeckPane" layoutX="457.0" layoutY="124.0" prefHeight="70.0" prefWidth="42.0" />
       </children>

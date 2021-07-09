@@ -4,8 +4,9 @@
     <option name="autoReloadType" value="ALL" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="45f87b1a-8403-4c06-b2b2-57ebfe555883" name="Default Changelist" comment="a small bug fix at DeckModifier">
+    <list default="true" id="45f87b1a-8403-4c06-b2b2-57ebfe555883" name="Default Changelist" comment="add hand to GameView">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/model/enums/Origin.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/model/enums/Origin.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/view/controller/GameView.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/view/controller/GameView.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/graphicprop/fxml/GamePage.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/graphicprop/fxml/GamePage.fxml" afterDir="false" />
     </list>
@@ -161,6 +162,17 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <configuration default="true" type="ArquillianJUnit" factoryName="" nameIsGenerated="true">
+      <option name="arquillianRunConfiguration">
+        <value>
+          <option name="containerStateName" value="" />
+        </value>
+      </option>
+      <option name="TEST_OBJECT" value="class" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <configuration name="G:/semister 2/java Yu_gi_oh project/yu-gi-oh-Project" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
       <ExternalSystemSettings>
         <option name="executionName" />
@@ -268,14 +280,7 @@
       <workItem from="1625688434985" duration="1722000" />
       <workItem from="1625734126848" duration="5349000" />
       <workItem from="1625746738104" duration="1006000" />
-      <workItem from="1625812832910" duration="5654000" />
-    </task>
-    <task id="LOCAL-00041" summary="show card added and some clean code changes">
-      <created>1620095127420</created>
-      <option name="number" value="00041" />
-      <option name="presentableId" value="LOCAL-00041" />
-      <option name="project" value="LOCAL" />
-      <updated>1620095127420</updated>
+      <workItem from="1625812832910" duration="13089000" />
     </task>
     <task id="LOCAL-00042" summary="entery of the game">
       <created>1620095240397</created>
@@ -590,7 +595,14 @@
       <option name="project" value="LOCAL" />
       <updated>1625768391273</updated>
     </task>
-    <option name="localTasksCounter" value="90" />
+    <task id="LOCAL-00090" summary="add hand to GameView">
+      <created>1625822638396</created>
+      <option name="number" value="00090" />
+      <option name="presentableId" value="LOCAL-00090" />
+      <option name="project" value="LOCAL" />
+      <updated>1625822638397</updated>
+    </task>
+    <option name="localTasksCounter" value="91" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -610,7 +622,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="game added as an argument to actions" />
     <MESSAGE value="user Gson" />
     <MESSAGE value="Gson deck and users" />
     <MESSAGE value="add java fx" />
@@ -635,7 +646,8 @@
     <MESSAGE value="matching to other commits" />
     <MESSAGE value="continue a little more on GameView" />
     <MESSAGE value="a small bug fix at DeckModifier" />
-    <option name="LAST_COMMIT_MESSAGE" value="a small bug fix at DeckModifier" />
+    <MESSAGE value="add hand to GameView" />
+    <option name="LAST_COMMIT_MESSAGE" value="add hand to GameView" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
