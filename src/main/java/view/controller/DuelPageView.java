@@ -71,6 +71,15 @@ public class DuelPageView {
             mainPain.getChildren().forEach(node -> node.setDisable(false));
         });
 
+        duel.setOnMouseClicked(event -> {
+            try {
+                LoginUser.setOpponent(controller.findOpponent(opponentNickname.getText()));
+                controller.moveToPage(duel , Menu.ROCK_PAPER_SCISSOR_PAGE);
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        });
+
     }
 
     private void doesPlayerHaveActiveDeck(Deck deck) {
@@ -110,8 +119,7 @@ public class DuelPageView {
     private User findUserAndDisplayPopUp() {
         opponentFinder.setVisible(true);
         new FadeIn(opponentFinder).play();
-        User user = controller.findOpponent(opponentNickname.getText());
-        return user;
+        return controller.findOpponent(opponentNickname.getText());
     }
 
     private void resetFinder() {
@@ -130,8 +138,6 @@ public class DuelPageView {
                     node.setDisable(true);
                 }
             });
-        } else if (event.getSource() == duel) {
-            controller.moveToPage(duel, Menu.ROCK_PAPER_SCISSOR_PAGE);
         }
     }
 }
