@@ -8,9 +8,9 @@
 
 .yourInfoContainer {
     -fx-text-fill: white;
-    -fx-background-image: url(../images/dirtyBoardBG.jpg);
-    -fx-background-size: cover;
     -fx-border-color: black;
+    -fx-background-image: url(../images/youUserInfoBGjpeg.jpeg);
+    -fx-background-size: cover;
 }
 
 .label {
@@ -18,9 +18,10 @@
 }
 
 .opponentInfoContainer {
-    -fx-background-image: url(../images/dirtyBoardBG.jpg);
-    -fx-background-size: cover;
+    -fx-text-fill: white;
     -fx-border-color: black;
+    -fx-background-image: url(../images/opponentUserInfoBgjpeg.jpeg);
+    -fx-background-size: cover;
 }
 
 

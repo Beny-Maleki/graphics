@@ -1,7 +1,7 @@
 package view.controller;
 
-import animatefx.animation.BounceIn;
-import animatefx.animation.FadeIn;
+import animatefx.animation.*;
+import controller.RockPaperScissorController;
 import controller.menues.menuhandlers.menucontrollers.DuelPageController;
 import javafx.collections.FXCollections;
 import javafx.fxml.FXML;
@@ -39,8 +39,8 @@ public class DuelPageView {
     public Label nickname;
     public Label score;
     public Label doesHaveActiveDeck;
-    public Button cancel;
-    public Button duel;
+    public Button cancelInPopUp;
+    public Button duelInPopUp;
     public AnchorPane mainPain;
     private DuelPageController controller;
 
@@ -51,7 +51,7 @@ public class DuelPageView {
     @FXML
     public void initialize() {
         gameSetUpPopUp.setVisible(false);
-        duel.setVisible(false);
+        duelInPopUp.setVisible(false);
         resetFinder();
         roundNumber.setItems(FXCollections.observableArrayList(Arrays.asList(1, 3)));
         opponentNickname.setOnKeyPressed(event -> {
@@ -66,15 +66,16 @@ public class DuelPageView {
                 }
             }
         });
-        cancel.setOnMouseClicked(event -> {
+        cancelInPopUp.setOnMouseClicked(event -> {
             gameSetUpPopUp.setVisible(false);
             mainPain.getChildren().forEach(node -> node.setDisable(false));
         });
 
-        duel.setOnMouseClicked(event -> {
+        duelInPopUp.setOnMouseClicked(event -> {
             try {
                 LoginUser.setOpponent(controller.findOpponent(opponentNickname.getText()));
-                controller.moveToPage(duel , Menu.ROCK_PAPER_SCISSOR_PAGE);
+                controller.moveToPage(duelInPopUp, Menu.ROCK_PAPER_SCISSOR_PAGE);
+                RockPaperScissorController.setNumOfRounds(roundNumber.getValue());
             } catch (IOException e) {
                 e.printStackTrace();
             }
@@ -87,8 +88,8 @@ public class DuelPageView {
             doesHaveActiveDeck.setText("No Active Deck");
         } else {
             doesHaveActiveDeck.setText("Have Active Deck");
-            duel.setVisible(true);
-            new FadeIn(duel).play();
+            duelInPopUp.setVisible(true);
+            new FadeIn(duelInPopUp).play();
         }
         new FadeIn(doesHaveActiveDeck).play();
     }
@@ -140,4 +141,5 @@ public class DuelPageView {
             });
         }
     }
+
 }

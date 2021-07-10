@@ -14,6 +14,10 @@ public enum Menu {
     DECK_MODIFIER("DeckModifier"),
     DUEL_PAGE("DuelPage"),
     ROCK_PAPER_SCISSOR_PAGE("RockPaperScissor"),
+    CARD_CREATOR_PAGE("CardCreatorPage"),
+    CHOOSE_MONSTER_ACTIONS("ChooseMonsterActions"),
+    CHOOSE_MAGIC_ACTIONS("ChooseMagicActions"),
+    CHOOSE_FIELD_CARDS_DETAILS("ChooseFieldCardsDetails"),
     GAME_PAGE("GamePage");
 
     String address;
