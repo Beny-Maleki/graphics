@@ -7,14 +7,13 @@ import model.enums.GameEnums.SideOfFeature;
 import model.enums.GameEnums.cardvisibility.MagicHouseVisibilityState;
 import model.gameprop.GameInProcess;
 import model.gameprop.Player;
-import model.gameprop.Selectable;
 import model.gameprop.gamemodel.Game;
 
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.util.ArrayList;
 
-public class MagicHouse extends GameHouse{
+public class MagicHouse extends GameHouse {
     MagicCard magicCard;
     MagicHouseVisibilityState state;
 
@@ -97,8 +96,12 @@ public class MagicHouse extends GameHouse{
     }
 
 
-    public void setImageOfCard() {
-        this.getChildren().add(cardImageFrame);
+    public void setImageOfCard(boolean isVisible) {
+        if (isVisible) {
+            this.cardImageFrame.setImage(Card.getCardImage(magicCard));
+        } else {
+            this.cardImageFrame.setImage(GameHouse.getBackOfCardImage());
+        }
     }
 
     @Override

@@ -206,7 +206,7 @@ public class GeneralController {
         return generalMessage;
     }
 
-    private String activeEffect(Game game) throws FileNotFoundException {
+    public String activeEffect(Game game) throws FileNotFoundException {
         ActiveEffectChain chain = new ActiveEffectChain();
         return chain.request(game);
     }

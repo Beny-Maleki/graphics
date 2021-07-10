@@ -43,6 +43,7 @@ public class SetSpellProcessor extends SpellProcessor {
 
     private String placeCardInBoard(Game game, MagicCard magicCard, MagicHouse magicHouse) {
         magicHouse.setMagicCard(magicCard);
+        magicHouse.setImageOfCard(false);
         magicHouse.setState(MagicHouseVisibilityState.H);
         game.setCardProp(null);
         HandHouse[] playerHand = game.getPlayer(SideOfFeature.CURRENT).getBoard().getPlayerHand();

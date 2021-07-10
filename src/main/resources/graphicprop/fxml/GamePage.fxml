@@ -4,9 +4,10 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.image.*?>
 <?import javafx.scene.layout.*?>
+<?import javafx.scene.shape.*?>
 <?import javafx.scene.text.*?>
 
-<AnchorPane fx:id="root" prefHeight="700.0" prefWidth="1002.0" stylesheets="/graphicprop/stylesheets/GamePage.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="view.controller.GameView">
+<AnchorPane fx:id="root" prefHeight="700.0" prefWidth="1002.0" stylesheets="/graphicprop/stylesheets/GamePage.css" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="view.controller.GameView">
    <AnchorPane fx:id="cardDescriptionArea" prefHeight="700.0" prefWidth="250.0" styleClass="cardDetailArea" stylesheets="@../stylesheets/GamePage.css">
       <Pane fx:id="selectedCardPane" layoutX="-5.0" layoutY="1.0" prefHeight="395.0" prefWidth="258.0" styleClass="selectedCardPane">
          <children>
@@ -17,10 +18,11 @@
             </ImageView>
             <Button fx:id="summonButton" layoutX="154.0" layoutY="341.0" mnemonicParsing="false" onMouseClicked="#run" prefHeight="26.0" prefWidth="90.0" text="Summon" />
             <Button fx:id="setMonsterButton" layoutX="14.0" layoutY="341.0" mnemonicParsing="false" onMouseClicked="#run" prefHeight="27.0" prefWidth="90.0" text="Set monster" />
+            <Button fx:id="setEffectButton" layoutX="14.0" layoutY="341.0" mnemonicParsing="false" prefHeight="27.0" prefWidth="90.0" text="Set effect" />
+            <Button fx:id="activeEffectButton" layoutX="154.0" layoutY="341.0" mnemonicParsing="false" prefHeight="27.0" prefWidth="90.0" text="Active effect" />
          </children>
       </Pane>
-      <Button layoutX="14.0" layoutY="409.0" mnemonicParsing="false" prefHeight="27.0" prefWidth="90.0" text="Set effect" />
-      <Button layoutX="136.0" layoutY="409.0" mnemonicParsing="false" text="Change Position" />
+      <Button fx:id="changePositionButton" layoutX="136.0" layoutY="409.0" mnemonicParsing="false" text="Change Position" />
    </AnchorPane>
    <AnchorPane layoutX="780.0" prefHeight="702.0" prefWidth="222.0">
       <AnchorPane fx:id="opponentInfoContainer" prefHeight="299.0" prefWidth="222.0" styleClass="opponentInfoContainer" stylesheets="@../stylesheets/GamePage.css">
@@ -196,17 +198,14 @@
                      <Image url="@../images/Cards/Monsters/Unknown.jpg" />
                   </image>
                </ImageView>
-               <Label fx:id="currentDeckNumber" layoutX="19.0" layoutY="42.0" />
+               <Label fx:id="currentDeckNumber" alignment="CENTER" layoutX="19.0" layoutY="37.0" prefHeight="17.0" prefWidth="26.0" />
             </children></Pane>
          <Pane fx:id="opponentDeckPane" layoutX="22.0" layoutY="100.0" prefHeight="91.0" prefWidth="65.0">
-            <children>
-               <ImageView fitHeight="125.0" fitWidth="65.0" pickOnBounds="true" preserveRatio="true">
-                  <image>
-                     <Image url="@../images/Cards/Monsters/Unknown.jpg" />
-                  </image>
-               </ImageView>
-               <Label fx:id="opponentDeckNumber" layoutX="19.0" layoutY="37.0" />
-            </children></Pane>
+            <ImageView fitHeight="125.0" fitWidth="65.0" layoutY="-5.0" pickOnBounds="true" preserveRatio="true">
+               <Image url="@../images/backOfCard.jpg" />
+            </ImageView>
+            <Label fx:id="opponentDeckNumber" alignment="CENTER" layoutX="20.0" layoutY="34.0" prefHeight="17.0" prefWidth="26.0" />
+         </Pane>
          <Label fx:id="phaseName" alignment="CENTER" contentDisplay="CENTER" layoutX="175.0" layoutY="335.0" prefHeight="26.0" prefWidth="174.0" style="-fx-font-style: italic; -fx-font-size: 20; -fx-font-weight: bold;" text="draw phase">
             <font>
                <Font name="AdobeDevanagari-Regular" size="13.0" />
