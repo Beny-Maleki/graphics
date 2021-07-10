@@ -1,7 +1,6 @@
 package controller.gamecontrollers.gamestagecontroller.handlers.activeeffect;
 
 import controller.gamecontrollers.gamestagecontroller.handlers.activeeffect.processors.ActiveSpellProcessor;
-import controller.gamecontrollers.gamestagecontroller.handlers.activeeffect.processors.SelectCardProcessor;
 import model.gameprop.gamemodel.Game;
 
 import java.io.FileNotFoundException;
@@ -14,7 +13,7 @@ public class ActiveEffectChain {
     }
 
     private void buildChain() {
-        processor = new SelectCardProcessor(new ActiveSpellProcessor(null));
+        processor =new ActiveSpellProcessor(null);
     }
 
     public String request(Game game) throws FileNotFoundException {

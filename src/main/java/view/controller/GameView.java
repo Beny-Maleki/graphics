@@ -20,7 +20,10 @@ import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.FlowPane;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.Pane;
+import model.cards.cardsEnum.Magic.MagicAttribute;
+import model.cards.cardsEnum.Magic.MagicType;
 import model.cards.cardsProp.Card;
+import model.cards.cardsProp.MagicCard;
 import model.cards.cardsProp.MonsterCard;
 import model.enums.GameEnums.SideOfFeature;
 import model.enums.GameEnums.TypeOfHire;
@@ -39,7 +42,6 @@ import org.jetbrains.annotations.NotNull;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.util.ArrayList;
-import java.util.concurrent.Flow;
 
 public class GameView {
 
@@ -78,6 +80,9 @@ public class GameView {
     public Button setMonsterButton;
     public Label currentDeckNumber;
     public Label opponentDeckNumber;
+    public Button setEffectButton;
+    public Button changePositionButton;
+    public Button activeEffectButton;
     private Player playerYou;
     private Player playerOpponent;
     private GeneralController controller;
@@ -141,24 +146,23 @@ public class GameView {
         handContainer.setPadding(new Insets(0, 0, 0, 0));
         handContainer.setHgap(3);
 
-        for (int i = 0; i < handHouses.length; i++) {
-            HandHouse handHouse = handHouses[i];
-            handHouse.setPrefSize(68, 100);
+        for (HandHouse handHouse : handHouses) {
+            if (handHouse.getCard() != null) {
+                handHouse.setPrefSize(68, 100);
+                setMouseEnterEventForHand(handHouse);
+                setMouseExitEventForHand(handHouse);
+                setMouseClickEventForHand(handHouse);
 
-            setMouseEnterEventForHand(handHouse);
-            setMouseExitEventForHand(handHouse);
-            setMouseClickEventForHand(handHouse);
-
-            handHouse.setImageOfCard(isOpponentSide);
-
-            handContainer.getChildren().add(handHouses[i]);
+                handHouse.setImageOfCard(isOpponentSide);
+                handContainer.getChildren().add(handHouse);
+            }
         }
     }
 
     private void setMouseClickEventForHand(HandHouse handHouse) {
         handHouse.setOnMouseClicked(e -> {
             controller.selectCard(game, handHouse);
-            if (game.getCardProp().doesBelongToCurrent()) {
+            if (game.getCardProp().doesBelongToCurrent() && handHouse.getCard() != null) {
                 selectedCardImageView.setImage(Card.getCardImage(game.getCardProp().getCard()));
                 new FlipInX(selectedCardImageView).play();
                 deActiveActions();
@@ -170,6 +174,8 @@ public class GameView {
     private void deActiveActions() {
         summonButton.setVisible(false);
         setMonsterButton.setVisible(false);
+        setEffectButton.setVisible(false);
+        activeEffectButton.setVisible(false);
     }
 
     private void showAvailableActions(HandHouse handHouse) {
@@ -179,6 +185,13 @@ public class GameView {
                 setMonsterButton.setVisible(true);
                 new FadeIn(summonButton).play();
                 new FadeIn(setMonsterButton).play();
+            } else if (handHouse.getCard() instanceof MagicCard) {
+                MagicCard magicCard = (MagicCard) handHouse.getCard();
+                if ((magicCard.getMagicAttribute() == MagicAttribute.QUICK_PLAY || magicCard.getTypeOfMagic() == MagicType.TRAP) &&
+                        game.getPlayer(SideOfFeature.CURRENT).getBoard().numberOfFullHouse("spell") != 5) {
+                    activeEffectButton.setVisible(true);
+                }
+                setEffectButton.setVisible(true);
             }
         }
     }
@@ -239,13 +252,15 @@ public class GameView {
             handHouse.setScaleY(1);
 
             handHouse.setLayoutY(20);
-            handHouse.toBack();
+            //handHouse.toBack();
             handHouse.setEffect(null);
         });
     }
 
     private void setMouseEnterEventForHand(HandHouse handHouse) {
+
         handHouse.setOnMouseEntered(e -> {
+            System.out.println(handHouse.getCard().getName());
             handHouse.setScaleX(1.2);
             handHouse.setScaleY(1.2);
 
