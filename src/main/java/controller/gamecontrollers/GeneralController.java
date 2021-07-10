@@ -22,6 +22,7 @@ import model.gameprop.Player;
 import model.gameprop.Selectable;
 import model.gameprop.SelectedCardProp;
 import model.gameprop.gamemodel.Game;
+import view.controller.GameView;
 import view.game.UserInterface;
 
 import java.io.FileNotFoundException;

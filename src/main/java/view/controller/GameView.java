@@ -86,6 +86,7 @@ public class GameView {
     public Button setMonsterButton;
     public Label currentDeckNumber;
     public Label opponentDeckNumber;
+    public Pane field;
     private Player playerYou;
     private Player playerOpponent;
     private GeneralController controller;
@@ -433,25 +434,34 @@ public class GameView {
         new ZoomIn(graveYardPane).play();
     }
 
-    public void run(MouseEvent mouseEvent) throws FileNotFoundException {
-        if (mouseEvent.getSource() == yourGraveyardPane) {
-            showGraveYard(playerYou);
-        } else if (mouseEvent.getSource() == opponentGraveyardPane) {
-            showGraveYard(playerOpponent);
-        } else if (mouseEvent.getSource() == nextPhase) {
-            phaseName.setText(controller.nextPhase(game));
-            setNumberOfDeckCards();
-            new BounceIn(nextPhase).play();
-            if (phaseName.getText().equals("draw phase")) {
-                swapColorForChangeTurn();
-                turnPlayerHandCard();
-            }
-            setScaleForCurrentPhase(phaseName.getText());
-        } else if (mouseEvent.getSource() == summonButton) {
-            mainPhaseController.hireCard(game, TypeOfHire.SUMMON);
-        } else if (mouseEvent.getSource() == setMonsterButton) {
-            mainPhaseController.hireCard(game, TypeOfHire.SET);
+    private void animateDraw() {
+        Player toChangePlayer;
+        Pane toImitate;
+        if (game.getPlayer(SideOfFeature.CURRENT).equals(playerYou)) {
+            toChangePlayer = playerYou;
+            toImitate = yourDeckPane;
+        } else {
+            toChangePlayer = playerOpponent;
+            toImitate = opponentDeckPane;
         }
+
+        ImageView dummy = new ImageView();
+        int lastIndex = toChangePlayer.getBoard().getPlayerHand().length - 1;
+        Card drawn = toChangePlayer.getBoard().getPlayerHand()[lastIndex].getCard();
+        dummy.setImage(Card.getCardImage(drawn));
+
+        dummy.setLayoutY(toImitate.getLayoutY());
+        dummy.setLayoutX(toImitate.getLayoutX());
+        dummy.toFront();
+
+        dummy.setFitWidth(1000);
+        dummy.setFitHeight(1000);
+
+        field.getChildren().add(dummy);
+        new ZoomIn(dummy).play();
+
+        new FadeOutDownBig(dummy).play();
+        field.getChildren().remove(dummy);
     }
 
     private void swapColorForChangeTurn() {
@@ -567,5 +577,27 @@ public class GameView {
         endPhaseBox.setScaleX(1.0);
         endPhaseBox.setScaleY(1.0);
 
+    }
+
+    public void run(MouseEvent mouseEvent) throws FileNotFoundException {
+        if (mouseEvent.getSource() == yourGraveyardPane) {
+            showGraveYard(playerYou);
+        } else if (mouseEvent.getSource() == opponentGraveyardPane) {
+            showGraveYard(playerOpponent);
+        } else if (mouseEvent.getSource() == nextPhase) {
+            phaseName.setText(controller.nextPhase(game));
+            setNumberOfDeckCards();
+            new BounceIn(nextPhase).play();
+            if (phaseName.getText().equals("draw phase")) {
+                //animateDraw();
+                swapColorForChangeTurn();
+                turnPlayerHandCard();
+            }
+            setScaleForCurrentPhase(phaseName.getText());
+        } else if (mouseEvent.getSource() == summonButton) {
+            mainPhaseController.hireCard(game, TypeOfHire.SUMMON);
+        } else if (mouseEvent.getSource() == setMonsterButton) {
+            mainPhaseController.hireCard(game, TypeOfHire.SET);
+        }
     }
 }

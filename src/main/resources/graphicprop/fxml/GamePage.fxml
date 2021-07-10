@@ -4,7 +4,6 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.image.*?>
 <?import javafx.scene.layout.*?>
-<?import javafx.scene.shape.*?>
 <?import javafx.scene.text.*?>
 
 <AnchorPane fx:id="root" prefHeight="700.0" prefWidth="1002.0" stylesheets="/graphicprop/stylesheets/GamePage.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="view.controller.GameView">
@@ -47,12 +46,12 @@
                   <Image url="@../images/LPIcon.png" />
                </image>
             </ImageView>
-            <Rectangle arcHeight="5.0" arcWidth="5.0" fill="GREEN" height="30.0" layoutX="61.0" layoutY="235.0" stroke="BLACK" strokeType="INSIDE" width="150.0" />
-            <Label layoutX="77.0" layoutY="240.0" text="8000" textFill="WHITE">
+            <Label layoutX="60.0" layoutY="270.0" text="LP: 8000" textFill="WHITE">
                <font>
                   <Font name="System Bold" size="14.0" />
                </font>
             </Label>
+            <ProgressBar fx:id="OpponentLPBar" layoutX="61.0" layoutY="237.0" prefHeight="25.0" prefWidth="150.0" progress="1.0" style="-fx-background-color: green;" />
          </children>
       </AnchorPane>
       <AnchorPane fx:id="buttonsContainer" layoutY="301.0" prefHeight="79.0" prefWidth="222.0">
@@ -84,12 +83,12 @@
                   <Image url="@../images/LPIcon.png" />
                </image>
             </ImageView>
-            <Rectangle arcHeight="5.0" arcWidth="5.0" fill="GREEN" height="30.0" layoutX="61.0" layoutY="235.0" stroke="BLACK" strokeType="INSIDE" width="150.0" />
-            <Label layoutX="75.0" layoutY="240.0" text="8000" textFill="WHITE">
+            <Label layoutX="60.0" layoutY="270.0" text="LP: 8000" textFill="WHITE">
                <font>
                   <Font name="System Bold" size="14.0" />
                </font>
             </Label>
+            <ProgressBar fx:id="yourLPBar" layoutX="61.0" layoutY="237.0" prefHeight="25.0" prefWidth="150.0" progress="1.0" />
          </children>
       </AnchorPane>
    </AnchorPane>
@@ -184,26 +183,26 @@
                </GridPane>
             </children>
          </Pane>
-         <FlowPane fx:id="opponentHandContainer" layoutX="65.0" layoutY="-60.0" prefHeight="150.0" prefWidth="435.0" />
-         <FlowPane fx:id="yourHandContainer" layoutX="46.0" layoutY="610.0" prefHeight="150.0" prefWidth="435.0" />
+         <FlowPane fx:id="opponentHandContainer" layoutX="30.0" layoutY="-60.0" prefHeight="150.0" prefWidth="490.0" />
+         <FlowPane fx:id="yourHandContainer" layoutX="30.0" layoutY="610.0" prefHeight="150.0" prefWidth="490.0" />
          <Pane fx:id="yourFieldPane" layoutX="32.0" layoutY="368.0" prefHeight="70.0" prefWidth="42.0" />
          <Pane fx:id="opponentFieldPane" layoutX="459.0" layoutY="235.0" prefHeight="70.0" prefWidth="42.0" />
          <Pane fx:id="yourGraveyardPane" layoutX="433.0" layoutY="393.0" onMouseClicked="#run" prefHeight="91.0" prefWidth="65.0" style="-fx-cursor: hand;" />
          <Pane fx:id="opponentGraveyardPane" layoutX="32.0" layoutY="219.0" onMouseClicked="#run" prefHeight="91.0" prefWidth="65.0" style="-fx-cursor: hand;" />
-         <Pane fx:id="yourDeckPane" layoutX="448.0" layoutY="512.0" prefHeight="91.0" prefWidth="65.0">
+         <Pane fx:id="yourDeckPane" layoutX="450.0" layoutY="510.0" prefHeight="100.0" prefWidth="74.0">
             <children>
-               <ImageView fitHeight="100.0" fitWidth="74.0" layoutX="-5.0" pickOnBounds="true" preserveRatio="true">
+               <ImageView fitHeight="100.0" fitWidth="74.0" pickOnBounds="true" preserveRatio="true">
                   <image>
-                     <Image url="@../images/backOfCard.jpg" />
+                     <Image url="@../images/Cards/Monsters/Unknown.jpg" />
                   </image>
                </ImageView>
                <Label fx:id="currentDeckNumber" layoutX="19.0" layoutY="42.0" />
             </children></Pane>
          <Pane fx:id="opponentDeckPane" layoutX="22.0" layoutY="100.0" prefHeight="91.0" prefWidth="65.0">
             <children>
-               <ImageView fitHeight="125.0" fitWidth="65.0" layoutY="-5.0" pickOnBounds="true" preserveRatio="true">
+               <ImageView fitHeight="125.0" fitWidth="65.0" pickOnBounds="true" preserveRatio="true">
                   <image>
-                     <Image url="@../images/backOfCard.jpg" />
+                     <Image url="@../images/Cards/Monsters/Unknown.jpg" />
                   </image>
                </ImageView>
                <Label fx:id="opponentDeckNumber" layoutX="19.0" layoutY="37.0" />

@@ -4,8 +4,9 @@
     <option name="autoReloadType" value="ALL" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="45f87b1a-8403-4c06-b2b2-57ebfe555883" name="Default Changelist" comment="change hand">
+    <list default="true" id="45f87b1a-8403-4c06-b2b2-57ebfe555883" name="Default Changelist" comment="bug fix in hand">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/controller/gamecontrollers/GeneralController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controller/gamecontrollers/GeneralController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/view/controller/GameView.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/view/controller/GameView.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/graphicprop/fxml/GamePage.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/graphicprop/fxml/GamePage.fxml" afterDir="false" />
     </list>
@@ -283,14 +284,7 @@
       <workItem from="1625734126848" duration="5349000" />
       <workItem from="1625746738104" duration="1006000" />
       <workItem from="1625812832910" duration="31380000" />
-      <workItem from="1625904933777" duration="8543000" />
-    </task>
-    <task id="LOCAL-00046" summary="polymorphism in enums">
-      <created>1620148959762</created>
-      <option name="number" value="00046" />
-      <option name="presentableId" value="LOCAL-00046" />
-      <option name="project" value="LOCAL" />
-      <updated>1620148959762</updated>
+      <workItem from="1625904933777" duration="13957000" />
     </task>
     <task id="LOCAL-00047" summary="polymorphism in enums and Fix raw use of enums">
       <created>1620149759312</created>
@@ -605,7 +599,14 @@
       <option name="project" value="LOCAL" />
       <updated>1625910193405</updated>
     </task>
-    <option name="localTasksCounter" value="95" />
+    <task id="LOCAL-00095" summary="bug fix in hand">
+      <created>1625914327876</created>
+      <option name="number" value="00095" />
+      <option name="presentableId" value="LOCAL-00095" />
+      <option name="project" value="LOCAL" />
+      <updated>1625914327876</updated>
+    </task>
+    <option name="localTasksCounter" value="96" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -625,7 +626,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="changing the name of a method" />
     <MESSAGE value="update graphic basic" />
     <MESSAGE value="Profile add" />
     <MESSAGE value="login and register and welcome page" />
@@ -650,7 +650,8 @@
     <MESSAGE value="add RockPaperScissors" />
     <MESSAGE value="fix RockPaPerScissors" />
     <MESSAGE value="change hand" />
-    <option name="LAST_COMMIT_MESSAGE" value="change hand" />
+    <MESSAGE value="bug fix in hand" />
+    <option name="LAST_COMMIT_MESSAGE" value="bug fix in hand" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
