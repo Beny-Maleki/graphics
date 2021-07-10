@@ -184,8 +184,8 @@
                </GridPane>
             </children>
          </Pane>
-         <FlowPane fx:id="opponentHandContainer" layoutX="65.0" layoutY="-50.0" prefHeight="150.0" prefWidth="435.0" />
-         <FlowPane fx:id="yourHandContainer" layoutX="46.0" layoutY="625.0" prefHeight="150.0" prefWidth="435.0" />
+         <FlowPane fx:id="opponentHandContainer" layoutX="65.0" layoutY="-60.0" prefHeight="150.0" prefWidth="435.0" />
+         <FlowPane fx:id="yourHandContainer" layoutX="46.0" layoutY="610.0" prefHeight="150.0" prefWidth="435.0" />
          <Pane fx:id="yourFieldPane" layoutX="32.0" layoutY="368.0" prefHeight="70.0" prefWidth="42.0" />
          <Pane fx:id="opponentFieldPane" layoutX="459.0" layoutY="235.0" prefHeight="70.0" prefWidth="42.0" />
          <Pane fx:id="yourGraveyardPane" layoutX="433.0" layoutY="393.0" onMouseClicked="#run" prefHeight="91.0" prefWidth="65.0" style="-fx-cursor: hand;" />
