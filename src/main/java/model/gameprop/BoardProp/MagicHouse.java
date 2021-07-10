@@ -1,7 +1,6 @@
 package model.gameprop.BoardProp;
 
 import javafx.scene.image.Image;
-import javafx.scene.image.ImageView;
 import model.cards.cardsProp.Card;
 import model.cards.cardsProp.MagicCard;
 import model.enums.GameEnums.SideOfFeature;
@@ -16,7 +15,6 @@ import java.io.FileNotFoundException;
 import java.util.ArrayList;
 
 public class MagicHouse extends GameHouse implements Selectable {
-    ImageView cardImage;
     MagicCard magicCard;
     MagicHouseVisibilityState state;
 
@@ -25,6 +23,7 @@ public class MagicHouse extends GameHouse implements Selectable {
         magicCard = null;
         state = MagicHouseVisibilityState.E;
     }
+
 
     public static MagicHouse getMagicHouseByMagicCard(MagicCard magicCard) {
         Game game = GameInProcess.getGame();
@@ -54,6 +53,22 @@ public class MagicHouse extends GameHouse implements Selectable {
         this.state = state;
     }
 
+    @Override
+    public Image getCardImage() {
+        switch (state) {
+            case E:
+                return null;
+            case H:
+                try {
+                    return new Image(new FileInputStream("src/main/resources/graphicprop/images/Cards/Monsters/Unknown.jpg"));
+                } catch (FileNotFoundException e) {
+                    e.printStackTrace();
+                }
+            default:
+                return cardImage;
+        }
+    }
+
     public MagicCard getMagicCard() {
         return magicCard;
     }
@@ -67,7 +82,6 @@ public class MagicHouse extends GameHouse implements Selectable {
         return magicCard;
     }
 
-
     private void setCard(Card card) throws FileNotFoundException {
         String name = card.getName();
         String nameWithoutSpace = name.replaceAll("\\s+", "");
@@ -76,9 +90,14 @@ public class MagicHouse extends GameHouse implements Selectable {
         try {
             fileInputStream = new FileInputStream("src/main/resources/graphicprop/images/Cards/SpellTrap/" + nameWithoutSpace + ".jpg");
             image = new Image(fileInputStream);
-            cardImage.setImage(image);
+            cardImageFrame.setImage(image);
         } catch (FileNotFoundException e) {
             throw new FileNotFoundException();
         }
+    }
+
+    @Override
+    public void setImageOfCard() {
+        this.getChildren().add(cardImageFrame);
     }
 }

@@ -1,20 +1,23 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.control.*?>
-<?import javafx.scene.image.*?>
-<?import javafx.scene.layout.*?>
-<?import javafx.scene.shape.*?>
-<?import javafx.scene.text.*?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.shape.Rectangle?>
+<?import javafx.scene.text.Font?>
 
-<AnchorPane fx:id="root" prefHeight="700.0" prefWidth="1002.0" stylesheets="/graphicprop/stylesheets/GamePage.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="view.controller.GameView">
+<AnchorPane fx:id="root" prefHeight="700.0" prefWidth="1002.0" stylesheets="/graphicprop/stylesheets/GamePage.css" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="view.controller.GameView">
    <AnchorPane prefHeight="700.0" prefWidth="260.0" styleClass="anchorPane">
       <AnchorPane fx:id="selectedCardContainer" prefHeight="375.0" prefWidth="260.0" styleClass="selectedCardContainer">
          <Pane fx:id="selectedCardPane" layoutX="31.0" layoutY="14.0" prefHeight="291.0" prefWidth="200.0" styleClass="selectedCardPane">
             <ImageView fx:id="selectedCardImageView" fitHeight="291.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true" />
          </Pane>
-         <ScrollPane layoutX="1.0" layoutY="305.0" prefHeight="71.0" prefWidth="259.0">
-            <AnchorPane fx:id="descriptionScrollPane" minHeight="0.0" minWidth="0.0" prefHeight="88.0" prefWidth="243.0" />
-         </ScrollPane>
       </AnchorPane>
       <AnchorPane fx:id="chatBoxContainer" layoutY="378.0" prefHeight="323.0" prefWidth="260.0" styleClass="chatBoxContainer">
          <Label layoutX="96.0" layoutY="14.0" text="Chat Box">
@@ -31,7 +34,7 @@
       </AnchorPane>
    </AnchorPane>
    <AnchorPane layoutX="780.0" prefHeight="702.0" prefWidth="222.0">
-      <AnchorPane fx:id="opponentInfoContainer" prefHeight="299.0" prefWidth="222.0" style="-fx-background-color: red;" styleClass="opponentInfoContainer">
+      <AnchorPane fx:id="opponentInfoContainer" prefHeight="299.0" prefWidth="222.0" styleClass="opponentInfoContainer" stylesheets="@../stylesheets/GamePage.css">
          <children>
             <Label layoutX="77.0" layoutY="14.0" text="Opponent">
                <font>
@@ -64,18 +67,18 @@
       </AnchorPane>
       <AnchorPane fx:id="buttonsContainer" layoutY="301.0" prefHeight="79.0" prefWidth="222.0">
          <children>
-            <Button mnemonicParsing="false" prefHeight="40.0" prefWidth="222.0" text="Next phase" />
+            <Button fx:id="nextPhase" mnemonicParsing="false" onMouseClicked="#run" prefHeight="40.0" prefWidth="222.0" text="Next phase" />
             <Button layoutY="40.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="222.0" text="Cheat!" />
          </children>
       </AnchorPane>
-      <AnchorPane fx:id="yourInfoContainer" layoutY="387.0" prefHeight="314.0" prefWidth="222.0" style="-fx-background-color: blue;" styleClass="yourInfoContainer">
+      <AnchorPane fx:id="yourInfoContainer" layoutY="387.0" prefHeight="314.0" prefWidth="222.0" style="-fx-background-color: blue;" styleClass="yourInfoContainer" stylesheets="@../stylesheets/GamePage.css">
          <children>
             <Label layoutX="98.0" layoutY="14.0" text="You">
                <font>
                   <Font name="System Bold" size="14.0" />
                </font>
             </Label>
-            <ImageView fx:id="yourAvatar" fitHeight="100.0" fitWidth="100.0" layoutX="61.0" layoutY="40.0" pickOnBounds="true" preserveRatio="true" style="-fx-opacity: 80;" />
+            <ImageView fx:id="yourAvatar" fitHeight="100.0" fitWidth="100.0" layoutX="61.0" layoutY="40.0" pickOnBounds="true" preserveRatio="true" />
             <Label fx:id="yourUsername" layoutX="14.0" layoutY="150.0" text="Username:">
                <font>
                   <Font size="13.0" />
@@ -180,6 +183,7 @@
          <Pane fx:id="opponentGraveyardPane" layoutX="32.0" layoutY="212.0" onMouseClicked="#run" prefHeight="70.0" prefWidth="42.0" style="-fx-cursor: hand;" />
          <Pane fx:id="yourDeckPane" layoutX="32.0" layoutY="498.0" prefHeight="70.0" prefWidth="42.0" />
          <Pane fx:id="opponentDeckPane" layoutX="457.0" layoutY="124.0" prefHeight="70.0" prefWidth="42.0" />
+         <Label fx:id="phaseName" alignment="CENTER" contentDisplay="CENTER" layoutX="176.0" layoutY="337.0" prefHeight="26.0" prefWidth="174.0" style="-fx-font-weight: bold; -fx-font-style: italic;" text="Draw Phase " />
       </children>
    </Pane>
 </AnchorPane>

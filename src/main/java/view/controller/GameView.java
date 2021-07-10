@@ -1,10 +1,11 @@
 package view.controller;
 
-import animatefx.animation.FlipInX;
-import animatefx.animation.SlideInUp;
-
-import animatefx.animation.ZoomIn;
-import animatefx.animation.ZoomOut;
+import animatefx.animation.*;
+import controller.gamecontrollers.GeneralController;
+import controller.gamecontrollers.gamestagecontroller.BattlePhaseController;
+import controller.gamecontrollers.gamestagecontroller.DrawPhaseController;
+import controller.gamecontrollers.gamestagecontroller.MainPhaseController;
+import controller.gamecontrollers.gamestagecontroller.StandByPhaseController;
 import javafx.geometry.Insets;
 import javafx.scene.Node;
 import javafx.scene.control.Button;
@@ -18,7 +19,6 @@ import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.FlowPane;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.Pane;
-
 import model.cards.CardHouse;
 import model.cards.cardsProp.Card;
 import model.enums.Origin;
@@ -36,7 +36,6 @@ import model.userProp.UserInfoType;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.util.ArrayList;
-import java.util.concurrent.TimeUnit;
 
 public class GameView {
 
@@ -62,9 +61,24 @@ public class GameView {
     public Pane opponentDeckPane;
     public ImageView selectedCardImageView;
     public AnchorPane root;
-
+    public Button nextPhase;
+    public Label phaseName;
     private Player playerYou;
     private Player playerOpponent;
+    private GeneralController controller;
+    private DrawPhaseController drawPhaseController;
+    private MainPhaseController mainPhaseController;
+    private BattlePhaseController battlePhaseController;
+    private StandByPhaseController standByPhaseController;
+    private Game game;
+
+    {
+        controller = new GeneralController();
+        drawPhaseController = new DrawPhaseController();
+        mainPhaseController = new MainPhaseController();
+        battlePhaseController = new BattlePhaseController();
+        standByPhaseController = new StandByPhaseController();
+    }
 
     public void initialize() throws FileNotFoundException {
         LoginUser.setUser(User.getUserByUserInfo("Yaroo", UserInfoType.USERNAME));
@@ -83,7 +97,7 @@ public class GameView {
         Player secondPlayer = playerOpponent;
         //
 
-        GameInProcess.setGame(new Game(firstPlayer, secondPlayer, 1 ));
+        GameInProcess.setGame(game = new Game(firstPlayer, secondPlayer, 1));
 
 
         assert opponent != null;
@@ -93,68 +107,96 @@ public class GameView {
         initializeHouses(playerYou, yourMonsterHousesGridPane, yourMagicHousesGridPane);
         initializeHouses(playerOpponent, opponentMagicHousesGridPane, opponentMonsterHousesGridPane);
 
-        initializeHand(playerYou, yourHandContainer);
-        initializeHand(playerOpponent, opponentHandContainer);
+        initializeHand(playerYou, yourHandContainer, true);
+        initializeHand(playerOpponent, opponentHandContainer, false);
     }
 
-    private void initializeHand(Player player, Pane handContainer) {
+    private void initializeHand(Player player, Pane handContainer, boolean isOpponentSide) {
         HandHouse[] handHouses = player.getBoard().getPlayerHand();
 
         handContainer.setPadding(new Insets(20));
 
         for (int i = 0; i < handHouses.length; i++) {
             HandHouse handHouse = handHouses[i];
+            handHouse.setImageOfCard();
             handHouse.setLayoutX(i * (10 + 61));
             handHouse.setLayoutY(20);
-            handHouse.setStyle("-fx-background-color: red");
             handHouse.setPrefSize(61, 90);
 
-            handHouse.setOnMouseEntered(e -> {
-                handHouse.setLayoutY(10);
-                handHouse.setScaleX(1.1);
-                handHouse.setScaleY(1.1);
-                handHouse.toFront();
+            setMouseEnterEventForHand(handHouse);
 
-                DropShadow dropShadow = new DropShadow();
-                handHouse.setEffect(dropShadow);
-            });
+            setMouseExitEventForHand(handHouse);
 
-            handHouse.setOnMouseExited(e -> {
-                handHouse.setLayoutY(20);
-                handHouse.setScaleX(1);
-                handHouse.setScaleY(1);
-
-                handHouse.setEffect(null);
-            });
-
-            handHouse.setOnMouseClicked(e -> {
-                handHouse.setStyle(null);
-
-                for (int j = 0; j < handHouses.length; j++) {
-                    for (int k = 0; k < handHouses.length - 1; k++) {
-                        if (handHouses[k].getStyle().equals(null) || handHouses[k].getStyle().equals("")) {
-                            HandHouse temp = handHouses[k];
-                            handHouses[k] = handHouses[k + 1];
-                            handHouses[k + 1] = temp;
-                        }
-                    }
-                }
-
-                handContainer.getChildren().clear();
-                for (int j = 0; j < handHouses.length; j++) {
-                    if (handHouses[j].getStyle() == null) {
-                        break;
-                    }
-                    handHouses[j].setLayoutX(j * (10 + 61));
-                    handHouses[j].setLayoutY(20);
-                    handHouses[j].setPrefSize(61, 90);
-                    handContainer.getChildren().add(j, handHouses[j]);
-                }
-                new SlideInUp(handContainer).play();
-            });
-
+            setMouseClickEventForHand(handContainer, isOpponentSide, handHouses, handHouse);
             handContainer.getChildren().add(i, handHouse);
         }
+    }
+
+    private void setMouseClickEventForHand(Pane handContainer, boolean isOpponentSide, HandHouse[] handHouses, HandHouse handHouse) {
+        handHouse.setOnMouseClicked(e -> {
+            reloadImages(handHouses);
+            handContainer.getChildren().clear();
+            makeHandPane(handContainer, handHouses);
+            makeHandPaneReloadAnimation(handContainer, isOpponentSide);
+        });
+    }
+
+    private void makeHandPaneReloadAnimation(Pane handContainer, boolean isOpponentSide) {
+        if (isOpponentSide) {
+            SlideInDown animation = new SlideInDown(handContainer);
+            animation.setSpeed(2);
+            animation.play();
+        } else {
+            SlideInUp animation = new SlideInUp(handContainer);
+            animation.setSpeed(2);
+            animation.play();
+        }
+    }
+
+    private void makeHandPane(Pane handContainer, HandHouse[] handHouses) {
+        for (int j = 0; j < handHouses.length; j++) {
+            if (handHouses[j].getStyle() == null) {
+                break;
+            }
+            handHouses[j].setLayoutX(j * (10 + 61));
+            handHouses[j].setLayoutY(20);
+            handHouses[j].setPrefSize(61, 90);
+            handContainer.getChildren().add(j, handHouses[j]);
+        }
+    }
+
+    private void reloadImages(HandHouse[] handHouses) {
+        for (int j = 0; j < handHouses.length; j++) {
+            for (int k = 0; k < handHouses.length - 1; k++) {
+                if (handHouses[k].doesHaveImage()) {
+                    HandHouse temp = handHouses[k];
+                    handHouses[k] = handHouses[k + 1];
+                    handHouses[k + 1] = temp;
+                }
+            }
+        }
+    }
+
+    private void setMouseExitEventForHand(HandHouse handHouse) {
+        handHouse.setOnMouseExited(e -> {
+            handHouse.setLayoutY(20);
+            handHouse.setScaleX(1);
+            handHouse.setScaleY(1);
+
+            handHouse.setEffect(null);
+        });
+    }
+
+    private void setMouseEnterEventForHand(HandHouse handHouse) {
+        handHouse.setOnMouseEntered(e -> {
+            handHouse.setLayoutY(10);
+            handHouse.setScaleX(1.1);
+            handHouse.setScaleY(1.1);
+            handHouse.toFront();
+
+            DropShadow dropShadow = new DropShadow();
+            handHouse.setEffect(dropShadow);
+        });
     }
 
     private void initializeHouses(Player player, GridPane monsterHousesGridPane, GridPane magicHousesGridPane) {
@@ -168,20 +210,6 @@ public class GameView {
             MonsterHouse monsterHouse = monsterHouses[i];
             monsterHousesGridPane.add(monsterHouse, i, 0, 1, 1);
 
-            Image image = null;
-            try {
-                 image = new Image(new FileInputStream("src/main/resources/graphicprop/images/Cards/Monsters/Unknown.jpg"));
-            } catch (FileNotFoundException e) {
-                System.out.println("Ey baba! Aks chi shod pas :(");
-            }
-
-            ImageView imageView = new ImageView();
-            imageView.setFitWidth(47);
-            imageView.setFitHeight(70);
-            monsterHouse.getChildren().add(imageView);
-            monsterHouse.setCardImage(image);
-            imageView.setImage(image);
-
             monsterHouse.setPrefSize(42, 70);
             handleOnMouseClicked(monsterHouse);
         }
@@ -190,10 +218,6 @@ public class GameView {
         for (int i = 0; i < magicHouses.length; i++) {
             MagicHouse magicHouse = magicHouses[i];
             magicHousesGridPane.add(magicHouse, i, 0, 1, 1);
-            ImageView imageView = new ImageView();
-            imageView.setFitWidth(47);
-            imageView.setFitHeight(70);
-            magicHouse.getChildren().add(imageView);
             magicHouse.setPrefSize(42, 70);
 
             handleOnMouseClicked(magicHouse);
@@ -232,7 +256,6 @@ public class GameView {
         Pane graveYardPane = new Pane();
 
 
-
         FlowPane graveYardFlowPane = new FlowPane();
         graveYardFlowPane.setHgap(14);
         graveYardFlowPane.setVgap(10);
@@ -246,7 +269,6 @@ public class GameView {
         for (Card card : graveYardArrList) {
             String nameWithoutSpaces = card.getName();
             nameWithoutSpaces.replaceAll("\\s+", "");
-
 
 
             FileInputStream fileInputStream;
@@ -344,11 +366,14 @@ public class GameView {
         new ZoomIn(graveYardPane).play();
     }
 
-    public void run(MouseEvent mouseEvent) {
+    public void run(MouseEvent mouseEvent) throws FileNotFoundException {
         if (mouseEvent.getSource() == yourGraveyardPane) {
             showGraveYard(playerYou);
         } else if (mouseEvent.getSource() == opponentGraveyardPane) {
             showGraveYard(playerOpponent);
+        } else if (mouseEvent.getSource() == nextPhase) {
+            phaseName.setText(controller.nextPhase(game));
+            new BounceIn(nextPhase).play();
         }
     }
 }

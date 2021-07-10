@@ -42,8 +42,9 @@ public class PlayerBoard {
 
     public HandHouse getFirstEmptyHouse() {
         for (HandHouse handHouse : playerHand) {
-            if (handHouse.getCard() == null)
+            if (handHouse.getCard() == null) {
                 return handHouse;
+            }
         }
         return null;
     }
@@ -126,9 +127,15 @@ public class PlayerBoard {
                     counter++;
                 }
             }
-        } else {
+        } else if (typeOfHouse.equals("spell")) {
             for (MagicHouse house : magicHouse) {
                 if (!house.getState().equals(MagicHouseVisibilityState.E)) {
+                    counter++;
+                }
+            }
+        } else {
+            for (HandHouse house : playerHand) {
+                if (house.getCard() != null) {
                     counter++;
                 }
             }

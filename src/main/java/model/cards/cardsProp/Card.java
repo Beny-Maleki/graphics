@@ -11,16 +11,16 @@ import java.util.List;
 public abstract class Card {
     protected static List<Card> cards;
     protected static int numberOfCard;
-    private static HashMap<Integer, Boolean> isSeenBefore;
+    private static final HashMap<Integer, Boolean> IS_SEEN_BEFORE;
 
     static {
-        isSeenBefore = new HashMap<>();
+        IS_SEEN_BEFORE = new HashMap<>();
         cards = new ArrayList<>();
         numberOfCard = 74;
     }
 
     public static HashMap<Integer, Boolean> getIsSeenBefore() {
-        return isSeenBefore;
+        return IS_SEEN_BEFORE;
     }
 
     protected int ID;

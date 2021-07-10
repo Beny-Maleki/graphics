@@ -23,7 +23,7 @@ import java.io.FileNotFoundException;
 public class MainPhaseController extends GeneralController {
     private static MainPhaseController instance;
 
-    private MainPhaseController() {
+    public MainPhaseController() {
     }
 
     public static MainPhaseController getInstance() {

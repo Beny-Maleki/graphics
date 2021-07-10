@@ -13,7 +13,7 @@ import java.io.FileNotFoundException;
 public class BattlePhaseController extends GeneralController {
     private static BattlePhaseController instance;
 
-    private BattlePhaseController() {
+    public BattlePhaseController() {
     }
 
     public static BattlePhaseController getInstance() {

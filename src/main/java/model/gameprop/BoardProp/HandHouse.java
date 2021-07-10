@@ -14,15 +14,20 @@ import java.io.FileNotFoundException;
 public class HandHouse extends Pane implements Selectable {
     ImageView cardImage;
     Card card;
-    public HandHouse(){
+
+    public HandHouse() {
         cardImage = new ImageView();
+        cardImage.setFitHeight(91);
+        cardImage.setFitWidth(60);
     }
+
     @Override
     public Card getCard() {
         return card;
     }
 
     public void setCard(Card card) throws FileNotFoundException {
+        this.card = card;
         String name = card.getName();
         String nameWithoutSpace = name.replaceAll("\\s+", "");
         Image image = null;
@@ -41,8 +46,18 @@ public class HandHouse extends Pane implements Selectable {
         }
     }
 
+    @Override
+    public void setImageOfCard() {
+        this.getChildren().add(cardImage);
+    }
+
     public void removeCard() {
         card = null;
         cardImage.setImage(null);
     }
+
+    public boolean doesHaveImage() {
+        return cardImage.getImage() == null;
+    }
+
 }

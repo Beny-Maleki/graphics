@@ -31,9 +31,6 @@ public class GeneralController {
 
     private static GeneralController instance;
 
-    protected GeneralController() {
-    }
-
     public static GeneralController getInstance() {
         if (instance == null) instance = new GeneralController();
         return instance;
@@ -176,7 +173,7 @@ public class GeneralController {
     public String nextPhase(Game game) throws FileNotFoundException {
         DrawPhaseController drawController = DrawPhaseController.getInstance();
         game.goToNextPhase();
-        String output = process(General.NEXT_PHASE_MESSAGE.toString(), game.getGameMainStage().getPhaseName());
+        String output = game.getGameMainStage().getPhaseName();
         if (game.getGameMainStage().equals(GameMainStage.DRAW_PHASE)) {
             String draw;
             if (game.doesPlayerHavePermissionToDraw()) {
@@ -187,9 +184,9 @@ public class GeneralController {
         } else if (game.getGameMainStage().equals(GameMainStage.FIRST_MAIN_PHASE) ||
                 game.getGameMainStage().equals(GameMainStage.SECOND_MAIN_PHASE) ||
                 game.getGameMainStage().equals(GameMainStage.BATTLE_PHASE)) {
-           // ActivationInOpponentTurn.getInstance().activeEffects(game);
+            // ActivationInOpponentTurn.getInstance().activeEffects(game);
         }
-        return process(General.NEXT_PHASE_MESSAGE.toString(), game.getGameMainStage().getPhaseName()) + "\n" + drawBoard(game);
+        return output;
     }
 
     public String finishRound(Game game) throws FileNotFoundException {

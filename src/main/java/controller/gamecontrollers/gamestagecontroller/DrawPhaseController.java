@@ -2,7 +2,6 @@ package controller.gamecontrollers.gamestagecontroller;
 
 import controller.gamecontrollers.GeneralController;
 import model.cards.cardsProp.Card;
-import model.enums.GameEnums.GamePhaseEnums.DrawPhase;
 import model.enums.GameEnums.SideOfFeature;
 import model.gameprop.BoardProp.HandHouse;
 import model.gameprop.GameInProcess;
@@ -16,7 +15,7 @@ public class DrawPhaseController extends GeneralController {
 
     private static DrawPhaseController instance;
 
-    private DrawPhaseController() {
+    public DrawPhaseController() {
     }
 
     public static DrawPhaseController getInstance() {
@@ -29,7 +28,7 @@ public class DrawPhaseController extends GeneralController {
         Player player = game.getPlayer(SideOfFeature.CURRENT);
         HandHouse[] hand = player.getBoard().getPlayerHand();
         if (!isCheating) {
-            if (game.doesPlayerHavePermissionToDraw() && player.isAllowedToDraw && hand.length < 6) {
+            if (game.doesPlayerHavePermissionToDraw() && player.isAllowedToDraw && player.getBoard().numberOfFullHouse("hand") < 6) {
                 game.setPlayerDrawInTurn();
                 return chooseCardFromDeckAndPlaceToHand(player);
             }
@@ -43,8 +42,13 @@ public class DrawPhaseController extends GeneralController {
         Deck playerDeck = player.getDeck();
         Card newCard = playerDeck.getMainDeck().get(0);
         playerDeck.removeCardFromMainDeck(newCard);
-        player.getBoard().getFirstEmptyHouse().setCard(newCard);
-        return process(DrawPhase.ADD_NEW_CARD.toString(), newCard.getName());
+        try {
+            player.getBoard().getFirstEmptyHouse().setCard(newCard);
+        } catch (NullPointerException e) {
+            return "";
+        }
+
+        return newCard.getName();
     }
 
     public String process(String message, String name) {
