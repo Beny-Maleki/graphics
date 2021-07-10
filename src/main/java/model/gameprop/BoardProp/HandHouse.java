@@ -1,5 +1,6 @@
 package model.gameprop.BoardProp;
 
+import animatefx.animation.FadeOutRight;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.Pane;
 import model.cards.cardsProp.Card;
@@ -52,6 +53,7 @@ public class HandHouse extends Pane implements Selectable {
 
     public void removeCard() {
         card = null;
+        new FadeOutRight(cardImage);
         cardImage.setImage(null);
     }
 

@@ -60,10 +60,6 @@ public class Player {
     }
 
     private void gameSetUp() throws FileNotFoundException {
-        for (Card card : deck.getMainDeck()) {
-            System.out.println(card.getName());
-        }
-
         HandHouse[] hand = board.getPlayerHand();
         for (int i = 0; i < 5; i++) {
             hand[i].setCard(deck.getMainDeck().get(i));

@@ -36,4 +36,8 @@ public abstract class GameHouse extends Pane implements Selectable {
     }
 
     public abstract Image getCardImage();
+
+    public ImageView getCardImageFrame() {
+        return cardImageFrame;
+    }
 }

@@ -35,6 +35,7 @@ import model.cards.cardsProp.MagicCard;
 import model.cards.cardsProp.MonsterCard;
 import model.enums.GameEnums.SideOfFeature;
 import model.enums.GameEnums.TypeOfHire;
+import model.enums.GameEnums.cardvisibility.MonsterHouseVisibilityState;
 import model.enums.GameEnums.gamestage.GameMainStage;
 import model.enums.Origin;
 import model.gameprop.BoardProp.GameHouse;
@@ -293,6 +294,7 @@ public class GameView {
             monsterHouse.setPrefSize(46, 68);
             monsterHouse.setLayoutY(15);
             handleOnMouseClicked(monsterHouse);
+            monsterHouse.setMonsterCard(null);
         }
 
         MagicHouse[] magicHouses = player.getBoard().getMagicHouse();
@@ -533,42 +535,11 @@ public class GameView {
     }
 
     private void animateSummon() {
-        ImageView dummy = new ImageView();
         MonsterHouse summoned = game.getHiredMonster();
-        dummy.setImage(summoned.getCardImage());
 
-        dummy.setLayoutX(summoned.getLayoutX());
-        dummy.setLayoutY(summoned.getLayoutY());
-        dummy.toFront();
+        if (summoned.getState().equals(MonsterHouseVisibilityState.OO.toString())) summoned.setImageOfCard(true);
+        else if (summoned.getState().equals(MonsterHouseVisibilityState.DH.toString())) summoned.setImageOfCard(false);
 
-        dummy.setFitWidth(summoned.getWidth());
-        dummy.setFitHeight(summoned.getHeight());
-
-        FlowPane hand;
-        Player current = game.getPlayer(SideOfFeature.CURRENT);
-        if (current.equals(playerYou)) hand = yourHandContainer;
-        else hand = opponentHandContainer;
-
-        hand.getChildren().add(dummy);
-        ZoomIn zoomIn = new ZoomIn(dummy);
-        zoomIn.setSpeed(2);
-        zoomIn.getTimeline().setOnFinished(e -> {
-            AnimationFX animationFX;
-            if (current.equals(playerYou)) {
-                animationFX = new FadeOutDown(dummy);
-            } else {
-                animationFX = new FadeOutUp(dummy);
-            }
-            animationFX.setSpeed(3);
-            animationFX.getTimeline().setOnFinished(e1 -> {
-                field.getChildren().remove(dummy);
-
-                turnPlayerHandCard();
-            });
-            animationFX.play();
-        });
-
-        zoomIn.play();
     }
 
     private void swapColorForChangeTurn() {
@@ -702,8 +673,10 @@ public class GameView {
             setScaleForCurrentPhase(phaseName.getText());
         } else if (mouseEvent.getSource() == summonButton) {
             mainPhaseController.hireCard(game, TypeOfHire.SUMMON);
+            animateSummon();
         } else if (mouseEvent.getSource() == setMonsterButton) {
             mainPhaseController.hireCard(game, TypeOfHire.SET);
+            animateSummon();
         }
     }
 }

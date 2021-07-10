@@ -34,11 +34,8 @@ public class HireMonsterProcessor extends MonsterProcessor {
                     monsterHouse.setMonsterCard(monsterCard);
                     if (type.equals(TypeOfHire.SUMMON)) {
                         monsterHouse.setState(MonsterHouseVisibilityState.OO);
-                        monsterHouse.setImageOfCard(true);
-                        System.out.println("here it is");
                     } else {
                         monsterHouse.setState(MonsterHouseVisibilityState.DH);
-                        monsterHouse.setImageOfCard(false);
                     }
                     game.setHiredMonster(monsterHouse);
                     game.setCardProp(null);
