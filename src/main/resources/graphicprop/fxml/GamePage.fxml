@@ -196,14 +196,14 @@
          <Pane fx:id="opponentFieldPane" layoutX="459.0" layoutY="235.0" prefHeight="70.0" prefWidth="42.0" />
          <Pane fx:id="yourGraveyardPane" layoutX="433.0" layoutY="393.0" onMouseClicked="#run" prefHeight="91.0" prefWidth="65.0" style="-fx-cursor: hand;" />
          <Pane fx:id="opponentGraveyardPane" layoutX="32.0" layoutY="219.0" onMouseClicked="#run" prefHeight="91.0" prefWidth="65.0" style="-fx-cursor: hand;" />
-         <Pane fx:id="yourDeckPane" layoutX="448.0" layoutY="512.0" prefHeight="91.0" prefWidth="65.0">
+         <Pane fx:id="yourDeckPane" layoutX="459.0" layoutY="512.0" prefHeight="91.0" prefWidth="65.0">
             <children>
-               <ImageView fitHeight="100.0" fitWidth="74.0" layoutX="-5.0" pickOnBounds="true" preserveRatio="true">
+               <ImageView fitHeight="100.0" fitWidth="74.0" layoutX="-2.0" layoutY="-4.0" pickOnBounds="true" preserveRatio="true">
                   <image>
                      <Image url="@../images/backOfCard.jpg" />
                   </image>
                </ImageView>
-               <Label fx:id="currentDeckNumber" layoutX="19.0" layoutY="42.0" />
+               <Label fx:id="currentDeckNumber" layoutX="19.0" layoutY="37.0" prefHeight="17.0" prefWidth="26.0" />
             </children></Pane>
          <Pane fx:id="opponentDeckPane" layoutX="22.0" layoutY="100.0" prefHeight="91.0" prefWidth="65.0">
             <children>
@@ -212,7 +212,7 @@
                      <Image url="@../images/backOfCard.jpg" />
                   </image>
                </ImageView>
-               <Label fx:id="opponentDeckNumber" layoutX="19.0" layoutY="37.0" />
+               <Label fx:id="opponentDeckNumber" layoutX="20.0" layoutY="34.0" prefHeight="17.0" prefWidth="26.0" />
             </children></Pane>
          <Label fx:id="phaseName" alignment="CENTER" contentDisplay="CENTER" layoutX="175.0" layoutY="335.0" prefHeight="26.0" prefWidth="174.0" style="-fx-font-style: italic; -fx-font-size: 20; -fx-font-weight: bold;" text="draw phase">
             <font>

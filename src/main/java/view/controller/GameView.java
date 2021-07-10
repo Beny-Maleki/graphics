@@ -20,13 +20,11 @@ import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.FlowPane;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.Pane;
-import model.cards.CardHouse;
 import model.cards.cardsProp.Card;
 import model.cards.cardsProp.MonsterCard;
 import model.enums.GameEnums.SideOfFeature;
 import model.enums.GameEnums.TypeOfHire;
 import model.enums.GameEnums.gamestage.GameMainStage;
-import model.enums.Origin;
 import model.gameprop.BoardProp.GameHouse;
 import model.gameprop.BoardProp.HandHouse;
 import model.gameprop.BoardProp.MagicHouse;
@@ -36,6 +34,7 @@ import model.gameprop.Player;
 import model.gameprop.gamemodel.Game;
 import model.userProp.User;
 import model.userProp.UserInfoType;
+import org.jetbrains.annotations.NotNull;
 
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
@@ -309,60 +308,133 @@ public class GameView {
 
     private void showGraveYard(Player player) {
         Pane graveYardPane = new Pane();
+        int sizeOfFlowPane = player.getBoard().getGraveYard().getDestroyedCards().size();
 
-
-        FlowPane graveYardFlowPane = new FlowPane();
-        graveYardFlowPane.setHgap(14);
-        graveYardFlowPane.setVgap(10);
-        graveYardFlowPane.setPrefWrapLength((player.getBoard().getGraveYard().getDestroyedCards().size()) * (14.222 + 109) + 28.444);
-        graveYardFlowPane.setPrefHeight(190);
-        graveYardFlowPane.setPadding(new Insets(14));
-        graveYardFlowPane.setStyle("-fx-background-image: url('/graphicprop/images/dirtyBoardBG.jpg'); -fx-background-size: cover");
+        FlowPane graveYardFlowPane = makePopUpFlowPane(sizeOfFlowPane);
 
 
         ArrayList<Card> graveYardArrList = player.getBoard().getGraveYard().getDestroyedCards();
         for (Card card : graveYardArrList) {
-            String nameWithoutSpaces = card.getName();
-            nameWithoutSpaces.replaceAll("\\s+", "");
+            ImageView imageView;
+            imageView = new ImageView(Card.getCardImage(card));
+
+            setPopUpCardsEffects(imageView);
+
+            graveYardFlowPane.getChildren().add(imageView);
+        }
+
+        addNodesToPopUpPage(graveYardPane, player, graveYardFlowPane);
+    }
+
+    @NotNull
+    private ScrollPane makePopUpScrollPane() {
+        ScrollPane scrollPane = new ScrollPane();
+        scrollPane.setPrefWidth(700);
+        scrollPane.setPrefHeight(190);
+        scrollPane.setLayoutX(30);
+        scrollPane.setLayoutY(60);
+        scrollPane.setPrefViewportHeight(190);
+        scrollPane.hbarPolicyProperty().setValue(ScrollPane.ScrollBarPolicy.ALWAYS);
+        scrollPane.vbarPolicyProperty().setValue(ScrollPane.ScrollBarPolicy.NEVER);
+        scrollPane.toFront();
+        return scrollPane;
+    }
+
+    private void setPopUpCardsEffects(ImageView imageView) {
+        imageView.setOnMouseEntered(e -> {
+            imageView.setScaleX(1.2);
+            imageView.setScaleY(1.2);
+
+            DropShadow dropShadow = new DropShadow();
+            imageView.setEffect(dropShadow);
+        });
+
+        imageView.setOnMouseExited(e -> {
+            imageView.setScaleX(1);
+            imageView.setScaleY(1);
+
+            imageView.setEffect(null);
+
+        });
+
+        imageView.setOnMouseClicked(e -> {
+            selectedCardImageView = imageView;
+        });
+    }
+
+    @NotNull
+    private FlowPane makePopUpFlowPane(int sizeOfFlowPane) {
+        FlowPane graveYardFlowPane = new FlowPane();
+        graveYardFlowPane.setHgap(14);
+        graveYardFlowPane.setVgap(10);
+        graveYardFlowPane.setPrefWrapLength(sizeOfFlowPane * (14.222 + 109) + 28.444);
+        graveYardFlowPane.setPrefHeight(190);
+        graveYardFlowPane.setPadding(new Insets(14));
+        graveYardFlowPane.setStyle("-fx-background-image: url('/graphicprop/images/dirtyBoardBG.jpg'); -fx-background-size: cover");
+        return graveYardFlowPane;
+    }
+
+    public void showTributeItems() {
+        Pane tributePane = new Pane();
+        Player player = game.getPlayer(SideOfFeature.CURRENT);
+        int sizeOfFlowPane = player.getBoard().numberOfFullHouse("monster");
+
+        FlowPane tributeFlowPane = makePopUpFlowPane(sizeOfFlowPane);
 
 
-            FileInputStream fileInputStream;
-            Image image;
-            CardHouse cardHouse;
-            try {
+        MonsterHouse[] monsterHouses = player.getBoard().getMonsterHouse();
+        for (MonsterHouse house : monsterHouses) {
+            if (house.getCard() != null) {
                 ImageView imageView;
-                fileInputStream = new FileInputStream("/src/main/resources/graphicprop/images/Cards/Monsters/" + nameWithoutSpaces + ".jpg");
-                image = new Image(fileInputStream);
-                imageView = new ImageView(image);
-
-
-                imageView.setOnMouseEntered(e -> {
-                    imageView.setScaleX(1.2);
-                    imageView.setScaleY(1.2);
-
-                    DropShadow dropShadow = new DropShadow();
-                    imageView.setEffect(dropShadow);
-                });
-
-                imageView.setOnMouseExited(e -> {
-                    imageView.setScaleX(1);
-                    imageView.setScaleY(1);
-
-                    imageView.setEffect(null);
-
-                });
-
-                imageView.setOnMouseClicked(e -> {
-                    selectedCardImageView = imageView;
-                });
-
-                cardHouse = new CardHouse(card, imageView, image, Origin.GAME);
-                graveYardFlowPane.getChildren().add(imageView);
-            } catch (FileNotFoundException e) {
-                System.out.println("Ey baba :\"( aksa koshan pass!");
+                imageView = new ImageView(Card.getCardImage(house.getCard()));
+                setPopUpCardsEffects(imageView);
+                tributeFlowPane.getChildren().add(imageView);
             }
         }
 
+        addNodesToPopUpPage(tributePane, player, tributeFlowPane);
+    }
+
+    private void addNodesToPopUpPage(Pane tributePane, Player player, FlowPane tributeFlowPane) {
+        Button closeButton = seCloseButtonPopUp(tributePane);
+
+
+        Label title = setPopUpName(player);
+
+        ScrollPane scrollPane = makePopUpScrollPane();
+
+        tributeFlowPane.setMinWidth(700);
+        scrollPane.setContent(tributeFlowPane);
+
+        tributePane.toFront();
+        tributePane.setPrefHeight(300);
+        tributePane.setPrefWidth(760);
+        tributePane.setStyle("-fx-background-image: url('/graphicprop/images/brickwall.jpg'); -fx-background-size: cover");
+        tributePane.setLayoutX(150);
+        tributePane.setLayoutY(200);
+
+        tributePane.getChildren().addAll(closeButton, title, scrollPane);
+
+        for (Node child : root.getChildren()) {
+            child.setDisable(true);
+            child.setOpacity(0.3);
+        }
+        root.getChildren().add(tributePane);
+        new ZoomIn(tributePane).play();
+    }
+
+    @NotNull
+    private Label setPopUpName(Player player) {
+        Label title = new Label();
+        title.setText(player.getUser().getNickname() + "'s graveyard:");
+        title.setLayoutX(30);
+        title.setLayoutY(30);
+        title.setStyle("-fx-font-weight: bold; -fx-font-size: 20; -fx-text-fill: white");
+        return title;
+    }
+
+    @NotNull
+    private Button seCloseButtonPopUp(Pane graveYardPane) {
         Button closeButton = new Button();
         closeButton.setText("X");
         closeButton.setOpacity(0.6);
@@ -383,42 +455,7 @@ public class GameView {
                 child.setOpacity(1);
             }
         });
-
-
-        Label title = new Label();
-        title.setText(player.getUser().getNickname() + "'s graveyard:");
-        title.setLayoutX(30);
-        title.setLayoutY(30);
-        title.setStyle("-fx-font-weight: bold; -fx-font-size: 20; -fx-text-fill: white");
-
-        ScrollPane scrollPane = new ScrollPane();
-        scrollPane.setPrefWidth(700);
-        scrollPane.setPrefHeight(190);
-        scrollPane.setLayoutX(30);
-        scrollPane.setLayoutY(60);
-        scrollPane.setPrefViewportHeight(190);
-        scrollPane.hbarPolicyProperty().setValue(ScrollPane.ScrollBarPolicy.ALWAYS);
-        scrollPane.vbarPolicyProperty().setValue(ScrollPane.ScrollBarPolicy.NEVER);
-        scrollPane.toFront();
-
-        graveYardFlowPane.setMinWidth(700);
-        scrollPane.setContent(graveYardFlowPane);
-
-        graveYardPane.toFront();
-        graveYardPane.setPrefHeight(300);
-        graveYardPane.setPrefWidth(760);
-        graveYardPane.setStyle("-fx-background-image: url('/graphicprop/images/brickwall.jpg'); -fx-background-size: cover");
-        graveYardPane.setLayoutX(150);
-        graveYardPane.setLayoutY(200);
-
-        graveYardPane.getChildren().addAll(closeButton, title, scrollPane);
-
-        for (Node child : root.getChildren()) {
-            child.setDisable(true);
-            child.setOpacity(0.3);
-        }
-        root.getChildren().add(graveYardPane);
-        new ZoomIn(graveYardPane).play();
+        return closeButton;
     }
 
     public void run(MouseEvent mouseEvent) throws FileNotFoundException {
