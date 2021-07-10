@@ -45,7 +45,6 @@ public class DrawPhaseController extends GeneralController {
         try {
             HandHouse house = player.getBoard().getFirstEmptyHouse();
             house.setCard(newCard);
-            house.setImageOfCard(true);
         } catch (NullPointerException e) {
             return "";
         }

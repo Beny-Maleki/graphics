@@ -43,6 +43,7 @@ import model.gameprop.BoardProp.MagicHouse;
 import model.gameprop.BoardProp.MonsterHouse;
 import model.gameprop.GameInProcess;
 import model.gameprop.Player;
+import model.gameprop.SelectedCardProp;
 import model.gameprop.gamemodel.Game;
 import model.userProp.User;
 import model.userProp.UserInfoType;
@@ -500,22 +501,74 @@ public class GameView {
         }
 
         ImageView dummy = new ImageView();
-        int lastIndex = toChangePlayer.getBoard().getPlayerHand().length - 1;
-        Card drawn = toChangePlayer.getBoard().getPlayerHand()[lastIndex].getCard();
-        dummy.setImage(Card.getCardImage(drawn));
+        dummy.setImage(GameHouse.getBackOfCardImage());
 
         dummy.setLayoutY(toImitate.getLayoutY());
         dummy.setLayoutX(toImitate.getLayoutX());
         dummy.toFront();
 
-        dummy.setFitWidth(1000);
-        dummy.setFitHeight(1000);
+        dummy.setFitWidth(74);
+        dummy.setFitHeight(100);
 
         field.getChildren().add(dummy);
-        new ZoomIn(dummy).play();
+        ZoomIn zoomIn = new ZoomIn(dummy);
+        zoomIn.setSpeed(2);
+        zoomIn.getTimeline().setOnFinished(e -> {
+            AnimationFX animationFX;
+            if (toChangePlayer.equals(playerYou)) {
+                animationFX = new FadeOutDown(dummy);
+            } else {
+                animationFX = new FadeOutUp(dummy);
+            }
+            animationFX.setSpeed(3);
+            animationFX.getTimeline().setOnFinished(e1 -> {
+                field.getChildren().remove(dummy);
 
-        new FadeOutDownBig(dummy).play();
-        field.getChildren().remove(dummy);
+                turnPlayerHandCard();
+            });
+            animationFX.play();
+        });
+
+        zoomIn.play();
+    }
+
+    private void animateSummon() {
+        ImageView dummy = new ImageView();
+        MonsterHouse summoned = game.getHiredMonster();
+        dummy.setImage(summoned.getCardImage());
+
+        dummy.setLayoutX(summoned.getLayoutX());
+        dummy.setLayoutY(summoned.getLayoutY());
+        dummy.toFront();
+
+        dummy.setFitWidth(summoned.getWidth());
+        dummy.setFitHeight(summoned.getHeight());
+
+        FlowPane hand;
+        Player current = game.getPlayer(SideOfFeature.CURRENT);
+        if (current.equals(playerYou)) hand = yourHandContainer;
+        else hand = opponentHandContainer;
+
+        hand.getChildren().add(dummy);
+        ZoomIn zoomIn = new ZoomIn(dummy);
+        zoomIn.setSpeed(2);
+        zoomIn.getTimeline().setOnFinished(e -> {
+            AnimationFX animationFX;
+            if (current.equals(playerYou)) {
+                animationFX = new FadeOutDown(dummy);
+            } else {
+                animationFX = new FadeOutUp(dummy);
+            }
+            animationFX.setSpeed(3);
+            animationFX.getTimeline().setOnFinished(e1 -> {
+                field.getChildren().remove(dummy);
+
+                turnPlayerHandCard();
+            });
+            animationFX.play();
+        });
+
+        zoomIn.play();
     }
 
     private void swapColorForChangeTurn() {
@@ -643,9 +696,8 @@ public class GameView {
             setNumberOfDeckCards();
             new BounceIn(nextPhase).play();
             if (phaseName.getText().equals("draw phase")) {
-                //animateDraw();
+                animateDraw();
                 swapColorForChangeTurn();
-                turnPlayerHandCard();
             }
             setScaleForCurrentPhase(phaseName.getText());
         } else if (mouseEvent.getSource() == summonButton) {
