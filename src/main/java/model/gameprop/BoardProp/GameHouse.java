@@ -26,8 +26,8 @@ public abstract class GameHouse extends Pane implements Selectable {
 
     public GameHouse() {
         cardImageFrame = new ImageView();
-        cardImageFrame.setFitWidth(63);
-        cardImageFrame.setFitHeight(102);
+        cardImageFrame.setFitWidth(46);
+        cardImageFrame.setFitHeight(68);
         this.getChildren().add(cardImageFrame);
     }
 
