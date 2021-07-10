@@ -39,6 +39,7 @@ import org.jetbrains.annotations.NotNull;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.util.ArrayList;
+import java.util.concurrent.Flow;
 
 public class GameView {
 
@@ -54,8 +55,8 @@ public class GameView {
     public GridPane yourMagicHousesGridPane;
     public GridPane opponentMagicHousesGridPane;
     public GridPane opponentMonsterHousesGridPane;
-    public Pane opponentHandContainer;
-    public Pane yourHandContainer;
+    public FlowPane opponentHandContainer;
+    public FlowPane yourHandContainer;
     public Pane yourGraveyardPane;
     public Pane opponentGraveyardPane;
     public Pane yourFieldPane;
@@ -134,24 +135,23 @@ public class GameView {
         selectedCardImageView.setEffect(dropShadow);
     }
 
-    private void initializeHand(Player player, Pane handContainer, boolean isOpponentSide) {
+    private void initializeHand(Player player, FlowPane handContainer, boolean isOpponentSide) {
         HandHouse[] handHouses = player.getBoard().getPlayerHand();
 
-        handContainer.setPadding(new Insets(20));
+        handContainer.setPadding(new Insets(0, 0, 0, 0));
+        handContainer.setHgap(3);
 
         for (int i = 0; i < handHouses.length; i++) {
             HandHouse handHouse = handHouses[i];
-            handHouse.setLayoutX(i * (10 + 61));
-            handHouse.setLayoutY(20);
-            handHouse.setPrefSize(61, 90);
+            handHouse.setPrefSize(68, 100);
 
             setMouseEnterEventForHand(handHouse);
-
             setMouseExitEventForHand(handHouse);
-
             setMouseClickEventForHand(handHouse);
-            handContainer.getChildren().add(i, handHouse);
+
             handHouse.setImageOfCard(isOpponentSide);
+
+            handContainer.getChildren().add(handHouses[i]);
         }
     }
 
@@ -183,14 +183,14 @@ public class GameView {
         }
     }
 
-    private void reloadPlayerHand(Pane handContainer, boolean isOpponentSide, HandHouse[] handHouses) {
+    private void reloadPlayerHand(FlowPane handContainer, boolean isOpponentSide, HandHouse[] handHouses) {
         reloadImages();
         handContainer.getChildren().clear();
         makeHandPane(handContainer, handHouses);
         makeHandPaneReloadAnimation(handContainer, isOpponentSide);
     }
 
-    private void makeHandPaneReloadAnimation(Pane handContainer, boolean isOpponentSide) {
+    private void makeHandPaneReloadAnimation(FlowPane handContainer, boolean isOpponentSide) {
         if (isOpponentSide) {
             SlideInDown animation = new SlideInDown(handContainer);
             animation.setSpeed(2);
@@ -202,15 +202,21 @@ public class GameView {
         }
     }
 
-    private void makeHandPane(Pane handContainer, HandHouse[] handHouses) {
+    private void makeHandPane(FlowPane handContainer, HandHouse[] handHouses) {
+        handContainer.setPadding(new Insets(0, 0, 0, 0));
+        handContainer.setHgap(3);
+
         for (int j = 0; j < handHouses.length; j++) {
             if (handHouses[j].getStyle() == null) {
                 break;
             }
-            handHouses[j].setLayoutX(j * (10 + 61));
-            handHouses[j].setLayoutY(20);
-            handHouses[j].setPrefSize(61, 90);
-            handContainer.getChildren().add(j, handHouses[j]);
+            handHouses[j].setPrefSize(68, 100);
+
+            setMouseEnterEventForHand(handHouses[j]);
+            setMouseExitEventForHand(handHouses[j]);
+            setMouseClickEventForHand(handHouses[j]);
+
+            handContainer.getChildren().add(handHouses[j]);
         }
     }
 
@@ -229,19 +235,21 @@ public class GameView {
 
     private void setMouseExitEventForHand(HandHouse handHouse) {
         handHouse.setOnMouseExited(e -> {
-            handHouse.setLayoutY(20);
             handHouse.setScaleX(1);
             handHouse.setScaleY(1);
 
+            handHouse.setLayoutY(20);
+            handHouse.toBack();
             handHouse.setEffect(null);
         });
     }
 
     private void setMouseEnterEventForHand(HandHouse handHouse) {
         handHouse.setOnMouseEntered(e -> {
-            handHouse.setLayoutY(10);
             handHouse.setScaleX(1.2);
             handHouse.setScaleY(1.2);
+
+            handHouse.setLayoutY(-30);
             handHouse.toFront();
 
             DropShadow dropShadow = new DropShadow();
@@ -250,9 +258,9 @@ public class GameView {
     }
 
     private void initializeHouses(Player player, GridPane monsterHousesGridPane, GridPane magicHousesGridPane) {
-        monsterHousesGridPane.setHgap(25);
+        monsterHousesGridPane.setHgap(35);
         monsterHousesGridPane.setPadding(new Insets(10));
-        magicHousesGridPane.setHgap(25);
+        magicHousesGridPane.setHgap(35);
         magicHousesGridPane.setPadding(new Insets(10));
 
         MonsterHouse[] monsterHouses = player.getBoard().getMonsterHouse();
@@ -260,7 +268,8 @@ public class GameView {
             MonsterHouse monsterHouse = monsterHouses[i];
             monsterHousesGridPane.add(monsterHouse, i, 0, 1, 1);
 
-            monsterHouse.setPrefSize(63, 102);
+            monsterHouse.setPrefSize(46, 68);
+            monsterHouse.setLayoutY(15);
             handleOnMouseClicked(monsterHouse);
         }
 
@@ -268,8 +277,8 @@ public class GameView {
         for (int i = 0; i < magicHouses.length; i++) {
             MagicHouse magicHouse = magicHouses[i];
             magicHousesGridPane.add(magicHouse, i, 0, 1, 1);
-            magicHouse.setPrefSize(63, 102);
-
+            magicHouse.setPrefSize(46, 68);
+            magicHouse.setLayoutY(15);
             handleOnMouseClicked(magicHouse);
         }
     }

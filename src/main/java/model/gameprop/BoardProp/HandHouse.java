@@ -14,8 +14,8 @@ public class HandHouse extends Pane implements Selectable {
 
     public HandHouse(int i) {
         cardImage = new ImageView();
-        cardImage.setFitHeight(91);
-        cardImage.setFitWidth(60);
+        cardImage.setFitHeight(100);
+        cardImage.setFitWidth(68);
         this.index = i;
         this.getChildren().add(cardImage);
     }
