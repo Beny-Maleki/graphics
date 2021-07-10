@@ -124,7 +124,7 @@ public class PlayerBoard {
         int counter = 0;
         if (typeOfHouse.equals("monster")) {
             for (MonsterHouse house : monsterHouse) {
-                if (!house.getState().equals(MonsterHouseVisibilityState.E)) {
+                if (!house.getState().equals("empty")) {
                     counter++;
                 }
             }

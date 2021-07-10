@@ -14,7 +14,7 @@ import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.util.ArrayList;
 
-public class MagicHouse extends GameHouse implements Selectable {
+public class MagicHouse extends GameHouse{
     MagicCard magicCard;
     MagicHouseVisibilityState state;
 
@@ -25,8 +25,8 @@ public class MagicHouse extends GameHouse implements Selectable {
     }
 
     public MagicHouse(int index) {
+        super();
         this.index = index;
-        this.getChildren().add(cardImageFrame);
     }
 
     public static MagicHouse getMagicHouseByMagicCard(MagicCard magicCard) {

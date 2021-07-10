@@ -26,12 +26,12 @@
 
 
 .selectedCardPane {
-    -fx-border-color: black;
+
 }
 
 .field {
     -fx-background-image: url(../images/Field/fie_normal.png);
-    -fx-background-size: 511 700;
+    -fx-background-size: 527 700;
 }
 
 
@@ -46,3 +46,38 @@
     -fx-background-image: url(../images/greenPhaseBg.png);
     -fx-background-size: cover;
 }
+
+.cardDetailArea {
+    -fx-background-image: url(../images/youUserInfoBGjpeg.jpeg);
+    -fx-background-size: cover;
+}
+
+.selectedCardPane {
+    -fx-background-image: url(../images/grayBlue.jpg);
+    -fx-border-color: black;
+    -fx-border-width: 2;
+}
+
+.button {
+    -fx-text-fill: #4b779d;
+    -fx-background-color: black;
+    -fx-background-radius: 14;
+    -fx-border-radius: 14;
+    -fx-border-color: #4b779d;
+}
+
+.gameButton {
+    -fx-background-color: yellow;
+    -fx-background-radius: 0;
+    -fx-border-radius: 0;
+    -fx-text-fill: black;
+}
+
+.button:hover {
+    -fx-text-fill: black;
+    -fx-background-color: #4b779d;
+    -fx-background-radius: 14;
+    -fx-border-radius: 14;
+    -fx-border-color: black;
+}
+

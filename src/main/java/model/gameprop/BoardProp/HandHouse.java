@@ -29,9 +29,9 @@ public class HandHouse extends Pane implements Selectable {
         this.card = card;
     }
 
-    public void setImageOfCard(boolean isVisibleForOpponent) {
+    public void setImageOfCard(boolean isVisible) {
         if (card != null) {
-            if (isVisibleForOpponent) {
+            if (isVisible) {
                 this.cardImage.setImage(Card.getCardImage(card));
             }
             else {

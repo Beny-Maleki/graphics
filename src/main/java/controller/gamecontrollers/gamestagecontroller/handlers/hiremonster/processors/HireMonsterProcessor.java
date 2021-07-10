@@ -32,8 +32,14 @@ public class HireMonsterProcessor extends MonsterProcessor {
             for (MonsterHouse monsterHouse : game.getPlayer(SideOfFeature.CURRENT).getBoard().getMonsterHouse()) {
                 if (monsterHouse.getMonsterCard() == null) {
                     monsterHouse.setMonsterCard(monsterCard);
-                    if (type.equals(TypeOfHire.SUMMON)) monsterHouse.setState(MonsterHouseVisibilityState.OO);
-                    else monsterHouse.setState(MonsterHouseVisibilityState.DH);
+                    if (type.equals(TypeOfHire.SUMMON)) {
+                        monsterHouse.setState(MonsterHouseVisibilityState.OO);
+                        monsterHouse.setImageOfCard(true);
+                        System.out.println("here it is");
+                    } else {
+                        monsterHouse.setState(MonsterHouseVisibilityState.DH);
+                        monsterHouse.setImageOfCard(false);
+                    }
                     game.setHiredMonster(monsterHouse);
                     game.setCardProp(null);
                     game.getPlayer(SideOfFeature.CURRENT).getBoard().removeCardFromPlayerHand(monsterCard);

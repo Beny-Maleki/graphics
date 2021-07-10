@@ -22,7 +22,10 @@ import javafx.scene.layout.GridPane;
 import javafx.scene.layout.Pane;
 import model.cards.CardHouse;
 import model.cards.cardsProp.Card;
+import model.cards.cardsProp.MonsterCard;
 import model.enums.GameEnums.SideOfFeature;
+import model.enums.GameEnums.TypeOfHire;
+import model.enums.GameEnums.gamestage.GameMainStage;
 import model.enums.Origin;
 import model.gameprop.BoardProp.GameHouse;
 import model.gameprop.BoardProp.HandHouse;
@@ -31,7 +34,6 @@ import model.gameprop.BoardProp.MonsterHouse;
 import model.gameprop.GameInProcess;
 import model.gameprop.Player;
 import model.gameprop.gamemodel.Game;
-import model.userProp.LoginUser;
 import model.userProp.User;
 import model.userProp.UserInfoType;
 
@@ -71,6 +73,11 @@ public class GameView {
     public Pane battlePhaseBox;
     public Pane secondMainPhaseBox;
     public Pane endPhaseBox;
+    public AnchorPane cardDescriptionArea;
+    public Button summonButton;
+    public Button setMonsterButton;
+    public Label currentDeckNumber;
+    public Label opponentDeckNumber;
     private Player playerYou;
     private Player playerOpponent;
     private GeneralController controller;
@@ -90,22 +97,42 @@ public class GameView {
 
     @FXML
     public void initialize() throws FileNotFoundException {
+        game = new Game(new Player(User.getUserByUserInfo("sas", UserInfoType.NICKNAME), 0),
+                new Player(User.getUserByUserInfo("KaftarBaz", UserInfoType.NICKNAME), 0), 1);
+        GameInProcess.setGame(game);
+
         playerYou = GameInProcess.getGame().getFirstPlayer();
         playerOpponent = GameInProcess.getGame().getSecondPlayer();
 
         User you = (User) playerYou.getUser();
         User opponent = (User) playerOpponent.getUser();
 
-
+        summonButton.setVisible(false);
+        setMonsterButton.setVisible(false);
         assert opponent != null;
 
+        setNumberOfDeckCards();
         initializeInfos(you, opponent);
 
+        initializeShadowEffect();
+
         initializeHouses(playerYou, yourMonsterHousesGridPane, yourMagicHousesGridPane);
-        initializeHouses(playerOpponent, opponentMagicHousesGridPane, opponentMonsterHousesGridPane);
+        initializeHouses(playerOpponent, opponentMonsterHousesGridPane, opponentMagicHousesGridPane);
 
         initializeHand(playerYou, yourHandContainer, true);
         initializeHand(playerOpponent, opponentHandContainer, false);
+    }
+
+    private void setNumberOfDeckCards() {
+        currentDeckNumber.setText(String.valueOf(playerYou.getDeck().getMainDeck().size()));
+        opponentDeckNumber.setText(String.valueOf(playerOpponent.getDeck().getMainDeck().size()));
+    }
+
+    private void initializeShadowEffect() {
+        DropShadow dropShadow = new DropShadow();
+        dropShadow.setWidth(selectedCardImageView.getFitWidth());
+        dropShadow.setHeight(selectedCardImageView.getFitHeight());
+        selectedCardImageView.setEffect(dropShadow);
     }
 
     private void initializeHand(Player player, Pane handContainer, boolean isOpponentSide) {
@@ -123,20 +150,42 @@ public class GameView {
 
             setMouseExitEventForHand(handHouse);
 
-            setMouseClickEventForHand(handContainer, isOpponentSide, handHouses, handHouse);
+            setMouseClickEventForHand(handHouse);
             handContainer.getChildren().add(i, handHouse);
             handHouse.setImageOfCard(isOpponentSide);
         }
     }
 
-    private void setMouseClickEventForHand(Pane handContainer, boolean isOpponentSide, HandHouse[] handHouses, HandHouse handHouse) {
+    private void setMouseClickEventForHand(HandHouse handHouse) {
         handHouse.setOnMouseClicked(e -> {
             controller.selectCard(game, handHouse);
+            if (game.getCardProp().doesBelongToCurrent()) {
+                selectedCardImageView.setImage(Card.getCardImage(game.getCardProp().getCard()));
+                new FlipInX(selectedCardImageView).play();
+                deActiveActions();
+                showAvailableActions(handHouse);
+            }
         });
     }
 
+    private void deActiveActions() {
+        summonButton.setVisible(false);
+        setMonsterButton.setVisible(false);
+    }
+
+    private void showAvailableActions(HandHouse handHouse) {
+        if (game.getGameMainStage() == GameMainStage.FIRST_MAIN_PHASE) {
+            if (handHouse.getCard() instanceof MonsterCard && game.getHiredMonster() == null) {
+                summonButton.setVisible(true);
+                setMonsterButton.setVisible(true);
+                new FadeIn(summonButton).play();
+                new FadeIn(setMonsterButton).play();
+            }
+        }
+    }
+
     private void reloadPlayerHand(Pane handContainer, boolean isOpponentSide, HandHouse[] handHouses) {
-        reloadImages(handHouses);
+        reloadImages();
         handContainer.getChildren().clear();
         makeHandPane(handContainer, handHouses);
         makeHandPaneReloadAnimation(handContainer, isOpponentSide);
@@ -166,7 +215,8 @@ public class GameView {
         }
     }
 
-    private void reloadImages(HandHouse[] handHouses) {
+    private void reloadImages() {
+        HandHouse[] handHouses = game.getPlayer(SideOfFeature.CURRENT).getBoard().getPlayerHand();
         for (int j = 0; j < handHouses.length; j++) {
             for (int k = 0; k < handHouses.length - 1; k++) {
                 if (handHouses[k].doesHaveImage()) {
@@ -211,7 +261,7 @@ public class GameView {
             MonsterHouse monsterHouse = monsterHouses[i];
             monsterHousesGridPane.add(monsterHouse, i, 0, 1, 1);
 
-            monsterHouse.setPrefSize(42, 70);
+            monsterHouse.setPrefSize(63, 102);
             handleOnMouseClicked(monsterHouse);
         }
 
@@ -219,7 +269,7 @@ public class GameView {
         for (int i = 0; i < magicHouses.length; i++) {
             MagicHouse magicHouse = magicHouses[i];
             magicHousesGridPane.add(magicHouse, i, 0, 1, 1);
-            magicHouse.setPrefSize(42, 70);
+            magicHouse.setPrefSize(63, 102);
 
             handleOnMouseClicked(magicHouse);
         }
@@ -228,9 +278,13 @@ public class GameView {
     private void handleOnMouseClicked(GameHouse gameHouse) {
         gameHouse.setOnMouseClicked(e -> {
             if (gameHouse.getCardImage() != null) {
-                selectedCardImageView.setImage(gameHouse.getCardImage());
+                controller.selectCard(game, gameHouse);
+                if (gameHouse.getState().equals("hidden") || gameHouse.getState().equals("defenceHidden")) {
+                    selectedCardImageView.setImage(GameHouse.getBackOfCardImage());
+                } else {
+                    selectedCardImageView.setImage(Card.getCardImage(game.getCardProp().getCard()));
+                }
                 new FlipInX(selectedCardImageView).play();
-
             }
             //TODO: make a field "selectedCard : Card" which holds the selected card!
         });
@@ -369,17 +423,22 @@ public class GameView {
 
     public void run(MouseEvent mouseEvent) throws FileNotFoundException {
         if (mouseEvent.getSource() == yourGraveyardPane) {
-             showGraveYard(playerYou);
+            showGraveYard(playerYou);
         } else if (mouseEvent.getSource() == opponentGraveyardPane) {
             showGraveYard(playerOpponent);
         } else if (mouseEvent.getSource() == nextPhase) {
             phaseName.setText(controller.nextPhase(game));
+            setNumberOfDeckCards();
             new BounceIn(nextPhase).play();
             if (phaseName.getText().equals("draw phase")) {
                 swapColorForChangeTurn();
                 turnPlayerHandCard();
             }
             setScaleForCurrentPhase(phaseName.getText());
+        } else if (mouseEvent.getSource() == summonButton) {
+            mainPhaseController.hireCard(game, TypeOfHire.SUMMON);
+        } else if (mouseEvent.getSource() == setMonsterButton) {
+            mainPhaseController.hireCard(game, TypeOfHire.SET);
         }
     }
 
@@ -391,7 +450,14 @@ public class GameView {
         } else {
             swapPhaseNameButton("-fx-background-image: url('graphicprop/images/redPhaseBg.png')");
         }
-
+        if (cardDescriptionArea.getStyle().contains("youUser")) {
+            cardDescriptionArea.setStyle("-fx-background-image: url('graphicprop/images/opponentUserInfoBgjpeg.jpeg')");
+        } else if (cardDescriptionArea.getStyle().contains("opponentUser")) {
+            cardDescriptionArea.setStyle("-fx-background-image: url('graphicprop/images/youUserInfoBGjpeg.jpeg')");
+        } else {
+            cardDescriptionArea.setStyle("-fx-background-image: url('graphicprop/images/opponentUserInfoBgjpeg.jpeg')");
+        }
+        new FadeIn(cardDescriptionArea).play();
     }
 
     private void turnPlayerHandCard() {

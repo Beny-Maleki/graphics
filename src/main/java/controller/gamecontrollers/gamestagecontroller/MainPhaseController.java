@@ -54,7 +54,7 @@ public class MainPhaseController extends GeneralController {
         return processAnswer(game, output);
     }
 
-    private String hireCard(Game game, TypeOfHire type) {
+    public String hireCard(Game game, TypeOfHire type) {
 
         String answerToRequest;
         SelectedCardProp cardProp = game.getCardProp();

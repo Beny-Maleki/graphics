@@ -3,17 +3,18 @@ package model.gameprop.BoardProp;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.Pane;
+import model.gameprop.Selectable;
 
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 
 
-public abstract class GameHouse extends Pane {
+public abstract class GameHouse extends Pane implements Selectable {
     private static Image backOfCardImage;
 
     static {
         try {
-            backOfCardImage = new Image(new FileInputStream("src/main/resources/graphicprop/images/Cards/Monsters/Unknown.jpg"));
+            backOfCardImage = new Image(new FileInputStream("src/main/resources/graphicprop/images/backOfCard.jpg"));
         } catch (FileNotFoundException e) {
             e.printStackTrace();
         }
@@ -25,8 +26,9 @@ public abstract class GameHouse extends Pane {
 
     public GameHouse() {
         cardImageFrame = new ImageView();
-        cardImageFrame.setFitWidth(47);
-        cardImageFrame.setFitHeight(70);
+        cardImageFrame.setFitWidth(63);
+        cardImageFrame.setFitHeight(102);
+        this.getChildren().add(cardImageFrame);
     }
 
     public static Image getBackOfCardImage() {

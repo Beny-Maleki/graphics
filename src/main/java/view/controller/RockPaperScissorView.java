@@ -20,14 +20,13 @@ import model.gameprop.gamemodel.Game;
 import model.userProp.LoginUser;
 import model.userProp.User;
 
-import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.time.LocalDateTime;
-import java.util.concurrent.TimeUnit;
 
 public class RockPaperScissorView {
+    private final String blockPic = "src/main/resources/graphicprop/images/RockPaperScissor/empty.png";
     public Label nicknameDown;
     public Label nicknameUp;
     public ImageView frameUp;
@@ -39,12 +38,7 @@ public class RockPaperScissorView {
     public ImageView rockUp;
     public ImageView paperUp;
     public AnchorPane root;
-
-
     RockPaperScissorController controller = RockPaperScissorController.getInstance();
-
-    private final String blockPic = "src/main/resources/graphicprop/images/RockPaperScissor/empty.png";
-
     private User userOne;
     private User userTwo;
 
@@ -220,16 +214,11 @@ public class RockPaperScissorView {
         });
     }
 
-    private void createDelay(int second) {
-        LocalDateTime start = LocalDateTime.now();
-        while((LocalDateTime.now().getSecond() - start.getSecond()) < second) {}
-    }
 
     private void showAnimationOfRock() {
         ImageView choiceImageView = null;
-        choiceImageView = setImageView(choiceImageView, "src/main/resources/graphicprop/images/RockPaperScissor/rockVisual.png");
+        choiceImageView = setImageView(null, "src/main/resources/graphicprop/images/RockPaperScissor/rockVisual.png");
 
-        createDelay(2);
 
         root.getChildren().remove(choiceImageView);
     }
@@ -237,18 +226,15 @@ public class RockPaperScissorView {
 
     private void showAnimationOfPaper() {
         ImageView choiceImageView = null;
-        choiceImageView = setImageView(choiceImageView, "src/main/resources/graphicprop/images/RockPaperScissor/paperVisual.png");
+        choiceImageView = setImageView(null, "src/main/resources/graphicprop/images/RockPaperScissor/paperVisual.png");
 
-        createDelay(2);
 
         root.getChildren().remove(choiceImageView);
     }
 
     private void showAnimationOfScissors() {
         ImageView choiceImageView = null;
-        choiceImageView = setImageView(choiceImageView, "src/main/resources/graphicprop/images/RockPaperScissor/scissorVisual.png");
-
-        createDelay(2);
+        choiceImageView = setImageView(null, "src/main/resources/graphicprop/images/RockPaperScissor/scissorVisual.png");
 
         root.getChildren().remove(choiceImageView);
     }
@@ -268,7 +254,9 @@ public class RockPaperScissorView {
             choiceImageView.setImage(image);
             choiceImageView.toFront();
             root.getChildren().add(choiceImageView);
-            new FadeInUp(choiceImageView).play();
+            FadeInUp fadeInUp = new FadeInUp(choiceImageView);
+            fadeInUp.setSpeed(0.1);
+            fadeInUp.play();
         } catch (FileNotFoundException fileNotFoundException) {
             fileNotFoundException.printStackTrace();
         }

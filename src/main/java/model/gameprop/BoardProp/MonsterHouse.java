@@ -7,12 +7,11 @@ import model.enums.GameEnums.SideOfFeature;
 import model.enums.GameEnums.cardvisibility.MonsterHouseVisibilityState;
 import model.gameprop.GameInProcess;
 import model.gameprop.Player;
-import model.gameprop.Selectable;
 import model.gameprop.gamemodel.Game;
 
 import java.util.ArrayList;
 
-public class MonsterHouse extends GameHouse implements Selectable {
+public class MonsterHouse extends GameHouse {
     MonsterCard monsterCard;
     MonsterHouseVisibilityState state;
     private boolean isMonsterAttacked;
@@ -31,6 +30,7 @@ public class MonsterHouse extends GameHouse implements Selectable {
     }
 
     public MonsterHouse(int index) {
+        super();
         this.index = index;
     }
 
@@ -89,6 +89,7 @@ public class MonsterHouse extends GameHouse implements Selectable {
             isMonsterAttacked = false;
             haveBeenImpactedByField = false;
         }
+
     }
 
     public int getAdditionalAttack() {
