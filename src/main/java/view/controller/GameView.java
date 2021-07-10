@@ -6,6 +6,7 @@ import controller.gamecontrollers.gamestagecontroller.BattlePhaseController;
 import controller.gamecontrollers.gamestagecontroller.DrawPhaseController;
 import controller.gamecontrollers.gamestagecontroller.MainPhaseController;
 import controller.gamecontrollers.gamestagecontroller.StandByPhaseController;
+import javafx.fxml.FXML;
 import javafx.geometry.Insets;
 import javafx.scene.Node;
 import javafx.scene.control.Button;
@@ -21,6 +22,7 @@ import javafx.scene.layout.GridPane;
 import javafx.scene.layout.Pane;
 import model.cards.CardHouse;
 import model.cards.cardsProp.Card;
+import model.enums.GameEnums.SideOfFeature;
 import model.enums.Origin;
 import model.gameprop.BoardProp.GameHouse;
 import model.gameprop.BoardProp.HandHouse;
@@ -63,6 +65,12 @@ public class GameView {
     public AnchorPane root;
     public Button nextPhase;
     public Label phaseName;
+    public Pane drawPhaseBox;
+    public Pane standByPhaseBox;
+    public Pane firstMainPhaseBox;
+    public Pane battlePhaseBox;
+    public Pane secondMainPhaseBox;
+    public Pane endPhaseBox;
     private Player playerYou;
     private Player playerOpponent;
     private GeneralController controller;
@@ -80,6 +88,7 @@ public class GameView {
         standByPhaseController = new StandByPhaseController();
     }
 
+    @FXML
     public void initialize() throws FileNotFoundException {
         LoginUser.setUser(User.getUserByUserInfo("Yaroo", UserInfoType.USERNAME));
 
@@ -101,8 +110,8 @@ public class GameView {
 
 
         assert opponent != null;
-        initializeInfos(you, opponent);
 
+        initializeInfos(you, opponent);
 
         initializeHouses(playerYou, yourMonsterHousesGridPane, yourMagicHousesGridPane);
         initializeHouses(playerOpponent, opponentMagicHousesGridPane, opponentMonsterHousesGridPane);
@@ -118,7 +127,6 @@ public class GameView {
 
         for (int i = 0; i < handHouses.length; i++) {
             HandHouse handHouse = handHouses[i];
-            handHouse.setImageOfCard();
             handHouse.setLayoutX(i * (10 + 61));
             handHouse.setLayoutY(20);
             handHouse.setPrefSize(61, 90);
@@ -129,16 +137,21 @@ public class GameView {
 
             setMouseClickEventForHand(handContainer, isOpponentSide, handHouses, handHouse);
             handContainer.getChildren().add(i, handHouse);
+            handHouse.setImageOfCard(isOpponentSide);
         }
     }
 
     private void setMouseClickEventForHand(Pane handContainer, boolean isOpponentSide, HandHouse[] handHouses, HandHouse handHouse) {
         handHouse.setOnMouseClicked(e -> {
-            reloadImages(handHouses);
-            handContainer.getChildren().clear();
-            makeHandPane(handContainer, handHouses);
-            makeHandPaneReloadAnimation(handContainer, isOpponentSide);
+            controller.selectCard(game, handHouse);
         });
+    }
+
+    private void reloadPlayerHand(Pane handContainer, boolean isOpponentSide, HandHouse[] handHouses) {
+        reloadImages(handHouses);
+        handContainer.getChildren().clear();
+        makeHandPane(handContainer, handHouses);
+        makeHandPaneReloadAnimation(handContainer, isOpponentSide);
     }
 
     private void makeHandPaneReloadAnimation(Pane handContainer, boolean isOpponentSide) {
@@ -190,8 +203,8 @@ public class GameView {
     private void setMouseEnterEventForHand(HandHouse handHouse) {
         handHouse.setOnMouseEntered(e -> {
             handHouse.setLayoutY(10);
-            handHouse.setScaleX(1.1);
-            handHouse.setScaleY(1.1);
+            handHouse.setScaleX(1.2);
+            handHouse.setScaleY(1.2);
             handHouse.toFront();
 
             DropShadow dropShadow = new DropShadow();
@@ -229,6 +242,7 @@ public class GameView {
             if (gameHouse.getCardImage() != null) {
                 selectedCardImageView.setImage(gameHouse.getCardImage());
                 new FlipInX(selectedCardImageView).play();
+
             }
 
             //TODO: make a field "selectedCard : Card" which holds the selected card!
@@ -282,8 +296,8 @@ public class GameView {
 
 
                 imageView.setOnMouseEntered(e -> {
-                    imageView.setScaleX(1.1);
-                    imageView.setScaleY(1.1);
+                    imageView.setScaleX(1.2);
+                    imageView.setScaleY(1.2);
 
                     DropShadow dropShadow = new DropShadow();
                     imageView.setEffect(dropShadow);
@@ -374,6 +388,119 @@ public class GameView {
         } else if (mouseEvent.getSource() == nextPhase) {
             phaseName.setText(controller.nextPhase(game));
             new BounceIn(nextPhase).play();
+            if (phaseName.getText().equals("draw phase")) {
+                swapColorForChangeTurn();
+                turnPlayerHandCard();
+            }
+            setScaleForCurrentPhase(phaseName.getText());
         }
+    }
+
+    private void swapColorForChangeTurn() {
+        if (endPhaseBox.getStyle().contains("red")) {
+            swapPhaseNameButton("-fx-background-image: url('graphicprop/images/greenPhaseBg.png')");
+        } else if (endPhaseBox.getStyle().contains("green")) {
+            swapPhaseNameButton("-fx-background-image: url('graphicprop/images/redPhaseBg.png')");
+        } else {
+            swapPhaseNameButton("-fx-background-image: url('graphicprop/images/redPhaseBg.png')");
+        }
+
+    }
+
+    private void turnPlayerHandCard() {
+        for (HandHouse house : game.getPlayer(SideOfFeature.CURRENT).getBoard().getPlayerHand()) {
+            house.setImageOfCard(true);
+            FlipInX flipInX = new FlipInX(house);
+            flipInX.setSpeed(0.5);
+            flipInX.play();
+        }
+        for (HandHouse house : game.getPlayer(SideOfFeature.OPPONENT).getBoard().getPlayerHand()) {
+            house.setImageOfCard(false);
+            FlipInX flipInX = new FlipInX(house);
+            flipInX.setSpeed(0.5);
+            flipInX.play();
+        }
+    }
+
+    private void swapPhaseNameButton(String s) {
+
+        drawPhaseBox.setStyle(s);
+        standByPhaseBox.setStyle(s);
+        firstMainPhaseBox.setStyle(s);
+        battlePhaseBox.setStyle(s);
+        secondMainPhaseBox.setStyle(s);
+        endPhaseBox.setStyle(s);
+
+        new BounceIn(drawPhaseBox).play();
+        new BounceIn(standByPhaseBox).play();
+        new BounceIn(firstMainPhaseBox).play();
+        new BounceIn(battlePhaseBox).play();
+        new BounceIn(secondMainPhaseBox).play();
+        new BounceIn(endPhaseBox).play();
+
+
+    }
+
+    private void setScaleForCurrentPhase(String currentPhase) {
+        setNormalScale();
+        switch (currentPhase) {
+            case "draw phase": {
+                drawPhaseBox.setScaleX(1.2);
+                drawPhaseBox.setScaleY(1.2);
+                break;
+            }
+            case "first main phase": {
+                firstMainPhaseBox.setScaleX(1.2);
+                firstMainPhaseBox.setScaleY(1.2);
+                break;
+            }
+            case "second main phase": {
+                secondMainPhaseBox.setScaleX(1.2);
+                secondMainPhaseBox.setScaleY(1.2);
+                break;
+            }
+
+            case "battle phase": {
+                battlePhaseBox.setScaleX(1.2);
+                battlePhaseBox.setScaleY(1.2);
+                break;
+            }
+
+            case "stand by phase": {
+                standByPhaseBox.setScaleX(1.2);
+                standByPhaseBox.setScaleY(1.2);
+                break;
+            }
+
+            case "end phase": {
+                endPhaseBox.setScaleX(1.2);
+                endPhaseBox.setScaleY(1.2);
+                break;
+            }
+        }
+    }
+
+    private void setNormalScale() {
+        drawPhaseBox.setScaleX(1.0);
+        drawPhaseBox.setScaleY(1.0);
+
+        firstMainPhaseBox.setScaleX(1.0);
+        firstMainPhaseBox.setScaleY(1.0);
+
+
+        secondMainPhaseBox.setScaleX(1.0);
+        secondMainPhaseBox.setScaleY(1.0);
+
+
+        battlePhaseBox.setScaleX(1.0);
+        battlePhaseBox.setScaleY(1.0);
+
+
+        standByPhaseBox.setScaleX(1.0);
+        standByPhaseBox.setScaleY(1.0);
+
+        endPhaseBox.setScaleX(1.0);
+        endPhaseBox.setScaleY(1.0);
+
     }
 }

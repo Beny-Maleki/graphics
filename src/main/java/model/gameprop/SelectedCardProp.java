@@ -2,54 +2,40 @@ package model.gameprop;
 
 import model.cards.cardsProp.Card;
 import model.enums.GameEnums.CardLocation;
-import model.enums.GameEnums.SideOfFeature;
-import model.gameprop.BoardProp.GameHouse;
-import model.gameprop.BoardProp.PlayerBoard;
+import model.gameprop.BoardProp.HandHouse;
+import model.gameprop.BoardProp.MagicHouse;
+import model.gameprop.BoardProp.MonsterHouse;
 
 public class SelectedCardProp<T extends Selectable> {
     int cardAddress;
     CardLocation location;
-    SideOfFeature side;
+    boolean doesBelongToCurrent;
+    T cardPlace;
 
-
-    public SelectedCardProp(Integer cardAddress, CardLocation location, SideOfFeature side) {
-        this.cardAddress = cardAddress;
-        this.location = location;
-        this.side = side;
+    public SelectedCardProp(boolean doesBelongToCurrent, T cardPlace) {
+        this.cardPlace = cardPlace;
+        this.cardAddress = cardPlace.getIndex();
+        this.doesBelongToCurrent = doesBelongToCurrent;
     }
 
     public Card getCard() {
-        //return selectable.getCard();
-        Player player;
-
-        if (side == SideOfFeature.OPPONENT)
-            player = GameInProcess.getGame().getPlayer(SideOfFeature.OPPONENT);
-        else
-            player = GameInProcess.getGame().getPlayer(SideOfFeature.CURRENT);
-
-        return player.getBoard().getCard(cardAddress, location);
+        return cardPlace.getCard();
     }
 
 
-    public SideOfFeature getSide() {
-        return side;
+    public boolean doesBelongToCurrent() {
+        return doesBelongToCurrent;
     }
 
     public CardLocation getLocation() {
-        return location;
+        if (cardPlace instanceof MonsterHouse) return CardLocation.MONSTER_ZONE;
+        else if (cardPlace instanceof MagicHouse) return CardLocation.SPELL_ZONE;
+        else if (cardPlace instanceof HandHouse) return CardLocation.PLAYER_HAND;
+        else return CardLocation.FIELD_ZONE;
     }
 
-    public GameHouse getCardPlace() {
-
-        PlayerBoard board = GameInProcess.getGame().getPlayer(side).getBoard();
-        if (location.equals(CardLocation.SPELL_ZONE)) {
-            return board.getMagicHouse()[cardAddress];
-        } else if (location.equals(CardLocation.MONSTER_ZONE)) {
-            return board.getMonsterHouse()[cardAddress];
-        } else if (location.equals(CardLocation.FIELD_ZONE)) {
-            return board.getFieldHouse();
-        }
-        return null;
+    public Selectable getCardPlace() {
+        return cardPlace;
     }
 
 }

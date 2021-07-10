@@ -1,7 +1,6 @@
 package model.gameprop.BoardProp;
 
 import javafx.scene.image.Image;
-import javafx.scene.image.ImageView;
 import model.cards.cardsProp.Card;
 import model.cards.cardsProp.MonsterCard;
 import model.enums.GameEnums.SideOfFeature;
@@ -11,8 +10,6 @@ import model.gameprop.Player;
 import model.gameprop.Selectable;
 import model.gameprop.gamemodel.Game;
 
-import java.io.FileInputStream;
-import java.io.FileNotFoundException;
 import java.util.ArrayList;
 
 public class MonsterHouse extends GameHouse implements Selectable {
@@ -31,6 +28,10 @@ public class MonsterHouse extends GameHouse implements Selectable {
         haveBeenImpactedByField = false;
         monsterCard = null;
         state = MonsterHouseVisibilityState.E;
+    }
+
+    public MonsterHouse(int index) {
+        this.index = index;
     }
 
     public static MonsterHouse getMonsterHouseByMonsterCard(MonsterCard monsterCard) {
@@ -53,8 +54,12 @@ public class MonsterHouse extends GameHouse implements Selectable {
         return null;
     }
 
-    public MonsterHouseVisibilityState getState() {
-        return state;
+    public int getIndex() {
+        return index;
+    }
+
+    public String getState() {
+        return state.toString();
     }
 
     public void setState(MonsterHouseVisibilityState state) {
@@ -67,13 +72,9 @@ public class MonsterHouse extends GameHouse implements Selectable {
             case E:
                 return null;
             case DH:
-                try {
-                    return new Image(new FileInputStream("src/main/resources/graphicprop/images/Cards/Monsters/Unknown.jpg"));
-                } catch (FileNotFoundException e) {
-                    e.printStackTrace();
-                }
+                return GameHouse.getBackOfCardImage();
             default:
-                return cardImage;
+                return Card.getCardImage(this.getCard());
         }
     }
 
@@ -135,9 +136,11 @@ public class MonsterHouse extends GameHouse implements Selectable {
         return monsterCard;
     }
 
-    @Override
-    public void setImageOfCard() {
-        this.getChildren().add(cardImageFrame);
+    public void setImageOfCard(boolean isVisible) {
+        if (isVisible)
+            this.cardImageFrame.setImage(Card.getCardImage(monsterCard));
+        else
+            this.cardImageFrame.setImage(GameHouse.getBackOfCardImage());
     }
 }
 //TODO game map and where to add it

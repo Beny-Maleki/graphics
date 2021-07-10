@@ -19,6 +19,7 @@ import model.gameprop.BoardProp.MagicHouse;
 import model.gameprop.BoardProp.MonsterHouse;
 import model.gameprop.GameInProcess;
 import model.gameprop.Player;
+import model.gameprop.Selectable;
 import model.gameprop.SelectedCardProp;
 import model.gameprop.gamemodel.Game;
 import view.game.UserInterface;
@@ -60,60 +61,10 @@ public class GeneralController {
         return graveYardDisplay.toString();
     }
 
-    private String selectCard(Game game, String command) throws CmdLineParser.OptionException {
-        if (game.getCardProp() != null) {
-            return GameError.CARD_SELECTED_BEFORE.toString();
-        }
-        CmdLineParser parser = new CmdLineParser();
-        CmdLineParser.Option<Boolean> isOpponent = parser.addBooleanOption('o', "opponent");
-        CmdLineParser.Option<Boolean> field = parser.addBooleanOption('f', "field");
-        CmdLineParser.Option<Integer> monster = parser.addIntegerOption('m', "monster");
-        CmdLineParser.Option<Integer> spell = parser.addIntegerOption('s', "spell");
-        CmdLineParser.Option<Integer> hand = parser.addIntegerOption('h', "hand");
-        String[] splitCommand = command.split(" ");
-        parser.parse(splitCommand);
-
-
-        boolean opponentSide = parser.getOptionValue(isOpponent, false);
-        SideOfFeature side = SideOfFeature.CURRENT;
-        Player player = game.getPlayer(SideOfFeature.CURRENT);
-        if (opponentSide) {
-            side = SideOfFeature.OPPONENT;
-            player = game.getPlayer(SideOfFeature.OPPONENT);
-        }
-
-        Integer cardAddress;
-        CardLocation location;
-
-        if ((cardAddress = parser.getOptionValue(monster)) != null) {
-            if (cardAddress > 5 || cardAddress < 1) {
-                return GameError.INVALID_SELECTION.toString();
-            }
-            location = CardLocation.MONSTER_ZONE;
-        } else if ((cardAddress = parser.getOptionValue(spell)) != null) {
-            if (cardAddress > 5 || cardAddress < 1) {
-                return GameError.INVALID_SELECTION.toString();
-            }
-            location = CardLocation.SPELL_ZONE;
-        } else if (parser.getOptionValue(field, false)) {
-            location = CardLocation.FIELD_ZONE;
-            cardAddress = 0;
-        } else {
-            cardAddress = parser.getOptionValue(hand);
-            if (cardAddress > player.getBoard().getPlayerHand().length) {
-                return GameError.INVALID_SELECTION.toString();
-            }
-            location = CardLocation.PLAYER_HAND;
-        }
-
-        if (player.getBoard().getCard(cardAddress - 1, location) != null) {
-            SelectedCardProp selectedCardProp = new SelectedCardProp(cardAddress - 1, location, side);
-            game.setCardProp(selectedCardProp);
-            return General.CARD_SELECTED_SUCCESSFULLY.toString();
-        } else {
-            return GameError.EMPTY_SELECTION.toString();
-        }
-
+    public void selectCard(Game game, Selectable selectable) {
+        boolean isCardBelongToCurrent = game.getPlayer(SideOfFeature.CURRENT).getBoard().doesBelong(selectable);
+        SelectedCardProp<Selectable> selectedCard = new SelectedCardProp<>(isCardBelongToCurrent, selectable);
+        game.setCardProp(selectedCard);
     }
 
     private String deSelectCard(Game game) {
@@ -131,7 +82,7 @@ public class GeneralController {
         String output;
 
         if (cardProp == null) output = General.NO_CARD_SELECTED.toString();
-        else if (cardProp.getSide().equals(SideOfFeature.OPPONENT)) {
+        else if (!cardProp.doesBelongToCurrent()) {
             if (cardProp.getLocation().equals(CardLocation.SPELL_ZONE)) {
                 MagicHouse magicHouse = (MagicHouse) cardProp.getCardPlace();
                 if (magicHouse.getState().equals(MagicHouseVisibilityState.H)) {
@@ -171,21 +122,14 @@ public class GeneralController {
     }
 
     public String nextPhase(Game game) throws FileNotFoundException {
-        DrawPhaseController drawController = DrawPhaseController.getInstance();
         game.goToNextPhase();
         String output = game.getGameMainStage().getPhaseName();
         if (game.getGameMainStage().equals(GameMainStage.DRAW_PHASE)) {
-            String draw;
             if (game.doesPlayerHavePermissionToDraw()) {
-                if ((draw = drawController.draw(false)) != null) {
-                    return output + "\n" + draw;
-                } else return output;
+                new DrawPhaseController().draw(false);
             }
-        } else if (game.getGameMainStage().equals(GameMainStage.FIRST_MAIN_PHASE) ||
-                game.getGameMainStage().equals(GameMainStage.SECOND_MAIN_PHASE) ||
-                game.getGameMainStage().equals(GameMainStage.BATTLE_PHASE)) {
-            // ActivationInOpponentTurn.getInstance().activeEffects(game);
-        }
+        }  // ActivationInOpponentTurn.getInstance().activeEffects(game);
+
         return output;
     }
 
@@ -234,9 +178,6 @@ public class GeneralController {
             } else if (command.startsWith("show graveyard")) {
                 output = showGraveYard(game, command);
                 // show grave yard (current / opponent)
-            } else if (command.startsWith("select")) {
-                output = selectCard(game, command);
-                // select a card from (monster / spell / hand )
             } else if (command.startsWith("card show")) {
                 output = showSelectedCard(game);
                 // show card detail

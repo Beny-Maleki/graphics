@@ -7,6 +7,7 @@ import model.cards.cardsProp.MonsterCard;
 import model.enums.GameEnums.CardLocation;
 import model.enums.GameEnums.cardvisibility.MagicHouseVisibilityState;
 import model.enums.GameEnums.cardvisibility.MonsterHouseVisibilityState;
+import model.gameprop.Selectable;
 
 public class PlayerBoard {
     MagicHouse[] magicHouse;
@@ -57,16 +58,16 @@ public class PlayerBoard {
     private void initializeBoardHouses() {
         monsterHouse = new MonsterHouse[5];
         for (int i = 0; i < monsterHouse.length; i++) {
-            monsterHouse[i] = new MonsterHouse();
+            monsterHouse[i] = new MonsterHouse(i);
         }
         magicHouse = new MagicHouse[5];
         for (int i = 0; i < magicHouse.length; i++) {
-            magicHouse[i] = new MagicHouse();
+            magicHouse[i] = new MagicHouse(i);
         }
-        fieldHouse = new MagicHouse();
+        fieldHouse = new MagicHouse(5);
         playerHand = new HandHouse[6];
         for (int i = 0; i < playerHand.length; i++) {
-            playerHand[i] = new HandHouse();
+            playerHand[i] = new HandHouse(i);
         }
     }
 
@@ -196,5 +197,25 @@ public class PlayerBoard {
                 moveCardToGraveYard(i, CardLocation.SPELL_ZONE);
             }
         }
+    }
+
+    public boolean doesBelong(Selectable selectable) {
+        for (MagicHouse house : magicHouse) {
+            if (house == selectable) {
+                return true;
+            }
+        }
+        for (MonsterHouse house : monsterHouse) {
+            if (house == selectable) {
+                return true;
+            }
+        }
+
+        for (HandHouse house : playerHand) {
+            if (house == selectable) {
+                return true;
+            }
+        }
+        return false;
     }
 }

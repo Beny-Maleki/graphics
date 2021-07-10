@@ -19,9 +19,9 @@ public class CardSelectProcessor extends MonsterProcessor {
         if (cardProp == null) return MainPhase.NO_CARD_SELECTED_YET.toString();
 
         CardLocation location = cardProp.getLocation();
-        SideOfFeature side = cardProp.getSide();
+        boolean doesBelongToCurrent = cardProp.doesBelongToCurrent();
         if (location.equals(CardLocation.MONSTER_ZONE)
-                || side.equals(SideOfFeature.OPPONENT))
+                || doesBelongToCurrent)
             return MainPhase.CANT_HIRE_CARD.toString();
 
 

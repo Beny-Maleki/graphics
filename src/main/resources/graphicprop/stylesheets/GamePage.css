@@ -33,13 +33,15 @@
     -fx-background-size: 511 700;
 }
 
-.phaseVBox {
-    -fx-border-color: black;
-    -fx-background-color: white;
-    -fx-cursor: hand;
-}
 
-#phaseName{
+#phaseName {
     -fx-text-fill: red;
     -fx-font-size: 15;
+}
+
+.phaseName {
+    -fx-text-fill: white;
+    -fx-font-weight: bold;
+    -fx-background-image: url(../images/greenPhaseBg.png);
+    -fx-background-size: cover;
 }

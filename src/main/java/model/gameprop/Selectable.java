@@ -4,6 +4,7 @@ import model.cards.cardsProp.Card;
 
 public interface Selectable {
     Card getCard();
-    void setImageOfCard();
+    int getIndex();
 
+    String getState();
 }

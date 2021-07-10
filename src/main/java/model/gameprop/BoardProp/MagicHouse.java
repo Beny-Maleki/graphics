@@ -24,6 +24,10 @@ public class MagicHouse extends GameHouse implements Selectable {
         state = MagicHouseVisibilityState.E;
     }
 
+    public MagicHouse(int index) {
+        this.index = index;
+        this.getChildren().add(cardImageFrame);
+    }
 
     public static MagicHouse getMagicHouseByMagicCard(MagicCard magicCard) {
         Game game = GameInProcess.getGame();
@@ -45,8 +49,8 @@ public class MagicHouse extends GameHouse implements Selectable {
         return null;
     }
 
-    public MagicHouseVisibilityState getState() {
-        return state;
+    public String getState() {
+        return state.toString();
     }
 
     public void setState(MagicHouseVisibilityState state) {
@@ -59,13 +63,9 @@ public class MagicHouse extends GameHouse implements Selectable {
             case E:
                 return null;
             case H:
-                try {
-                    return new Image(new FileInputStream("src/main/resources/graphicprop/images/Cards/Monsters/Unknown.jpg"));
-                } catch (FileNotFoundException e) {
-                    e.printStackTrace();
-                }
+                return GameHouse.getBackOfCardImage();
             default:
-                return cardImage;
+                return Card.getCardImage(this.getCard());
         }
     }
 
@@ -96,8 +96,14 @@ public class MagicHouse extends GameHouse implements Selectable {
         }
     }
 
-    @Override
+
     public void setImageOfCard() {
         this.getChildren().add(cardImageFrame);
     }
+
+    @Override
+    public int getIndex() {
+        return index;
+    }
+
 }

@@ -22,7 +22,7 @@ public class SelectCardProcessor extends ActiveEffectProcessor {
         SelectedCardProp cardProp = game.getCardProp();
         if (cardProp == null)
             return General.NO_CARD_SELECT.toString();
-        if (cardProp.getSide().equals(SideOfFeature.OPPONENT)) {
+        if (!cardProp.doesBelongToCurrent()) {
             return General.CANT_ACTIVE_OPPONENT_CARD.toString();
         }
         if (cardProp.getCard() instanceof MagicCard) {

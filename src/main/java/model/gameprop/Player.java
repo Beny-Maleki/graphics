@@ -82,4 +82,5 @@ public class Player {
     public void increaseWinningRound() {
         numberOfWinningRound++;
     }
+
 }

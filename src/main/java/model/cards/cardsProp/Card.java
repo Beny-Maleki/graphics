@@ -1,17 +1,19 @@
 package model.cards.cardsProp;
 
+import javafx.scene.image.Image;
 import model.events.Event;
 import model.gameprop.gamemodel.Game;
 
+import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
 public abstract class Card {
+    private static final HashMap<Integer, Boolean> IS_SEEN_BEFORE;
     protected static List<Card> cards;
     protected static int numberOfCard;
-    private static final HashMap<Integer, Boolean> IS_SEEN_BEFORE;
 
     static {
         IS_SEEN_BEFORE = new HashMap<>();
@@ -19,16 +21,11 @@ public abstract class Card {
         numberOfCard = 74;
     }
 
-    public static HashMap<Integer, Boolean> getIsSeenBefore() {
-        return IS_SEEN_BEFORE;
-    }
-
     protected int ID;
     protected String name;
     protected String number; // on card's picture
     protected int price;
     protected String description;
-
 
     public Card(String name, String description, String price) {
         setName(name);
@@ -39,7 +36,12 @@ public abstract class Card {
         numberOfCard++;
     }
 
+
     public Card() {
+    }
+
+    public static HashMap<Integer, Boolean> getIsSeenBefore() {
+        return IS_SEEN_BEFORE;
     }
 
     public static int getCardPriceByName(String name) {
@@ -95,6 +97,22 @@ public abstract class Card {
     public static Integer newSimilarCard() {
         return numberOfCard - 1;
 
+    }
+
+    public static Image getCardImage(Card card) {
+        FileInputStream fileInputStream;
+        String nameWithoutSpace = card.getName().replaceAll("\\s+", "");
+        try {
+            if (card instanceof MonsterCard) {
+                fileInputStream = new FileInputStream("src/main/resources/graphicprop/images/Cards/Monsters/" + nameWithoutSpace + ".jpg");
+            } else{
+                fileInputStream = new FileInputStream("src/main/resources/graphicprop/images/Cards/SpellTrap/" + nameWithoutSpace + ".jpg");
+            }
+            return new Image(fileInputStream);
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+            return null;
+        }
     }
 
     public abstract Card getSimilarCard();
@@ -175,6 +193,4 @@ public abstract class Card {
     public void setID(int ID) {
         this.ID = ID;
     }
-
-
 }

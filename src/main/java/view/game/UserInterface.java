@@ -111,9 +111,7 @@ public class UserInterface {
     }
 
     private void displayGameHouses(StringBuilder mapDisplay, GameHouse[] house, int[] orientation) {
-        for (int i : orientation) {
-            mapDisplay.append("\t").append(house[i - 1].getState());
-        }
+
     }
 
 }

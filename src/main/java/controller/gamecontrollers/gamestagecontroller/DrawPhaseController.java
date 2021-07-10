@@ -10,6 +10,7 @@ import model.gameprop.gamemodel.Game;
 import model.userProp.Deck;
 
 import java.io.FileNotFoundException;
+import java.util.Arrays;
 
 public class DrawPhaseController extends GeneralController {
 
@@ -26,7 +27,6 @@ public class DrawPhaseController extends GeneralController {
     public String draw(boolean isCheating) throws FileNotFoundException {
         Game game = GameInProcess.getGame();
         Player player = game.getPlayer(SideOfFeature.CURRENT);
-        HandHouse[] hand = player.getBoard().getPlayerHand();
         if (!isCheating) {
             if (game.doesPlayerHavePermissionToDraw() && player.isAllowedToDraw && player.getBoard().numberOfFullHouse("hand") < 6) {
                 game.setPlayerDrawInTurn();
@@ -43,11 +43,12 @@ public class DrawPhaseController extends GeneralController {
         Card newCard = playerDeck.getMainDeck().get(0);
         playerDeck.removeCardFromMainDeck(newCard);
         try {
-            player.getBoard().getFirstEmptyHouse().setCard(newCard);
+            HandHouse house = player.getBoard().getFirstEmptyHouse();
+            house.setCard(newCard);
+            house.setImageOfCard(true);
         } catch (NullPointerException e) {
             return "";
         }
-
         return newCard.getName();
     }
 

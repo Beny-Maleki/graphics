@@ -65,7 +65,7 @@ public class AttackProcessor extends AttackMonsterProcessor {
             }
         }
         output = modify(output, damageAmount);
-        if (target.getState() == MonsterHouseVisibilityState.DH) {
+        if (target.getState().equals("defenceHidden")) {
             return output + revealCard(target.getMonsterCard().getName());
         }
         return output;
