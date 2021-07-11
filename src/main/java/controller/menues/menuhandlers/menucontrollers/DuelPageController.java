@@ -49,7 +49,8 @@ public class DuelPageController extends Controller {
         if ((error = chain.request(data)) != null) {
             return processAnswer(error, data);
         }
-        Player loggedInPlayer = new Player(LoginUser.getUser(), 0);;
+        Player loggedInPlayer = new Player(LoginUser.getUser(), 0);
+        ;
         Player opponentPlayer = new Player(User.getUserByUserInfo(secondPlayer, UserInfoType.USERNAME), 0);
         Game game = null;
         PlayerTurn firstPlayer = RockPaperScissorGame.run(LoginUser.getUser().getNickname(),
