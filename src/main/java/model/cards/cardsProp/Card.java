@@ -13,12 +13,12 @@ import java.util.List;
 public abstract class Card {
     private static final HashMap<Integer, Boolean> IS_SEEN_BEFORE;
     protected static List<Card> cards;
-    protected static int numberOfCard;
+    public static int numberOfCard;
+    private static int numberOfOriginalCards;
 
     static {
         IS_SEEN_BEFORE = new HashMap<>();
         cards = new ArrayList<>();
-        numberOfCard = 74;
     }
 
     protected int ID;
@@ -53,6 +53,10 @@ public abstract class Card {
         return -1; // No such card notExists.
     }
 
+    public static void setNumberOfOriginalCards(int numberOfOriginalCards) {
+        Card.numberOfOriginalCards = numberOfOriginalCards;
+    }
+
     public static String getDescriptionByName(String name) {
         for (Card card : cards) {
             if (card.name.equals(name)) {
@@ -81,7 +85,7 @@ public abstract class Card {
     public static ArrayList<Card> getOriginalCard() {
         ArrayList<Card> originalCard = new ArrayList<>();
         cards.forEach((card -> {
-            if (card.getID() < 74) {
+            if (card.getID() < Card.numberOfOriginalCards) {
                 originalCard.add(card);
             }
         }));

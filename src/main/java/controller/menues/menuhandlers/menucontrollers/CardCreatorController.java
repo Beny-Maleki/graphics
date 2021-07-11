@@ -49,11 +49,9 @@ public class CardCreatorController extends Controller {
             message.setText("please fill description first");
             displayMessage(message);
         } else {
-            new MonsterCard(name, level, monsterAttribute.toString(), monsterRace.toString(), monsterType.toString(), attack, defense, description, price.split(" ")[1]);
-            DataBase.getInstance().saveMonsters();
+            DataBase.getInstance().saveMonsters(new MonsterCard(name, level, monsterAttribute.toString(), monsterRace.toString(), monsterType.toString(), attack, defense, description, price.split(" ")[1]));
             message.setText("you create monster successfully");
             displayMessage(message);
-            moveToPage(message, Menu.CARD_CREATOR_PAGE);
         }
     }
 
@@ -91,9 +89,8 @@ public class CardCreatorController extends Controller {
         MagicCard magicCard = new MagicCard(name, typeOfMagic, magicAttribute, description, typeOfRestriction, String.valueOf(priceInt));
         magicCard.setActionsOfMagic(actions);
         magicCard.setTriggers(triggers);
-        DataBase.getInstance().saveMagics();
+        DataBase.getInstance().saveMagics(magicCard);
         LoginUser.getUser().changeBalance((priceInt / 10) * -1);
         displayMessage(message);
-        moveToPage(message, Menu.CARD_CREATOR_PAGE);
     }
 }
