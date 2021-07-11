@@ -36,6 +36,7 @@ public class HireMonsterProcessor extends MonsterProcessor {
                         monsterHouse.setState(MonsterHouseVisibilityState.OO);
                     } else {
                         monsterHouse.setState(MonsterHouseVisibilityState.DH);
+                        monsterHouse.rotate();
                     }
                     game.setHiredMonster(monsterHouse);
                     game.setCardProp(null);
@@ -58,8 +59,16 @@ public class HireMonsterProcessor extends MonsterProcessor {
                 game.setTributeSize(2);
                 game.setGameSideStage(GameSideStage.TRIBUTE);
                 int i = game.getPlayer(SideOfFeature.CURRENT).getBoard().numberOfFullHouse("monster");
-                game.setHiredMonster(game.getPlayer(SideOfFeature.CURRENT).getBoard().getMonsterHouse()[i]);
+                MonsterHouse monsterHouse = game.getPlayer(SideOfFeature.CURRENT).getBoard().getMonsterHouse()[i];
+                game.setHiredMonster(monsterHouse);
+                if (type.equals(TypeOfHire.SUMMON)) {
+                    monsterHouse.setState(MonsterHouseVisibilityState.OO);
+                } else {
+                    monsterHouse.setState(MonsterHouseVisibilityState.DH);
+                    monsterHouse.rotate();
+                }
                 game.getHiredMonster().setMonsterCard(monsterCard);
+                game.getPlayer(SideOfFeature.CURRENT).getBoard().removeCardFromPlayerHand(monsterCard);
                 return MainPhase.TW0_TRIBUTE_NEED.toString();
             }
         }

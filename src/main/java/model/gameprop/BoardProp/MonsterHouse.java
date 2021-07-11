@@ -1,5 +1,6 @@
 package model.gameprop.BoardProp;
 
+import animatefx.animation.FadeOutRight;
 import javafx.scene.image.Image;
 import model.cards.cardsProp.Card;
 import model.cards.cardsProp.MonsterCard;
@@ -46,8 +47,10 @@ public class MonsterHouse extends GameHouse {
             MonsterHouse[] monsterHouses = player.getBoard().getMonsterHouse();
 
             for (MonsterHouse monsterHouse : monsterHouses) {
-                if (monsterHouse.getMonsterCard().equals(monsterCard)) {
-                    return monsterHouse;
+                if (monsterHouse.getMonsterCard() != null) {
+                    if (monsterHouse.getMonsterCard().equals(monsterCard)) {
+                        return monsterHouse;
+                    }
                 }
             }
         }
@@ -90,6 +93,13 @@ public class MonsterHouse extends GameHouse {
             haveBeenImpactedByField = false;
         }
 
+    }
+
+    public void removeCard(){
+        monsterCard = null;
+        new FadeOutRight(cardImageFrame);
+        cardImageFrame.setImage(null);
+        cardImageFrame.setRotate(0);
     }
 
     public int getAdditionalAttack() {
@@ -142,6 +152,10 @@ public class MonsterHouse extends GameHouse {
             this.cardImageFrame.setImage(Card.getCardImage(monsterCard));
         else
             this.cardImageFrame.setImage(GameHouse.getBackOfCardImage());
+    }
+
+    public void rotate() {
+        cardImageFrame.setRotate(90);
     }
 }
 //TODO game map and where to add it
