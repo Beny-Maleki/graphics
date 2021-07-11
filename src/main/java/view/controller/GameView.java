@@ -183,7 +183,7 @@ public class GameView {
     @FXML
     public void initialize() throws FileNotFoundException {
         game = new Game(new Player(User.getUserByUserInfo("sas", UserInfoType.NICKNAME), 0),
-                new Player(User.getUserByUserInfo("KaftarBaz", UserInfoType.NICKNAME), 0), 1);
+                new Player(User.getUserByUserInfo("Yaroo", UserInfoType.NICKNAME), 0), 1);
         GameInProcess.setGame(game);
 
         playerYou = GameInProcess.getGame().getFirstPlayer();
@@ -233,6 +233,8 @@ public class GameView {
         setHoverEffectForIcons(summonIcon);
         setHoverEffectForIcons(setMonsterIcon);
         setHoverEffectForIcons(setMagicIcon);
+        setHoverEffectForIcons(attackMonsterIcon);
+        setHoverEffectForIcons(changePositionIcon);
         summonIcon.setOnMouseClicked(event -> {
                     String answer = mainPhaseController.hireCard(game, TypeOfHire.SUMMON);
                     if (answer.contains("1") || answer.contains("2")) {
@@ -257,14 +259,16 @@ public class GameView {
         });
         attackMonsterIcon.setOnMouseClicked(event -> {
             try {
-                field.getScene().setCursor(new ImageCursor(new Image(new FileInputStream("src/main/resources/graphicprop/images/sword.png"))));
+                field.getScene().setCursor(new ImageCursor(new Image(new FileInputStream("G:\\graphics\\src\\main\\resources\\graphicprop\\images\\sword.png"))));
             } catch (FileNotFoundException e) {
                 e.printStackTrace();
             }
+
         });
 
         setMagicIcon.setOnMouseClicked(event -> {
             mainPhaseController.hireCard(game, TypeOfHire.SET);
+            deActiveActions();
             restartSelectedCardImage();
             reloadImages();
         });
@@ -353,6 +357,8 @@ public class GameView {
             ((Pane) changePositionIcon.getParent()).getChildren().remove(changePositionIcon);
         if ((attackMonsterIcon.getParent() != null))
             ((Pane) attackMonsterIcon.getParent()).getChildren().remove(attackMonsterIcon);
+        if ((activeMagicIcon.getParent() != null))
+            ((Pane) activeMagicIcon.getParent()).getChildren().remove(activeMagicIcon);
     }
 
     private void showAvailableActions(HandHouse handHouse) {
@@ -365,8 +371,10 @@ public class GameView {
                     MagicCard magicCard = (MagicCard) handHouse.getCard();
                     if (game.getPlayer(SideOfFeature.CURRENT).getBoard().numberOfFullHouse("spell") != 5) {
                         if ((magicCard.getMagicAttribute() == MagicAttribute.QUICK_PLAY || magicCard.getTypeOfMagic() == MagicType.TRAP)) {
+                            deActiveActions();
                             handHouse.getChildren().addAll(setMagicIcon);
                         } else {
+                            deActiveActions();
                             handHouse.getChildren().addAll(setMagicIcon, activeMagicIcon);
                         }
                     }
@@ -392,7 +400,7 @@ public class GameView {
                     monsterHouse.getChildren().add(attackMonsterIcon);
                     System.out.println("here");
                 } else {
-                    System.out.println(monsterHouse.getState()+ "and " + !game.isFirstTurnOfTheGame() + " and " + !monsterHouse.isMonsterAttacked());
+                    System.out.println(monsterHouse.getState() + "and " + !game.isFirstTurnOfTheGame() + " and " + !monsterHouse.isMonsterAttacked());
                 }
                 break;
             }
@@ -938,6 +946,7 @@ public class GameView {
         } else if (mouseEvent.getSource() == opponentGraveyardPane) {
             showGraveYard(playerOpponent);
         } else if (mouseEvent.getSource() == nextPhase) {
+            deActiveActions();
             phaseName.setText(controller.nextPhase(game));
             setNumberOfDeckCards();
             new BounceIn(phaseName).play();
