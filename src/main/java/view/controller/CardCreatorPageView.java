@@ -1,6 +1,7 @@
 package view.controller;
 
 import animatefx.animation.Wobble;
+import animatefx.animation.ZoomOut;
 import controller.menues.menuhandlers.menucontrollers.CardCreatorController;
 import javafx.collections.FXCollections;
 import javafx.fxml.FXML;
@@ -10,6 +11,7 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.input.MouseEvent;
+import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
 import model.cards.cardsEnum.Magic.MagicAttribute;
@@ -41,6 +43,8 @@ public class CardCreatorPageView {
     public ChoiceBox<Integer> level;
     public ChoiceBox<RestrictionTypeInAdding> restrictionType;
     private final CardCreatorController controller;
+    public Button backButton;
+    public AnchorPane root;
 
     {
         controller = new CardCreatorController();
@@ -95,6 +99,9 @@ public class CardCreatorPageView {
                 scene.getRoot().requestFocus();
                 stage.show();
             }
+        } else if (event.getSource() == backButton) {
+            new ZoomOut(root).play();
+            controller.moveToPage(backButton, Menu.MAIN_MENU);
         }
     }
 

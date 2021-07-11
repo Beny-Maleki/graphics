@@ -84,7 +84,6 @@ public class DecksView {
     public void run(MouseEvent event) throws IOException {
         if (event.getSource() == backButton) {
             controller.moveToPage(backButton, Menu.MAIN_MENU);
-            System.out.println("here");
         }
     }
 
@@ -337,8 +336,8 @@ public class DecksView {
     }
 
     public void fullHolder(Deck deck, int i) throws FileNotFoundException {
-        Label deckName = new Label("Deck Name : " + deck.getName());
-        setNodesPosition(deckName, 16, 74, 150, 21);
+        Label deckName = new Label("Deck Name: " + deck.getName());
+        setNodesPosition(deckName, 0, 74, 300, 21);
         deckName.setStyle("-fx-font-size: 15 ; -fx-text-fill: white; -fx-alignment: center");
         new BounceIn(deckName).play();
         DECK_NOTIFICATION.add(deckName);
