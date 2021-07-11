@@ -1,5 +1,6 @@
 package controller.gamecontrollers.gamestagecontroller.handlers.hirespell.processors;
 
+import animatefx.animation.ZoomIn;
 import controller.gamecontrollers.gamestagecontroller.handlers.hirespell.SpellProcessor;
 import model.cards.cardsEnum.Magic.MagicAttribute;
 import model.cards.cardsProp.MagicCard;
@@ -45,6 +46,7 @@ public class SetSpellProcessor extends SpellProcessor {
         magicHouse.setMagicCard(magicCard);
         magicHouse.setImageOfCard(false);
         magicHouse.setState(MagicHouseVisibilityState.H);
+        new ZoomIn(magicHouse).play();
         game.setCardProp(null);
         HandHouse[] playerHand = game.getPlayer(SideOfFeature.CURRENT).getBoard().getPlayerHand();
         for (HandHouse handHouse : playerHand) {

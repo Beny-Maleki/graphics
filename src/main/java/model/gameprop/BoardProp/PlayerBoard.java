@@ -5,7 +5,6 @@ import model.cards.cardsProp.Card;
 import model.cards.cardsProp.MagicCard;
 import model.cards.cardsProp.MonsterCard;
 import model.enums.GameEnums.CardLocation;
-import model.enums.GameEnums.cardvisibility.MagicHouseVisibilityState;
 import model.enums.GameEnums.cardvisibility.MonsterHouseVisibilityState;
 import model.gameprop.Selectable;
 
@@ -110,12 +109,12 @@ public class PlayerBoard {
         if (card instanceof MonsterCard) {
             MonsterHouse monsterHouse = MonsterHouse.getMonsterHouseByMonsterCard((MonsterCard) card);
             assert monsterHouse != null;
-            monsterHouse.setMonsterCard(null);
+            monsterHouse.removeCard();
             graveYard.addCardToGraveYard(card);
         } else if (card instanceof MagicCard) {
             MagicHouse magicHouse = MagicHouse.getMagicHouseByMagicCard((MagicCard) card);
             assert magicHouse != null;
-            magicHouse.setMagicCard(null);
+            magicHouse.removeCard();
             graveYard.addCardToGraveYard(card);
         }
     }
@@ -130,7 +129,7 @@ public class PlayerBoard {
             }
         } else if (typeOfHouse.equals("spell")) {
             for (MagicHouse house : magicHouse) {
-                if (!house.getState().equals(MagicHouseVisibilityState.E)) {
+                if (!house.getState().equals("empty")) {
                     counter++;
                 }
             }

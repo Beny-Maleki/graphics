@@ -1,5 +1,6 @@
 package model.gameprop.BoardProp;
 
+import animatefx.animation.FadeOut;
 import javafx.scene.image.Image;
 import model.cards.cardsProp.Card;
 import model.cards.cardsProp.MagicCard;
@@ -109,4 +110,9 @@ public class MagicHouse extends GameHouse {
         return index;
     }
 
+    public void removeCard() {
+        magicCard = null;
+        cardImageFrame.setImage(null);
+        new FadeOut(this).play();
+    }
 }

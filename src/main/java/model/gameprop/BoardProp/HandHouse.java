@@ -34,10 +34,11 @@ public class HandHouse extends Pane implements Selectable {
         if (card != null) {
             if (isVisible) {
                 this.cardImage.setImage(Card.getCardImage(card));
-            }
-            else {
+            } else {
                 this.cardImage.setImage(GameHouse.getBackOfCardImage());
             }
+        }else{
+            cardImage.setImage(null);
         }
     }
 
@@ -58,7 +59,7 @@ public class HandHouse extends Pane implements Selectable {
     }
 
     public boolean doesHaveImage() {
-        return cardImage.getImage() == null;
+        return card != null;
     }
 
 }

@@ -85,6 +85,8 @@ public class GameView {
     public Button changePositionButton;
     public Button activeEffectButton;
     public Pane field;
+    public Label turnShowerUp;
+    public Label turnShowerDown;
     private Player playerYou;
     private Player playerOpponent;
     private GeneralController controller;
@@ -114,8 +116,7 @@ public class GameView {
         User you = (User) playerYou.getUser();
         User opponent = (User) playerOpponent.getUser();
 
-        summonButton.setVisible(false);
-        setMonsterButton.setVisible(false);
+        deActiveActions();
         assert opponent != null;
 
         setNumberOfDeckCards();
@@ -147,8 +148,7 @@ public class GameView {
 
         handContainer.setHgap(16);
 
-        for (int i = 0; i < handHouses.length; i++) {
-            HandHouse handHouse = handHouses[i];
+        for (HandHouse handHouse : handHouses) {
             handHouse.setPrefSize(68, 100);
             handHouse.setLayoutY(30);
 
@@ -159,7 +159,7 @@ public class GameView {
             handHouse.setStyle("-fx-cursor: hand");
             handHouse.setImageOfCard(isOpponentSide);
 
-            handContainer.getChildren().add(handHouses[i]);
+            handContainer.getChildren().add(handHouse);
         }
     }
 
@@ -180,22 +180,55 @@ public class GameView {
         setMonsterButton.setVisible(false);
         setEffectButton.setVisible(false);
         activeEffectButton.setVisible(false);
+        changePositionButton.setVisible(false);
     }
 
     private void showAvailableActions(HandHouse handHouse) {
-        if (game.getGameMainStage() == GameMainStage.FIRST_MAIN_PHASE || game.getGameMainStage() == GameMainStage.SECOND_MAIN_PHASE) {
-            if (handHouse.getCard() instanceof MonsterCard && game.getHiredMonster() == null) {
-                summonButton.setVisible(true);
-                setMonsterButton.setVisible(true);
-                new FadeIn(summonButton).play();
-                new FadeIn(setMonsterButton).play();
-            } else if (handHouse.getCard() instanceof MagicCard) {
-                MagicCard magicCard = (MagicCard) handHouse.getCard();
-                if ((magicCard.getMagicAttribute() == MagicAttribute.QUICK_PLAY || magicCard.getTypeOfMagic() == MagicType.TRAP) &&
-                        game.getPlayer(SideOfFeature.CURRENT).getBoard().numberOfFullHouse("spell") != 5) {
-                    activeEffectButton.setVisible(true);
+        switch (game.getGameMainStage()) {
+            case FIRST_MAIN_PHASE:
+            case SECOND_MAIN_PHASE: {
+                if (handHouse.getCard() instanceof MonsterCard && game.getHiredMonster() == null) {
+                    summonButton.setVisible(true);
+                    setMonsterButton.setVisible(true);
+                    new FadeIn(summonButton).play();
+                    new FadeIn(setMonsterButton).play();
+                } else if (handHouse.getCard() instanceof MagicCard) {
+                    MagicCard magicCard = (MagicCard) handHouse.getCard();
+                    if (game.getPlayer(SideOfFeature.CURRENT).getBoard().numberOfFullHouse("spell") != 5) {
+                        if ((magicCard.getMagicAttribute() == MagicAttribute.QUICK_PLAY || magicCard.getTypeOfMagic() == MagicType.TRAP)) {
+                            activeEffectButton.setVisible(true);
+                        }
+                        setEffectButton.setVisible(true);
+                    }
                 }
-                setEffectButton.setVisible(true);
+                break;
+            }
+        }
+    }
+
+    private void showAvailableActions(MonsterHouse monsterHouse) {
+        switch (game.getGameMainStage()) {
+            case FIRST_MAIN_PHASE:
+            case SECOND_MAIN_PHASE: {
+                if (monsterHouse.getCard() != null) {
+                    changePositionButton.setVisible(true);
+                    new FadeIn(changePositionButton).play();
+                }
+                break;
+            }
+        }
+    }
+
+    private void showAvailableActions(MagicHouse magicHouse) {
+        MagicCard magicCard = (MagicCard) (magicHouse.getCard());
+        if (magicCard.getTypeOfMagic() == MagicType.TRAP ||
+                magicCard.getMagicAttribute() == MagicAttribute.QUICK_PLAY) {
+            activeEffectButton.setVisible(true);
+            new FadeIn(activeEffectButton).play();
+        } else {
+            if (game.getGameMainStage() == GameMainStage.FIRST_MAIN_PHASE || game.getGameMainStage() == GameMainStage.SECOND_MAIN_PHASE) {
+                activeEffectButton.setVisible(true);
+                new FadeIn(activeEffectButton).play();
             }
         }
     }
@@ -219,51 +252,20 @@ public class GameView {
         });
     }
 
-    private void reloadPlayerHand(FlowPane handContainer, boolean isOpponentSide, HandHouse[] handHouses) {
-        reloadImages();
-        handContainer.getChildren().clear();
-        makeHandPane(handContainer, handHouses);
-        makeHandPaneReloadAnimation(handContainer, isOpponentSide);
-    }
-
-    private void makeHandPaneReloadAnimation(FlowPane handContainer, boolean isOpponentSide) {
-        if (isOpponentSide) {
-            SlideInDown animation = new SlideInDown(handContainer);
-            animation.setSpeed(2);
-            animation.play();
-        } else {
-            SlideInUp animation = new SlideInUp(handContainer);
-            animation.setSpeed(2);
-            animation.play();
-        }
-    }
-
-    private void makeHandPane(FlowPane handContainer, HandHouse[] handHouses) {
-        handContainer.setPadding(new Insets(0, 0, 0, 0));
-        handContainer.setHgap(14);
-
-        for (int j = 0; j < handHouses.length; j++) {
-            if (handHouses[j].getStyle() == null) {
-                break;
-            }
-            handHouses[j].setPrefSize(68, 100);
-
-            setMouseEnterEventForHand(handHouses[j]);
-            setMouseExitEventForHand(handHouses[j]);
-            setMouseClickEventForHand(handHouses[j]);
-
-            handContainer.getChildren().add(handHouses[j]);
-        }
-    }
-
     private void reloadImages() {
         HandHouse[] handHouses = game.getPlayer(SideOfFeature.CURRENT).getBoard().getPlayerHand();
-        for (int j = 0; j < handHouses.length; j++) {
-            for (int k = 0; k < handHouses.length - 1; k++) {
-                if (handHouses[k].doesHaveImage()) {
-                    HandHouse temp = handHouses[k];
-                    handHouses[k] = handHouses[k + 1];
-                    handHouses[k + 1] = temp;
+        for (int j = handHouses.length - 1; j >= 1; j--) {
+            for (int k = j - 1; k >= 0; k--) {
+                if (handHouses[j].doesHaveImage() && !handHouses[k].doesHaveImage()) {
+                    try {
+                        handHouses[k].setCard(handHouses[j].getCard());
+                        handHouses[k].setImageOfCard(true);
+                        handHouses[j].removeCard();
+                        new FadeInRight(handHouses[k]).play();
+                    } catch (FileNotFoundException e) {
+                        e.printStackTrace();
+                    }
+                    break;
                 }
             }
         }
@@ -300,10 +302,21 @@ public class GameView {
         gameHouse.setOnMouseClicked(e -> {
             if (gameHouse.getCardImage() != null) {
                 controller.selectCard(game, gameHouse);
-                if (gameHouse.getState().equals("hidden") || gameHouse.getState().equals("defenceHidden")) {
-                    selectedCardImageView.setImage(GameHouse.getBackOfCardImage());
+                if (!game.getCardProp().doesBelongToCurrent()) {
+                    if ((gameHouse.getState().equals("hidden") || gameHouse.getState().equals("defenceHidden"))) {
+                        selectedCardImageView.setImage(GameHouse.getBackOfCardImage());
+                    } else {
+                        selectedCardImageView.setImage(Card.getCardImage(game.getCardProp().getCard()));
+                    }
                 } else {
-                    selectedCardImageView.setImage(Card.getCardImage(game.getCardProp().getCard()));
+                    if (gameHouse instanceof MonsterHouse) {
+                        selectedCardImageView.setImage(Card.getCardImage(game.getCardProp().getCard()));
+                        deActiveActions();
+                        showAvailableActions((MonsterHouse) gameHouse);
+                    } else {
+                        deActiveActions();
+                        showAvailableActions((MagicHouse) gameHouse);
+                    }
                 }
                 new FlipInX(selectedCardImageView).play();
             }
@@ -337,15 +350,22 @@ public class GameView {
 
         ArrayList<Card> graveYardArrList = player.getBoard().getGraveYard().getDestroyedCards();
         for (Card card : graveYardArrList) {
-            ImageView imageView;
-            imageView = new ImageView(Card.getCardImage(card));
-
+            ImageView imageView = setImageOfCard(card);
             setPopUpCardsEffects(imageView);
 
             graveYardFlowPane.getChildren().add(imageView);
         }
 
         addNodesToPopUpPage(graveYardPane, player, graveYardFlowPane);
+    }
+
+    @NotNull
+    private ImageView setImageOfCard(Card card) {
+        ImageView imageView;
+        imageView = new ImageView(Card.getCardImage(card));
+        imageView.setFitWidth(60);
+        imageView.setFitHeight(92);
+        return imageView;
     }
 
     @NotNull
@@ -372,21 +392,19 @@ public class GameView {
             imageView.setEffect(null);
 
         });
-        imageView.setOnMouseClicked(e -> {
-            selectedCardImageView = imageView;
-        });
+        imageView.setOnMouseClicked(e -> selectedCardImageView = imageView);
     }
 
     @NotNull
     private FlowPane makePopUpFlowPane(int sizeOfFlowPane) {
-        FlowPane graveYardFlowPane = new FlowPane();
-        graveYardFlowPane.setHgap(14);
-        graveYardFlowPane.setVgap(10);
-        graveYardFlowPane.setPrefWrapLength(sizeOfFlowPane * (14.222 + 109) + 28.444);
-        graveYardFlowPane.setPrefHeight(190);
-        graveYardFlowPane.setPadding(new Insets(14));
-        graveYardFlowPane.setStyle("-fx-background-image: url('/graphicprop/images/dirtyBoardBG.jpg'); -fx-background-size: cover");
-        return graveYardFlowPane;
+        FlowPane flowPane = new FlowPane();
+        flowPane.setHgap(20);
+        flowPane.setVgap(10);
+        flowPane.setPrefWrapLength(sizeOfFlowPane * (14.222 + 109) + 28.444);
+        flowPane.setPrefHeight(190);
+        flowPane.setPadding(new Insets(14));
+        flowPane.setStyle("-fx-background-image: url('/graphicprop/images/dirtyBoardBG.jpg'); -fx-background-size: cover");
+        return flowPane;
     }
 
     public void showTributeItems() {
@@ -403,10 +421,7 @@ public class GameView {
         for (MonsterHouse house : monsterHouses) {
             if (house.getCard() != null) {
                 if (house != game.getHiredMonster()) {
-                    ImageView imageView;
-                    imageView = new ImageView(Card.getCardImage(house.getCard()));
-                    imageView.setFitWidth(60);
-                    imageView.setFitHeight(92);
+                    ImageView imageView = setImageOfCard(house.getCard());
 
                     setPopUpCardsEffectsForTribute(imageView, house, tributeMonsters);
                     tributeFlowPane.getChildren().add(imageView);
@@ -414,24 +429,30 @@ public class GameView {
             }
         }
         Button tribute = new Button();
+        setStyleForTributeButton(tributeNumber, tributeMonsters, tributePane, tribute);
+        addNodesToPopUpPage(tributePane, player, tributeFlowPane);
+    }
+
+    private void setStyleForTributeButton(int numberOfTributes, ArrayList<MonsterHouse> tributeMonsters, Pane tributePane, Button tribute) {
         tribute.setText("tribute");
         setButtonDetail(tribute);
-        tribute.setLayoutY(70);
-        tribute.setLayoutX(200);
+        tribute.setLayoutY(276);
+        tribute.setLayoutX(671);
         tributePane.getChildren().add(tribute);
+        tribute.setPrefWidth(90);
         tribute.setOnMouseClicked(e -> {
-            for (MonsterHouse tributeMonster : tributeMonsters) {
-                game.getPlayer(SideOfFeature.CURRENT).getBoard().moveCardToGraveYard(tributeMonster.getCard());
-            }
-
-            new ZoomOut(tributePane).play();
-            root.getChildren().remove(tributePane);
-            for (Node child : root.getChildren()) {
-                child.setDisable(false);
-                child.setOpacity(1);
+            if (numberOfTributes == tributeMonsters.size()) {
+                for (MonsterHouse tributeMonster : tributeMonsters) {
+                    game.getPlayer(SideOfFeature.CURRENT).getBoard().moveCardToGraveYard(tributeMonster.getCard());
+                }
+                new ZoomOut(tributePane).play();
+                root.getChildren().remove(tributePane);
+                for (Node child : root.getChildren()) {
+                    child.setDisable(false);
+                    child.setOpacity(1);
+                }
             }
         });
-        addNodesToPopUpPage(tributePane, player, tributeFlowPane);
     }
 
     private void setButtonDetail(Button tribute) {
@@ -439,12 +460,8 @@ public class GameView {
         tribute.setStyle("-fx-background-color: red; -fx-border-color: black; -fx-border-radius: 5; -fx-background-radius: 5; -fx-cursor: hand");
         tribute.setPrefHeight(10);
         tribute.setPrefWidth(15);
-        tribute.setOnMouseEntered(e -> {
-            tribute.setOpacity(1);
-        });
-        tribute.setOnMouseExited(e -> {
-            tribute.setOpacity(0.6);
-        });
+        tribute.setOnMouseEntered(e -> tribute.setOpacity(1));
+        tribute.setOnMouseExited(e -> tribute.setOpacity(0.6));
     }
 
     private void setPopUpCardsEffectsForTribute(ImageView imageView, MonsterHouse house,
@@ -474,8 +491,8 @@ public class GameView {
         Button closeButton = seCloseButtonPopUp(tributePane);
 
 
-        Label title = setPopUpName(player);
-
+        Label title = setPopUpName();
+        title.setText(player.getUser().getNickname() + "monsters");
         ScrollPane scrollPane = makePopUpScrollPane();
 
         tributeFlowPane.setMinWidth(700);
@@ -499,9 +516,8 @@ public class GameView {
     }
 
     @NotNull
-    private Label setPopUpName(Player player) {
+    private Label setPopUpName() {
         Label title = new Label();
-        title.setText(player.getUser().getNickname() + "'s graveyard:");
         title.setLayoutX(30);
         title.setLayoutY(30);
         title.setStyle("-fx-font-weight: bold; -fx-font-size: 20; -fx-text-fill: white");
@@ -570,12 +586,23 @@ public class GameView {
     private void animateSummon() {
         MonsterHouse summoned = game.getHiredMonster();
 
-        if (summoned.getState().equals(MonsterHouseVisibilityState.OO.toString())) summoned.setImageOfCard(true);
-        else if (summoned.getState().equals(MonsterHouseVisibilityState.DH.toString())) summoned.setImageOfCard(false);
+        if (summoned.getState().equals(MonsterHouseVisibilityState.OO.toString())) {
+            summoned.setImageOfCard(true);
 
+        } else if (summoned.getState().equals(MonsterHouseVisibilityState.DH.toString())) {
+            summoned.setImageOfCard(false);
+        }
+        new ZoomIn(summoned).play();
     }
 
     private void swapColorForChangeTurn() {
+        if (turnShowerDown.getText().equals("You")) {
+            turnShowerDown.setText("Opponent");
+            turnShowerUp.setText("You");
+        } else {
+            turnShowerUp.setText("Opponent");
+            turnShowerDown.setText("You");
+        }
         if (endPhaseBox.getStyle().contains("red")) {
             swapPhaseNameButton("-fx-background-image: url('graphicprop/images/greenPhaseBg.png')");
         } else if (endPhaseBox.getStyle().contains("green")) {
@@ -698,24 +725,40 @@ public class GameView {
         } else if (mouseEvent.getSource() == nextPhase) {
             phaseName.setText(controller.nextPhase(game));
             setNumberOfDeckCards();
-            new BounceIn(nextPhase).play();
+            new BounceIn(phaseName).play();
             if (phaseName.getText().equals("draw phase")) {
                 animateDraw();
                 swapColorForChangeTurn();
             }
             setScaleForCurrentPhase(phaseName.getText());
+            restartSelectedCardImage();
         } else if (mouseEvent.getSource() == summonButton) {
             String answer = mainPhaseController.hireCard(game, TypeOfHire.SUMMON);
             if (answer.contains("1") || answer.contains("2")) {
                 showTributeItems();
             }
             animateSummon();
+            restartSelectedCardImage();
+            reloadImages();
         } else if (mouseEvent.getSource() == setMonsterButton) {
             String answer = mainPhaseController.hireCard(game, TypeOfHire.SET);
             if (answer.contains("1") || answer.contains("2")) {
                 showTributeItems();
             }
             animateSummon();
+            reloadImages();
+            restartSelectedCardImage();
+        } else if (mouseEvent.getSource() == setEffectButton) {
+            mainPhaseController.hireCard(game, TypeOfHire.SET);
+            restartSelectedCardImage();
+            reloadImages();
         }
+    }
+
+    private void restartSelectedCardImage() {
+
+        selectedCardImageView.setImage(GameHouse.getBackOfCardImage());
+        deActiveActions();
+        new FlipInX(selectedCardImageView).play();
     }
 }
