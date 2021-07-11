@@ -27,6 +27,7 @@ import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.FlowPane;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.Pane;
+import javafx.scene.media.MediaPlayer;
 import javafx.util.Duration;
 import model.cards.cardsEnum.Magic.MagicAttribute;
 import model.cards.cardsEnum.Magic.MagicType;
@@ -46,6 +47,8 @@ import model.gameprop.Player;
 import model.gameprop.gamemodel.Game;
 import model.userProp.User;
 import org.jetbrains.annotations.NotNull;
+import view.AudioHandler;
+import view.AudioPath;
 
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
@@ -144,6 +147,35 @@ public class GameView {
 
         initializeHand(playerYou, yourHandContainer, true);
         initializeHand(playerOpponent, opponentHandContainer, false);
+
+        AudioHandler initialSoundOfGame; // stating the game theme music!
+        if (AudioHandler.getPlaying() != null) {
+            if (!AudioHandler.getPlayingAudioPath().equals(AudioPath.ITS_TIME_TO_DUEL)) {
+                initialSoundOfGame = new AudioHandler(AudioPath.ITS_TIME_TO_DUEL);
+                AudioHandler.getPlaying().getMediaPlayer().stop();
+                playNewMedia(initialSoundOfGame);
+            }
+        } else {
+            initialSoundOfGame = new AudioHandler(AudioPath.ITS_TIME_TO_DUEL);
+            playNewMedia(initialSoundOfGame);
+        }
+
+    }
+
+    private void playNewMedia(AudioHandler media) {
+        media.getMediaPlayer().setCycleCount(1);
+
+        media.getMediaPlayer().setOnEndOfMedia(new Runnable() {
+            @Override
+            public void run() {
+                AudioHandler gameTheme = new AudioHandler(AudioPath.IN_Duel);
+                gameTheme.getMediaPlayer().setCycleCount(MediaPlayer.INDEFINITE);
+                AudioHandler.getPlaying().getMediaPlayer().stop();
+                gameTheme.play();
+            }
+        });
+
+        media.play();
     }
 
     private void setNumberOfDeckCards() {

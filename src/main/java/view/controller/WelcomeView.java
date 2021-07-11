@@ -2,16 +2,13 @@ package view.controller;
 
 import animatefx.animation.Tada;
 import controller.menues.menuhandlers.menucontrollers.WelcomePageController;
-import javafx.event.ActionEvent;
-import javafx.fxml.FXMLLoader;
+import javafx.fxml.FXML;
 import javafx.scene.Node;
-import javafx.scene.Parent;
-import javafx.scene.Scene;
 import javafx.scene.control.Button;
-import javafx.scene.control.Label;
 import javafx.scene.input.MouseEvent;
-import javafx.stage.Stage;
 import model.enums.Menu;
+import view.AudioHandler;
+import view.AudioPath;
 
 import java.io.IOException;
 
@@ -28,6 +25,20 @@ public class WelcomeView {
         controller = WelcomePageController.getInstance();
     }
 
+    @FXML
+    public void initialize() {
+        AudioHandler initialTheme;
+        if (AudioHandler.getPlaying() != null) {
+            if (!AudioHandler.getPlayingAudioPath().equals(AudioPath.INITIAL_MENUS)) {
+                initialTheme = new AudioHandler(AudioPath.INITIAL_MENUS);
+                AudioHandler.getPlaying().getMediaPlayer().stop();
+                initialTheme.play();
+            }
+        } else {
+            initialTheme = new AudioHandler(AudioPath.INITIAL_MENUS);
+            initialTheme.play();
+        }
+    }
 
     public void run(MouseEvent event) throws IOException {
         if (event.getSource() == Exit) {
