@@ -133,7 +133,7 @@ public class GameView {
     }
 
     private void setSizeForChangePositionIcon() throws FileNotFoundException {
-        changePositionIcon = new ImageView(new Image(new FileInputStream("G:\\graphics\\src\\main\\resources\\graphicprop\\images\\changePosition.png")));
+        changePositionIcon = new ImageView(new Image(new FileInputStream("src/main/resources/graphicprop/images/changePosition.png")));
         changePositionIcon.setFitHeight(40);
         changePositionIcon.setFitWidth(40);
         changePositionIcon.setLayoutY(25);
@@ -141,7 +141,7 @@ public class GameView {
     }
 
     private void setSizeForAttackMonsterIcon() throws FileNotFoundException {
-        attackMonsterIcon = new ImageView(new Image(new FileInputStream("G:\\graphics\\src\\main\\resources\\graphicprop\\images\\attack.png")));
+        attackMonsterIcon = new ImageView(new Image(new FileInputStream("src/main/resources/graphicprop/images/attack.png")));
         attackMonsterIcon.setFitWidth(40);
         attackMonsterIcon.setFitHeight(40);
         attackMonsterIcon.setLayoutY(25);
@@ -149,7 +149,7 @@ public class GameView {
     }
 
     private void setSizeForSetMagicIcon() throws FileNotFoundException {
-        setMagicIcon = new ImageView(new Image(new FileInputStream("G:\\graphics\\src\\main\\resources\\graphicprop\\images\\setMagic.png")));
+        setMagicIcon = new ImageView(new Image(new FileInputStream("src/main/resources/graphicprop/images/setMagic.png")));
         setMagicIcon.setFitHeight(40);
         setMagicIcon.setFitWidth(40);
         setMagicIcon.setLayoutY(25);
@@ -157,7 +157,7 @@ public class GameView {
     }
 
     private void setSizeForActiveMagic() throws FileNotFoundException {
-        activeMagicIcon = new ImageView(new Image(new FileInputStream("G:\\graphics\\src\\main\\resources\\graphicprop\\images\\activeEffect.png")));
+        activeMagicIcon = new ImageView(new Image(new FileInputStream("src/main/resources/graphicprop/images/activeEffect.png")));
         activeMagicIcon.setFitWidth(40);
         activeMagicIcon.setFitHeight(40);
         activeMagicIcon.setLayoutY(25);
@@ -165,7 +165,7 @@ public class GameView {
     }
 
     private void setSizeForSetMonsterIcon() throws FileNotFoundException {
-        setMonsterIcon = new ImageView(new Image(new FileInputStream("G:\\graphics\\src\\main\\resources\\graphicprop\\images\\setMonster.png")));
+        setMonsterIcon = new ImageView(new Image(new FileInputStream("src/main/resources/graphicprop/images/setMonster.png")));
         setMonsterIcon.setFitHeight(40);
         setMonsterIcon.setFitWidth(40);
         setMonsterIcon.setLayoutY(25);
@@ -173,7 +173,7 @@ public class GameView {
     }
 
     private void setSizeForSummonIcon() throws FileNotFoundException {
-        summonIcon = new ImageView(new Image(new FileInputStream("G:\\graphics\\src\\main\\resources\\graphicprop\\images\\summon.png")));
+        summonIcon = new ImageView(new Image(new FileInputStream("src/main/resources/graphicprop/images/summon.png")));
         summonIcon.setFitWidth(40);
         summonIcon.setFitHeight(40);
         summonIcon.setLayoutY(25);
