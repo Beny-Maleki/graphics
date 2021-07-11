@@ -38,4 +38,4 @@ public class SelectedCardProp<T extends Selectable> {
         return cardPlace;
     }
 
-}
+    }

@@ -267,6 +267,7 @@ public class GameView {
         });
 
         changePositionIcon.setOnMouseExited(event -> {
+            ((MonsterHouse)game.getCardProp().getCardPlace()).changePos();
 
         });
     }

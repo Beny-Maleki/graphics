@@ -16,7 +16,7 @@ public class ChangePosChain {
     }
 
     private void buildChain() {
-        processor = new SelectedCardProcessor(new CardStateProcessor(new ChangeRequestProcessor(null)));
+        processor = new CardStateProcessor(new ChangeRequestProcessor(null));
     }
 
     public String request(SelectedCardProp cardProp, WantedPos pos, MonsterHouse monsterHouse) {
