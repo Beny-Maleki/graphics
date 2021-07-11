@@ -6,11 +6,18 @@ import controller.gamecontrollers.gamestagecontroller.BattlePhaseController;
 import controller.gamecontrollers.gamestagecontroller.DrawPhaseController;
 import controller.gamecontrollers.gamestagecontroller.MainPhaseController;
 import controller.gamecontrollers.gamestagecontroller.StandByPhaseController;
+import javafx.animation.KeyFrame;
+import javafx.animation.KeyValue;
+import javafx.animation.Timeline;
+import javafx.beans.value.ChangeListener;
+import javafx.beans.value.ObservableValue;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.geometry.Insets;
 import javafx.scene.Node;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.control.ProgressBar;
 import javafx.scene.control.ScrollPane;
 import javafx.scene.effect.DropShadow;
 import javafx.scene.image.Image;
@@ -20,6 +27,7 @@ import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.FlowPane;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.Pane;
+import javafx.util.Duration;
 import model.cards.cardsEnum.Magic.MagicAttribute;
 import model.cards.cardsEnum.Magic.MagicType;
 import model.cards.cardsProp.Card;
@@ -37,7 +45,6 @@ import model.gameprop.GameInProcess;
 import model.gameprop.Player;
 import model.gameprop.gamemodel.Game;
 import model.userProp.User;
-import model.userProp.UserInfoType;
 import org.jetbrains.annotations.NotNull;
 
 import java.io.FileInputStream;
@@ -89,6 +96,9 @@ public class GameView {
     public Label turnShowerDown;
     public Button directAttackButton;
     public Button attackButton;
+    public ProgressBar opponentLPBar;
+    public ProgressBar yourLPBar;
+
     private Player playerYou;
     private Player playerOpponent;
     private GeneralController controller;
@@ -108,6 +118,8 @@ public class GameView {
 
     @FXML
     public void initialize() throws FileNotFoundException {
+        game = GameInProcess.getGame();
+
         playerYou = GameInProcess.getGame().getFirstPlayer();
         playerOpponent = GameInProcess.getGame().getSecondPlayer();
 
@@ -119,6 +131,11 @@ public class GameView {
 
         setNumberOfDeckCards();
         initializeInfos(you, opponent);
+
+        dynamicProgressBarColors(yourLPBar);
+        dynamicProgressBarColors(opponentLPBar);
+        yourLPBar.setStyle("-fx-accent: #0073ff");
+        opponentLPBar.setStyle("-fx-accent: #0073ff");
 
         initializeShadowEffect();
 
@@ -218,13 +235,16 @@ public class GameView {
             }
             case BATTLE_PHASE: {
                 if (monsterHouse.getCard() != null) {
-                    if(monsterHouse.getState().equals(MonsterHouseVisibilityState.OO)) {
-                        if (!monsterHouse.isMonsterAttacked()) {
+                    changePositionButton.setVisible(true);
+                    new FadeIn(changePositionButton).play();
+
+                    if(monsterHouse.getState().equals(MonsterHouseVisibilityState.OO.toString())) {
+                        if (!monsterHouse.isMonsterAttacked() && !game.isFirstTurnOfTheGame()) {
                             boolean isOppoMonsterHousesEmpty = true;
 
                             Player opponent = game.getPlayer(SideOfFeature.OPPONENT);
                             for (MonsterHouse house : opponent.getBoard().getMonsterHouse()) {
-                                if (!house.getState().equals(MonsterHouseVisibilityState.E)) {
+                                if (!house.getState().equals(MonsterHouseVisibilityState.E.toString())) {
                                     isOppoMonsterHousesEmpty = false;
                                 }
                             }
@@ -741,6 +761,40 @@ public class GameView {
 
     }
 
+    private void dynamicProgressBarColors (ProgressBar bar) {
+        String CRITICAL = "-fx-accent: C86176;";
+        String DANGER = "-fx-accent: B181A1;";
+        String MODERATE = "-fx-accent: AC91B9;";
+        String GOOD = "-fx-accent: #0073ff;";
+
+        bar.progressProperty().addListener(new ChangeListener<>() {
+            Flash flash = new Flash(bar);
+            @Override
+            public void changed(ObservableValue<? extends Number> observable, Number oldValue, Number newValue) {
+                double progress = newValue == null ? 0 : newValue.doubleValue();
+                if (progress < 0.3) {
+                    setBarStyleClass(bar, CRITICAL);
+                    flash.setCycleCount(AnimationFX.INDEFINITE);
+                    flash.setSpeed(0.3);
+                    flash.play();
+                } else if (progress < 0.6) {
+                    flash.stop();
+                    setBarStyleClass(bar, DANGER);
+                } else if (progress < 0.8) {
+                    flash.stop();
+                    setBarStyleClass(bar, MODERATE);
+                } else {
+                    flash.stop();
+                    setBarStyleClass(bar, GOOD);
+                }
+            }
+
+            private void setBarStyleClass(ProgressBar bar, String barStyleClass) {
+                bar.setStyle(barStyleClass);
+            }
+        });
+    }
+
     public void run(MouseEvent mouseEvent) throws FileNotFoundException {
         if (mouseEvent.getSource() == yourGraveyardPane) {
             showGraveYard(playerYou);
@@ -754,6 +808,7 @@ public class GameView {
                 animateDraw();
                 swapColorForChangeTurn();
             }
+
             setScaleForCurrentPhase(phaseName.getText());
             restartSelectedCardImage();
         } else if (mouseEvent.getSource() == summonButton) {
@@ -776,7 +831,17 @@ public class GameView {
             mainPhaseController.hireCard(game, TypeOfHire.SET);
             restartSelectedCardImage();
             reloadImages();
+        } else if (mouseEvent.getSource() == attackButton) {
+            attack();
+        } else if (mouseEvent.getSource() == directAttackButton) {
+            directAttack();
         }
+    }
+
+    private void directAttack() {
+    }
+
+    private void attack() {
     }
 
     private void restartSelectedCardImage() {
@@ -785,4 +850,5 @@ public class GameView {
         deActiveActions();
         new FlipInX(selectedCardImageView).play();
     }
+    
 }

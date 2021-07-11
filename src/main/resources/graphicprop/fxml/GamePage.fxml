@@ -54,7 +54,7 @@
                   <Font name="System Bold" size="14.0" />
                </font>
             </Label>
-            <ProgressBar fx:id="OpponentLPBar" layoutX="61.0" layoutY="237.0" prefHeight="25.0" prefWidth="150.0" progress="1.0" style="-fx-background-color: green;" />
+            <ProgressBar fx:id="opponentLPBar" layoutX="61.0" layoutY="237.0" prefHeight="25.0" prefWidth="150.0" progress="1.0" style="-fx-background-color: green;" />
          </children>
       </AnchorPane>
       <AnchorPane fx:id="buttonsContainer" layoutY="301.0" prefHeight="79.0" prefWidth="222.0">

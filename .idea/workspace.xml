@@ -4,26 +4,10 @@
     <option name="autoReloadType" value="ALL" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="45f87b1a-8403-4c06-b2b2-57ebfe555883" name="Default Changelist" comment="bug fix in fxml">
-      <change afterPath="$PROJECT_DIR$/src/main/resources/graphicprop/images/Cards/SpellTrap/MagicJammer.jpg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_28-May-21_00_20__Default_Changelist_.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_28-May-21_00_20__Default_Changelist_.xml" afterDir="false" />
+    <list default="true" id="45f87b1a-8403-4c06-b2b2-57ebfe555883" name="Default Changelist" comment="some bug fixes">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/jsonResources/Decks.Json" beforeDir="false" afterPath="$PROJECT_DIR$/jsonResources/Decks.Json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/jsonResources/MonsterCard.json" beforeDir="false" afterPath="$PROJECT_DIR$/jsonResources/MonsterCard.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/jsonResources/Users.Json" beforeDir="false" afterPath="$PROJECT_DIR$/jsonResources/Users.Json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/view/controller/CardCreatorPageView.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/view/controller/CardCreatorPageView.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/view/controller/DeckModifierView.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/view/controller/DeckModifierView.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/view/controller/DecksView.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/view/controller/DecksView.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/view/controller/GameView.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/view/controller/GameView.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/graphicprop/fxml/CardCreatorPage.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/graphicprop/fxml/CardCreatorPage.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/graphicprop/fxml/DuelPage.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/graphicprop/fxml/DuelPage.fxml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/graphicprop/fxml/GamePage.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/graphicprop/fxml/GamePage.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/graphicprop/fxml/LoginPage.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/graphicprop/fxml/LoginPage.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/graphicprop/images/Cards/Monsters/ManEaterBug.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/graphicprop/images/Cards/Monsters/Man-EaterBug.jpg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/graphicprop/images/Cards/Monsters/Terratiger.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/graphicprop/images/Cards/Monsters/Terratiger,theEmpoweredWarrior.jpg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/graphicprop/images/Cards/SpellTrap/CalloftheHunted.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/graphicprop/images/Cards/SpellTrap/CallofTheHaunted.jpg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/graphicprop/images/Cards/SpellTrap/HarpiesFeatherDuster.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/graphicprop/images/Cards/SpellTrap/Harpie'sFeatherDuster.jpg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/graphicprop/images/Cards/SpellTrap/SwordofRevealingLight.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/graphicprop/images/Cards/SpellTrap/SwordsofRevealingLight.jpg" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -302,14 +286,7 @@
       <workItem from="1625812832910" duration="31380000" />
       <workItem from="1625904933777" duration="17606000" />
       <workItem from="1625948413826" duration="197000" />
-      <workItem from="1625999059002" duration="5879000" />
-    </task>
-    <task id="LOCAL-00049" summary="completing general command">
-      <created>1620193896911</created>
-      <option name="number" value="00049" />
-      <option name="presentableId" value="LOCAL-00049" />
-      <option name="project" value="LOCAL" />
-      <updated>1620193896911</updated>
+      <workItem from="1625999059002" duration="12603000" />
     </task>
     <task id="LOCAL-00050" summary="completing general command">
       <created>1620194709532</created>
@@ -624,7 +601,14 @@
       <option name="project" value="LOCAL" />
       <updated>1625948569018</updated>
     </task>
-    <option name="localTasksCounter" value="98" />
+    <task id="LOCAL-00098" summary="some bug fixes">
+      <created>1626005105324</created>
+      <option name="number" value="00098" />
+      <option name="presentableId" value="LOCAL-00098" />
+      <option name="project" value="LOCAL" />
+      <updated>1626005105325</updated>
+    </task>
+    <option name="localTasksCounter" value="99" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -644,7 +628,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="Profile add" />
     <MESSAGE value="login and register and welcome page" />
     <MESSAGE value="login and register and welcome page controllers" />
     <MESSAGE value="fix profile" />
@@ -669,7 +652,8 @@
     <MESSAGE value="change hand" />
     <MESSAGE value="bug fix in hand" />
     <MESSAGE value="bug fix in fxml" />
-    <option name="LAST_COMMIT_MESSAGE" value="bug fix in fxml" />
+    <MESSAGE value="some bug fixes" />
+    <option name="LAST_COMMIT_MESSAGE" value="some bug fixes" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
