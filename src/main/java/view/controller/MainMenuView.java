@@ -1,9 +1,12 @@
 package view.controller;
 
 import controller.menues.menuhandlers.menucontrollers.MainMenuController;
+import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.input.MouseEvent;
 import model.enums.Menu;
+import view.AudioHandler;
+import view.AudioPath;
 
 import java.io.IOException;
 
@@ -20,6 +23,22 @@ public class MainMenuView {
 
     {
         controller = new MainMenuController();
+    }
+
+    @FXML
+    public void initialize() {
+        AudioHandler mainTheme; // stating the game theme music!
+        if (AudioHandler.getPlaying() != null) {
+            if (!AudioHandler.getPlayingAudioPath().equals(AudioPath.MAIN_MENU)) {
+                mainTheme = new AudioHandler(AudioPath.MAIN_MENU);
+                AudioHandler.getPlaying().getMediaPlayer().stop();
+                mainTheme.play();
+            }
+        } else {
+            mainTheme =  new AudioHandler(AudioPath.MAIN_MENU);
+            mainTheme.play();
+        }
+
     }
 
     public void run(MouseEvent event) throws IOException {
