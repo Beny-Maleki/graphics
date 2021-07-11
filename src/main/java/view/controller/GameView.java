@@ -6,6 +6,9 @@ import controller.gamecontrollers.gamestagecontroller.BattlePhaseController;
 import controller.gamecontrollers.gamestagecontroller.DrawPhaseController;
 import controller.gamecontrollers.gamestagecontroller.MainPhaseController;
 import controller.gamecontrollers.gamestagecontroller.StandByPhaseController;
+import javafx.animation.KeyFrame;
+import javafx.animation.KeyValue;
+import javafx.animation.Timeline;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.fxml.FXML;
@@ -26,6 +29,7 @@ import javafx.scene.layout.FlowPane;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.Pane;
 import javafx.scene.media.MediaPlayer;
+import javafx.util.Duration;
 import model.cards.cardsEnum.Magic.MagicAttribute;
 import model.cards.cardsEnum.Magic.MagicType;
 import model.cards.cardsProp.Card;
@@ -92,6 +96,8 @@ public class GameView {
     public Button directAttackButton;
     public ProgressBar opponentLPBar;
     public ProgressBar yourLPBar;
+    public Label opponentLPLabel;
+    public Label yourLPLabel;
     private ImageView summonIcon;
     private ImageView setMonsterIcon;
     private ImageView setMagicIcon;
@@ -106,6 +112,8 @@ public class GameView {
     private BattlePhaseController battlePhaseController;
     private StandByPhaseController standByPhaseController;
     private Game game;
+    private double prevLPYou;
+    private double prevLPOpponent;
 
     {
         controller = new GeneralController();
@@ -292,6 +300,10 @@ public class GameView {
                 monsterHouse.setOnMouseClicked(event3 -> {
                     MonsterHouse attacker = (MonsterHouse) game.getCardProp().getCardPlace();
                     String state = monsterHouse.getState();
+
+                    prevLPYou = yourLPBar.getProgress();
+                    prevLPOpponent = opponentLPBar.getProgress();
+
                     battlePhaseController.attackMonsterHouse(game, monsterHouse);
                     if (monsterHouse.getCard() == null) {
                         Shake shake = new Shake(monsterHouse);
@@ -329,6 +341,26 @@ public class GameView {
     }
 
     private void updateHealth() {
+        double newLPYou = ((double) playerYou.getPlayerLifePoint()) / 8000;
+        double newLPOpponent = ((double) playerOpponent.getPlayerLifePoint()) / 8000;
+
+        System.out.println(newLPYou);
+        System.out.println(newLPOpponent);
+
+        yourLPBar.setProgress(prevLPYou);
+        opponentLPBar.setProgress(prevLPOpponent);
+
+        Timeline timeline = new Timeline();
+        timeline.getKeyFrames().addAll(
+                new KeyFrame(Duration.millis(1000), new KeyValue(yourLPBar.progressProperty(), newLPYou)),
+                new KeyFrame(Duration.millis(1000), new KeyValue(opponentLPBar.progressProperty(), newLPOpponent))
+        );
+
+        timeline.play();
+
+        yourLPLabel.setText("LP: " + playerYou.getPlayerLifePoint());
+        opponentLPLabel.setText("LP: " + playerOpponent.getPlayerLifePoint());
+
 
     }
 
@@ -606,8 +638,8 @@ public class GameView {
     private ImageView setImageOfCard(Card card) {
         ImageView imageView;
         imageView = new ImageView(Card.getCardImage(card));
-        imageView.setFitWidth(60);
-        imageView.setFitHeight(92);
+        imageView.setFitWidth(123);
+        imageView.setFitHeight(180);
         return imageView;
     }
 
@@ -643,7 +675,7 @@ public class GameView {
         FlowPane flowPane = new FlowPane();
         flowPane.setHgap(20);
         flowPane.setVgap(10);
-        flowPane.setPrefWrapLength(sizeOfFlowPane * (14.222 + 109) + 28.444);
+        flowPane.setPrefWrapLength(sizeOfFlowPane * (14.222 + 123) + 28.444);
         flowPane.setPrefHeight(190);
         flowPane.setPadding(new Insets(14));
         flowPane.setStyle("-fx-background-image: url('/graphicprop/images/dirtyBoardBG.jpg'); -fx-background-size: cover");
