@@ -87,6 +87,8 @@ public class GameView {
     public Pane field;
     public Label turnShowerUp;
     public Label turnShowerDown;
+    public Button directAttackButton;
+    public Button attackButton;
     private Player playerYou;
     private Player playerOpponent;
     private GeneralController controller;
@@ -106,10 +108,6 @@ public class GameView {
 
     @FXML
     public void initialize() throws FileNotFoundException {
-        game = new Game(new Player(User.getUserByUserInfo("sas", UserInfoType.NICKNAME), 0),
-                new Player(User.getUserByUserInfo("KaftarBaz", UserInfoType.NICKNAME), 0), 1);
-        GameInProcess.setGame(game);
-
         playerYou = GameInProcess.getGame().getFirstPlayer();
         playerOpponent = GameInProcess.getGame().getSecondPlayer();
 
@@ -181,6 +179,8 @@ public class GameView {
         setEffectButton.setVisible(false);
         activeEffectButton.setVisible(false);
         changePositionButton.setVisible(false);
+        attackButton.setVisible(false);
+        directAttackButton.setVisible(false);
     }
 
     private void showAvailableActions(HandHouse handHouse) {
@@ -215,6 +215,30 @@ public class GameView {
                     new FadeIn(changePositionButton).play();
                 }
                 break;
+            }
+            case BATTLE_PHASE: {
+                if (monsterHouse.getCard() != null) {
+                    if(monsterHouse.getState().equals(MonsterHouseVisibilityState.OO)) {
+                        if (!monsterHouse.isMonsterAttacked()) {
+                            boolean isOppoMonsterHousesEmpty = true;
+
+                            Player opponent = game.getPlayer(SideOfFeature.OPPONENT);
+                            for (MonsterHouse house : opponent.getBoard().getMonsterHouse()) {
+                                if (!house.getState().equals(MonsterHouseVisibilityState.E)) {
+                                    isOppoMonsterHousesEmpty = false;
+                                }
+                            }
+
+                            if (isOppoMonsterHousesEmpty) {
+                                directAttackButton.setVisible(true);
+                                new FadeIn(directAttackButton).play();
+                            } else {
+                                attackButton.setVisible(true);
+                                new FadeIn(attackButton).play();
+                            }
+                        }
+                    }
+                }
             }
         }
     }
