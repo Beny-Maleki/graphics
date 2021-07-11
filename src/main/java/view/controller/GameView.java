@@ -6,10 +6,6 @@ import controller.gamecontrollers.gamestagecontroller.BattlePhaseController;
 import controller.gamecontrollers.gamestagecontroller.DrawPhaseController;
 import controller.gamecontrollers.gamestagecontroller.MainPhaseController;
 import controller.gamecontrollers.gamestagecontroller.StandByPhaseController;
-import javafx.animation.KeyFrame;
-import javafx.animation.KeyValue;
-import javafx.animation.PathTransition;
-import javafx.animation.Timeline;
 import javafx.fxml.FXML;
 import javafx.geometry.Insets;
 import javafx.scene.Node;
@@ -24,10 +20,6 @@ import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.FlowPane;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.Pane;
-import javafx.scene.shape.MoveTo;
-import javafx.scene.shape.Path;
-import javafx.util.Duration;
-import model.cards.CardHouse;
 import model.cards.cardsEnum.Magic.MagicAttribute;
 import model.cards.cardsEnum.Magic.MagicType;
 import model.cards.cardsProp.Card;
@@ -37,14 +29,12 @@ import model.enums.GameEnums.SideOfFeature;
 import model.enums.GameEnums.TypeOfHire;
 import model.enums.GameEnums.cardvisibility.MonsterHouseVisibilityState;
 import model.enums.GameEnums.gamestage.GameMainStage;
-import model.enums.Origin;
 import model.gameprop.BoardProp.GameHouse;
 import model.gameprop.BoardProp.HandHouse;
 import model.gameprop.BoardProp.MagicHouse;
 import model.gameprop.BoardProp.MonsterHouse;
 import model.gameprop.GameInProcess;
 import model.gameprop.Player;
-import model.gameprop.SelectedCardProp;
 import model.gameprop.gamemodel.Game;
 import model.userProp.User;
 import model.userProp.UserInfoType;
@@ -53,7 +43,6 @@ import org.jetbrains.annotations.NotNull;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.util.ArrayList;
-import java.util.concurrent.Flow;
 
 public class GameView {
 
@@ -194,7 +183,7 @@ public class GameView {
     }
 
     private void showAvailableActions(HandHouse handHouse) {
-        if (game.getGameMainStage() == GameMainStage.FIRST_MAIN_PHASE) {
+        if (game.getGameMainStage() == GameMainStage.FIRST_MAIN_PHASE || game.getGameMainStage() == GameMainStage.SECOND_MAIN_PHASE) {
             if (handHouse.getCard() instanceof MonsterCard && game.getHiredMonster() == null) {
                 summonButton.setVisible(true);
                 setMonsterButton.setVisible(true);
@@ -374,13 +363,7 @@ public class GameView {
     }
 
     private void setPopUpCardsEffects(ImageView imageView) {
-        imageView.setOnMouseEntered(e -> {
-            imageView.setScaleX(1.2);
-            imageView.setScaleY(1.2);
-
-            DropShadow dropShadow = new DropShadow();
-            imageView.setEffect(dropShadow);
-        });
+        mouseHoverEvent(imageView);
 
         imageView.setOnMouseExited(e -> {
             imageView.setScaleX(1);
@@ -389,7 +372,6 @@ public class GameView {
             imageView.setEffect(null);
 
         });
-
         imageView.setOnMouseClicked(e -> {
             selectedCardImageView = imageView;
         });
@@ -408,6 +390,8 @@ public class GameView {
     }
 
     public void showTributeItems() {
+        Integer tributeNumber = game.getTributeNumber();
+        ArrayList<MonsterHouse> tributeMonsters = new ArrayList<>();
         Pane tributePane = new Pane();
         Player player = game.getPlayer(SideOfFeature.CURRENT);
         int sizeOfFlowPane = player.getBoard().numberOfFullHouse("monster");
@@ -418,14 +402,72 @@ public class GameView {
         MonsterHouse[] monsterHouses = player.getBoard().getMonsterHouse();
         for (MonsterHouse house : monsterHouses) {
             if (house.getCard() != null) {
-                ImageView imageView;
-                imageView = new ImageView(Card.getCardImage(house.getCard()));
-                setPopUpCardsEffects(imageView);
-                tributeFlowPane.getChildren().add(imageView);
+                if (house != game.getHiredMonster()) {
+                    ImageView imageView;
+                    imageView = new ImageView(Card.getCardImage(house.getCard()));
+                    imageView.setFitWidth(60);
+                    imageView.setFitHeight(92);
+
+                    setPopUpCardsEffectsForTribute(imageView, house, tributeMonsters);
+                    tributeFlowPane.getChildren().add(imageView);
+                }
             }
         }
+        Button tribute = new Button();
+        tribute.setText("tribute");
+        setButtonDetail(tribute);
+        tribute.setLayoutY(70);
+        tribute.setLayoutX(200);
+        tributePane.getChildren().add(tribute);
+        tribute.setOnMouseClicked(e -> {
+            for (MonsterHouse tributeMonster : tributeMonsters) {
+                game.getPlayer(SideOfFeature.CURRENT).getBoard().moveCardToGraveYard(tributeMonster.getCard());
+            }
 
+            new ZoomOut(tributePane).play();
+            root.getChildren().remove(tributePane);
+            for (Node child : root.getChildren()) {
+                child.setDisable(false);
+                child.setOpacity(1);
+            }
+        });
         addNodesToPopUpPage(tributePane, player, tributeFlowPane);
+    }
+
+    private void setButtonDetail(Button tribute) {
+        tribute.setOpacity(0.6);
+        tribute.setStyle("-fx-background-color: red; -fx-border-color: black; -fx-border-radius: 5; -fx-background-radius: 5; -fx-cursor: hand");
+        tribute.setPrefHeight(10);
+        tribute.setPrefWidth(15);
+        tribute.setOnMouseEntered(e -> {
+            tribute.setOpacity(1);
+        });
+        tribute.setOnMouseExited(e -> {
+            tribute.setOpacity(0.6);
+        });
+    }
+
+    private void setPopUpCardsEffectsForTribute(ImageView imageView, MonsterHouse house,
+                                                ArrayList<MonsterHouse> tributeMonsters) {
+
+        mouseHoverEvent(imageView);
+
+        imageView.setOnMouseClicked(e -> {
+            if (!tributeMonsters.contains(house))
+                tributeMonsters.add(house);
+            imageView.setScaleY(1.5);
+            imageView.setScaleX(1.5);
+        });
+    }
+
+    private void mouseHoverEvent(ImageView imageView) {
+        imageView.setOnMouseEntered(e -> {
+            imageView.setScaleX(1.2);
+            imageView.setScaleY(1.2);
+
+            DropShadow dropShadow = new DropShadow();
+            imageView.setEffect(dropShadow);
+        });
     }
 
     private void addNodesToPopUpPage(Pane tributePane, Player player, FlowPane tributeFlowPane) {
@@ -470,16 +512,7 @@ public class GameView {
     private Button seCloseButtonPopUp(Pane graveYardPane) {
         Button closeButton = new Button();
         closeButton.setText("X");
-        closeButton.setOpacity(0.6);
-        closeButton.setStyle("-fx-background-color: red; -fx-border-color: black; -fx-border-radius: 5; -fx-background-radius: 5; -fx-cursor: hand");
-        closeButton.setPrefHeight(10);
-        closeButton.setPrefWidth(15);
-        closeButton.setOnMouseEntered(e -> {
-            closeButton.setOpacity(1);
-        });
-        closeButton.setOnMouseExited(e -> {
-            closeButton.setOpacity(0.6);
-        });
+        setButtonDetail(closeButton);
         closeButton.setOnMouseClicked(e -> {
             new ZoomOut(graveYardPane).play();
             root.getChildren().remove(graveYardPane);
@@ -672,10 +705,16 @@ public class GameView {
             }
             setScaleForCurrentPhase(phaseName.getText());
         } else if (mouseEvent.getSource() == summonButton) {
-            mainPhaseController.hireCard(game, TypeOfHire.SUMMON);
+            String answer = mainPhaseController.hireCard(game, TypeOfHire.SUMMON);
+            if (answer.contains("1") || answer.contains("2")) {
+                showTributeItems();
+            }
             animateSummon();
         } else if (mouseEvent.getSource() == setMonsterButton) {
-            mainPhaseController.hireCard(game, TypeOfHire.SET);
+            String answer = mainPhaseController.hireCard(game, TypeOfHire.SET);
+            if (answer.contains("1") || answer.contains("2")) {
+                showTributeItems();
+            }
             animateSummon();
         }
     }

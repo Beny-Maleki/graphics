@@ -57,6 +57,9 @@ public class HireMonsterProcessor extends MonsterProcessor {
                     return MainPhase.TRIBUTE_NOT_POSSIBLE.toString();
                 game.setTributeSize(2);
                 game.setGameSideStage(GameSideStage.TRIBUTE);
+                int i = game.getPlayer(SideOfFeature.CURRENT).getBoard().numberOfFullHouse("monster");
+                game.setHiredMonster(game.getPlayer(SideOfFeature.CURRENT).getBoard().getMonsterHouse()[i]);
+                game.getHiredMonster().setMonsterCard(monsterCard);
                 return MainPhase.TW0_TRIBUTE_NEED.toString();
             }
         }
