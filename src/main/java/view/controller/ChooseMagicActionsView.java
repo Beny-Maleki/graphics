@@ -38,11 +38,13 @@ public class ChooseMagicActionsView {
     private MagicCard currentMagicCard;
     private int index = 0;
     private CardCreatorController controller;
+    private String descriptionFinal;
 
     {
         controller = new CardCreatorController();
         actions = new ArrayList<>();
         triggers = new ArrayList<>();
+        descriptionFinal = "";
     }
 
     public void setDetails(String name, MagicType magicType, MagicAttribute magicAttribute, RestrictionTypeInAdding restrictionTypeInAdding) {
@@ -77,6 +79,7 @@ public class ChooseMagicActionsView {
         if (event.getSource() == back) {
             controller.moveToPage(back, Menu.CARD_CREATOR_PAGE);
         } else if (event.getSource() == add) {
+            descriptionFinal += currentMagicCard.getDescription() + "\n";
             controller.addActions(currentMagicCard, actions, triggers, message);
             updatePriceHere();
         } else if (event.getSource() == remove) {
@@ -95,7 +98,7 @@ public class ChooseMagicActionsView {
             currentMagicCard = magicCards.get(index);
             description.setText(currentMagicCard.getDescriptionWithDifferentLine());
         } else if (event.getSource() == create) {
-            controller.createMagic(name, magicType.toString(), magicAttribute.toString(), description.getText(), restrictionTypeInAdding.toString(), price.getText(), actions, triggers, message);
+            controller.createMagic(name, magicType.toString(), magicAttribute.toString(), descriptionFinal, restrictionTypeInAdding.toString(), price.getText(), actions, triggers, message);
 //            if (magicAttribute.toString().equals("Field")) {
 //                controller.moveToPage(create, Menu.CHOOSE_FIELD_CARDS_DETAILS);
 //            } else {

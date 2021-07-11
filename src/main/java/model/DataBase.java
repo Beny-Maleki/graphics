@@ -30,26 +30,48 @@ public class DataBase {
     }
 
     public void saveMonsters() {
-        ArrayList<MonsterCard> monsterCards;
-        monsterCards = (ArrayList<MonsterCard>) MonsterCard.getMonsterCards();
-        String json = new Gson().toJson(monsterCards);
-            try {
-                Writer writer = new BufferedWriter(new OutputStreamWriter(
-                        new FileOutputStream("jsonResources\\MonsterCard.json"), StandardCharsets.UTF_8));
-                writer.write(json);
-                writer.close();
-            } catch (IOException ignore) {
-            }
+        ArrayList<MonsterCard> monsterCards = new ArrayList<>();
+        monsterCards = loadMonsterCards(monsterCards);
+        saveMonstersToJson(monsterCards);
+    }
+
+    public void saveMonsters(MonsterCard monsterCard) {
+        ArrayList<MonsterCard> monsterCards = new ArrayList<>();
+        monsterCards = loadMonsterCards(monsterCards);
+        monsterCards.add(monsterCard);
+        saveMonstersToJson(monsterCards);
     }
 
     public void saveMagics() {
-        ArrayList<MagicCard> magicCards;
-        magicCards = MagicCard.getMagicCards();
+        ArrayList<MagicCard> magicCards = new ArrayList<>();
+        magicCards = loadMagicCards(magicCards);
+        saveMagicsToJson(magicCards);
+    }
+
+    public void saveMagics(MagicCard magicCard) {
+        ArrayList<MagicCard> magicCards = new ArrayList<>();
+        magicCards = loadMagicCards(magicCards);
+        magicCards.add(magicCard);
+        saveMagicsToJson(magicCards);
+    }
+
+    public void saveMagicsToJson(ArrayList<MagicCard> magicCards) {
         String json = new Gson().toJson(magicCards);
         Writer writer;
         try {
             writer = new BufferedWriter(new OutputStreamWriter(
                     new FileOutputStream("jsonResources\\MagicCard.json"), StandardCharsets.UTF_8));
+            writer.write(json);
+            writer.close();
+        } catch (IOException ignore) {
+        }
+    }
+
+    public void saveMonstersToJson(ArrayList<MonsterCard> monsterCards) {
+        String json = new Gson().toJson(monsterCards);
+        try {
+            Writer writer = new BufferedWriter(new OutputStreamWriter(
+                    new FileOutputStream("jsonResources\\MonsterCard.json"), StandardCharsets.UTF_8));
             writer.write(json);
             writer.close();
         } catch (IOException ignore) {
@@ -63,6 +85,8 @@ public class DataBase {
         magicCards = loadMagicCards(magicCards);
         monsterCards = loadMonsterCards(monsterCards);
         Card.setNumberOfCard(magicCards.size() + monsterCards.size());
+        Card.setNumberOfOriginalCards(magicCards.size() + monsterCards.size());
+        Deck.setNumberOfOriginalCards(magicCards.size() + monsterCards.size());
         setMagicCardsDetail(magicCards);
         setMonsterCardsDetail(monsterCards);
         loadUsers();
