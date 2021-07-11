@@ -14,7 +14,7 @@ public abstract class Card {
     private static final HashMap<Integer, Boolean> IS_SEEN_BEFORE;
     protected static List<Card> cards;
     public static int numberOfCard;
-    private static int numberOfOriginalCards;
+    public static int numberOfOriginalCards;
 
     static {
         IS_SEEN_BEFORE = new HashMap<>();
@@ -108,7 +108,7 @@ public abstract class Card {
     }
 
     public static Image getCardImage(Card card) {
-        FileInputStream fileInputStream;
+        FileInputStream fileInputStream = null;
         String nameWithoutSpace = card.getName().replaceAll("\\s+", "");
         try {
             if (card instanceof MonsterCard) {
@@ -116,11 +116,20 @@ public abstract class Card {
             } else{
                 fileInputStream = new FileInputStream("src/main/resources/graphicprop/images/Cards/SpellTrap/" + nameWithoutSpace + ".jpg");
             }
-            return new Image(fileInputStream);
         } catch (FileNotFoundException e) {
-            e.printStackTrace();
-            return null;
+                try {
+                    if (card instanceof MonsterCard) {
+                        fileInputStream = new FileInputStream("src/main/resources/graphicprop/images/Cards/Monsters/newMonster.jpg");
+                    }
+                    else {
+                        fileInputStream = new FileInputStream("src/main/resources/graphicprop/images/Cards/SpellTrap/newMagic.jpg");
+                    }
+                } catch (FileNotFoundException fileNotFoundException) {
+                    fileNotFoundException.printStackTrace();
+                }
         }
+        assert fileInputStream != null;
+        return new Image(fileInputStream);
     }
 
     public abstract Card getSimilarCard();

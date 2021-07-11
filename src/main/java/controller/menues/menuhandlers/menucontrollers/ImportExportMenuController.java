@@ -83,7 +83,7 @@ public class ImportExportMenuController extends Controller {
                 String json = new Gson().toJson(card);
                 fileWriter.write(json);
                 fileWriter.close();
-                message.setText("export done rerun the program");
+                message.setText("export done PLEASE RERUN THE PROGRAM");
             } catch (IOException e) {
                 message.setText("error occurred");
             }
@@ -104,31 +104,31 @@ public class ImportExportMenuController extends Controller {
                     card = new Gson().fromJson(json, MonsterCard.class);
                 }
                 if (card instanceof MagicCard) {
-                    updateMagicCards((MagicCard) card);
+                    DataBase.getInstance().saveMagics((MagicCard) card);
                 } else {
-                    updateMonsterCards((MonsterCard) card);
+                    DataBase.getInstance().saveMonsters((MonsterCard) card);
                 }
-                message.setText("import done rerun the program");
+                message.setText("import done PLEASE RERUN THE PROGRAM");
             } catch (IOException e) {
                 message.setText("could not import because there is no json file");
             }
     }
-
-    private static void updateMagicCards(MagicCard magicCard) {
-        ArrayList<MagicCard> magicCards;
-        magicCards = MagicCard.getMagicCards();
-        if (!magicCards.contains(magicCard)) {
-            magicCards.add(magicCard);
-        }
-        DataBase.getInstance().saveMagicsToJson(magicCards);
-    }
-
-    private static void updateMonsterCards(MonsterCard monsterCard) {
-        ArrayList<MonsterCard> monsterCards;
-        monsterCards = (ArrayList<MonsterCard>) MonsterCard.getMonsterCards();
-        if (!monsterCards.contains(monsterCard)) {
-            monsterCards.add(monsterCard);
-        }
-        DataBase.getInstance().saveMonstersToJson(monsterCards);
-    }
+//
+//    private static void updateMagicCards(MagicCard magicCard) {
+//        ArrayList<MagicCard> magicCards;
+//        magicCards = MagicCard.getMagicCards();
+//        if (!magicCards.contains(magicCard)) {
+//            magicCards.add(magicCard);
+//        }
+//        DataBase.getInstance().saveMagicsToJson(magicCards);
+//    }
+//
+//    private static void updateMonsterCards(MonsterCard monsterCard) {
+//        ArrayList<MonsterCard> monsterCards;
+//        monsterCards = (ArrayList<MonsterCard>) MonsterCard.getMonsterCards();
+//        if (!monsterCards.contains(monsterCard)) {
+//            monsterCards.add(monsterCard);
+//        }
+//        DataBase.getInstance().saveMonstersToJson(monsterCards);
+//    }
 }

@@ -18,9 +18,9 @@ public enum Menu {
     CHOOSE_MONSTER_ACTIONS("ChooseMonsterActions"),
     CHOOSE_MAGIC_ACTIONS("ChooseMagicActions"),
     CHOOSE_FIELD_CARDS_DETAILS("ChooseFieldCardsDetails"),
-    IMPORT(""),
-    EXPORT(""),
-    IMPORT_EXPORT(""),
+    IMPORT("ImportPage"),
+    EXPORT("ExportPage"),
+    IMPORT_EXPORT("ImportExportPage"),
     GAME_PAGE("GamePage");
 
     String address;

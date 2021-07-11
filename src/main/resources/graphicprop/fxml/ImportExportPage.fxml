@@ -17,7 +17,7 @@
                         <Image url="@../images/egyptMan.png" />
                      </image>
                   </ImageView>
-                  <Button fx:id="importButton" layoutX="257.0" layoutY="163.0" onMouseClicked="#run" onMouseEntered="#hoverAnimation" mnemonicParsing="false" text="Import" />
+                  <Button fx:id="importButton" layoutX="257.0" layoutY="163.0" mnemonicParsing="false" onMouseClicked="#run" onMouseEntered="#hoverAnimation" text="Import" />
                </children>
             </Pane>
          </children></AnchorPane>
@@ -30,9 +30,10 @@
                         <Image url="@../images/egyptWoman.png" />
                      </image>
                   </ImageView>
-                  <Button fx:id="exportButton" layoutX="27.0" layoutY="163.0" onMouseClicked="#run" onMouseEntered="#hoverAnimation" mnemonicParsing="false" text="Export" />
+                  <Button fx:id="exportButton" layoutX="27.0" layoutY="163.0" mnemonicParsing="false" onMouseClicked="#run" onMouseEntered="#hoverAnimation" text="Export" />
                </children>
             </Pane>
+            <Button fx:id="back" layoutX="405.0" layoutY="642.0" onMouseClicked="#run" onMouseEntered="#hoverAnimation" mnemonicParsing="false" text="Back" />
          </children></AnchorPane>
    </children>
 </AnchorPane>

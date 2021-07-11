@@ -32,7 +32,7 @@ public class CardCreatorPageView {
     public TextField monsterDefense;
     public ChoiceBox<MonsterType> monsterType;
     public ChoiceBox<MonsterAttribute> monsterAttribute;
-    public Button chooseMonsterActions;
+    public Button createMonster;
     public Pane magicPane;
     public TextField magicName;
     public ChoiceBox<MagicAttribute> magicAttribute;
@@ -85,13 +85,13 @@ public class CardCreatorPageView {
                 scene.getRoot().requestFocus();
                 stage.show();
             }
-        } else if (event.getSource() == chooseMonsterActions) {
+        } else if (event.getSource() == createMonster) {
             if (controller.isFieldsFilled(monsterName, monsterAttribute, monsterRace, monsterType, monsterAttack, monsterDefense, monsterError)) {
                 Stage stage;
                 Scene scene;
                 FXMLLoader loader = new FXMLLoader(getClass().getResource(Menu.CHOOSE_MONSTER_ACTIONS.getAddress()));
                 Parent parent = loader.load();
-                stage = (Stage) chooseMonsterActions.getScene().getWindow();
+                stage = (Stage) createMonster.getScene().getWindow();
                 scene = new Scene(parent);
                 ChooseMonsterActionsView controller = loader.getController();
                 transferDataToMonsterChooseAction(controller);

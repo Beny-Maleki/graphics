@@ -3,6 +3,7 @@ package model;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 import com.opencsv.CSVReader;
+import controller.menues.menuhandlers.menucontrollers.CardCreatorController;
 import model.cards.cardsEnum.Monster.MonsterRace;
 import model.cards.cardsProp.Card;
 import model.cards.cardsProp.MagicCard;
@@ -29,26 +30,21 @@ public class DataBase {
         return instance;
     }
 
-    public void saveMonsters() {
-        ArrayList<MonsterCard> monsterCards = new ArrayList<>();
-        monsterCards = loadMonsterCards(monsterCards);
-        saveMonstersToJson(monsterCards);
+    public void updateID(Card card) {
+        Card.getCardById(Card.numberOfOriginalCards).setID(card.getID());
+        card.setID(Card.numberOfOriginalCards);
     }
 
     public void saveMonsters(MonsterCard monsterCard) {
+        updateID(monsterCard);
         ArrayList<MonsterCard> monsterCards = new ArrayList<>();
         monsterCards = loadMonsterCards(monsterCards);
         monsterCards.add(monsterCard);
         saveMonstersToJson(monsterCards);
     }
 
-    public void saveMagics() {
-        ArrayList<MagicCard> magicCards = new ArrayList<>();
-        magicCards = loadMagicCards(magicCards);
-        saveMagicsToJson(magicCards);
-    }
-
     public void saveMagics(MagicCard magicCard) {
+        updateID(magicCard);
         ArrayList<MagicCard> magicCards = new ArrayList<>();
         magicCards = loadMagicCards(magicCards);
         magicCards.add(magicCard);
@@ -87,7 +83,8 @@ public class DataBase {
         Card.setNumberOfCard(magicCards.size() + monsterCards.size());
         Card.setNumberOfOriginalCards(magicCards.size() + monsterCards.size());
         Deck.setNumberOfOriginalCards(magicCards.size() + monsterCards.size());
-        setMagicCardsDetail(magicCards);
+//        setMagicCardsDetail(magicCards);
+        MagicCard.setMagicCards(magicCards);
         setMonsterCardsDetail(monsterCards);
         loadUsers();
         deserializeData();

@@ -14,12 +14,10 @@ import model.cards.cardsEnum.Monster.MonsterRace;
 import model.cards.cardsEnum.Monster.MonsterType;
 import model.cards.cardsProp.MagicCard;
 import model.cards.cardsProp.MonsterCard;
-import model.enums.Menu;
 import model.events.Event;
 import model.userProp.LoginUser;
 
 import java.io.IOException;
-import java.sql.Time;
 import java.util.ArrayList;
 
 public class CardCreatorController extends Controller {
@@ -47,12 +45,11 @@ public class CardCreatorController extends Controller {
                               String defense, String price, String description, String level, Label message) throws IOException {
         if (description.equals("")) {
             message.setText("please fill description first");
-            displayMessage(message);
         } else {
             DataBase.getInstance().saveMonsters(new MonsterCard(name, level, monsterAttribute.toString(), monsterRace.toString(), monsterType.toString(), attack, defense, description, price.split(" ")[1]));
-            message.setText("you create monster successfully");
-            displayMessage(message);
+            message.setText("you create monster successfully PLEASE RERUN THE PROGRAM");
         }
+        displayMessage(message);
     }
 
     public void addActions(MagicCard currentMagicCard, ArrayList<Action> actions, ArrayList<Event> triggers, Label message) {
@@ -84,7 +81,7 @@ public class CardCreatorController extends Controller {
     }
 
     public void createMagic(String name, String typeOfMagic, String magicAttribute, String description, String typeOfRestriction, String price, ArrayList<Action> actions, ArrayList<Event> triggers, Label message) throws IOException {
-        message.setText("you creat magic successfully and 10% of price costs you");
+        message.setText("you creat magic successfully and 10% of price costs you PLEASE RERUN THE PROGRAM");
         int priceInt = Integer.parseInt(price.split(" ")[1]);
         MagicCard magicCard = new MagicCard(name, typeOfMagic, magicAttribute, description, typeOfRestriction, String.valueOf(priceInt));
         magicCard.setActionsOfMagic(actions);

@@ -64,13 +64,6 @@ public class MagicCard extends Card {
         return magicCards;
     }
 
-    public static MagicCard getMagicCardByName(String name) {
-        for (MagicCard magicCard : magicCards) {
-            if (magicCard.name.equals(name)) return magicCard;
-        }
-        return null;
-    }
-
     @Override
     public Card getSimilarCard() {
         return new MagicCard(name, typeOfMagic.toString(), magicAttribute.toString(),

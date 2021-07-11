@@ -292,13 +292,9 @@ public class DeckModifierView {
 
             collectionCardSlotStyler(i, imageView);
 
-            try {
-                CardHouse cardHouse = makeCardHouseAndAssignImage(imageView, card);
+            CardHouse cardHouse = makeCardHouseAndAssignImage(imageView, card);
 
-                handleOnMouseClick(imageView, cardHouse);
-            } catch (FileNotFoundException e) {
-                e.printStackTrace();
-            }
+            handleOnMouseClick(imageView, cardHouse);
 
             collectionFlowPane.getChildren().add(imageView);
         }
@@ -345,24 +341,21 @@ public class DeckModifierView {
 
                     Image image;
                     FileInputStream fileInputStream;
-                    try {
-                        if ((i * 10) + (5 * j) + k >= mainDeck.size()) {
-                            // filling the remained card slots!
-                            try {
-                                fileInputStream = new FileInputStream("src/main/resources/graphicprop/images/Cards/Monsters/Unknown.jpg");
-                                image = new Image(fileInputStream);
-                                imageView.setImage(image);
-                                imageView.setDisable(true);
-                            } catch (Exception ignored) {
+                    if ((i * 10) + (5 * j) + k >= mainDeck.size()) {
+                        // filling the remained card slots!
+                        try {
+                            fileInputStream = new FileInputStream("src/main/resources/graphicprop/images/Cards/Monsters/Unknown.jpg");
+                            image = new Image(fileInputStream);
+                            imageView.setImage(image);
+                            imageView.setDisable(true);
+                        } catch (Exception ignored) {
 
-                            }
-                        } else {
-                            Card card = mainDeck.get((i * 10) + (5 * j) + k);
-                                 if ((i * 10) + (5 * j) + k ==  14 || (i * 10) + (5 * j) + k == 53) System.out.println(card.getName());
-                            CardHouse cardHouse = makeCardHouseAndAssignImage(imageView, card);
-                            handleOnMouseClick(imageView, cardHouse);
                         }
-                    } catch (FileNotFoundException ignored) {
+                    } else {
+                        Card card = mainDeck.get((i * 10) + (5 * j) + k);
+                             if ((i * 10) + (5 * j) + k ==  14 || (i * 10) + (5 * j) + k == 53) System.out.println(card.getName());
+                        CardHouse cardHouse = makeCardHouseAndAssignImage(imageView, card);
+                        handleOnMouseClick(imageView, cardHouse);
                     }
                     slidesOfMainDeck.get(i).getChildren().add(imageView);
                 }
@@ -385,22 +378,19 @@ public class DeckModifierView {
                 handleOnMouseEntered(imageView);
                 handleOnMouseExited(imageView);
 
-                try {
-                    if ((5 * i) + j >= sideDeck.size()) {
-                        //filling the remained card slots!
-                        try {
-                            imageView.setImage(new Image(new FileInputStream("src/main/resources/graphicprop/images/Cards/Monsters/Unknown.jpg")));
-                            imageView.setDisable(true);
-                        } catch (FileNotFoundException ignored) {
-                        }
-
-                    } else {
-                        Card card = sideDeck.get((5 * i) + j);
-                        CardHouse cardHouse = makeCardHouseAndAssignImage(imageView, card);
-
-                        handleOnMouseClick(imageView, cardHouse);
+                if ((5 * i) + j >= sideDeck.size()) {
+                    //filling the remained card slots!
+                    try {
+                        imageView.setImage(new Image(new FileInputStream("src/main/resources/graphicprop/images/Cards/Monsters/Unknown.jpg")));
+                        imageView.setDisable(true);
+                    } catch (FileNotFoundException ignored) {
                     }
-                } catch (FileNotFoundException ignored) {
+
+                } else {
+                    Card card = sideDeck.get((5 * i) + j);
+                    CardHouse cardHouse = makeCardHouseAndAssignImage(imageView, card);
+
+                    handleOnMouseClick(imageView, cardHouse);
                 }
 
                 slidesOfSideDeck.get(i).getChildren().add(imageView);
@@ -408,19 +398,33 @@ public class DeckModifierView {
         }
     }
 
-    private CardHouse makeCardHouseAndAssignImage(ImageView imageView, Card card) throws FileNotFoundException {
+    private CardHouse makeCardHouseAndAssignImage(ImageView imageView, Card card) {
         FileInputStream fileInputStream;
         Image image = null;
 
         String name = card.getName();
         String nameWithoutSpace = name.replaceAll("\\s+", "");
 
-        if (card instanceof MonsterCard) {
-            fileInputStream = new FileInputStream("src/main/resources/graphicprop/images/Cards/Monsters/" + nameWithoutSpace + ".jpg");
-            image = new Image(fileInputStream);
-        } else if (card instanceof MagicCard) {
-            fileInputStream = new FileInputStream("src/main/resources/graphicprop/images/Cards/SpellTrap/" + nameWithoutSpace + ".jpg");
-            image = new Image(fileInputStream);
+        try {
+            if (card instanceof MonsterCard) {
+                fileInputStream = new FileInputStream("src/main/resources/graphicprop/images/Cards/Monsters/" + nameWithoutSpace + ".jpg");
+                image = new Image(fileInputStream);
+            } else if (card instanceof MagicCard) {
+                fileInputStream = new FileInputStream("src/main/resources/graphicprop/images/Cards/SpellTrap/" + nameWithoutSpace + ".jpg");
+                image = new Image(fileInputStream);
+            }
+        } catch (FileNotFoundException e) {
+            try {
+                if (card instanceof MonsterCard) {
+                    fileInputStream = new FileInputStream("src/main/resources/graphicprop/images/Cards/Monsters/newMonster.jpg");
+                }
+                else {
+                    fileInputStream = new FileInputStream("src/main/resources/graphicprop/images/Cards/SpellTrap/newMagic.jpg");
+                }
+                image = new Image(fileInputStream);
+            } catch (FileNotFoundException fileNotFoundException) {
+                fileNotFoundException.printStackTrace();
+            }
         }
 
         imageView.setImage(image);

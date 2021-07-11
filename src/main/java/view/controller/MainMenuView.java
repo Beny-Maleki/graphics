@@ -16,6 +16,7 @@ public class MainMenuView {
     public Button profile;
     private final MainMenuController controller;
     public Button createCard;
+    public Button importExport;
 
     {
         controller = new MainMenuController();
@@ -35,6 +36,8 @@ public class MainMenuView {
             controller.moveToPage(duel, Menu.DUEL_PAGE);
         } else if (event.getSource() == createCard) {
             controller.moveToPage(createCard, Menu.CARD_CREATOR_PAGE);
+        } else if (event.getSource() == importExport) {
+            controller.moveToPage(importExport, Menu.IMPORT_EXPORT);
         }
     }
 }

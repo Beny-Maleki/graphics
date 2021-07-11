@@ -13,6 +13,7 @@ public class ImportExportPageView {
     public Button importButton;
     public Button exportButton;
     private final ImportExportMenuController controller;
+    public Button back;
 
     {
         controller = new ImportExportMenuController();
@@ -23,6 +24,8 @@ public class ImportExportPageView {
             controller.moveToPage(importButton, Menu.IMPORT);
         } else if (event.getSource() == exportButton) {
             controller.moveToPage(exportButton, Menu.EXPORT);
+        } else if (event.getSource() == back) {
+            controller.moveToPage(back, Menu.MAIN_MENU);
         }
     }
 

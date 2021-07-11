@@ -683,5 +683,33 @@
     "name": "Advanced Ritual Art",
     "price": 3000,
     "description": "This card can be used to Ritual Summon any 1 Ritual Monster. You must also send Normal Monsters from your Deck to the Graveyard whose total Levels equal the Level of that Ritual Monster."
+  },
+  {
+    "actionsOfMagic": [
+      {
+        "name": "DestroyAllOpponentAttackingMonsters",
+        "isActivatedBefore": false
+      },
+      {
+        "name": "DestroyAllOpponentAttackingMonsters",
+        "isActivatedBefore": false
+      }
+    ],
+    "triggers": [
+      {
+        "name": "OpponentMonsterWantsToAttack"
+      },
+      {
+        "name": "OpponentMonsterWantsToAttack"
+      }
+    ],
+    "restrictionTypeInAdding": "LIMITED",
+    "magicAttribute": "QUICK_PLAY",
+    "typeOfMagic": "SPELL",
+    "isActivated": false,
+    "ID": 75,
+    "name": "ramtinMagic",
+    "price": 5300,
+    "description": "When your opponent Normal or Flip Summons 1 monster with 1000 or more ATK: Target that monster; destroy that target.\nWhen an opponent\u0027s monster declares an attack: Destroy all your opponent\u0027s Attack Position monsters.\n"
   }
 ]

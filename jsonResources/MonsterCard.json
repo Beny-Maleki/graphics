@@ -490,5 +490,17 @@
     "name": "Command Knight",
     "price": 2100,
     "description": "All Warrior-Type monsters you control gain 400 ATK. If you control another monster, monsters your opponent controls cannot target this card for an attack."
+  },
+  {
+    "attack": 1400,
+    "defence": 1100,
+    "level": 4,
+    "type": "NORMAL",
+    "race": "WARRIOR",
+    "attribute": "EARTH",
+    "ID": 74,
+    "name": "ramtin",
+    "price": 3300,
+    "description": "attack simply"
   }
 ]

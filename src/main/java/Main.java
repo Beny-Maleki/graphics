@@ -1,5 +1,8 @@
 import com.sanityinc.jargs.CmdLineParser;
 import model.DataBase;
+import model.cards.cardsProp.Card;
+import model.cards.cardsProp.MagicCard;
+import model.cards.cardsProp.MonsterCard;
 import view.StageController;
 
 import java.io.IOException;
