@@ -4,14 +4,36 @@
     <option name="autoReloadType" value="ALL" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="45f87b1a-8403-4c06-b2b2-57ebfe555883" name="Default Changelist" comment="adding sounds to game">
+    <list default="true" id="45f87b1a-8403-4c06-b2b2-57ebfe555883" name="Default Changelist" comment="cleaning">
       <change beforePath="$PROJECT_DIR$/.idea/shelf/Default_Changelist.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/shelf/Default_Changelist.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_06-Jul-21_00_53__Default_Changelist_.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_06-Jul-21_00_53__Default_Changelist_.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_06-Jul-21_17_30__Default_Changelist_.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_06-Jul-21_17_30__Default_Changelist_.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_08-Jul-21_13_28__Default_Changelist_.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_08-Jul-21_13_28__Default_Changelist_.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_09-Jul-21_19_12__Default_Changelist_.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_09-Jul-21_19_12__Default_Changelist_.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_7_11_2021_8_44_PM__Default_Changelist_.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_7_11_2021_8_44_PM__Default_Changelist_.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/view/controller/GameView.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/view/controller/GameView.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/view/StageController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/view/StageController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/Main.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/Main.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/controller/menues/menuhandlers/menucontrollers/CardCreatorController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/controller/menues/menuhandlers/menucontrollers/CardCreatorController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/controller/menues/menuhandlers/menucontrollers/DuelPageController$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/controller/menues/menuhandlers/menucontrollers/DuelPageController$1.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/controller/menues/menuhandlers/menucontrollers/DuelPageController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/controller/menues/menuhandlers/menucontrollers/DuelPageController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/controller/menues/menuhandlers/menucontrollers/ImportExportMenuController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/controller/menues/menuhandlers/menucontrollers/ImportExportMenuController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/model/DataBase$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/model/DataBase$1.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/model/DataBase$2.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/model/DataBase$2.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/model/DataBase$3.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/model/DataBase$3.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/model/DataBase$4.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/model/DataBase$4.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/model/DataBase.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/model/DataBase.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/model/cards/cardsProp/Card.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/model/cards/cardsProp/Card.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/model/cards/cardsProp/MagicCard.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/model/cards/cardsProp/MagicCard.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/model/enums/Menu.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/model/enums/Menu.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/view/StageController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/view/StageController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/view/controller/CardCreatorPageView.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/view/controller/CardCreatorPageView.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/view/controller/DeckModifierView.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/view/controller/DeckModifierView.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/view/controller/GameView$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/view/controller/GameView$1.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/view/controller/GameView$2.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/view/controller/GameView$2.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/view/controller/GameView.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/view/controller/GameView.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/view/controller/ImportExportPageView.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/view/controller/ImportExportPageView.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/view/controller/MainMenuView.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/view/controller/MainMenuView.class" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -62,24 +84,24 @@
   </component>
   <component name="HighlightingSettingsPerFile">
     <setting file="file://$PROJECT_DIR$/src/main/resources/graphicprop/stylesheets/WelcomePage.css" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/src/main/resources/graphicprop/fxml/MainPage.fxml" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/src/main/java/view/controller/ProfileView.java" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/src/main/java/model/enums/Menu.java" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/src/main/java/controller/menues/menuhandlers/menucontrollers/ProfilePageController.java" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/src/main/java/view/controller/RegisterView.java" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/src/main/java/controller/menues/menuhandlers/menucontrollers/WelcomePageController.java" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/src/main/java/view/controller/WelcomeView.java" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/src/main/resources/graphicprop/fxml/LoginPage.fxml" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/src/main/java/view/controller/LoginView.java" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/src/main/resources/graphicprop/stylesheets/RegisterPage.css" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/src/main/java/view/controller/MainMenu.java" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/src/main/resources/graphicprop/fxml/MainPage.fxml" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/src/main/resources/graphicprop/fxml/WelcomePage.fxml" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/src/main/resources/graphicprop/stylesheets/LoginPage.css" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/src/main/java/view/controller/MainMenu.java" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/src/main/resources/graphicprop/fxml/DecksView.fxml" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/src/main/java/view/controller/WelcomeView.java" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/src/main/resources/graphicprop/stylesheets/DecksView.css" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/src/main/java/view/controller/ProfileView.java" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/src/main/java/model/enums/Menu.java" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/src/main/java/Main.java" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/src/main/java/view/StageController.java" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/src/main/java/view/controller/LoginView.java" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/src/main/java/view/controller/RegisterView.java" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/src/main/java/model/Exceptions/EmptyTextFieldException.java" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/src/main/java/controller/menues/menuhandlers/menucontrollers/ProfilePageController.java" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/src/main/java/view/StageController.java" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/src/main/resources/graphicprop/fxml/DecksView.fxml" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/src/main/java/controller/menues/menuhandlers/menucontrollers/WelcomePageController.java" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/src/main/resources/graphicprop/stylesheets/RegisterPage.css" root0="FORCE_HIGHLIGHTING" />
   </component>
   <component name="ProblemsViewState">
     <option name="proportion" value="0.6115204" />
@@ -167,15 +189,13 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration default="true" type="ArquillianTestNG" factoryName="" nameIsGenerated="true">
+    <configuration default="true" type="ArquillianJUnit" factoryName="" nameIsGenerated="true">
       <option name="arquillianRunConfiguration">
         <value>
           <option name="containerStateName" value="" />
         </value>
       </option>
-      <option name="TEST_OBJECT" value="CLASS" />
-      <properties />
-      <listeners />
+      <option name="TEST_OBJECT" value="class" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -291,13 +311,6 @@
       <workItem from="1625904933777" duration="17606000" />
       <workItem from="1625948413826" duration="197000" />
       <workItem from="1625999059002" duration="12603000" />
-    </task>
-    <task id="LOCAL-00050" summary="completing general command">
-      <created>1620194709532</created>
-      <option name="number" value="00050" />
-      <option name="presentableId" value="LOCAL-00050" />
-      <option name="project" value="LOCAL" />
-      <updated>1620194709532</updated>
     </task>
     <task id="LOCAL‎۰۰۰۵۱" summary="add first event and effect">
       <created>1620216989418</created>
@@ -612,7 +625,13 @@
       <option name="project" value="LOCAL" />
       <updated>1626005105325</updated>
     </task>
-    <option name="localTasksCounter" value="99" />
+    <task id="LOCAL‎۰۰۰۹۹" summary="cleaning">
+      <created>1626030485042</created>
+      <option name="number" value="LOCAL‎۰۰۰۹۹" />
+      <option name="presentableId" value="LOCAL‎۰۰۰۹۹" />
+      <updated>1626030485042</updated>
+    </task>
+    <option name="localTasksCounter" value="100" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -632,7 +651,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="login and register and welcome page" />
     <MESSAGE value="login and register and welcome page controllers" />
     <MESSAGE value="fix profile" />
     <MESSAGE value="fix little" />
@@ -657,7 +675,8 @@
     <MESSAGE value="bug fix in hand" />
     <MESSAGE value="bug fix in fxml" />
     <MESSAGE value="some bug fixes" />
-    <option name="LAST_COMMIT_MESSAGE" value="some bug fixes" />
+    <MESSAGE value="cleaning" />
+    <option name="LAST_COMMIT_MESSAGE" value="cleaning" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
