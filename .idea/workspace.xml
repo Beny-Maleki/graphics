@@ -4,14 +4,39 @@
     <option name="autoReloadType" value="ALL" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="45f87b1a-8403-4c06-b2b2-57ebfe555883" name="Default Changelist" comment="adding sounds to game">
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Default_Changelist.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/shelf/Default_Changelist.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_06-Jul-21_00_53__Default_Changelist_.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_06-Jul-21_00_53__Default_Changelist_.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_06-Jul-21_17_30__Default_Changelist_.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_06-Jul-21_17_30__Default_Changelist_.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_08-Jul-21_13_28__Default_Changelist_.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_08-Jul-21_13_28__Default_Changelist_.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_09-Jul-21_19_12__Default_Changelist_.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_09-Jul-21_19_12__Default_Changelist_.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_7_11_2021_8_44_PM__Default_Changelist_.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_7_11_2021_8_44_PM__Default_Changelist_.xml" afterDir="false" />
+    <list default="true" id="45f87b1a-8403-4c06-b2b2-57ebfe555883" name="Default Changelist" comment="attack process animation">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/jsonResources/Decks.Json" beforeDir="false" afterPath="$PROJECT_DIR$/jsonResources/Decks.Json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/controller/gamecontrollers/gamestagecontroller/MainPhaseController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controller/gamecontrollers/gamestagecontroller/MainPhaseController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/controller/gamecontrollers/gamestagecontroller/handlers/changeposition/ChangePosChain.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controller/gamecontrollers/gamestagecontroller/handlers/changeposition/ChangePosChain.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/model/gameprop/SelectedCardProp.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/model/gameprop/SelectedCardProp.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/view/controller/GameView.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/view/controller/GameView.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/graphicprop/fxml/GamePage.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/graphicprop/fxml/GamePage.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/Main.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/Main.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/controller/gamecontrollers/gamestagecontroller/MainPhaseController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/controller/gamecontrollers/gamestagecontroller/MainPhaseController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/controller/gamecontrollers/gamestagecontroller/handlers/changeposition/ChangePosChain.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/controller/gamecontrollers/gamestagecontroller/handlers/changeposition/ChangePosChain.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/controller/menues/menuhandlers/menucontrollers/CardCreatorController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/controller/menues/menuhandlers/menucontrollers/CardCreatorController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/controller/menues/menuhandlers/menucontrollers/DuelPageController$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/controller/menues/menuhandlers/menucontrollers/DuelPageController$1.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/controller/menues/menuhandlers/menucontrollers/DuelPageController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/controller/menues/menuhandlers/menucontrollers/DuelPageController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/controller/menues/menuhandlers/menucontrollers/ImportExportMenuController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/controller/menues/menuhandlers/menucontrollers/ImportExportMenuController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/graphicprop/fxml/CardCreatorPage.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/graphicprop/fxml/CardCreatorPage.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/graphicprop/fxml/ImportExportPage.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/graphicprop/fxml/ImportExportPage.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/graphicprop/fxml/MainPage.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/graphicprop/fxml/MainPage.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/model/DataBase$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/model/DataBase$1.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/model/DataBase$2.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/model/DataBase$2.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/model/DataBase$3.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/model/DataBase$3.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/model/DataBase$4.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/model/DataBase$4.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/model/DataBase.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/model/DataBase.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/model/cards/cardsProp/Card.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/model/cards/cardsProp/Card.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/model/cards/cardsProp/MagicCard.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/model/cards/cardsProp/MagicCard.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/model/enums/Menu.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/model/enums/Menu.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/view/controller/CardCreatorPageView.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/view/controller/CardCreatorPageView.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/view/controller/DeckModifierView.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/view/controller/DeckModifierView.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/view/controller/GameView$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/view/controller/GameView$1.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/view/controller/GameView$2.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/view/controller/GameView$2.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/view/controller/GameView.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/view/controller/GameView.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/view/controller/ImportExportPageView.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/view/controller/ImportExportPageView.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/view/controller/MainMenuView.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/view/controller/MainMenuView.class" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -49,7 +74,25 @@
     </option>
   </component>
   <component name="Git.Settings">
+    <favorite-branches>
+      <branch-storage>
+        <map>
+          <entry type="REMOTE">
+            <value>
+              <list>
+                <branch-info repo="$PROJECT_DIR$" source="origin/main" />
+              </list>
+            </value>
+          </entry>
+        </map>
+      </branch-storage>
+    </favorite-branches>
     <option name="PUSH_AUTO_UPDATE" value="true" />
+    <option name="RECENT_BRANCH_BY_REPOSITORY">
+      <map>
+        <entry key="$PROJECT_DIR$" value="main" />
+      </map>
+    </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="GitSEFilterConfiguration">
@@ -61,24 +104,28 @@
     </file-type-list>
   </component>
   <component name="HighlightingSettingsPerFile">
-    <setting file="file://$PROJECT_DIR$/src/main/resources/graphicprop/stylesheets/WelcomePage.css" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/src/main/resources/graphicprop/fxml/MainPage.fxml" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/src/main/java/view/controller/GameView.java" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/src/main/java/view/controller/MainMenu.java" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/src/main/java/view/controller/ProfileView.java" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/src/main/java/model/enums/Menu.java" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/src/main/java/controller/menues/menuhandlers/menucontrollers/ProfilePageController.java" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/src/main/java/view/controller/RegisterView.java" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/src/main/java/controller/menues/menuhandlers/menucontrollers/WelcomePageController.java" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/src/main/java/model/gameprop/Player.java" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/jsonResources/Decks.Json" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/src/main/java/view/controller/WelcomeView.java" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/src/main/resources/graphicprop/fxml/LoginPage.fxml" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/jsonResources/Users.Json" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/src/main/resources/graphicprop/fxml/WelcomePage.fxml" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/src/main/java/Main.java" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/src/main/java/controller/menues/menuhandlers/menucontrollers/WelcomePageController.java" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/src/main/resources/graphicprop/fxml/MainPage.fxml" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/src/main/java/view/controller/LoginView.java" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/src/main/resources/graphicprop/stylesheets/RegisterPage.css" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/src/main/resources/graphicprop/fxml/WelcomePage.fxml" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/src/main/resources/graphicprop/stylesheets/LoginPage.css" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/src/main/java/view/controller/MainMenu.java" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/src/main/resources/graphicprop/fxml/DecksView.fxml" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/src/main/resources/graphicprop/stylesheets/DecksView.css" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/src/main/java/Main.java" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/src/main/java/view/StageController.java" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/src/main/java/view/controller/RegisterView.java" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/src/main/resources/graphicprop/stylesheets/LoginPage.css" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/src/main/resources/graphicprop/stylesheets/WelcomePage.css" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/src/main/java/controller/menues/menuhandlers/menucontrollers/ProfilePageController.java" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/src/main/java/model/enums/Menu.java" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/src/main/resources/graphicprop/stylesheets/DecksView.css" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/src/main/resources/graphicprop/fxml/DecksView.fxml" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/src/main/java/model/Exceptions/EmptyTextFieldException.java" root0="FORCE_HIGHLIGHTING" />
   </component>
   <component name="ProblemsViewState">
@@ -210,6 +257,7 @@
       </list>
     </recent_temporary>
   </component>
+  <component name="ShelveChangesManager" show_recycled="true" />
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
@@ -291,43 +339,7 @@
       <workItem from="1625904933777" duration="17606000" />
       <workItem from="1625948413826" duration="197000" />
       <workItem from="1625999059002" duration="12603000" />
-    </task>
-    <task id="LOCAL-00050" summary="completing general command">
-      <created>1620194709532</created>
-      <option name="number" value="00050" />
-      <option name="presentableId" value="LOCAL-00050" />
-      <option name="project" value="LOCAL" />
-      <updated>1620194709532</updated>
-    </task>
-    <task id="LOCAL‎۰۰۰۵۱" summary="add first event and effect">
-      <created>1620216989418</created>
-      <option name="number" value="LOCAL‎۰۰۰۵۱" />
-      <option name="presentableId" value="LOCAL‎۰۰۰۵۱" />
-      <updated>1620216989419</updated>
-    </task>
-    <task id="LOCAL‎۰۰۰۵۲" summary="better naming">
-      <created>1620217338661</created>
-      <option name="number" value="LOCAL‎۰۰۰۵۲" />
-      <option name="presentableId" value="LOCAL‎۰۰۰۵۲" />
-      <updated>1620217338661</updated>
-    </task>
-    <task id="LOCAL‎۰۰۰۵۳" summary="correction of effect and event to new structure">
-      <created>1620228555476</created>
-      <option name="number" value="LOCAL‎۰۰۰۵۳" />
-      <option name="presentableId" value="LOCAL‎۰۰۰۵۳" />
-      <updated>1620228555477</updated>
-    </task>
-    <task id="LOCAL‎۰۰۰۵۴" summary="MindCrushEffect and some details">
-      <created>1620295193600</created>
-      <option name="number" value="LOCAL‎۰۰۰۵۴" />
-      <option name="presentableId" value="LOCAL‎۰۰۰۵۴" />
-      <updated>1620295193600</updated>
-    </task>
-    <task id="LOCAL‎۰۰۰۵۵" summary="ManuallyActivation added">
-      <created>1620315607686</created>
-      <option name="number" value="LOCAL‎۰۰۰۵۵" />
-      <option name="presentableId" value="LOCAL‎۰۰۰۵۵" />
-      <updated>1620315607686</updated>
+      <workItem from="1626075601313" duration="1351000" />
     </task>
     <task id="LOCAL‎۰۰۰۵۶" summary="ManuallyActivation added">
       <created>1620318279173</created>
@@ -612,7 +624,49 @@
       <option name="project" value="LOCAL" />
       <updated>1626005105325</updated>
     </task>
-    <option name="localTasksCounter" value="99" />
+    <task id="LOCAL-00099" summary="attack process animation">
+      <created>1626071552106</created>
+      <option name="number" value="00099" />
+      <option name="presentableId" value="LOCAL-00099" />
+      <option name="project" value="LOCAL" />
+      <updated>1626071552106</updated>
+    </task>
+    <task id="LOCAL-00100" summary="attack process animation">
+      <created>1626072618300</created>
+      <option name="number" value="00100" />
+      <option name="presentableId" value="LOCAL-00100" />
+      <option name="project" value="LOCAL" />
+      <updated>1626072618300</updated>
+    </task>
+    <task id="LOCAL-00101" summary="attack process animation">
+      <created>1626072687990</created>
+      <option name="number" value="00101" />
+      <option name="presentableId" value="LOCAL-00101" />
+      <option name="project" value="LOCAL" />
+      <updated>1626072687990</updated>
+    </task>
+    <task id="LOCAL-00102" summary="attack process animation">
+      <created>1626072798262</created>
+      <option name="number" value="00102" />
+      <option name="presentableId" value="LOCAL-00102" />
+      <option name="project" value="LOCAL" />
+      <updated>1626072798262</updated>
+    </task>
+    <task id="LOCAL-00103" summary="attack process animation">
+      <created>1626073026075</created>
+      <option name="number" value="00103" />
+      <option name="presentableId" value="LOCAL-00103" />
+      <option name="project" value="LOCAL" />
+      <updated>1626073026075</updated>
+    </task>
+    <task id="LOCAL-00104" summary="attack process animation">
+      <created>1626073697306</created>
+      <option name="number" value="00104" />
+      <option name="presentableId" value="LOCAL-00104" />
+      <option name="project" value="LOCAL" />
+      <updated>1626073697306</updated>
+    </task>
+    <option name="localTasksCounter" value="105" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -632,8 +686,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="login and register and welcome page" />
-    <MESSAGE value="login and register and welcome page controllers" />
     <MESSAGE value="fix profile" />
     <MESSAGE value="fix little" />
     <MESSAGE value="fix" />
@@ -657,7 +709,9 @@
     <MESSAGE value="bug fix in hand" />
     <MESSAGE value="bug fix in fxml" />
     <MESSAGE value="some bug fixes" />
-    <option name="LAST_COMMIT_MESSAGE" value="some bug fixes" />
+    <MESSAGE value="attack process" />
+    <MESSAGE value="attack process animation" />
+    <option name="LAST_COMMIT_MESSAGE" value="attack process animation" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

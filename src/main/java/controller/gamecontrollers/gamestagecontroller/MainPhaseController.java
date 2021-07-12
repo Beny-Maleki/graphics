@@ -74,7 +74,7 @@ public class MainPhaseController extends GeneralController {
     }
 
 
-    private String changePosition(SelectedCardProp cardProp, String command, MonsterHouse hiredMonsterHouse) {
+    public String changePosition(SelectedCardProp cardProp, String command, MonsterHouse hiredMonsterHouse) {
         ChangePosChain chain = new ChangePosChain();
         if (command.contains("attack")) {
             return chain.request(cardProp, WantedPos.ATTACK, hiredMonsterHouse);
