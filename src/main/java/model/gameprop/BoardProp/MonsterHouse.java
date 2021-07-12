@@ -138,8 +138,8 @@ public class MonsterHouse extends GameHouse {
         return isMonsterAttacked;
     }
 
-    public void setMonsterAttacked() {
-        isMonsterAttacked = true;
+    public void setMonsterAttacked(boolean value) {
+        isMonsterAttacked = value;
     }
 
     @Override

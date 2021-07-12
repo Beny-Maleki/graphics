@@ -231,6 +231,14 @@ public class Game {
             }
         }
 
+        for (MonsterHouse monsterHouse : firstPlayer.getBoard().getMonsterHouse()) {
+            monsterHouse.setMonsterAttacked(false);
+        }
+
+        for (MonsterHouse monsterHouse : secondPlayer.getBoard().getMonsterHouse()) {
+            monsterHouse.setMonsterAttacked(false);
+        }
+
         if (turn.getPlayerWithTurn() == PlayerTurn.PLAYER_ONE) {
             turn = new Turn(PlayerTurn.PLAYER_TWO, false);
         } else turn = new Turn(PlayerTurn.PLAYER_ONE, false);
@@ -263,7 +271,7 @@ public class Game {
 
         deck.removeCardFromMainDeck(card);
         for (HandHouse handHouse : hand) {
-            if (handHouse.getCard() == null){
+            if (handHouse.getCard() == null) {
                 handHouse.setCard(card);
             }
         }

@@ -47,7 +47,6 @@ import model.gameprop.GameInProcess;
 import model.gameprop.Player;
 import model.gameprop.gamemodel.Game;
 import model.userProp.User;
-import model.userProp.UserInfoType;
 import org.jetbrains.annotations.NotNull;
 import view.AudioHandler;
 import view.AudioPath;
@@ -191,10 +190,7 @@ public class GameView {
 
     @FXML
     public void initialize() throws FileNotFoundException {
-        game = new Game(new Player(User.getUserByUserInfo("sas", UserInfoType.NICKNAME), 0),
-                new Player(User.getUserByUserInfo("Yaroo", UserInfoType.NICKNAME), 0), 1);
-        GameInProcess.setGame(game);
-
+        game = GameInProcess.getGame();
         playerYou = GameInProcess.getGame().getFirstPlayer();
         playerOpponent = GameInProcess.getGame().getSecondPlayer();
 
@@ -283,8 +279,10 @@ public class GameView {
 
     private void initializeAttackAction() {
         attackMonsterIcon.setOnMouseClicked(event -> {
-            if (game.getPlayer(SideOfFeature.CURRENT).getBoard().numberOfFullHouse("monster") == 5) {
+            if (game.getPlayer(SideOfFeature.OPPONENT).getBoard().numberOfFullHouse("monster") == 0) {
                 battlePhaseController.attackDirect(game);
+                updateHealth();
+                deActiveActions();
             } else {
                 try {
                     field.getScene().setCursor(new ImageCursor(new Image(new FileInputStream("src/main/resources/graphicprop/images/sword.png"))));
@@ -338,21 +336,17 @@ public class GameView {
                         for (MonsterHouse house : game.getPlayer(SideOfFeature.OPPONENT).getBoard().getMonsterHouse()) {
                             setHandleOnMouseClickedForMagicAndMonsters(house);
                         }
-
+                        deActiveActions();
+                        updateHealth();
                     });
                 }
             }
-            updateHealth();
-            deActiveActions();
         });
     }
 
     private void updateHealth() {
         double newLPYou = ((double) playerYou.getPlayerLifePoint()) / 8000;
         double newLPOpponent = ((double) playerOpponent.getPlayerLifePoint()) / 8000;
-
-        System.out.println(newLPYou);
-        System.out.println(newLPOpponent);
 
         yourLPBar.setProgress(prevLPYou);
         opponentLPBar.setProgress(prevLPOpponent);
@@ -475,8 +469,9 @@ public class GameView {
             ((Pane) setMagicIcon.getParent()).getChildren().remove(setMagicIcon);
         if (changePositionIcon.getParent() != null)
             ((Pane) changePositionIcon.getParent()).getChildren().remove(changePositionIcon);
-        if ((attackMonsterIcon.getParent() != null))
+        if ((attackMonsterIcon.getParent() != null)) {
             ((Pane) attackMonsterIcon.getParent()).getChildren().remove(attackMonsterIcon);
+        }
         if ((activeMagicIcon.getParent() != null))
             ((Pane) activeMagicIcon.getParent()).getChildren().remove(activeMagicIcon);
     }

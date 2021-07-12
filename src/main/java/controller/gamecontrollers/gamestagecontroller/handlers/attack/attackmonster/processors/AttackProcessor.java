@@ -27,7 +27,7 @@ public class AttackProcessor extends AttackMonsterProcessor {
         if (game.getGameMainStage() != GameMainStage.BATTLE_PHASE)
             return BattlePhase.ATTACK_NOT_IN_BATTLE_PHASE.toString();
 
-        offensiveCardPlace.setMonsterAttacked();
+        offensiveCardPlace.setMonsterAttacked(true);
 
         int practicalAttackForOffensive = offensiveCard.getAttack() +
                 ((MonsterHouse) offensive.getCardPlace()).getAdditionalAttack();
