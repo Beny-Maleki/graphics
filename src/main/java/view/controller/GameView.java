@@ -317,6 +317,7 @@ public class GameView {
                     for (MonsterHouse house : game.getPlayer(SideOfFeature.OPPONENT).getBoard().getMonsterHouse()) {
                         setHandleOnMouseClickedForMagicAndMonsters(house);
                     }
+                    deActiveActions();
                 });
             }
         });
