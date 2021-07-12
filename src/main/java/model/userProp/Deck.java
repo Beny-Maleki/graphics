@@ -10,6 +10,7 @@ import java.util.HashMap;
 public class Deck {
     private static int totalNumberOfDeck;
     private static ArrayList<Deck> allDecks;
+    private static int numberOfOriginalCards;
 
     static {
         allDecks = new ArrayList<>();
@@ -33,6 +34,10 @@ public class Deck {
         allDecks.add(this);
         totalNumberOfDeck++;
         setID();
+    }
+
+    public static void setNumberOfOriginalCards(int numberOfOriginalCards) {
+        Deck.numberOfOriginalCards = numberOfOriginalCards;
     }
 
     public static Deck getDeckById(String ID) {
@@ -63,7 +68,7 @@ public class Deck {
     static void findSimilarCard(ArrayList<Integer> mainDeck) {
         for (int i = 0; i < mainDeck.size(); i++) {
             Integer ID = mainDeck.get(i);
-            if (ID >= 74) {
+            if (ID >= numberOfOriginalCards) {
                 for (Card card : Card.getOriginalCard()) {
                     Card similarCard = Card.getCardById(ID);
                     assert similarCard != null;

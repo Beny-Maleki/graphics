@@ -40,10 +40,10 @@ public class ShopView {
     public Label price;
     public Button back;
 
-    private ArrayList<GridPane> slidesOfShopCards;
-    private int currentSlideNum;
-    private GridPane shownOnStage;
-    private Card selectedCard;
+    protected ArrayList<GridPane> slidesOfShopCards;
+    protected int currentSlideNum;
+    protected GridPane shownOnStage;
+    protected Card selectedCard;
 
     @FXML
     public void initialize() {
@@ -143,7 +143,7 @@ public class ShopView {
         imageView.setY((imageView.getFitHeight() + 4.5) * k + 4.5);
     }
 
-    private void handleMouseOnClickEvent(ImageView imageView, CardHouse cardHouse) {
+    protected void handleMouseOnClickEvent(ImageView imageView, CardHouse cardHouse) {
         imageView.setOnMouseClicked(mouseEvent -> {
             selectedCardImageView.setImage(cardHouse.getImage());
             new Tada(imageView).play();

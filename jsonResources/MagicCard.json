@@ -114,7 +114,6 @@
         "isActivatedBefore": false
       },
       {
-        "numOfTurns": 2,
         "name": "AvoidOpponentsCardDraw",
         "isActivatedBefore": false
       }
@@ -476,60 +475,18 @@
         "isActivatedBefore": false
       },
       {
-        "changeAttack": 200,
-        "typesToChangeAttack": [
-          "Fiend",
-          "Spellcaster"
-        ],
-        "addOrMinus": 1,
-        "changeWhichTeamMonsterAttack": [
-          "CURRENT",
-          "OPPONENT"
-        ],
-        "finalChangeValue": 0,
         "name": "ChangingMonsterAttackAction",
         "isActivatedBefore": false
       },
       {
-        "changeDefence": 200,
-        "typesToChangeDefence": [
-          "Fiend",
-          "Spellcaster"
-        ],
-        "addOrMinus": 1,
-        "changeWhichTeamMonsterDefence": [
-          "CURRENT",
-          "OPPONENT"
-        ],
-        "finalChangeValue": 0,
         "name": "ChangingMonsterDefenceAction",
         "isActivatedBefore": false
       },
       {
-        "changeAttack": 200,
-        "typesToChangeAttack": [
-          "Fairy"
-        ],
-        "addOrMinus": -1,
-        "changeWhichTeamMonsterAttack": [
-          "CURRENT",
-          "OPPONENT"
-        ],
-        "finalChangeValue": 0,
         "name": "ChangingMonsterAttackAction",
         "isActivatedBefore": false
       },
       {
-        "changeDefence": 200,
-        "typesToChangeDefence": [
-          "Fairy"
-        ],
-        "addOrMinus": -1,
-        "changeWhichTeamMonsterDefence": [
-          "CURRENT",
-          "OPPONENT"
-        ],
-        "finalChangeValue": 0,
         "name": "ChangingMonsterDefenceAction",
         "isActivatedBefore": false
       }
@@ -562,34 +519,10 @@
         "isActivatedBefore": false
       },
       {
-        "changeAttack": 200,
-        "typesToChangeAttack": [
-          "Beast",
-          "Insect",
-          "Beast-Warrior"
-        ],
-        "addOrMinus": 1,
-        "changeWhichTeamMonsterAttack": [
-          "CURRENT",
-          "OPPONENT"
-        ],
-        "finalChangeValue": 0,
         "name": "ChangingMonsterAttackAction",
         "isActivatedBefore": false
       },
       {
-        "changeDefence": 200,
-        "typesToChangeDefence": [
-          "Beast",
-          "Insect",
-          "Beast-Warrior"
-        ],
-        "addOrMinus": 1,
-        "changeWhichTeamMonsterDefence": [
-          "CURRENT",
-          "OPPONENT"
-        ],
-        "finalChangeValue": 0,
         "name": "ChangingMonsterDefenceAction",
         "isActivatedBefore": false
       }
@@ -618,20 +551,6 @@
         "isActivatedBefore": false
       },
       {
-        "typesToChangeAttack": [
-          "Beast",
-          "Beast-Warrior"
-        ],
-        "changeAttackForEachMonsterInGraveyard": 100,
-        "addOrMinus": 1,
-        "countWhichGraveYards": [
-          "OPPONENT",
-          "CURRENT"
-        ],
-        "changeWhichTeamMonstersAttack": [
-          "CURRENT"
-        ],
-        "finalChangeValue": 0,
         "name": "ChangingMonsterAttackWithGraveyardsMonster",
         "isActivatedBefore": false
       }
@@ -664,30 +583,10 @@
         "isActivatedBefore": false
       },
       {
-        "changeAttack": 500,
-        "typesToChangeAttack": [
-          "Aqua"
-        ],
-        "addOrMinus": 1,
-        "changeWhichTeamMonsterAttack": [
-          "CURRENT",
-          "OPPONENT"
-        ],
-        "finalChangeValue": 0,
         "name": "ChangingMonsterAttackAction",
         "isActivatedBefore": false
       },
       {
-        "changeDefence": 400,
-        "typesToChangeDefence": [
-          "Aqua"
-        ],
-        "addOrMinus": -1,
-        "changeWhichTeamMonsterDefence": [
-          "CURRENT",
-          "OPPONENT"
-        ],
-        "finalChangeValue": 0,
         "name": "ChangingMonsterDefenceAction",
         "isActivatedBefore": false
       }
@@ -728,8 +627,6 @@
         "isActivatedBefore": false
       },
       {
-        "changeAttack": 500,
-        "addOrMinus": 1,
         "name": "ChangingEquipedMonsterAttack",
         "isActivatedBefore": false
       }
@@ -786,4 +683,5 @@
     "name": "Advanced Ritual Art",
     "price": 3000,
     "description": "This card can be used to Ritual Summon any 1 Ritual Monster. You must also send Normal Monsters from your Deck to the Graveyard whose total Levels equal the Level of that Ritual Monster."
-  }]
+  }
+]
