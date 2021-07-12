@@ -265,6 +265,10 @@ public class GameView {
             restartSelectedCardImage();
             reloadImages();
         });
+
+        changePositionIcon.setOnMouseExited(event -> {
+
+        });
     }
 
     private void initializeAttackAction() {
@@ -296,7 +300,7 @@ public class GameView {
                             fadeOut.play();
                         });
                         shake.play();
-                    }else{
+                    } else {
                         if (state.contains("hidden")) {
                             FlipInX flipInX = new FlipInX(monsterHouse);
                             flipInX.getTimeline().setOnFinished(event1 -> monsterHouse.setImageOfCard(true));
