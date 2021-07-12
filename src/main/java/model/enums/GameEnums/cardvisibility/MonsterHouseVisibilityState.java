@@ -2,7 +2,7 @@ package model.enums.GameEnums.cardvisibility;
 
 public enum MonsterHouseVisibilityState {
     E("empty"),
-    OO("offensiveHidden"),
+    OO("offensiveOccupied"),
     DO("defenceOccupied"),
     DH("defenceHidden");
 

@@ -35,7 +35,7 @@ public class BattlePhaseController extends GeneralController {
     }
 
 
-    private String attackMonsterHouse(Game game, MonsterHouse target) {
+    public String attackMonsterHouse(Game game, MonsterHouse target) {
         AttackMonsterChain chain = new AttackMonsterChain();
         StringBuilder stringBuilder = new StringBuilder();
 

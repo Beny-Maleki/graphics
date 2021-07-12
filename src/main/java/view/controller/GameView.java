@@ -247,7 +247,23 @@ public class GameView {
             } catch (FileNotFoundException e) {
                 e.printStackTrace();
             }
+            for (MonsterHouse monsterHouse : game.getPlayer(SideOfFeature.OPPONENT).getBoard().getMonsterHouse()) {
+                monsterHouse.setOnMouseEntered(event1 -> {
+                    monsterHouse.setScaleX(1.1);
+                    monsterHouse.setScaleY(1.1);
+                });
+                monsterHouse.setOnMouseExited(event2 -> {
+                    monsterHouse.setScaleX(1.0);
+                    monsterHouse.setScaleY(1.0);
+                });
 
+                monsterHouse.setOnMouseClicked(event3 -> {
+                    battlePhaseController.attackMonsterHouse(game, monsterHouse);
+                    for (MonsterHouse house : game.getPlayer(SideOfFeature.OPPONENT).getBoard().getMonsterHouse()) {
+                        setHandleOnMouseClickedForMagicAndMonsters(house);
+                    }
+                });
+            }
         });
 
         setMagicIcon.setOnMouseClicked(event -> {
@@ -441,7 +457,7 @@ public class GameView {
 
             monsterHouse.setPrefSize(46, 68);
             monsterHouse.setLayoutY(15);
-            handleOnMouseClicked(monsterHouse);
+            setHandleOnMouseClickedForMagicAndMonsters(monsterHouse);
             monsterHouse.setMonsterCard(null);
         }
 
@@ -451,11 +467,11 @@ public class GameView {
             magicHousesGridPane.add(magicHouse, i, 0, 1, 1);
             magicHouse.setPrefSize(46, 68);
             magicHouse.setLayoutY(15);
-            handleOnMouseClicked(magicHouse);
+            setHandleOnMouseClickedForMagicAndMonsters(magicHouse);
         }
     }
 
-    private void handleOnMouseClicked(GameHouse gameHouse) {
+    private void setHandleOnMouseClickedForMagicAndMonsters(GameHouse gameHouse) {
         gameHouse.setOnMouseClicked(e -> {
             if (gameHouse.getCardImage() != null) {
                 controller.selectCard(game, gameHouse);
