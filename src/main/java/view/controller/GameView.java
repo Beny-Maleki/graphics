@@ -295,6 +295,9 @@ public class GameView {
                             fadeOut.play();
                         });
                         shake.play();
+                    }else{
+                        FlipInX flipInX = new FlipInX(monsterHouse);
+                        flipInX.getTimeline().setOnFinished(event1 -> monsterHouse.setImageOfCard(true));
                     }
                     if (attacker.getCard() == null) {
                         Shake shake = new Shake(attacker);
