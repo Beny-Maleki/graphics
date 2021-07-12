@@ -6,14 +6,11 @@ import controller.gamecontrollers.gamestagecontroller.BattlePhaseController;
 import controller.gamecontrollers.gamestagecontroller.DrawPhaseController;
 import controller.gamecontrollers.gamestagecontroller.MainPhaseController;
 import controller.gamecontrollers.gamestagecontroller.StandByPhaseController;
-import javafx.animation.KeyFrame;
-import javafx.animation.KeyValue;
-import javafx.animation.Timeline;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
-import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.geometry.Insets;
+import javafx.scene.ImageCursor;
 import javafx.scene.Node;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
@@ -27,7 +24,6 @@ import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.FlowPane;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.Pane;
-import javafx.util.Duration;
 import model.cards.cardsEnum.Magic.MagicAttribute;
 import model.cards.cardsEnum.Magic.MagicType;
 import model.cards.cardsProp.Card;
@@ -45,6 +41,7 @@ import model.gameprop.GameInProcess;
 import model.gameprop.Player;
 import model.gameprop.gamemodel.Game;
 import model.userProp.User;
+import model.userProp.UserInfoType;
 import org.jetbrains.annotations.NotNull;
 
 import java.io.FileInputStream;
@@ -52,7 +49,6 @@ import java.io.FileNotFoundException;
 import java.util.ArrayList;
 
 public class GameView {
-
     public ImageView yourAvatar;
     public ImageView opponentAvatar;
     public Label opponentUsername;
@@ -84,21 +80,20 @@ public class GameView {
     public Pane secondMainPhaseBox;
     public Pane endPhaseBox;
     public AnchorPane cardDescriptionArea;
-    public Button summonButton;
-    public Button setMonsterButton;
     public Label currentDeckNumber;
     public Label opponentDeckNumber;
-    public Button setEffectButton;
-    public Button changePositionButton;
-    public Button activeEffectButton;
     public Pane field;
     public Label turnShowerUp;
     public Label turnShowerDown;
     public Button directAttackButton;
-    public Button attackButton;
     public ProgressBar opponentLPBar;
     public ProgressBar yourLPBar;
-
+    private ImageView summonIcon;
+    private ImageView setMonsterIcon;
+    private ImageView setMagicIcon;
+    private ImageView changePositionIcon;
+    private ImageView activeMagicIcon;
+    private ImageView attackMonsterIcon;
     private Player playerYou;
     private Player playerOpponent;
     private GeneralController controller;
@@ -116,9 +111,76 @@ public class GameView {
         standByPhaseController = new StandByPhaseController();
     }
 
+    private void initializeIcons() {
+        try {
+            setSizeForSummonIcon();
+            setSizeForSetMonsterIcon();
+            setSizeForSetMagicIcon();
+            setSizeForChangePositionIcon();
+            setSizeForAttackMonsterIcon();
+            setSizeForActiveMagic();
+
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        }
+
+        summonIcon.toFront();
+        setMonsterIcon.toFront();
+    }
+
+    private void setSizeForChangePositionIcon() throws FileNotFoundException {
+        changePositionIcon = new ImageView(new Image(new FileInputStream("G:\\graphics\\src\\main\\resources\\graphicprop\\images\\changePosition.png")));
+        changePositionIcon.setFitHeight(40);
+        changePositionIcon.setFitWidth(40);
+        changePositionIcon.setLayoutY(25);
+        changePositionIcon.setLayoutX(25);
+    }
+
+    private void setSizeForAttackMonsterIcon() throws FileNotFoundException {
+        attackMonsterIcon = new ImageView(new Image(new FileInputStream("G:\\graphics\\src\\main\\resources\\graphicprop\\images\\attack.png")));
+        attackMonsterIcon.setFitWidth(40);
+        attackMonsterIcon.setFitHeight(40);
+        attackMonsterIcon.setLayoutY(25);
+        attackMonsterIcon.setLayoutX(-5);
+    }
+
+    private void setSizeForSetMagicIcon() throws FileNotFoundException {
+        setMagicIcon = new ImageView(new Image(new FileInputStream("G:\\graphics\\src\\main\\resources\\graphicprop\\images\\setMagic.png")));
+        setMagicIcon.setFitHeight(40);
+        setMagicIcon.setFitWidth(40);
+        setMagicIcon.setLayoutY(25);
+        setMagicIcon.setLayoutX(30);
+    }
+
+    private void setSizeForActiveMagic() throws FileNotFoundException {
+        activeMagicIcon = new ImageView(new Image(new FileInputStream("G:\\graphics\\src\\main\\resources\\graphicprop\\images\\activeEffect.png")));
+        activeMagicIcon.setFitWidth(40);
+        activeMagicIcon.setFitHeight(40);
+        activeMagicIcon.setLayoutY(25);
+        activeMagicIcon.setLayoutX(1);
+    }
+
+    private void setSizeForSetMonsterIcon() throws FileNotFoundException {
+        setMonsterIcon = new ImageView(new Image(new FileInputStream("G:\\graphics\\src\\main\\resources\\graphicprop\\images\\setMonster.png")));
+        setMonsterIcon.setFitHeight(40);
+        setMonsterIcon.setFitWidth(40);
+        setMonsterIcon.setLayoutY(25);
+        setMonsterIcon.setLayoutX(30);
+    }
+
+    private void setSizeForSummonIcon() throws FileNotFoundException {
+        summonIcon = new ImageView(new Image(new FileInputStream("G:\\graphics\\src\\main\\resources\\graphicprop\\images\\summon.png")));
+        summonIcon.setFitWidth(40);
+        summonIcon.setFitHeight(40);
+        summonIcon.setLayoutY(25);
+        summonIcon.setLayoutX(1);
+    }
+
     @FXML
     public void initialize() throws FileNotFoundException {
-        game = GameInProcess.getGame();
+        game = new Game(new Player(User.getUserByUserInfo("sas", UserInfoType.NICKNAME), 0),
+                new Player(User.getUserByUserInfo("KaftarBaz", UserInfoType.NICKNAME), 0), 1);
+        GameInProcess.setGame(game);
 
         playerYou = GameInProcess.getGame().getFirstPlayer();
         playerOpponent = GameInProcess.getGame().getSecondPlayer();
@@ -126,7 +188,9 @@ public class GameView {
         User you = (User) playerYou.getUser();
         User opponent = (User) playerOpponent.getUser();
 
-        deActiveActions();
+        //deActiveActions();
+
+
         assert opponent != null;
 
         setNumberOfDeckCards();
@@ -144,6 +208,63 @@ public class GameView {
 
         initializeHand(playerYou, yourHandContainer, true);
         initializeHand(playerOpponent, opponentHandContainer, false);
+
+        initializeIcons();
+        initializeActionsIcon();
+    }
+
+    private void initializeActionsIcon() {
+        setHoverEffectForIcons(summonIcon);
+        setHoverEffectForIcons(setMonsterIcon);
+        setHoverEffectForIcons(setMagicIcon);
+        summonIcon.setOnMouseClicked(event -> {
+                    String answer = mainPhaseController.hireCard(game, TypeOfHire.SUMMON);
+                    if (answer.contains("1") || answer.contains("2")) {
+                        showTributeItems();
+                    }
+                    animateSummon();
+                    deActiveActions();
+                    restartSelectedCardImage();
+                    reloadImages();
+                }
+        );
+        setMonsterIcon.setOnMouseClicked(event -> {
+            String answer = mainPhaseController.hireCard(game, TypeOfHire.SET);
+            if (answer.contains("1") || answer.contains("2")) {
+                showTributeItems();
+            }
+            animateSummon();
+            deActiveActions();
+            reloadImages();
+            restartSelectedCardImage();
+
+        });
+        attackMonsterIcon.setOnMouseClicked(event -> {
+            try {
+                field.getScene().setCursor(new ImageCursor(new Image(new FileInputStream("src/main/resources/graphicprop/images/sword.png"))));
+            } catch (FileNotFoundException e) {
+                e.printStackTrace();
+            }
+        });
+
+        setMagicIcon.setOnMouseClicked(event -> {
+            mainPhaseController.hireCard(game, TypeOfHire.SET);
+            restartSelectedCardImage();
+            reloadImages();
+        });
+
+    }
+
+    private void setHoverEffectForIcons(ImageView Node) {
+        Node.setOnMouseEntered(event -> {
+            Node.setScaleX(1.1);
+            Node.setScaleY(1.1);
+        });
+
+        Node.setOnMouseExited(event -> {
+            Node.setScaleX(1);
+            Node.setScaleY(1);
+        });
     }
 
     private void setNumberOfDeckCards() {
@@ -191,13 +312,16 @@ public class GameView {
     }
 
     private void deActiveActions() {
-        summonButton.setVisible(false);
-        setMonsterButton.setVisible(false);
-        setEffectButton.setVisible(false);
-        activeEffectButton.setVisible(false);
-        changePositionButton.setVisible(false);
-        attackButton.setVisible(false);
-        directAttackButton.setVisible(false);
+        if (summonIcon.getParent() != null)
+            ((Pane) summonIcon.getParent()).getChildren().remove(summonIcon);
+        if (setMonsterIcon.getParent() != null)
+            ((Pane) setMonsterIcon.getParent()).getChildren().remove(setMonsterIcon);
+        if (setMagicIcon.getParent() != null)
+            ((Pane) setMagicIcon.getParent()).getChildren().remove(setMagicIcon);
+        if (changePositionIcon.getParent() != null)
+            ((Pane) changePositionIcon.getParent()).getChildren().remove(changePositionIcon);
+        if ((attackMonsterIcon.getParent() != null))
+            ((Pane) attackMonsterIcon.getParent()).getChildren().remove(attackMonsterIcon);
     }
 
     private void showAvailableActions(HandHouse handHouse) {
@@ -205,17 +329,15 @@ public class GameView {
             case FIRST_MAIN_PHASE:
             case SECOND_MAIN_PHASE: {
                 if (handHouse.getCard() instanceof MonsterCard && game.getHiredMonster() == null) {
-                    summonButton.setVisible(true);
-                    setMonsterButton.setVisible(true);
-                    new FadeIn(summonButton).play();
-                    new FadeIn(setMonsterButton).play();
+                    handHouse.getChildren().addAll(summonIcon, setMonsterIcon);
                 } else if (handHouse.getCard() instanceof MagicCard) {
                     MagicCard magicCard = (MagicCard) handHouse.getCard();
                     if (game.getPlayer(SideOfFeature.CURRENT).getBoard().numberOfFullHouse("spell") != 5) {
                         if ((magicCard.getMagicAttribute() == MagicAttribute.QUICK_PLAY || magicCard.getTypeOfMagic() == MagicType.TRAP)) {
-                            activeEffectButton.setVisible(true);
+                            handHouse.getChildren().addAll(setMagicIcon);
+                        } else {
+                            handHouse.getChildren().addAll(setMagicIcon, activeMagicIcon);
                         }
-                        setEffectButton.setVisible(true);
                     }
                 }
                 break;
@@ -228,37 +350,20 @@ public class GameView {
             case FIRST_MAIN_PHASE:
             case SECOND_MAIN_PHASE: {
                 if (monsterHouse.getCard() != null) {
-                    changePositionButton.setVisible(true);
-                    new FadeIn(changePositionButton).play();
+                    if (game.getHiredMonster() != monsterHouse) {
+                        monsterHouse.getChildren().add(changePositionIcon);
+                    }
                 }
                 break;
             }
             case BATTLE_PHASE: {
-                if (monsterHouse.getCard() != null) {
-                    changePositionButton.setVisible(true);
-                    new FadeIn(changePositionButton).play();
-
-                    if(monsterHouse.getState().equals(MonsterHouseVisibilityState.OO.toString())) {
-                        if (!monsterHouse.isMonsterAttacked() && !game.isFirstTurnOfTheGame()) {
-                            boolean isOppoMonsterHousesEmpty = true;
-
-                            Player opponent = game.getPlayer(SideOfFeature.OPPONENT);
-                            for (MonsterHouse house : opponent.getBoard().getMonsterHouse()) {
-                                if (!house.getState().equals(MonsterHouseVisibilityState.E.toString())) {
-                                    isOppoMonsterHousesEmpty = false;
-                                }
-                            }
-
-                            if (isOppoMonsterHousesEmpty) {
-                                directAttackButton.setVisible(true);
-                                new FadeIn(directAttackButton).play();
-                            } else {
-                                attackButton.setVisible(true);
-                                new FadeIn(attackButton).play();
-                            }
-                        }
-                    }
+                if (!monsterHouse.getState().contains("den") && !game.isFirstTurnOfTheGame() && !monsterHouse.isMonsterAttacked()) {
+                    monsterHouse.getChildren().add(attackMonsterIcon);
+                    System.out.println("here");
+                } else {
+                    System.out.println(monsterHouse.getState()+ "and " + !game.isFirstTurnOfTheGame() + " and " + !monsterHouse.isMonsterAttacked());
                 }
+                break;
             }
         }
     }
@@ -267,12 +372,12 @@ public class GameView {
         MagicCard magicCard = (MagicCard) (magicHouse.getCard());
         if (magicCard.getTypeOfMagic() == MagicType.TRAP ||
                 magicCard.getMagicAttribute() == MagicAttribute.QUICK_PLAY) {
-            activeEffectButton.setVisible(true);
-            new FadeIn(activeEffectButton).play();
+            magicHouse.getChildren().add(activeMagicIcon);
+            new FadeIn(activeMagicIcon).play();
         } else {
             if (game.getGameMainStage() == GameMainStage.FIRST_MAIN_PHASE || game.getGameMainStage() == GameMainStage.SECOND_MAIN_PHASE) {
-                activeEffectButton.setVisible(true);
-                new FadeIn(activeEffectButton).play();
+                magicHouse.getChildren().add(activeMagicIcon);
+                new FadeIn(activeMagicIcon).play();
             }
         }
     }
@@ -761,7 +866,7 @@ public class GameView {
 
     }
 
-    private void dynamicProgressBarColors (ProgressBar bar) {
+    private void dynamicProgressBarColors(ProgressBar bar) {
         String CRITICAL = "-fx-accent: C86176;";
         String DANGER = "-fx-accent: B181A1;";
         String MODERATE = "-fx-accent: AC91B9;";
@@ -769,6 +874,7 @@ public class GameView {
 
         bar.progressProperty().addListener(new ChangeListener<>() {
             Flash flash = new Flash(bar);
+
             @Override
             public void changed(ObservableValue<? extends Number> observable, Number oldValue, Number newValue) {
                 double progress = newValue == null ? 0 : newValue.doubleValue();
@@ -811,28 +917,6 @@ public class GameView {
 
             setScaleForCurrentPhase(phaseName.getText());
             restartSelectedCardImage();
-        } else if (mouseEvent.getSource() == summonButton) {
-            String answer = mainPhaseController.hireCard(game, TypeOfHire.SUMMON);
-            if (answer.contains("1") || answer.contains("2")) {
-                showTributeItems();
-            }
-            animateSummon();
-            restartSelectedCardImage();
-            reloadImages();
-        } else if (mouseEvent.getSource() == setMonsterButton) {
-            String answer = mainPhaseController.hireCard(game, TypeOfHire.SET);
-            if (answer.contains("1") || answer.contains("2")) {
-                showTributeItems();
-            }
-            animateSummon();
-            reloadImages();
-            restartSelectedCardImage();
-        } else if (mouseEvent.getSource() == setEffectButton) {
-            mainPhaseController.hireCard(game, TypeOfHire.SET);
-            restartSelectedCardImage();
-            reloadImages();
-        } else if (mouseEvent.getSource() == attackButton) {
-            attack();
         } else if (mouseEvent.getSource() == directAttackButton) {
             directAttack();
         }
@@ -850,5 +934,5 @@ public class GameView {
         deActiveActions();
         new FlipInX(selectedCardImageView).play();
     }
-    
+
 }
