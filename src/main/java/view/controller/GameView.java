@@ -24,6 +24,8 @@ import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.FlowPane;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.Pane;
+import javafx.scene.media.MediaPlayer;
+import javafx.util.Duration;
 import model.cards.cardsEnum.Magic.MagicAttribute;
 import model.cards.cardsEnum.Magic.MagicType;
 import model.cards.cardsProp.Card;
@@ -43,6 +45,8 @@ import model.gameprop.gamemodel.Game;
 import model.userProp.User;
 import model.userProp.UserInfoType;
 import org.jetbrains.annotations.NotNull;
+import view.AudioHandler;
+import view.AudioPath;
 
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
@@ -129,7 +133,7 @@ public class GameView {
     }
 
     private void setSizeForChangePositionIcon() throws FileNotFoundException {
-        changePositionIcon = new ImageView(new Image(new FileInputStream("G:\\graphics\\src\\main\\resources\\graphicprop\\images\\changePosition.png")));
+        changePositionIcon = new ImageView(new Image(new FileInputStream("src/main/resources/graphicprop/images/changePosition.png")));
         changePositionIcon.setFitHeight(40);
         changePositionIcon.setFitWidth(40);
         changePositionIcon.setLayoutY(25);
@@ -137,7 +141,7 @@ public class GameView {
     }
 
     private void setSizeForAttackMonsterIcon() throws FileNotFoundException {
-        attackMonsterIcon = new ImageView(new Image(new FileInputStream("G:\\graphics\\src\\main\\resources\\graphicprop\\images\\attack.png")));
+        attackMonsterIcon = new ImageView(new Image(new FileInputStream("src/main/resources/graphicprop/images/attack.png")));
         attackMonsterIcon.setFitWidth(40);
         attackMonsterIcon.setFitHeight(40);
         attackMonsterIcon.setLayoutY(25);
@@ -145,7 +149,7 @@ public class GameView {
     }
 
     private void setSizeForSetMagicIcon() throws FileNotFoundException {
-        setMagicIcon = new ImageView(new Image(new FileInputStream("G:\\graphics\\src\\main\\resources\\graphicprop\\images\\setMagic.png")));
+        setMagicIcon = new ImageView(new Image(new FileInputStream("src/main/resources/graphicprop/images/setMagic.png")));
         setMagicIcon.setFitHeight(40);
         setMagicIcon.setFitWidth(40);
         setMagicIcon.setLayoutY(25);
@@ -153,7 +157,7 @@ public class GameView {
     }
 
     private void setSizeForActiveMagic() throws FileNotFoundException {
-        activeMagicIcon = new ImageView(new Image(new FileInputStream("G:\\graphics\\src\\main\\resources\\graphicprop\\images\\activeEffect.png")));
+        activeMagicIcon = new ImageView(new Image(new FileInputStream("src/main/resources/graphicprop/images/activeEffect.png")));
         activeMagicIcon.setFitWidth(40);
         activeMagicIcon.setFitHeight(40);
         activeMagicIcon.setLayoutY(25);
@@ -161,7 +165,7 @@ public class GameView {
     }
 
     private void setSizeForSetMonsterIcon() throws FileNotFoundException {
-        setMonsterIcon = new ImageView(new Image(new FileInputStream("G:\\graphics\\src\\main\\resources\\graphicprop\\images\\setMonster.png")));
+        setMonsterIcon = new ImageView(new Image(new FileInputStream("src/main/resources/graphicprop/images/setMonster.png")));
         setMonsterIcon.setFitHeight(40);
         setMonsterIcon.setFitWidth(40);
         setMonsterIcon.setLayoutY(25);
@@ -169,7 +173,7 @@ public class GameView {
     }
 
     private void setSizeForSummonIcon() throws FileNotFoundException {
-        summonIcon = new ImageView(new Image(new FileInputStream("G:\\graphics\\src\\main\\resources\\graphicprop\\images\\summon.png")));
+        summonIcon = new ImageView(new Image(new FileInputStream("src/main/resources/graphicprop/images/summon.png")));
         summonIcon.setFitWidth(40);
         summonIcon.setFitHeight(40);
         summonIcon.setLayoutY(25);
@@ -211,6 +215,18 @@ public class GameView {
 
         initializeIcons();
         initializeActionsIcon();
+
+        AudioHandler initialSoundOfGame; // stating the game theme music!
+        if (AudioHandler.getPlaying() != null) {
+            if (!AudioHandler.getPlayingAudioPath().equals(AudioPath.ITS_TIME_TO_DUEL)) {
+                initialSoundOfGame = new AudioHandler(AudioPath.ITS_TIME_TO_DUEL);
+                AudioHandler.getPlaying().getMediaPlayer().stop();
+                playNewMedia(initialSoundOfGame);
+            }
+        } else {
+            initialSoundOfGame = new AudioHandler(AudioPath.ITS_TIME_TO_DUEL);
+            playNewMedia(initialSoundOfGame);
+        }
     }
 
     private void initializeActionsIcon() {
@@ -272,7 +288,6 @@ public class GameView {
             restartSelectedCardImage();
             reloadImages();
         });
-
     }
 
     private void setHoverEffectForIcons(ImageView Node) {
@@ -285,6 +300,22 @@ public class GameView {
             Node.setScaleX(1);
             Node.setScaleY(1);
         });
+    }
+
+    private void playNewMedia(AudioHandler media) {
+        media.getMediaPlayer().setCycleCount(1);
+
+        media.getMediaPlayer().setOnEndOfMedia(new Runnable() {
+            @Override
+            public void run() {
+                AudioHandler gameTheme = new AudioHandler(AudioPath.IN_Duel);
+                gameTheme.getMediaPlayer().setCycleCount(MediaPlayer.INDEFINITE);
+                AudioHandler.getPlaying().getMediaPlayer().stop();
+                gameTheme.play();
+            }
+        });
+
+        media.play();
     }
 
     private void setNumberOfDeckCards() {
