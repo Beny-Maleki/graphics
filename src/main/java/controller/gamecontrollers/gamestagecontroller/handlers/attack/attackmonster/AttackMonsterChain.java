@@ -1,7 +1,6 @@
 package controller.gamecontrollers.gamestagecontroller.handlers.attack.attackmonster;
 
 import controller.gamecontrollers.gamestagecontroller.handlers.attack.attackmonster.processors.AttackProcessor;
-import controller.gamecontrollers.gamestagecontroller.handlers.attack.attackmonster.processors.SelectedCardProcessor;
 import model.gameprop.BoardProp.MonsterHouse;
 import model.gameprop.gamemodel.Game;
 
@@ -13,7 +12,7 @@ public class AttackMonsterChain {
     }
 
     private void buildChain() {
-        processor = new SelectedCardProcessor(new AttackProcessor(null));
+        processor = new AttackProcessor(null);
     }
 
     public String request(MonsterHouse monsterHouse, Game game) {

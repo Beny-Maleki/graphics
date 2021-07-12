@@ -10,6 +10,7 @@ import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.fxml.FXML;
 import javafx.geometry.Insets;
+import javafx.scene.Cursor;
 import javafx.scene.ImageCursor;
 import javafx.scene.Node;
 import javafx.scene.control.Button;
@@ -25,7 +26,6 @@ import javafx.scene.layout.FlowPane;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.Pane;
 import javafx.scene.media.MediaPlayer;
-import javafx.util.Duration;
 import model.cards.cardsEnum.Magic.MagicAttribute;
 import model.cards.cardsEnum.Magic.MagicType;
 import model.cards.cardsProp.Card;
@@ -257,9 +257,20 @@ public class GameView {
             restartSelectedCardImage();
 
         });
+        initializeAttackAction();
+
+        setMagicIcon.setOnMouseClicked(event -> {
+            mainPhaseController.hireCard(game, TypeOfHire.SET);
+            deActiveActions();
+            restartSelectedCardImage();
+            reloadImages();
+        });
+    }
+
+    private void initializeAttackAction() {
         attackMonsterIcon.setOnMouseClicked(event -> {
             try {
-                field.getScene().setCursor(new ImageCursor(new Image(new FileInputStream("G:\\graphics\\src\\main\\resources\\graphicprop\\images\\sword.png"))));
+                field.getScene().setCursor(new ImageCursor(new Image(new FileInputStream("src/main/resources/graphicprop/images/sword.png"))));
             } catch (FileNotFoundException e) {
                 e.printStackTrace();
             }
@@ -274,20 +285,39 @@ public class GameView {
                 });
 
                 monsterHouse.setOnMouseClicked(event3 -> {
+                    MonsterHouse attacker = (MonsterHouse) game.getCardProp().getCardPlace();
                     battlePhaseController.attackMonsterHouse(game, monsterHouse);
+                    if (monsterHouse.getCard() == null) {
+                        Shake shake = new Shake(monsterHouse);
+                        shake.getTimeline().setOnFinished(event4 -> {
+                            FadeOut fadeOut = new FadeOut(monsterHouse);
+                            fadeOut.getTimeline().setOnFinished(event5 -> monsterHouse.removeCard());
+                            fadeOut.play();
+                        });
+                        shake.play();
+                    }
+                    if (attacker.getCard() == null) {
+                        Shake shake = new Shake(attacker);
+                        shake.getTimeline().setOnFinished(event4 -> {
+                            FadeOut fadeOut = new FadeOut(attacker);
+                            fadeOut.getTimeline().setOnFinished(event5 -> attacker.removeCard());
+                            fadeOut.play();
+                        });
+                        shake.play();
+                        attacker.removeCard();
+                    }
+                    updateHealth();
+                    field.getScene().setCursor(Cursor.DEFAULT);
                     for (MonsterHouse house : game.getPlayer(SideOfFeature.OPPONENT).getBoard().getMonsterHouse()) {
                         setHandleOnMouseClickedForMagicAndMonsters(house);
                     }
                 });
             }
         });
+    }
 
-        setMagicIcon.setOnMouseClicked(event -> {
-            mainPhaseController.hireCard(game, TypeOfHire.SET);
-            deActiveActions();
-            restartSelectedCardImage();
-            reloadImages();
-        });
+    private void updateHealth() {
+
     }
 
     private void setHoverEffectForIcons(ImageView Node) {
@@ -414,9 +444,6 @@ public class GameView {
             case BATTLE_PHASE: {
                 if (!monsterHouse.getState().contains("den") && !game.isFirstTurnOfTheGame() && !monsterHouse.isMonsterAttacked()) {
                     monsterHouse.getChildren().add(attackMonsterIcon);
-                    System.out.println("here");
-                } else {
-                    System.out.println(monsterHouse.getState() + "and " + !game.isFirstTurnOfTheGame() + " and " + !monsterHouse.isMonsterAttacked());
                 }
                 break;
             }
@@ -534,7 +561,7 @@ public class GameView {
             yourAvatar.setImage(new Image(new FileInputStream(you.getAvatarAddress())));
             opponentAvatar.setImage(new Image(new FileInputStream(opponent.getAvatarAddress())));
         } catch (FileNotFoundException e) {
-            System.out.println("Aks ha inja naboodan ke :(");
+            e.printStackTrace();
         }
 
         yourUsername.setText("Username: " + you.getUsername());

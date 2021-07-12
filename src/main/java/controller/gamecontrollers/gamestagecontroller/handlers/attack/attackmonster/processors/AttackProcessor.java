@@ -37,7 +37,7 @@ public class AttackProcessor extends AttackMonsterProcessor {
                 target.getAdditionalDefence();
         String output;
         int damageAmount;
-        if (target.getState().equals(MonsterHouseVisibilityState.OO)) {
+        if (target.getState().equals("offensiveOccupied")) {
 
             damageAmount = practicalAttackForOffensive - practicalAttackForTarget;
             if (damageAmount > 0) {
