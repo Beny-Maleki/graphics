@@ -286,6 +286,7 @@ public class GameView {
 
                 monsterHouse.setOnMouseClicked(event3 -> {
                     MonsterHouse attacker = (MonsterHouse) game.getCardProp().getCardPlace();
+                    String state = monsterHouse.getState();
                     battlePhaseController.attackMonsterHouse(game, monsterHouse);
                     if (monsterHouse.getCard() == null) {
                         Shake shake = new Shake(monsterHouse);
@@ -296,8 +297,10 @@ public class GameView {
                         });
                         shake.play();
                     }else{
-                        FlipInX flipInX = new FlipInX(monsterHouse);
-                        flipInX.getTimeline().setOnFinished(event1 -> monsterHouse.setImageOfCard(true));
+                        if (state.contains("hidden")) {
+                            FlipInX flipInX = new FlipInX(monsterHouse);
+                            flipInX.getTimeline().setOnFinished(event1 -> monsterHouse.setImageOfCard(true));
+                        }
                     }
                     if (attacker.getCard() == null) {
                         Shake shake = new Shake(attacker);
