@@ -12,10 +12,9 @@ import javafx.animation.Timeline;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.geometry.Insets;
-import javafx.scene.Cursor;
-import javafx.scene.ImageCursor;
-import javafx.scene.Node;
+import javafx.scene.*;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.ProgressBar;
@@ -29,6 +28,7 @@ import javafx.scene.layout.FlowPane;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.Pane;
 import javafx.scene.media.MediaPlayer;
+import javafx.stage.Stage;
 import javafx.util.Duration;
 import model.cards.cardsEnum.Magic.MagicAttribute;
 import model.cards.cardsEnum.Magic.MagicType;
@@ -54,6 +54,7 @@ import view.AudioPath;
 
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
+import java.io.IOException;
 import java.util.ArrayList;
 
 public class GameView {
@@ -275,68 +276,74 @@ public class GameView {
         });
 
         changePositionIcon.setOnMouseExited(event -> {
-            ((MonsterHouse)game.getCardProp().getCardPlace()).changePos();
+            ((MonsterHouse) game.getCardProp().getCardPlace()).changePos();
 
         });
     }
 
     private void initializeAttackAction() {
         attackMonsterIcon.setOnMouseClicked(event -> {
-            try {
-                field.getScene().setCursor(new ImageCursor(new Image(new FileInputStream("src/main/resources/graphicprop/images/sword.png"))));
-            } catch (FileNotFoundException e) {
-                e.printStackTrace();
-            }
-            for (MonsterHouse monsterHouse : game.getPlayer(SideOfFeature.OPPONENT).getBoard().getMonsterHouse()) {
-                monsterHouse.setOnMouseEntered(event1 -> {
-                    monsterHouse.setScaleX(1.1);
-                    monsterHouse.setScaleY(1.1);
-                });
-                monsterHouse.setOnMouseExited(event2 -> {
-                    monsterHouse.setScaleX(1.0);
-                    monsterHouse.setScaleY(1.0);
-                });
+            if (game.getPlayer(SideOfFeature.CURRENT).getBoard().numberOfFullHouse("monster") == 5) {
+                battlePhaseController.attackDirect(game);
+            } else {
+                try {
+                    field.getScene().setCursor(new ImageCursor(new Image(new FileInputStream("src/main/resources/graphicprop/images/sword.png"))));
+                } catch (FileNotFoundException e) {
+                    e.printStackTrace();
+                }
+                for (MonsterHouse monsterHouse : game.getPlayer(SideOfFeature.OPPONENT).getBoard().getMonsterHouse()) {
+                    monsterHouse.setOnMouseEntered(event1 -> {
+                        monsterHouse.setScaleX(1.1);
+                        monsterHouse.setScaleY(1.1);
+                    });
+                    monsterHouse.setOnMouseExited(event2 -> {
+                        monsterHouse.setScaleX(1.0);
+                        monsterHouse.setScaleY(1.0);
+                    });
 
-                monsterHouse.setOnMouseClicked(event3 -> {
-                    MonsterHouse attacker = (MonsterHouse) game.getCardProp().getCardPlace();
-                    String state = monsterHouse.getState();
+                    monsterHouse.setOnMouseClicked(event3 -> {
+                        MonsterHouse attacker = (MonsterHouse) game.getCardProp().getCardPlace();
+                        String state = monsterHouse.getState();
 
-                    prevLPYou = yourLPBar.getProgress();
-                    prevLPOpponent = opponentLPBar.getProgress();
+                        prevLPYou = yourLPBar.getProgress();
+                        prevLPOpponent = opponentLPBar.getProgress();
 
-                    battlePhaseController.attackMonsterHouse(game, monsterHouse);
-                    if (monsterHouse.getCard() == null) {
-                        Shake shake = new Shake(monsterHouse);
-                        shake.getTimeline().setOnFinished(event4 -> {
-                            FadeOut fadeOut = new FadeOut(monsterHouse);
-                            fadeOut.getTimeline().setOnFinished(event5 -> monsterHouse.removeCard());
-                            fadeOut.play();
-                        });
-                        shake.play();
-                    } else {
-                        if (state.contains("hidden")) {
-                            FlipInX flipInX = new FlipInX(monsterHouse);
-                            flipInX.getTimeline().setOnFinished(event1 -> monsterHouse.setImageOfCard(true));
+                        battlePhaseController.attackMonsterHouse(game, monsterHouse);
+                        if (monsterHouse.getCard() == null) {
+                            Shake shake = new Shake(monsterHouse);
+                            shake.getTimeline().setOnFinished(event4 -> {
+                                FadeOut fadeOut = new FadeOut(monsterHouse);
+                                fadeOut.getTimeline().setOnFinished(event5 -> monsterHouse.removeCard());
+                                fadeOut.play();
+                            });
+                            shake.play();
+                        } else {
+                            if (state.contains("hidden")) {
+                                FlipInX flipInX = new FlipInX(monsterHouse);
+                                flipInX.getTimeline().setOnFinished(event1 -> monsterHouse.setImageOfCard(true));
+                            }
                         }
-                    }
-                    if (attacker.getCard() == null) {
-                        Shake shake = new Shake(attacker);
-                        shake.getTimeline().setOnFinished(event4 -> {
-                            FadeOut fadeOut = new FadeOut(attacker);
-                            fadeOut.getTimeline().setOnFinished(event5 -> attacker.removeCard());
-                            fadeOut.play();
-                        });
-                        shake.play();
-                        attacker.removeCard();
-                    }
-                    updateHealth();
-                    field.getScene().setCursor(Cursor.DEFAULT);
-                    for (MonsterHouse house : game.getPlayer(SideOfFeature.OPPONENT).getBoard().getMonsterHouse()) {
-                        setHandleOnMouseClickedForMagicAndMonsters(house);
-                    }
-                    deActiveActions();
-                });
+                        if (attacker.getCard() == null) {
+                            Shake shake = new Shake(attacker);
+                            shake.getTimeline().setOnFinished(event4 -> {
+                                FadeOut fadeOut = new FadeOut(attacker);
+                                fadeOut.getTimeline().setOnFinished(event5 -> attacker.removeCard());
+                                fadeOut.play();
+                            });
+                            shake.play();
+                            attacker.removeCard();
+                        }
+
+                        field.getScene().setCursor(Cursor.DEFAULT);
+                        for (MonsterHouse house : game.getPlayer(SideOfFeature.OPPONENT).getBoard().getMonsterHouse()) {
+                            setHandleOnMouseClickedForMagicAndMonsters(house);
+                        }
+
+                    });
+                }
             }
+            updateHealth();
+            deActiveActions();
         });
     }
 
@@ -361,6 +368,29 @@ public class GameView {
         yourLPLabel.setText("LP: " + playerYou.getPlayerLifePoint());
         opponentLPLabel.setText("LP: " + playerOpponent.getPlayerLifePoint());
 
+        if (playerOpponent.getPlayerLifePoint() == 0 ||playerYou.getPlayerLifePoint() == 0){
+            finishGame();
+        }
+
+    }
+
+    private void finishGame() {
+        try {
+            if (controller.finishRound(game)) {
+                FadeOut fadeOut = new FadeOut(root);
+                fadeOut.setSpeed(0.5);
+                fadeOut.play();
+                FXMLLoader loader = new FXMLLoader(getClass().getResource("/graphicprop/fxml/mainPage.fxml"));
+                Parent parent = loader.load();
+                Stage stage = (Stage) field.getScene().getWindow();
+                Scene scene = new Scene(parent);
+                stage.setScene(scene);
+                scene.getRoot().requestFocus();
+                stage.show();
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
 
     }
 

@@ -22,7 +22,6 @@ import model.gameprop.Player;
 import model.gameprop.Selectable;
 import model.gameprop.SelectedCardProp;
 import model.gameprop.gamemodel.Game;
-import view.controller.GameView;
 import view.game.UserInterface;
 
 import java.io.FileNotFoundException;
@@ -134,24 +133,14 @@ public class GeneralController {
         return output;
     }
 
-    public String finishRound(Game game) throws FileNotFoundException {
+    public boolean finishRound(Game game) throws FileNotFoundException {
         GameInProcess.getGame().finishRound(game.getTurnOfGame());
         return roundOrGameResults(game);
     }
 
 
-    private String roundOrGameResults(Game game) {
-        if (game.isGameFinished()) {
-            Player winner = game.getWinner();
-            return winner.getUser().getNickname() +
-                    "  WIN !!!! game Points -> " + game.getWinner().getNumberOfWinningRound() + " : " + game.getLooser().getNumberOfWinningRound();
-        } else {
-            String gameScoreBoard = game.getPlayer(SideOfFeature.CURRENT).getUser().getNickname() + " : "
-                    + game.getPlayer(SideOfFeature.CURRENT).getNumberOfWinningRound() + " | " +
-                    game.getPlayer(SideOfFeature.OPPONENT).getUser().getNickname() + " : " +
-                    game.getPlayer(SideOfFeature.OPPONENT).getNumberOfWinningRound();
-            return gameScoreBoard + "\n" + drawSideDeck(game, game.getPlayer(SideOfFeature.CURRENT));
-        }
+    private boolean roundOrGameResults(Game game) {
+        return game.isGameFinished();
     }
 
     private String drawBoard(Game game) {
@@ -163,41 +152,6 @@ public class GeneralController {
         UserInterface drawer = new UserInterface(game);
         return drawer.showSideDeck(player);
     }
-
-    public String run(String command) throws CmdLineParser.OptionException, FileNotFoundException {
-        Game game = GameInProcess.getGame();
-        String output = null;
-        if (game.getGameSideStage().equals(GameSideStage.START_STAGE)) {
-            if (command.equals("START")) {
-                game.setGameSideStage(GameSideStage.NONE);
-                output = DrawPhaseController.getInstance().draw(false) + " \n" + drawBoard(game);
-            } else output = "invalid command to start game";
-        } else if (game.getGameSideStage().equals(GameSideStage.NONE)) {
-            if (command.startsWith("select -d")) {
-                output = deSelectCard(game);
-                // d selecting card
-            } else if (command.startsWith("show graveyard")) {
-                output = showGraveYard(game, command);
-                // show grave yard (current / opponent)
-            } else if (command.startsWith("card show")) {
-                output = showSelectedCard(game);
-                // show card detail
-            } else if (command.equals("finishRound")) {
-                // loose one round
-                output = finishRound(game);
-            } else if (command.equals("next phase")) {
-                output = nextPhase(game);
-            } else if (command.equals("draw board")) {
-                output = drawBoard(game);
-            } else if (command.equals("active effect")) {
-                output = activeEffect(game);
-            } else if (command.startsWith("cheat code: ")) {
-                output = runCheatCode(command);
-            }
-        } else output = "back to game first";
-        return processAnswer(game, output);
-    }
-
 
     private String process(String generalMessage, String name) {
         if (generalMessage.contains("StAgE")) {
@@ -222,8 +176,8 @@ public class GeneralController {
             } else if (playerTurn.equals(PlayerTurn.PLAYER_TWO)) {
                 game.finishRound(PlayerTurn.PLAYER_ONE);
             }
-
-            return roundOrGameResults(game);
+            return null;
+            //return roundOrGameResults(game);
         } else if (cheatCode.contains("draw")) {
             return DrawPhaseController.getInstance().draw(true);
         } else if (cheatCode.contains("increase LP")) {
