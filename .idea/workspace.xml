@@ -4,68 +4,8 @@
     <option name="autoReloadType" value="ALL" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="45f87b1a-8403-4c06-b2b2-57ebfe555883" name="Default Changelist" comment="final version">
-      <change afterPath="$PROJECT_DIR$/sounds/attack.mp3" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/sounds/buttonClick.mp3" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/sounds/summon.mp3" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/view/ClickButtonHandler.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/view/FatherAudio.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/view/SoundEffectHandler.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_06-Jul-21_00_53_[Default_Changelist]/shelved.patch" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_06-Jul-21_00_53__Default_Changelist_.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_06-Jul-21_17_30_[Default_Changelist]/shelved.patch" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_06-Jul-21_17_30__Default_Changelist_.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_08-Jul-21_13_28_[Default_Changelist]/shelved.patch" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_08-Jul-21_13_28__Default_Changelist_.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/jsonResources/Decks.Json" beforeDir="false" afterPath="$PROJECT_DIR$/jsonResources/Decks.Json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/jsonResources/Users.Json" beforeDir="false" afterPath="$PROJECT_DIR$/jsonResources/Users.Json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/controller/menues/menuhandlers/menucontrollers/ScoreboardMenuController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controller/menues/menuhandlers/menucontrollers/ScoreboardMenuController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/view/AudioHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/view/AudioHandler.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/view/AudioPath.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/view/AudioPath.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/view/controller/CardCreatorPageView.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/view/controller/CardCreatorPageView.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/view/controller/ChooseMagicActionsView.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/view/controller/ChooseMagicActionsView.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/view/controller/ChooseMonsterActionsView.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/view/controller/ChooseMonsterActionsView.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/view/controller/DecksView.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/view/controller/DecksView.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/view/controller/ExportPageView.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/view/controller/ExportPageView.java" afterDir="false" />
+    <list default="true" id="45f87b1a-8403-4c06-b2b2-57ebfe555883" name="Default Changelist" comment="add sound effects">
       <change beforePath="$PROJECT_DIR$/src/main/java/view/controller/GameView.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/view/controller/GameView.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/view/controller/ImportExportPageView.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/view/controller/ImportExportPageView.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/view/controller/ImportPageView.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/view/controller/ImportPageView.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/view/controller/LoginView.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/view/controller/LoginView.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/view/controller/MainMenuView.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/view/controller/MainMenuView.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/view/controller/ProfileView.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/view/controller/ProfileView.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/view/controller/RegisterView.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/view/controller/RegisterView.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/view/controller/ScoreboardView.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/view/controller/ScoreboardView.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/view/controller/WelcomeView.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/view/controller/WelcomeView.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/graphicprop/fxml/CardCreatorPage.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/graphicprop/fxml/CardCreatorPage.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/graphicprop/fxml/ExportPage.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/graphicprop/fxml/ExportPage.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/graphicprop/fxml/LoginPage.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/graphicprop/fxml/LoginPage.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/graphicprop/fxml/MainPage.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/graphicprop/fxml/MainPage.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/graphicprop/fxml/RegisterPage.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/graphicprop/fxml/RegisterPage.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/controller/menues/menuhandlers/menucontrollers/ScoreboardMenuController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/controller/menues/menuhandlers/menucontrollers/ScoreboardMenuController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/graphicprop/fxml/CardCreatorPage.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/graphicprop/fxml/CardCreatorPage.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/graphicprop/fxml/ExportPage.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/graphicprop/fxml/ExportPage.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/graphicprop/fxml/GamePage.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/graphicprop/fxml/GamePage.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/graphicprop/fxml/LoginPage.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/graphicprop/fxml/LoginPage.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/graphicprop/fxml/MainPage.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/graphicprop/fxml/MainPage.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/graphicprop/fxml/RegisterPage.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/graphicprop/fxml/RegisterPage.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/view/controller/CardCreatorPageView.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/view/controller/CardCreatorPageView.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/view/controller/ChooseMagicActionsView.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/view/controller/ChooseMagicActionsView.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/view/controller/ChooseMonsterActionsView.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/view/controller/ChooseMonsterActionsView.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/view/controller/DecksView$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/view/controller/DecksView$1.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/view/controller/DecksView.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/view/controller/DecksView.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/view/controller/ExportPageView.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/view/controller/ExportPageView.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/view/controller/GameView$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/view/controller/GameView$1.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/view/controller/GameView$2.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/view/controller/GameView$2.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/view/controller/GameView.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/view/controller/GameView.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/view/controller/ImportExportPageView.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/view/controller/ImportExportPageView.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/view/controller/ImportPageView.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/view/controller/ImportPageView.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/view/controller/LoginView.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/view/controller/LoginView.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/view/controller/MainMenuView.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/view/controller/MainMenuView.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/view/controller/ProfileView.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/view/controller/ProfileView.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/view/controller/RegisterView.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/view/controller/RegisterView.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/view/controller/ScoreboardView.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/view/controller/ScoreboardView.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/view/controller/WelcomeView.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/view/controller/WelcomeView.class" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -368,13 +308,7 @@
       <workItem from="1625999059002" duration="12603000" />
       <workItem from="1626075601313" duration="1351000" />
       <workItem from="1626166276771" duration="1598000" />
-      <workItem from="1626411112685" duration="11469000" />
-    </task>
-    <task id="LOCAL‎۰۰۰۵۶" summary="ManuallyActivation added">
-      <created>1620318279173</created>
-      <option name="number" value="LOCAL‎۰۰۰۵۶" />
-      <option name="presentableId" value="LOCAL‎۰۰۰۵۶" />
-      <updated>1620318279173</updated>
+      <workItem from="1626411112685" duration="12008000" />
     </task>
     <task id="LOCAL‎۰۰۰۵۷" summary="new structure for actions">
       <created>1620390954617</created>
@@ -695,7 +629,13 @@
       <option name="project" value="LOCAL" />
       <updated>1626073697306</updated>
     </task>
-    <option name="localTasksCounter" value="105" />
+    <task id="LOCAL‎۰۰۱۰۵" summary="add sound effects">
+      <created>1626425666448</created>
+      <option name="number" value="LOCAL‎۰۰۱۰۵" />
+      <option name="presentableId" value="LOCAL‎۰۰۱۰۵" />
+      <updated>1626425666449</updated>
+    </task>
+    <option name="localTasksCounter" value="106" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -715,7 +655,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="fix profile" />
     <MESSAGE value="fix little" />
     <MESSAGE value="fix" />
     <MESSAGE value="final version Profile menu" />
@@ -740,7 +679,8 @@
     <MESSAGE value="some bug fixes" />
     <MESSAGE value="attack process" />
     <MESSAGE value="attack process animation" />
-    <option name="LAST_COMMIT_MESSAGE" value="attack process animation" />
+    <MESSAGE value="add sound effects" />
+    <option name="LAST_COMMIT_MESSAGE" value="add sound effects" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

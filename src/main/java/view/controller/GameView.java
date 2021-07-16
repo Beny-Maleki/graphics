@@ -50,6 +50,7 @@ import model.userProp.User;
 import org.jetbrains.annotations.NotNull;
 import view.AudioHandler;
 import view.AudioPath;
+import view.SoundEffectHandler;
 
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
@@ -234,6 +235,10 @@ public class GameView {
         }
     }
 
+    private void soundEffectSetSummon() {
+        SoundEffectHandler.playSoundEffect(AudioPath.SUMMON_SET);
+    }
+
     private void initializeActionsIcon() {
         setHoverEffectForIcons(summonIcon);
         setHoverEffectForIcons(setMonsterIcon);
@@ -246,6 +251,7 @@ public class GameView {
                         showTributeItems();
                     }
                     animateSummon();
+                    soundEffectSetSummon();
                     deActiveActions();
                     restartSelectedCardImage();
                     reloadImages();
@@ -257,6 +263,7 @@ public class GameView {
                 showTributeItems();
             }
             animateSummon();
+            soundEffectSetSummon();
             deActiveActions();
             reloadImages();
             restartSelectedCardImage();
@@ -266,12 +273,14 @@ public class GameView {
 
         setMagicIcon.setOnMouseClicked(event -> {
             mainPhaseController.hireCard(game, TypeOfHire.SET);
+            soundEffectSetSummon();
             deActiveActions();
             restartSelectedCardImage();
             reloadImages();
         });
 
         changePositionIcon.setOnMouseExited(event -> {
+            soundEffectSetSummon();
             ((MonsterHouse) game.getCardProp().getCardPlace()).changePos();
 
         });
@@ -300,6 +309,7 @@ public class GameView {
                     });
 
                     monsterHouse.setOnMouseClicked(event3 -> {
+                        SoundEffectHandler.playSoundEffect(AudioPath.ATTACK);
                         MonsterHouse attacker = (MonsterHouse) game.getCardProp().getCardPlace();
                         String state = monsterHouse.getState();
 
