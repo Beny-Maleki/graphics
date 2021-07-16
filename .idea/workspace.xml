@@ -4,8 +4,16 @@
     <option name="autoReloadType" value="ALL" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="45f87b1a-8403-4c06-b2b2-57ebfe555883" name="Default Changelist" comment="add sound effects">
+    <list default="true" id="45f87b1a-8403-4c06-b2b2-57ebfe555883" name="Default Changelist" comment="add sound effects buttons and game">
+      <change afterPath="$PROJECT_DIR$/src/main/java/view/controller/GameResultView.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/graphicprop/fxml/GameResult.fxml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/graphicprop/stylesheets/GameResultPage.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/jsonResources/Users.Json" beforeDir="false" afterPath="$PROJECT_DIR$/jsonResources/Users.Json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/view/controller/GameView.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/view/controller/GameView.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/view/controller/GameView$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/view/controller/GameView$1.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/view/controller/GameView$2.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/view/controller/GameView$2.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/view/controller/GameView.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/view/controller/GameView.class" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -37,8 +45,8 @@
         <option value="package-info" />
         <option value="Enum" />
         <option value="FxmlFile" />
-        <option value="CSS File" />
         <option value="Class" />
+        <option value="CSS File" />
       </list>
     </option>
   </component>
@@ -308,13 +316,7 @@
       <workItem from="1625999059002" duration="12603000" />
       <workItem from="1626075601313" duration="1351000" />
       <workItem from="1626166276771" duration="1598000" />
-      <workItem from="1626411112685" duration="12008000" />
-    </task>
-    <task id="LOCAL‎۰۰۰۵۷" summary="new structure for actions">
-      <created>1620390954617</created>
-      <option name="number" value="LOCAL‎۰۰۰۵۷" />
-      <option name="presentableId" value="LOCAL‎۰۰۰۵۷" />
-      <updated>1620390954618</updated>
+      <workItem from="1626411112685" duration="15265000" />
     </task>
     <task id="LOCAL‎۰۰۰۵۸" summary="json">
       <created>1620411136104</created>
@@ -635,7 +637,13 @@
       <option name="presentableId" value="LOCAL‎۰۰۱۰۵" />
       <updated>1626425666449</updated>
     </task>
-    <option name="localTasksCounter" value="106" />
+    <task id="LOCAL‎۰۰۱۰۶" summary="add sound effects buttons and game">
+      <created>1626426159647</created>
+      <option name="number" value="LOCAL‎۰۰۱۰۶" />
+      <option name="presentableId" value="LOCAL‎۰۰۱۰۶" />
+      <updated>1626426159647</updated>
+    </task>
+    <option name="localTasksCounter" value="107" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -655,7 +663,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="fix little" />
     <MESSAGE value="fix" />
     <MESSAGE value="final version Profile menu" />
     <MESSAGE value="initial page changed" />
@@ -680,7 +687,8 @@
     <MESSAGE value="attack process" />
     <MESSAGE value="attack process animation" />
     <MESSAGE value="add sound effects" />
-    <option name="LAST_COMMIT_MESSAGE" value="add sound effects" />
+    <MESSAGE value="add sound effects buttons and game" />
+    <option name="LAST_COMMIT_MESSAGE" value="add sound effects buttons and game" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

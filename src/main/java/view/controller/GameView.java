@@ -92,6 +92,7 @@ public class GameView {
     public Label currentDeckNumber;
     public Label opponentDeckNumber;
     public Pane field;
+    public Pane gameSetUpPopUp;
     public Label turnShowerUp;
     public Label turnShowerDown;
     public Button directAttackButton;
@@ -289,6 +290,7 @@ public class GameView {
     private void initializeAttackAction() {
         attackMonsterIcon.setOnMouseClicked(event -> {
             if (game.getPlayer(SideOfFeature.OPPONENT).getBoard().numberOfFullHouse("monster") == 0) {
+                SoundEffectHandler.playSoundEffect(AudioPath.ATTACK);
                 battlePhaseController.attackDirect(game);
                 updateHealth();
                 deActiveActions();
@@ -373,21 +375,31 @@ public class GameView {
         opponentLPLabel.setText("LP: " + playerOpponent.getPlayerLifePoint());
 
         if (playerOpponent.getPlayerLifePoint() == 0 ||playerYou.getPlayerLifePoint() == 0){
-            finishGame();
+            if (playerOpponent.getPlayerLifePoint() == 0) {
+                finishGame(playerYou);
+            } else {
+                finishGame(playerOpponent);
+            }
         }
 
     }
 
-    private void finishGame() {
+    private void finishGame(Player winner) {
         try {
             if (controller.finishRound(game)) {
                 FadeOut fadeOut = new FadeOut(root);
                 fadeOut.setSpeed(0.5);
                 fadeOut.play();
-                FXMLLoader loader = new FXMLLoader(getClass().getResource("/graphicprop/fxml/mainPage.fxml"));
+                FXMLLoader loader = new FXMLLoader(getClass().getResource("/graphicprop/fxml/GameResult.fxml"));
                 Parent parent = loader.load();
                 Stage stage = (Stage) field.getScene().getWindow();
                 Scene scene = new Scene(parent);
+                GameResultView controller = loader.getController();
+                if (winner.equals(playerYou)) {
+                    controller.setDetails(winner, "win");
+                } else {
+                    controller.setDetails(winner, "lose");
+                }
                 stage.setScene(scene);
                 scene.getRoot().requestFocus();
                 stage.show();
