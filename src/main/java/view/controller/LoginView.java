@@ -6,6 +6,9 @@ import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.input.MouseEvent;
 import model.enums.Menu;
+import view.AudioPath;
+import view.ClickButtonHandler;
+import view.SoundEffectHandler;
 
 import java.io.IOException;
 
@@ -28,6 +31,10 @@ public class LoginView {
         } else if (event.getSource() == Back) {
             controller.moveToPage(Back, Menu.WELCOME_MENU);
         }
+    }
+
+    public void soundEffect(MouseEvent event) {
+        ClickButtonHandler.getInstance().play();
     }
 
 }

@@ -13,6 +13,9 @@ import model.cards.cardsEnum.Magic.RestrictionTypeInAdding;
 import model.cards.cardsProp.MagicCard;
 import model.enums.Menu;
 import model.events.Event;
+import view.AudioPath;
+import view.ClickButtonHandler;
+import view.SoundEffectHandler;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -108,6 +111,7 @@ public class ChooseMagicActionsView {
     }
 
     public void hoverAnimation(MouseEvent event) {
+        ClickButtonHandler.getInstance().play();
         new Wobble((Node) event.getSource()).play();
     }
 }

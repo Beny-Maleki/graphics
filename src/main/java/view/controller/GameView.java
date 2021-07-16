@@ -47,6 +47,7 @@ import model.userProp.UserInfoType;
 import org.jetbrains.annotations.NotNull;
 import view.AudioHandler;
 import view.AudioPath;
+import view.SoundEffectHandler;
 
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
@@ -229,6 +230,10 @@ public class GameView {
         }
     }
 
+    private void setSummonSoundEffect() {
+        SoundEffectHandler.playSoundEffect(AudioPath.SUMMON_SET);
+    }
+
     private void initializeActionsIcon() {
         setHoverEffectForIcons(summonIcon);
         setHoverEffectForIcons(setMonsterIcon);
@@ -241,6 +246,7 @@ public class GameView {
                         showTributeItems();
                     }
                     animateSummon();
+                    setSummonSoundEffect();
                     deActiveActions();
                     restartSelectedCardImage();
                     reloadImages();
@@ -252,6 +258,7 @@ public class GameView {
                 showTributeItems();
             }
             animateSummon();
+            setSummonSoundEffect();
             deActiveActions();
             reloadImages();
             restartSelectedCardImage();
@@ -262,12 +269,14 @@ public class GameView {
         setMagicIcon.setOnMouseClicked(event -> {
             mainPhaseController.hireCard(game, TypeOfHire.SET);
             deActiveActions();
+            setSummonSoundEffect();
             restartSelectedCardImage();
             reloadImages();
         });
 
         changePositionIcon.setOnMouseExited(event -> {
             ((MonsterHouse)game.getCardProp().getCardPlace()).changePos();
+            setSummonSoundEffect();
 
         });
     }
@@ -290,6 +299,7 @@ public class GameView {
                 });
 
                 monsterHouse.setOnMouseClicked(event3 -> {
+                    SoundEffectHandler.playSoundEffect(AudioPath.ATTACK);
                     MonsterHouse attacker = (MonsterHouse) game.getCardProp().getCardPlace();
                     String state = monsterHouse.getState();
                     battlePhaseController.attackMonsterHouse(game, monsterHouse);

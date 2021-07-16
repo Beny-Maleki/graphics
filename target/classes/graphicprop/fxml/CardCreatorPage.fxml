@@ -43,7 +43,7 @@
                   <ChoiceBox fx:id="level" layoutX="141.0" layoutY="262.0" prefHeight="25.0" prefWidth="80.0" />
                </children>
             </Pane>
-            <Button fx:id="backButton" layoutX="441.0" layoutY="646.0" mnemonicParsing="false" onMouseClicked="#run" text="Back" />
+            <Button fx:id="backButton" layoutX="441.0" layoutY="646.0" mnemonicParsing="false" onMouseClicked="#run" onMouseEntered="#hoverAnimation" text="Back" />
          </children>
       </Pane>
       <Pane fx:id="magicPane" prefHeight="700.0" prefWidth="486.0">

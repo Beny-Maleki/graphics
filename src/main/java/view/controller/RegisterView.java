@@ -10,6 +10,9 @@ import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.Pane;
 import model.enums.Menu;
+import view.AudioPath;
+import view.ClickButtonHandler;
+import view.SoundEffectHandler;
 
 import java.io.IOException;
 
@@ -47,4 +50,7 @@ public class RegisterView {
     }
 
 
+    public void soundEffect(MouseEvent event) {
+        ClickButtonHandler.getInstance().play();
+    }
 }

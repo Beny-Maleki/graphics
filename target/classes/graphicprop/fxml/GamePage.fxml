@@ -23,7 +23,6 @@
                   <Image url="@../images/backOfCard.jpg" />
                </image>
             </ImageView>
-            <Button fx:id="directAttackButton" layoutX="14.0" layoutY="350.0" mnemonicParsing="false" prefHeight="27.0" prefWidth="90.0" styleClass="buttonOfDescription" text="Direct attack" />
          </children>
       </Pane>
    </AnchorPane>

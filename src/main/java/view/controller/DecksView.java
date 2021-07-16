@@ -23,6 +23,9 @@ import model.enums.Menu;
 import model.userProp.Deck;
 import model.userProp.LoginUser;
 import model.userProp.User;
+import view.AudioPath;
+import view.ClickButtonHandler;
+import view.SoundEffectHandler;
 
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
@@ -266,7 +269,10 @@ public class DecksView {
     private void styleButton(Button button) {
         button.setStyle("-fx-text-fill: #A61210; -fx-background-radius: 15; -fx-focus-color : transparent");
         button.setOnMouseEntered(event ->
-                button.setStyle("-fx-background-color: #A61210; -fx-background-radius: 15; -fx-text-fill: white; -fx-focus-color : transparent"));
+        {
+            ClickButtonHandler.getInstance().play();
+            button.setStyle("-fx-background-color: #A61210; -fx-background-radius: 15; -fx-text-fill: white; -fx-focus-color : transparent");
+        });
         button.setOnMouseExited(event -> {
             button.setStyle("-fx-text-fill: #A61210; -fx-background-radius: 15; -fx-focus-color : transparent");
             new FlipInX(button).play();

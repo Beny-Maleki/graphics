@@ -20,6 +20,9 @@ import model.enums.Menu;
 import model.enums.Origin;
 import model.userProp.LoginUser;
 import model.userProp.User;
+import view.AudioPath;
+import view.ClickButtonHandler;
+import view.SoundEffectHandler;
 
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
@@ -60,6 +63,10 @@ public class ExportPageView extends ShopView{
 
         shownOnStage = slidesOfShopCards.get(0);
         gridPaneBGPane.getChildren().add(shownOnStage);
+    }
+
+    public void soundEffect(MouseEvent event) {
+        ClickButtonHandler.getInstance().play();
     }
 
     @Override

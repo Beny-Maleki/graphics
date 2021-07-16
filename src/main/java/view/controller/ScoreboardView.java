@@ -11,6 +11,9 @@ import javafx.scene.layout.VBox;
 import model.enums.Menu;
 import controller.menues.menuhandlers.menucontrollers.ScoreboardMenuController;
 import model.userProp.ScoreboardItem;
+import view.AudioPath;
+import view.ClickButtonHandler;
+import view.SoundEffectHandler;
 
 import java.io.IOException;
 
@@ -68,6 +71,7 @@ public class ScoreboardView {
     }
 
     public void hoverAnimation(MouseEvent event) {
+        ClickButtonHandler.getInstance().play();
         new Tada((Node) event.getSource()).play();
     }
 }

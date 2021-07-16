@@ -7,6 +7,8 @@ import javafx.scene.input.MouseEvent;
 import model.enums.Menu;
 import view.AudioHandler;
 import view.AudioPath;
+import view.ClickButtonHandler;
+import view.SoundEffectHandler;
 
 import java.io.IOException;
 
@@ -58,5 +60,9 @@ public class MainMenuView {
         } else if (event.getSource() == importExport) {
             controller.moveToPage(importExport, Menu.IMPORT_EXPORT);
         }
+    }
+
+    public void soundEffect(MouseEvent event) {
+        ClickButtonHandler.getInstance().play();
     }
 }

@@ -17,6 +17,9 @@ import javafx.scene.layout.Pane;
 import model.enums.Menu;
 import model.userProp.LoginUser;
 import model.userProp.User;
+import view.AudioPath;
+import view.ClickButtonHandler;
+import view.SoundEffectHandler;
 
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
@@ -129,6 +132,7 @@ public class ProfileView {
 
 
     public void hoverAnimation(MouseEvent event) {
+        ClickButtonHandler.getInstance().play();
         new Wobble((Node) event.getSource()).play();
     }
 }

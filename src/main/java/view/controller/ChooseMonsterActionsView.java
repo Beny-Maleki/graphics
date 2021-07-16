@@ -11,6 +11,9 @@ import model.cards.cardsEnum.Monster.MonsterAttribute;
 import model.cards.cardsEnum.Monster.MonsterRace;
 import model.cards.cardsEnum.Monster.MonsterType;
 import model.enums.Menu;
+import view.AudioPath;
+import view.ClickButtonHandler;
+import view.SoundEffectHandler;
 
 import java.io.IOException;
 
@@ -72,6 +75,7 @@ public class ChooseMonsterActionsView {
     }
 
     public void hoverAnimation(MouseEvent event) {
+        ClickButtonHandler.getInstance().play();
         new Wobble((Node) event.getSource()).play();
     }
 }
