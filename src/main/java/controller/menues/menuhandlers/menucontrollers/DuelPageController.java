@@ -12,7 +12,6 @@ import model.userProp.LoginUser;
 import model.userProp.User;
 import model.userProp.UserInfoType;
 import view.RockPaperScissorGame;
-import view.game.GameViewer;
 
 import java.io.FileNotFoundException;
 import java.util.Objects;
@@ -65,8 +64,7 @@ public class DuelPageController extends Controller {
             }
         }
         GameInProcess.setGame(game);
-        GameViewer.run();
-        return null;
+             return null;
     }
 
     public User findOpponent(String name) {

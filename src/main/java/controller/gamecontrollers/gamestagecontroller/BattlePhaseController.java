@@ -44,7 +44,7 @@ public class BattlePhaseController extends GeneralController {
         return stringBuilder.toString();
     }
 
-    private String attackDirect(Game game) {
+    public String attackDirect(Game game) {
         AttackDirectChain chain = new AttackDirectChain();
         return chain.request(game);
     }

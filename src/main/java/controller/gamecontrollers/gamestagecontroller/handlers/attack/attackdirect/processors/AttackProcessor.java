@@ -28,7 +28,7 @@ public class AttackProcessor extends AttackDirectProcessor {
         target.changePlayerLifePoint(monsterCard.getAttack());
         MonsterHouse monsterHouse = (MonsterHouse) cardProp.getCardPlace();
 
-        monsterHouse.setMonsterAttacked();
+        monsterHouse.setMonsterAttacked(true);
         int practicalAttack = ((MonsterHouse) cardProp.getCardPlace()).getAdditionalAttack() + monsterCard.getAttack();
         return "you opponent receives " + practicalAttack + " battle damage";
     }
