@@ -1,11 +1,13 @@
 package view.controller;
 
 import animatefx.animation.*;
+import controller.Controller;
 import controller.gamecontrollers.GeneralController;
 import controller.gamecontrollers.gamestagecontroller.BattlePhaseController;
 import controller.gamecontrollers.gamestagecontroller.DrawPhaseController;
 import controller.gamecontrollers.gamestagecontroller.MainPhaseController;
 import controller.gamecontrollers.gamestagecontroller.StandByPhaseController;
+import controller.menues.menuhandlers.menucontrollers.MainMenuController;
 import javafx.animation.KeyFrame;
 import javafx.animation.KeyValue;
 import javafx.animation.Timeline;
@@ -39,6 +41,7 @@ import model.enums.GameEnums.SideOfFeature;
 import model.enums.GameEnums.TypeOfHire;
 import model.enums.GameEnums.cardvisibility.MonsterHouseVisibilityState;
 import model.enums.GameEnums.gamestage.GameMainStage;
+import model.enums.Menu;
 import model.gameprop.BoardProp.GameHouse;
 import model.gameprop.BoardProp.HandHouse;
 import model.gameprop.BoardProp.MagicHouse;
@@ -46,6 +49,7 @@ import model.gameprop.BoardProp.MonsterHouse;
 import model.gameprop.GameInProcess;
 import model.gameprop.Player;
 import model.gameprop.gamemodel.Game;
+import model.userProp.LoginUser;
 import model.userProp.User;
 import org.jetbrains.annotations.NotNull;
 import view.AudioHandler;
@@ -100,6 +104,7 @@ public class GameView {
     public ProgressBar yourLPBar;
     public Label opponentLPLabel;
     public Label yourLPLabel;
+    public Button between;
     private ImageView summonIcon;
     private ImageView setMonsterIcon;
     private ImageView setMagicIcon;
@@ -387,27 +392,33 @@ public class GameView {
     private void finishGame(Player winner) {
         try {
             if (controller.finishRound(game)) {
-                FadeOut fadeOut = new FadeOut(root);
-                fadeOut.setSpeed(0.5);
-                fadeOut.play();
-                FXMLLoader loader = new FXMLLoader(getClass().getResource("/graphicprop/fxml/GameResult.fxml"));
-                Parent parent = loader.load();
-                Stage stage = (Stage) field.getScene().getWindow();
-                Scene scene = new Scene(parent);
-                GameResultView controller = loader.getController();
-                if (winner.equals(playerYou)) {
-                    controller.setDetails(winner, "win");
-                } else {
-                    controller.setDetails(winner, "lose");
-                }
-                stage.setScene(scene);
-                scene.getRoot().requestFocus();
-                stage.show();
+                moveToResult(true, winner);
+            } else {
+                moveToResult(false, winner);
             }
         } catch (IOException e) {
             e.printStackTrace();
         }
 
+    }
+
+    private void moveToResult(boolean isFinished, Player winner) throws IOException {
+        FadeOut fadeOut = new FadeOut(root);
+        fadeOut.setSpeed(0.5);
+        fadeOut.play();
+        FXMLLoader loader = new FXMLLoader(getClass().getResource(Menu.GAME_RESULT.getAddress()));
+        Parent parent = loader.load();
+        Stage stage = (Stage) field.getScene().getWindow();
+        Scene scene = new Scene(parent);
+        GameResultView controller = loader.getController();
+        if (winner.equals(playerYou)) {
+            controller.setDetails(winner, "win", isFinished);
+        } else {
+            controller.setDetails(winner, "lose", isFinished);
+        }
+        stage.setScene(scene);
+        scene.getRoot().requestFocus();
+        stage.show();
     }
 
     private void setHoverEffectForIcons(ImageView Node) {
@@ -1074,7 +1085,7 @@ public class GameView {
         });
     }
 
-    public void run(MouseEvent mouseEvent) throws FileNotFoundException {
+    public void run(MouseEvent mouseEvent) throws IOException {
         if (mouseEvent.getSource() == yourGraveyardPane) {
             showGraveYard(playerYou);
         } else if (mouseEvent.getSource() == opponentGraveyardPane) {
@@ -1093,6 +1104,8 @@ public class GameView {
             restartSelectedCardImage();
         } else if (mouseEvent.getSource() == directAttackButton) {
             directAttack();
+        } else if (mouseEvent.getSource() == between) {
+            new MainMenuController().moveToPage(between, Menu.BETWEEN_ROUNDS);
         }
     }
 

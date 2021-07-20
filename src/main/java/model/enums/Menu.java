@@ -21,6 +21,8 @@ public enum Menu {
     IMPORT("ImportPage"),
     EXPORT("ExportPage"),
     IMPORT_EXPORT("ImportExportPage"),
+    GAME_RESULT("GameResult"),
+    BETWEEN_ROUNDS("BetweenRoundsPage"),
     GAME_PAGE("GamePage");
 
     String address;

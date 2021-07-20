@@ -9,10 +9,11 @@ import javafx.scene.control.ScrollPane;
 import javafx.scene.effect.DropShadow;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
-import javafx.scene.input.MouseEvent;
+import javafx.scene.input.*;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.FlowPane;
 import javafx.scene.layout.Pane;
+import javafx.scene.layout.StackPane;
 import javafx.scene.shape.Rectangle;
 import model.cards.CardHouse;
 import model.cards.cardsEnum.Magic.RestrictionTypeInAdding;
@@ -37,6 +38,12 @@ public class DeckModifierView {
 
     public AnchorPane anchorPane;
 
+    protected static final DataFormat buttonFormat = new DataFormat("MyButton");
+
+    protected ImageView draggingImage;
+    protected Card draggingCard;
+    protected Image unknownCard;
+
     public ScrollPane scrollPane;
     public AnchorPane sideDeckPane;
     public AnchorPane mainDeckPane;
@@ -57,28 +64,33 @@ public class DeckModifierView {
     public Button moveToCollectionButton;
     public Button backButton;
 
-    private ArrayList<Pane> slidesOfMainDeck;
-    private ArrayList<Pane> slidesOfSideDeck;
-    private ArrayList<Card> collection;
-    private ArrayList<Card> mainDeck;
-    private ArrayList<Card> sideDeck;
+    protected ArrayList<Pane> slidesOfMainDeck;
+    protected ArrayList<Pane> slidesOfSideDeck;
+    protected ArrayList<Card> collection;
+    protected ArrayList<Card> mainDeck;
+    protected ArrayList<Card> sideDeck;
 
-    private Pane shownOnStageMainDeck;
-    private Pane shownOnStageSideDeck;
-    private DeckModifierController controller;
-    private User loggedInUser;
-    private Deck toShowDeck;
-    private Card selectedCard;
-    private TreeMap<String, ImageView> cardPictures;
-    private int currSlideNumberMainDeck;
-    private int currSlideNumberSideDeck;
-    private double scrolled;
+    protected Pane shownOnStageMainDeck;
+    protected Pane shownOnStageSideDeck;
+    protected DeckModifierController controller;
+    protected User loggedInUser;
+    protected Deck toShowDeck;
+    protected Card selectedCard;
+    protected TreeMap<String, ImageView> cardPictures;
+    protected int currSlideNumberMainDeck;
+    protected int currSlideNumberSideDeck;
+    protected double scrolled;
 
     {
         controller = DeckModifierController.getInstance();
         loggedInUser = LoginUser.getUser();
         toShowDeck = loggedInUser.getDeckOnModify();
         collection = loggedInUser.getCardCollection();
+        try {
+            unknownCard = new Image(new FileInputStream("src/main/resources/graphicprop/images/Cards/Monsters/Unknown.jpg"));
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        }
     }
 
     public void initialize() {
@@ -90,10 +102,6 @@ public class DeckModifierView {
         initializeCollection();
 
         initializeSlides();
-        mainDeckPane.getChildren().add(slidesOfMainDeck.get(0));
-        sideDeckPane.getChildren().add(slidesOfSideDeck.get(0));
-        shownOnStageMainDeck = slidesOfMainDeck.get(0);
-        shownOnStageSideDeck = slidesOfSideDeck.get(0);
 
         makeIntendedTransferButtonsInvisible();
         makeIntendedTransferButtonsVisible();
@@ -105,7 +113,7 @@ public class DeckModifierView {
 
     }
 
-    private void initializeDeck() {
+    protected void initializeDeck() {
         mainDeck = toShowDeck.getMainDeck();
         sideDeck = toShowDeck.getSideDeck();
     }
@@ -133,7 +141,7 @@ public class DeckModifierView {
         }
     }
 
-    private void emptySelectedCard() throws FileNotFoundException {
+    protected void emptySelectedCard() throws FileNotFoundException {
         selectedCard = null;
         selectedCardDescriptionLabel.setText("");
         selectedCardImageView.setImage(new Image(new FileInputStream("src/main/resources/graphicprop/images/Cards/Monsters/Unknown.jpg")));
@@ -142,11 +150,11 @@ public class DeckModifierView {
         new BounceOutUp(selectedCardDescriptionLabel).play();
     }
 
-    private void initializeRoot() {
+    protected void initializeRoot() {
         anchorPane.setMaxWidth(1000);
     }
 
-    private void initializeSlides() {
+    protected void initializeSlides() {
         slidesOfMainDeck = new ArrayList<>();
         slidesOfSideDeck = new ArrayList<>();
 
@@ -161,11 +169,16 @@ public class DeckModifierView {
             slidesOfSideDeck.add(new Pane());
         }
 
+        mainDeckPane.getChildren().add(slidesOfMainDeck.get(0));
+        sideDeckPane.getChildren().add(slidesOfSideDeck.get(0));
+        shownOnStageMainDeck = slidesOfMainDeck.get(0);
+        shownOnStageSideDeck = slidesOfSideDeck.get(0);
+
         initializeMainDeck();
         initializeSideDeck();
     }
 
-    private void mainDeckCardSlotStyler(int j, int k, ImageView imageView) {
+    protected void mainDeckCardSlotStyler(int j, int k, ImageView imageView) {
         deckCardSlotGeneralStyler(k, imageView);
         if ((j == 0)) {
             imageView.setLayoutY(0);
@@ -174,14 +187,14 @@ public class DeckModifierView {
         }
     }
 
-    private void deckCardSlotGeneralStyler(int k, ImageView imageView) {
+    protected void deckCardSlotGeneralStyler(int k, ImageView imageView) {
         imageView.setStyle("-fx-cursor: hand");
         imageView.setFitWidth(82);
         imageView.setFitHeight(120);
         imageView.setLayoutX(10 + (k * (82 + 10)));
     }
 
-    private void handleOnMouseEntered(ImageView imageView) {
+    protected void handleOnMouseEntered(ImageView imageView) {
         imageView.setOnMouseEntered(mouseEvent -> {
             imageView.setScaleX(1.1);
             imageView.setScaleY(1.1);
@@ -194,7 +207,7 @@ public class DeckModifierView {
         });
     }
 
-    private void handleOnMouseExited(ImageView imageView) {
+    protected void handleOnMouseExited(ImageView imageView) {
         imageView.setOnMouseExited(mouseEvent -> {
             imageView.setScaleX(1);
             imageView.setScaleY(1);
@@ -203,7 +216,7 @@ public class DeckModifierView {
         });
     }
 
-    private void handleOnMouseClick(ImageView imageView, CardHouse cardHouse) {
+    protected void handleOnMouseClick(ImageView imageView, CardHouse cardHouse) {
         imageView.setOnMouseClicked(mouseEvent -> {
 
             selectedCardImageView.setImage(cardHouse.getImage());
@@ -220,7 +233,7 @@ public class DeckModifierView {
         });
     }
 
-    private void makeIntendedTransferButtonsVisible() {
+    protected void makeIntendedTransferButtonsVisible() {
         if (selectedCard != null) {
             if (mainDeck.contains(selectedCard)) {
                 moveToSideDeckButton.setVisible(true);
@@ -245,7 +258,7 @@ public class DeckModifierView {
         }
     }
 
-    private void makeIntendedTransferButtonsInvisible() {
+    protected void makeIntendedTransferButtonsInvisible() {
         if (selectedCard == null) {
             moveToCollectionButton.setVisible(false);
             moveToMainDeckButton.setVisible(false);
@@ -270,11 +283,11 @@ public class DeckModifierView {
 
     }
 
-    private void initializeCollection() {
+    protected void initializeCollection() {
         initializeScrollBar();
     }
 
-    private void initializeScrollBar() {
+    protected void initializeScrollBar() {
         User user = LoginUser.getUser();
 
         ArrayList<Card> collection = DeckModifierController.cardNameAlphabetSorter(user.getCardCollection());
@@ -302,7 +315,7 @@ public class DeckModifierView {
         configureScrollPane(collectionFlowPane);
     }
 
-    private void configureScrollPane(FlowPane collectionFlowPane) {
+    protected void configureScrollPane(FlowPane collectionFlowPane) {
         collectionFlowPane.setMinWidth(1000);
         scrollPane.setContent(collectionFlowPane);
         scrollPane.setPrefViewportHeight(190);
@@ -310,7 +323,7 @@ public class DeckModifierView {
         scrollPane.vbarPolicyProperty().setValue(ScrollPane.ScrollBarPolicy.NEVER);
     }
 
-    private void collectionFlowPaneStyler(ArrayList<Card> collection, FlowPane collectionFlowPane) {
+    protected void collectionFlowPaneStyler(ArrayList<Card> collection, FlowPane collectionFlowPane) {
         collectionFlowPane.setHgap(14);
         collectionFlowPane.setVgap(10);
         collectionFlowPane.setPrefWrapLength((collection.size()) * (14.222 + 109) + 28.444);
@@ -319,13 +332,13 @@ public class DeckModifierView {
         collectionFlowPane.setStyle("-fx-background-image: url('/graphicprop/images/dirtyBoardBG.jpg'); -fx-background-size: cover");
     }
 
-    private void collectionCardSlotStyler(int i, ImageView imageView) {
+    protected void collectionCardSlotStyler(int i, ImageView imageView) {
         imageView.setFitHeight(160);
         imageView.setFitWidth(109);
         imageView.setStyle("-fx-cursor: hand");
     }
 
-    private void initializeMainDeck() {
+    protected void initializeMainDeck() {
         int numberOfMainDeckSlides = 6;
         for (int i = 0; i < numberOfMainDeckSlides; i++) {
             slidesOfMainDeck.get(i).getChildren().clear();
@@ -339,23 +352,15 @@ public class DeckModifierView {
                     handleOnMouseEntered(imageView);
                     handleOnMouseExited(imageView);
 
-                    Image image;
-                    FileInputStream fileInputStream;
                     if ((i * 10) + (5 * j) + k >= mainDeck.size()) {
                         // filling the remained card slots!
-                        try {
-                            fileInputStream = new FileInputStream("src/main/resources/graphicprop/images/Cards/Monsters/Unknown.jpg");
-                            image = new Image(fileInputStream);
-                            imageView.setImage(image);
-                            imageView.setDisable(true);
-                        } catch (Exception ignored) {
-
-                        }
+                        imageView.setImage(unknownCard);
+                        imageView.setDisable(true);
                     } else {
                         Card card = mainDeck.get((i * 10) + (5 * j) + k);
-                             if ((i * 10) + (5 * j) + k ==  14 || (i * 10) + (5 * j) + k == 53) System.out.println(card.getName());
                         CardHouse cardHouse = makeCardHouseAndAssignImage(imageView, card);
                         handleOnMouseClick(imageView, cardHouse);
+                        dragButton(imageView, cardHouse);
                     }
                     slidesOfMainDeck.get(i).getChildren().add(imageView);
                 }
@@ -363,7 +368,57 @@ public class DeckModifierView {
         }
     }
 
-    private void initializeSideDeck() {
+    protected void dragButton(ImageView image, CardHouse cardHouse) {
+        if (!image.getImage().equals(unknownCard)) {
+            image.setOnDragDetected(e -> {
+                Dragboard db = image.startDragAndDrop(TransferMode.MOVE);
+                db.setDragView(image.snapshot(null, null));
+                ClipboardContent cc = new ClipboardContent();
+                cc.put(buttonFormat, " ");
+                db.setContent(cc);
+                draggingImage = image;
+                draggingCard = cardHouse.getCard();
+                selectedCard = draggingCard;
+            });
+        }
+    }
+
+    protected void addDropHandling(Pane droppedPane) {
+        droppedPane.setOnDragOver(e -> {
+            Dragboard db = e.getDragboard();
+            if (db.hasContent(buttonFormat) && draggingImage != null) {
+                e.acceptTransferModes(TransferMode.MOVE);
+            }
+        });
+
+        droppedPane.setOnDragDropped(e -> {
+            Dragboard db = e.getDragboard();
+
+            if (db.hasContent(buttonFormat)) {
+                e.setDropCompleted(true);
+                if (droppedPane.equals(shownOnStageMainDeck)) {
+                    moveToMainDeck();
+                } else {
+                    moveToSideDeck();
+                }
+
+                draggingImage = null;
+                draggingCard = null;
+                selectedCard = null;
+                mainDeck = toShowDeck.getMainDeck();
+                sideDeck = toShowDeck.getSideDeck();
+
+                initializeMainDeck();
+                initializeSideDeck();
+
+                new SlideInLeft(mainDeckPane).play();
+                new SlideInLeft(sideDeckPane).play();
+            }
+        });
+
+    }
+
+    protected void initializeSideDeck() {
         int numberOfSideDeckSlides = 3;
         for (int i = 0; i < numberOfSideDeckSlides; i++) {
             slidesOfSideDeck.get(i).getChildren().clear();
@@ -380,17 +435,15 @@ public class DeckModifierView {
 
                 if ((5 * i) + j >= sideDeck.size()) {
                     //filling the remained card slots!
-                    try {
-                        imageView.setImage(new Image(new FileInputStream("src/main/resources/graphicprop/images/Cards/Monsters/Unknown.jpg")));
-                        imageView.setDisable(true);
-                    } catch (FileNotFoundException ignored) {
-                    }
+                    imageView.setImage(unknownCard);
+                    imageView.setDisable(true);
 
                 } else {
                     Card card = sideDeck.get((5 * i) + j);
                     CardHouse cardHouse = makeCardHouseAndAssignImage(imageView, card);
 
                     handleOnMouseClick(imageView, cardHouse);
+                    dragButton(imageView, cardHouse);
                 }
 
                 slidesOfSideDeck.get(i).getChildren().add(imageView);
@@ -398,7 +451,7 @@ public class DeckModifierView {
         }
     }
 
-    private CardHouse makeCardHouseAndAssignImage(ImageView imageView, Card card) {
+    protected CardHouse makeCardHouseAndAssignImage(ImageView imageView, Card card) {
         FileInputStream fileInputStream;
         Image image = null;
 
@@ -432,7 +485,7 @@ public class DeckModifierView {
         return new CardHouse(card, imageView, image, Origin.DECK_MENU);
     }
 
-    private void previousSlide(AnchorPane containerPane, Pane shownPane, ArrayList<Pane> slides, boolean isMainDeck) {
+    protected void previousSlide(AnchorPane containerPane, Pane shownPane, ArrayList<Pane> slides, boolean isMainDeck) {
         disappearMessageContainer();
 
         new BounceOutDown(message);
@@ -461,7 +514,7 @@ public class DeckModifierView {
 
     }
 
-    private void nextSlide(AnchorPane containerPane, Pane shownPane, ArrayList<Pane> slides, boolean isMainDeck) {
+    protected void nextSlide(AnchorPane containerPane, Pane shownPane, ArrayList<Pane> slides, boolean isMainDeck) {
         disappearMessageContainer();
 
         new BounceOutDown(message);
@@ -489,7 +542,7 @@ public class DeckModifierView {
         }
     }
 
-    private void previousSlideMainDeck() {
+    protected void previousSlideMainDeck() {
         if (currSlideNumberMainDeck == 0) {
             prepareMessageContainer();
 
@@ -501,7 +554,7 @@ public class DeckModifierView {
 
     }
 
-    private void nextSlideMainDeck() {
+    protected void nextSlideMainDeck() {
         if (currSlideNumberMainDeck == slidesOfMainDeck.size() - 1) {
             prepareMessageContainer();
 
@@ -512,7 +565,7 @@ public class DeckModifierView {
         }
     }
 
-    private void previousSlideSideDeck() {
+    protected void previousSlideSideDeck() {
         if (currSlideNumberSideDeck == 0) {
             prepareMessageContainer();
 
@@ -523,7 +576,7 @@ public class DeckModifierView {
         }
     }
 
-    private void nextSlideSideDeck() {
+    protected void nextSlideSideDeck() {
         if (currSlideNumberSideDeck == slidesOfSideDeck.size() - 1) {
             prepareMessageContainer();
 
@@ -534,19 +587,19 @@ public class DeckModifierView {
         }
     }
 
-    private void prepareMessageContainer() {
+    protected void prepareMessageContainer() {
         messageContainer.setStyle("-fx-background-color: white; -fx-background-radius: 100; -fx-border-radius: 100");
         new ZoomInRight(messageContainer).play();
     }
 
-    private void disappearMessageContainer() {
+    protected void disappearMessageContainer() {
         if (!message.getText().equals("")) {
             message.setText("");
             new FadeOutRight(messageContainer).play();
         }
     }
 
-    private void moveToCollection() {
+    protected void moveToCollection() {
         if (selectedCard == null) {
             prepareMessageContainer();
 
@@ -559,7 +612,7 @@ public class DeckModifierView {
 
     }
 
-    private void addCardToCollection() {
+    protected void addCardToCollection() {
         disappearMessageContainer();
 
         if (toShowDeck.getMainDeck().contains(selectedCard)) {
@@ -584,7 +637,7 @@ public class DeckModifierView {
 
     }
 
-    private void moveToMainDeck() {
+    protected void moveToMainDeck() {
         if (selectedCard == null) {
             prepareMessageContainer();
 
@@ -628,7 +681,7 @@ public class DeckModifierView {
         }
     }
 
-    private void moveToSideDeck() {
+    protected void moveToSideDeck() {
         if (selectedCard == null) {
             prepareMessageContainer();
 
@@ -639,7 +692,7 @@ public class DeckModifierView {
 
             message.setText("This card is already in your Side Deck");
             new Shake(message).play();
-        } else if (toShowDeck.getMainDeck().size() == 15) {
+        } else if (toShowDeck.getSideDeck().size() == 15) {
             prepareMessageContainer();
 
             message.setText("Your side deck is full!");
@@ -653,6 +706,10 @@ public class DeckModifierView {
             } else {
                 addCardToSideDeck();
                 disappearMessageContainer();
+
+                prepareMessageContainer();
+                message.setText("move complete!");
+                new Shake(message).play();
             }
         } else {
             if (((MagicCard) selectedCard).getMagicRestrictionType() == RestrictionTypeInAdding.LIMITED && (toShowDeck.numOfCardOccurrence(selectedCard.getName(), "both decks") == 1)) {
@@ -668,11 +725,15 @@ public class DeckModifierView {
             } else {
                 addCardToSideDeck();
                 disappearMessageContainer();
+
+                prepareMessageContainer();
+                message.setText("move complete!");
+                new Shake(message).play();
             }
         }
     }
 
-    private void addCardToSideDeck() {
+    protected void addCardToSideDeck() {
         disappearMessageContainer();
 
         DeckModifierController.addCardToSideDeck(selectedCard, toShowDeck.getName());
@@ -686,7 +747,7 @@ public class DeckModifierView {
         new SlideInLeft(sideDeckPane).play();
     }
 
-    private void addCardToMainDeck() {
+    protected void addCardToMainDeck() {
         disappearMessageContainer();
 
         DeckModifierController.addCardToMainDeck(selectedCard, toShowDeck.getName());
@@ -700,7 +761,7 @@ public class DeckModifierView {
         new SlideInLeft(sideDeckPane).play();
     }
 
-    private void back() throws IOException {
+    protected void back() throws IOException {
         controller.moveToPage(backButton, Menu.DECKS_VIEW);
     }
 }

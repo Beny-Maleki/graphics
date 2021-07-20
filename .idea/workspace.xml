@@ -4,16 +4,32 @@
     <option name="autoReloadType" value="ALL" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="45f87b1a-8403-4c06-b2b2-57ebfe555883" name="Default Changelist" comment="add sound effects buttons and game">
-      <change afterPath="$PROJECT_DIR$/src/main/java/view/controller/GameResultView.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/graphicprop/fxml/GameResult.fxml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/graphicprop/stylesheets/GameResultPage.css" afterDir="false" />
+    <list default="true" id="45f87b1a-8403-4c06-b2b2-57ebfe555883" name="Default Changelist" comment="add sound effects of winning">
+      <change afterPath="$PROJECT_DIR$/src/main/java/view/controller/BetweenRoundsView.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/graphicprop/fxml/BetweenRoundsPage.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_09-Jul-21_19_12_[Default_Changelist]/opponentUserInfoBgjpeg.jpeg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_09-Jul-21_19_12_[Default_Changelist]/shelved.patch" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_09-Jul-21_19_12_[Default_Changelist]/youUserInfoBGjpeg.jpeg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_09-Jul-21_19_12__Default_Changelist_.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_7_11_2021_8_44_PM_[Default_Changelist]/shelved.patch" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_7_11_2021_8_44_PM__Default_Changelist_.xml" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/jsonResources/Decks.Json" beforeDir="false" afterPath="$PROJECT_DIR$/jsonResources/Decks.Json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/jsonResources/Users.Json" beforeDir="false" afterPath="$PROJECT_DIR$/jsonResources/Users.Json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/model/enums/Menu.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/model/enums/Menu.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/view/controller/DeckModifierView.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/view/controller/DeckModifierView.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/view/controller/GameResultView.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/view/controller/GameResultView.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/view/controller/GameView.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/view/controller/GameView.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/graphicprop/fxml/GamePage.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/graphicprop/fxml/GamePage.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/graphicprop/fxml/GameResult.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/graphicprop/fxml/GameResult.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/graphicprop/fxml/GamePage.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/graphicprop/fxml/GamePage.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/graphicprop/fxml/MainPage.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/graphicprop/fxml/MainPage.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/model/enums/Menu.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/model/enums/Menu.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/view/controller/DeckModifierView.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/view/controller/DeckModifierView.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/view/controller/GameView$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/view/controller/GameView$1.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/view/controller/GameView$2.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/view/controller/GameView$2.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/view/controller/GameView.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/view/controller/GameView.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/view/controller/MainMenuView.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/view/controller/MainMenuView.class" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -129,7 +145,7 @@
     <property name="com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.JUnit4" value="" />
     <property name="com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.JUnit5" value="" />
     <property name="last_directory_selection" value="$PROJECT_DIR$/src/main/java/Viewer" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/src/main/resources/graphicprop/images/Cards/SpellTrap" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/src/main/resources/graphicprop/fxml" />
     <property name="list.type.of.created.stylesheet" value="CSS" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.path.for.package.eslint" value="project" />
@@ -141,7 +157,7 @@
     <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.2" />
     <property name="restartRequiresConfirmation" value="false" />
-    <property name="settings.editor.selected.configurable" value="preferences.lookFeel" />
+    <property name="settings.editor.selected.configurable" value="preferences.pluginManager" />
   </component>
   <component name="ReaderModeSettings">
     <option name="enabled" value="false" />
@@ -152,11 +168,11 @@
       <recent name="" />
     </key>
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\SooSan\Desktop\graphics\src\main\resources\graphicprop\fxml" />
       <recent name="C:\Users\Asus\Desktop\graphics\src\main\resources\graphicprop\images\Cards\SpellTrap" />
       <recent name="C:\Users\Asus\Desktop\graphics\src\main\resources\graphicprop\images" />
       <recent name="C:\Users\Asus\Desktop\graphics\src\main\resources\graphicprop\images\RockPaperScissor" />
       <recent name="C:\Users\Asus\Desktop\graphics\src\main\resources\graphicprop\images\Field" />
-      <recent name="C:\Users\Asus\Desktop\graphics\src\main\java\model\gameprop" />
     </key>
     <key name="CreateTestDialog.Recents.Supers">
       <recent name="" />
@@ -173,6 +189,9 @@
     </key>
     <key name="CreateTestDialog.RecentsKey">
       <recent name="Viewer" />
+    </key>
+    <key name="CopyClassDialog.RECENTS_KEY">
+      <recent name="view.controller" />
     </key>
   </component>
   <component name="RunAnythingCache">
@@ -316,13 +335,9 @@
       <workItem from="1625999059002" duration="12603000" />
       <workItem from="1626075601313" duration="1351000" />
       <workItem from="1626166276771" duration="1598000" />
-      <workItem from="1626411112685" duration="15265000" />
-    </task>
-    <task id="LOCAL‎۰۰۰۵۸" summary="json">
-      <created>1620411136104</created>
-      <option name="number" value="LOCAL‎۰۰۰۵۸" />
-      <option name="presentableId" value="LOCAL‎۰۰۰۵۸" />
-      <updated>1620411136104</updated>
+      <workItem from="1626411112685" duration="17063000" />
+      <workItem from="1626444343642" duration="4046000" />
+      <workItem from="1626687910163" duration="23404000" />
     </task>
     <task id="LOCAL‎۰۰۰۵۹" summary="json">
       <created>1620413922144</created>
@@ -643,7 +658,13 @@
       <option name="presentableId" value="LOCAL‎۰۰۱۰۶" />
       <updated>1626426159647</updated>
     </task>
-    <option name="localTasksCounter" value="107" />
+    <task id="LOCAL‎۰۰۱۰۷" summary="add sound effects of winning">
+      <created>1626429513277</created>
+      <option name="number" value="LOCAL‎۰۰۱۰۷" />
+      <option name="presentableId" value="LOCAL‎۰۰۱۰۷" />
+      <updated>1626429513277</updated>
+    </task>
+    <option name="localTasksCounter" value="108" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -663,7 +684,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="fix" />
     <MESSAGE value="final version Profile menu" />
     <MESSAGE value="initial page changed" />
     <MESSAGE value="--DeckModifier updated:&#10;hovering cards whilst on them,&#10;changing slides&#10;relevant message&#10;other nodes scheme designed" />
@@ -688,7 +708,8 @@
     <MESSAGE value="attack process animation" />
     <MESSAGE value="add sound effects" />
     <MESSAGE value="add sound effects buttons and game" />
-    <option name="LAST_COMMIT_MESSAGE" value="add sound effects buttons and game" />
+    <MESSAGE value="add sound effects of winning" />
+    <option name="LAST_COMMIT_MESSAGE" value="add sound effects of winning" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
